@@ -1,0 +1,569 @@
+[
+  {
+    "name": "Lacombe",
+    "postalCode": "T4L 1N1",
+    "province": "AB",
+    "lat": 52.3731238,
+    "lng": -113.813529
+  },
+  {
+    "name": "SUDBURY",
+    "postalCode": "P3G 1C6",
+    "province": "ON",
+    "lat": 46.49272,
+    "lng": -80.991211
+  },
+  {
+    "name": "AMHERSTVIEW",
+    "postalCode": "K7N 2A3",
+    "province": "ON",
+    "lat": 44.2216698,
+    "lng": -76.6371882
+  },
+  {
+    "name": "Leslieville",
+    "postalCode": "T0M 1H0",
+    "province": "AB",
+    "lat": 52.3838822,
+    "lng": -114.6055214
+  },
+  {
+    "name": "Lasalle",
+    "postalCode": "N9H 1Z7",
+    "province": "ON",
+    "lat": 42.2502943,
+    "lng": -83.046941
+  },
+  {
+    "name": "Vancouver",
+    "postalCode": "V2N 1L3",
+    "province": "BC",
+    "lat": 49.2608724,
+    "lng": -123.113952
+  },
+  {
+    "name": "Chilliwack",
+    "postalCode": "V2R2B5",
+    "province": "BC",
+    "lat": 49.144306,
+    "lng": -122.0009204
+  },
+  {
+    "name": "Williamstown",
+    "postalCode": "K0C 2J0",
+    "province": "ON",
+    "lat": 45.147332,
+    "lng": -74.5796904
+  },
+  {
+    "name": "Penticton",
+    "postalCode": "V2A 3R3",
+    "province": "BC",
+    "lat": 49.477693,
+    "lng": -119.5833823
+  },
+  {
+    "name": "Maidstone",
+    "postalCode": "S0M 1M0",
+    "province": "AB & SK",
+    "lat": 53.085337,
+    "lng": -109.2896288
+  },
+  {
+    "name": "Weyburn",
+    "postalCode": "S4H 1S4",
+    "province": "SK",
+    "lat": 49.6618116,
+    "lng": -103.856779
+  },
+  {
+    "name": "Harrow",
+    "postalCode": "N0R 1G0",
+    "province": "ON",
+    "lat": 42.0393421,
+    "lng": -82.9170319
+  },
+  {
+    "name": "North Vancouver",
+    "postalCode": "V7G 1S1",
+    "province": "BC",
+    "lat": 49.3272861,
+    "lng": -123.0514033
+  },
+  {
+    "name": "Pemberton",
+    "postalCode": "V0N 2L1",
+    "province": "BC",
+    "lat": 50.3183737,
+    "lng": -122.8033198
+  },
+  {
+    "name": "Cobble Hill",
+    "postalCode": "V8H 0A1",
+    "province": "BC",
+    "lat": 48.6955189,
+    "lng": -123.5910944
+  },
+  {
+    "name": "Surrey",
+    "postalCode": "V3T 1Z2",
+    "province": "BC",
+    "lat": 49.1913033,
+    "lng": -122.849143
+  },
+  {
+    "name": "Sherwood Park",
+    "postalCode": "T8A 1X2",
+    "province": "AB",
+    "lat": 53.5659656,
+    "lng": -113.3304076
+  },
+  {
+    "name": "Onoway",
+    "postalCode": "T0E 1V0",
+    "province": "AB",
+    "lat": 53.7022485,
+    "lng": -114.1944896
+  },
+  {
+    "name": "Brockville",
+    "postalCode": "K6V 5T1",
+    "province": "ON",
+    "lat": 44.6098019,
+    "lng": -75.67471
+  },
+  {
+    "name": "Mississauga",
+    "postalCode": "L5N 6R5",
+    "province": "ON",
+    "lat": 43.5884727,
+    "lng": -79.643658
+  },
+  {
+    "name": "Fort Saskatchewan",
+    "postalCode": "T8L 0M9",
+    "province": "AB",
+    "lat": 53.672611,
+    "lng": -113.243614
+  },
+  {
+    "name": "Hamilton",
+    "postalCode": "L8M 1H5",
+    "province": "ON",
+    "lat": 43.2560802,
+    "lng": -79.8728583
+  },
+  {
+    "name": "Peace River",
+    "postalCode": "T8S 1B2",
+    "province": "AB",
+    "lat": 56.2337845,
+    "lng": -117.3357687
+  },
+  {
+    "name": "Toronto",
+    "postalCode": "M3N 2Z1",
+    "province": "ON",
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  {
+    "name": "Calgary",
+    "postalCode": "T2Z 2N6",
+    "province": "AB",
+    "lat": 51.0456064,
+    "lng": -114.057541
+  },
+  {
+    "name": "Parry Sound",
+    "postalCode": "P2A 1V4",
+    "province": "ON",
+    "lat": 45.1558875,
+    "lng": -79.7906099
+  },
+  {
+    "name": "SAULT STE. MARIE",
+    "postalCode": "P6B 2G6",
+    "province": "ON",
+    "lat": 46.5416772,
+    "lng": -84.3191336
+  },
+  {
+    "name": "Goderich",
+    "postalCode": "N7A 1L3",
+    "province": "ON",
+    "lat": 43.7438429,
+    "lng": -81.7103849
+  },
+  {
+    "name": "AJAX",
+    "postalCode": "L1Z 1R4",
+    "province": "ON",
+    "lat": 43.816823,
+    "lng": -79.0324655
+  },
+  {
+    "name": "Stoney Creek",
+    "postalCode": "L8E 0E4",
+    "province": "ON",
+    "lat": 43.2127312,
+    "lng": -79.6527559
+  },
+  {
+    "name": "Courtenay",
+    "postalCode": "V9N 5W8",
+    "province": "BC",
+    "lat": 49.6736582,
+    "lng": -124.98425
+  },
+  {
+    "name": "Victoria",
+    "postalCode": "V9C 3E9",
+    "province": "BC",
+    "lat": 48.4283182,
+    "lng": -123.364953
+  },
+  {
+    "name": "Red Deer",
+    "postalCode": "T4P 0G2",
+    "province": "AB",
+    "lat": 52.2676687,
+    "lng": -113.8272324
+  },
+  {
+    "name": "ALEXANDRIA",
+    "postalCode": "K0C 1A0",
+    "province": "ON",
+    "lat": 45.3179423,
+    "lng": -74.6397639
+  },
+  {
+    "name": "Havelock",
+    "postalCode": "K0L 1Z0",
+    "province": "ON",
+    "lat": 44.4418458,
+    "lng": -77.8696524
+  },
+  {
+    "name": "Niagara Falls ( St. Davids)",
+    "postalCode": "L2J 4J7",
+    "province": "ON",
+    "lat": 43.1500755,
+    "lng": -79.1220462
+  },
+  {
+    "name": "Guelph",
+    "postalCode": "N1L 0H5",
+    "province": "ON",
+    "lat": 43.5302668,
+    "lng": -80.1956619
+  },
+  {
+    "name": "London",
+    "postalCode": "N6G 2W4",
+    "province": "ON",
+    "lat": 42.9836747,
+    "lng": -81.2496068
+  },
+  {
+    "name": "North Battleford",
+    "postalCode": "S9A 2E9",
+    "province": "SK",
+    "lat": 52.7728949,
+    "lng": -108.3012783
+  },
+  {
+    "name": "Coquitlam",
+    "postalCode": "V3B 2W7",
+    "province": "BC",
+    "lat": 49.2347477,
+    "lng": -122.8796082
+  },
+  {
+    "name": "Brampton",
+    "postalCode": "L6R 1R9",
+    "province": "ON",
+    "lat": 43.6281752,
+    "lng": -79.7785515
+  },
+  {
+    "name": "Cranbrook",
+    "postalCode": "V1C 7B2",
+    "province": "BC",
+    "lat": 49.5097858,
+    "lng": -115.7612031
+  },
+  {
+    "name": "Nanaimo",
+    "postalCode": "V9R 6N3",
+    "province": "BC",
+    "lat": 49.1299172,
+    "lng": -123.9211932
+  },
+  {
+    "name": "Cochrane",
+    "postalCode": "T4C 1E3",
+    "province": "AB",
+    "lat": 51.2127832,
+    "lng": -114.4704938
+  },
+  {
+    "name": "Crediton",
+    "postalCode": "N0M1M0",
+    "province": "ON",
+    "lat": 43.2990303,
+    "lng": -81.5480284
+  },
+  {
+    "name": "Nanoose Bay",
+    "postalCode": "V9P 9B7",
+    "province": "BC",
+    "lat": 49.3063497,
+    "lng": -124.238098
+  },
+  {
+    "name": "Langley",
+    "postalCode": "V2Y 4J1",
+    "province": "BC",
+    "lat": 49.1905457,
+    "lng": -122.6590756
+  },
+  {
+    "name": "St. Thomas",
+    "postalCode": "N5P 3T1",
+    "province": "ON",
+    "lat": 42.7790234,
+    "lng": -81.1928514
+  },
+  {
+    "name": "Prince George",
+    "postalCode": "V2L 4Y4",
+    "province": "BC",
+    "lat": 53.9128645,
+    "lng": -122.7453699
+  },
+  {
+    "name": "Lethbridge",
+    "postalCode": "T1H 6M8",
+    "province": "AB",
+    "lat": 49.6754752,
+    "lng": -112.873795
+  },
+  {
+    "name": "Orleans",
+    "postalCode": "K4A 0M4",
+    "province": "ON",
+    "lat": 45.4068372,
+    "lng": -75.5274568
+  },
+  {
+    "name": "Kelowna",
+    "postalCode": "V1X 7H8",
+    "province": "BC",
+    "lat": 49.8884778,
+    "lng": -119.390511
+  },
+  {
+    "name": "North Pine",
+    "postalCode": "V0C 2A0",
+    "province": "BC",
+    "lat": 56.4214761,
+    "lng": -120.7957831
+  },
+  {
+    "name": "Saskatoon",
+    "postalCode": "S7W 1A8",
+    "province": "SK",
+    "lat": 52.1418502,
+    "lng": -106.5596196
+  },
+  {
+    "name": "Kamloops",
+    "postalCode": "V2H 1L1",
+    "province": "BC",
+    "lat": 50.7975374,
+    "lng": -120.3122854
+  },
+  {
+    "name": "Abbotsford",
+    "postalCode": "V2T 1Z1",
+    "province": "BC",
+    "lat": 49.0501265,
+    "lng": -122.3485646
+  },
+  {
+    "name": "Sooke",
+    "postalCode": "V9Z 0Y3",
+    "province": "BC",
+    "lat": 48.3842987,
+    "lng": -123.7064095
+  },
+  {
+    "name": "Langford",
+    "postalCode": "V9B 6R6",
+    "province": "BC",
+    "lat": 48.4532262,
+    "lng": -123.5097424
+  },
+  {
+    "name": "Milton",
+    "postalCode": "L9T 6Y4",
+    "province": "ON",
+    "lat": 43.513671,
+    "lng": -79.882817
+  },
+  {
+    "name": "Oshawa",
+    "postalCode": "L1K 0E8",
+    "province": "ON",
+    "lat": 43.8943457,
+    "lng": -78.8680135
+  },
+  {
+    "name": "Cambridge",
+    "postalCode": "N3H 2H9",
+    "province": "ON",
+    "lat": 43.3600536,
+    "lng": -80.3123023
+  },
+  {
+    "name": "Petawawa",
+    "postalCode": "K8H 1Z1",
+    "province": "ON",
+    "lat": 45.8428401,
+    "lng": -77.2630893
+  },
+  {
+    "name": "Nelson",
+    "postalCode": "V0G 2J0",
+    "province": "BC",
+    "lat": 49.4916876,
+    "lng": -117.2953619
+  },
+  {
+    "name": "North York",
+    "postalCode": "M9L 2H8",
+    "province": "ON",
+    "lat": 43.7543217,
+    "lng": -79.4491057
+  },
+  {
+    "name": "Dundas",
+    "postalCode": "L9H 5M3",
+    "province": "ON",
+    "lat": 43.2643741,
+    "lng": -79.9532095
+  },
+  {
+    "name": "Barrie",
+    "postalCode": "L4M 3N4",
+    "province": "ON",
+    "lat": 44.3678001,
+    "lng": -79.6669891
+  },
+  {
+    "name": "Swift Current",
+    "postalCode": "S9H 4S2",
+    "province": "SK",
+    "lat": 50.3015374,
+    "lng": -107.7863596
+  },
+  {
+    "name": "Regina",
+    "postalCode": "S4W 0B2",
+    "province": "SK",
+    "lat": 50.4479733,
+    "lng": -104.6158764
+  },
+  {
+    "name": "Ottawa",
+    "postalCode": "K0A 2Z0",
+    "province": "ON",
+    "lat": 45.1897722,
+    "lng": -75.8322141
+  },
+  {
+    "name": "Val Caron",
+    "postalCode": "P3N 1A2",
+    "province": "ON",
+    "lat": 46.6200596,
+    "lng": -81.0068637
+  },
+  {
+    "name": "Kitchener",
+    "postalCode": "N2A 4C3",
+    "province": "ON",
+    "lat": 43.4079347,
+    "lng": -80.4386542
+  },
+  {
+    "name": "Sturgeon County",
+    "postalCode": "T8R 0G8",
+    "province": "AB",
+    "lat": 53.6700026,
+    "lng": -113.4909705
+  },
+  {
+    "name": "Owen Sound",
+    "postalCode": "N4K 2B7",
+    "province": "ON",
+    "lat": 44.5776487,
+    "lng": -80.9131435
+  },
+  {
+    "name": "Prince Albert",
+    "postalCode": "S6V 5R2",
+    "province": "SK",
+    "lat": 53.1952107,
+    "lng": -105.7519537
+  },
+  {
+    "name": "Vernon",
+    "postalCode": "V1T 9A1",
+    "province": "BC",
+    "lat": 50.2655301,
+    "lng": -119.2724588
+  },
+  {
+    "name": "Edmonton",
+    "postalCode": "T6W 3C1",
+    "province": "AB",
+    "lat": 53.5462055,
+    "lng": -113.491241
+  },
+  {
+    "name": "Scarborough",
+    "postalCode": "M1L 0H3",
+    "province": "ON",
+    "lat": 43.7729744,
+    "lng": -79.2576479
+  },
+  {
+    "name": "Beaumont",
+    "postalCode": "T4X 0E4",
+    "province": "AB",
+    "lat": 53.3525496,
+    "lng": -113.4151434
+  },
+  {
+    "name": "Phelpston",
+    "postalCode": "L0L 2K0",
+    "province": "ON",
+    "lat": 44.518002,
+    "lng": -79.8468118
+  },
+  {
+    "name": "Medicine Hat",
+    "postalCode": "T1C 0A6",
+    "province": "AB",
+    "lat": 50.0041435,
+    "lng": -110.6573942
+  },
+  {
+    "name": "Grande Prairie",
+    "postalCode": "T8V 1V2",
+    "province": "aB",
+    "lat": 55.1422221,
+    "lng": -118.825864
+  }
+]

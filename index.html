@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Phlebotomy – Service Area Checker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@24,400,1" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #16a34a;
+      --green-bg: #f0fdf4;
+      --green-border: #bbf7d0;
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --red-border: #fecaca;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --blue: #2563eb;
+      --blue-hover: #1d4ed8;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    header h1 .material-symbols-rounded {
+      color: var(--blue);
+      font-size: 28px;
+    }
+
+    header p {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 520px;
+      padding: 32px 20px 60px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card > p {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--gray-700);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 0.9375rem;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color .15s;
+      font-family: inherit;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    }
+
+    button[type="submit"] {
+      margin-top: 16px;
+      width: 100%;
+      padding: 11px 20px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background .15s;
+      font-family: inherit;
+    }
+
+    button[type="submit"]:hover:not(:disabled) { background: var(--blue-hover); }
+    button[type="submit"]:disabled { opacity: .65; cursor: not-allowed; }
+
+    .error-msg {
+      margin-top: 14px;
+      font-size: 0.8125rem;
+      color: var(--red);
+      display: none;
+    }
+    .error-msg.visible { display: block; }
+
+    #result {
+      margin-top: 20px;
+      display: none;
+    }
+    #result.visible { display: block; }
+
+    .result-card {
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      border: 1px solid;
+    }
+
+    .result-card .result-icon { font-size: 44px; }
+    .result-card h2 { font-size: 1.1rem; margin: 10px 0 8px; }
+    .result-card p { font-size: 0.875rem; line-height: 1.5; }
+
+    .result-card.in-range {
+      background: var(--green-bg);
+      border-color: var(--green-border);
+      color: var(--green);
+    }
+    .result-card.in-range p { color: var(--gray-700); }
+
+    .result-card.extended {
+      background: var(--amber-bg);
+      border-color: var(--amber-border);
+      color: var(--amber);
+    }
+    .result-card.extended p { color: var(--gray-700); }
+
+    .result-card.out-of-range {
+      background: var(--red-bg);
+      border-color: var(--red-border);
+      color: var(--red);
+    }
+    .result-card.out-of-range p { color: var(--gray-700); }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spin { animation: spin .7s linear infinite; }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <span class="material-symbols-rounded">bloodtype</span>
+      Mobile Phlebotomy
+    </h1>
+    <p>Check if we can service your area</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Service Area Lookup</h2>
+      <p>Enter your address below and we'll let you know if a mobile phlebotomist can reach you.</p>
+
+      <form id="check-form" autocomplete="on">
+        <label for="address">Your Address</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="e.g. 123 Main St, Toronto, ON"
+          required
+        />
+        <p class="hint">Include city and province/state for best results.</p>
+
+        <button type="submit" id="submit-btn">
+          <span class="material-symbols-rounded">search</span>
+          Check Service Area
+        </button>
+      </form>
+
+      <p class="error-msg" id="error"></p>
+    </div>
+
+    <div id="result">
+      <div id="result-card" class="result-card"></div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

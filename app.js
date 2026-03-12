@@ -29,18 +29,7 @@ function findNearest(lat, lng) {
   return { location: best, distance: bestDist };
 }
 
-function looksLikePostalCode(input) {
-  return /^[A-Za-z]\d[A-Za-z]\s*\d[A-Za-z]\d$/.test(input.trim());
-}
-
-function normalizeInput(raw) {
-  let input = raw.trim();
-  // Format loose postal codes: "t4l1n1" → "T4L 1N1"
-  if (/^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/.test(input)) {
-    input = (input.slice(0, 3) + " " + input.slice(3)).toUpperCase();
-  }
-  return input;
-}
+const POSTAL_RE = /[A-Za-z]\d[A-Za-z]\s*\d[A-Za-z]\d/;
 
 async function nominatimSearch(query) {
   const url =
@@ -59,22 +48,48 @@ async function nominatimSearch(query) {
   return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
 }
 
-async function geocode(rawAddress) {
-  const address = normalizeInput(rawAddress);
+function buildSearchVariants(raw) {
+  const input = raw.trim();
+  const variants = [];
 
-  // Try the input as-is with Canada scope
-  let coords = await nominatimSearch(address + ", Canada");
-  if (coords) return coords;
+  // 1) Full input as-is
+  variants.push(input + ", Canada");
 
-  // If it looks like a postal code, try it standalone
-  if (looksLikePostalCode(address)) {
-    coords = await nominatimSearch(address + ", Canada");
-    if (coords) return coords;
+  // 2) Strip postal code from end/anywhere and try remaining text
+  const withoutPostal = input.replace(POSTAL_RE, "").replace(/[,\s]+$/, "").trim();
+  if (withoutPostal && withoutPostal !== input) {
+    variants.push(withoutPostal + ", Canada");
   }
 
-  // Try without "Canada" as a last resort
-  coords = await nominatimSearch(address);
-  return coords;
+  // 3) If it's just a bare postal code (with or without space), format and try
+  const compact = input.replace(/\s/g, "");
+  if (/^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/.test(compact)) {
+    const formatted = (compact.slice(0, 3) + " " + compact.slice(3)).toUpperCase();
+    variants.push(formatted + ", Canada");
+  }
+
+  // 4) Try extracting just city-like parts (after first comma or the whole thing)
+  const parts = input.split(",").map((s) => s.trim()).filter(Boolean);
+  if (parts.length >= 2) {
+    // "123 Main St, Whitehorse, YT ..." → try "Whitehorse, YT, Canada"
+    const cityOnward = parts.slice(1).join(", ").replace(POSTAL_RE, "").replace(/[,\s]+$/, "").trim();
+    if (cityOnward) variants.push(cityOnward + ", Canada");
+  }
+
+  // 5) Raw input without Canada (last resort)
+  variants.push(input);
+
+  // Deduplicate while preserving order
+  return [...new Set(variants)];
+}
+
+async function geocode(rawAddress) {
+  const variants = buildSearchVariants(rawAddress);
+  for (const query of variants) {
+    const coords = await nominatimSearch(query);
+    if (coords) return coords;
+  }
+  return null;
 }
 
 function renderResult(nearest) {

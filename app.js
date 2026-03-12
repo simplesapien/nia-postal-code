@@ -29,16 +29,52 @@ function findNearest(lat, lng) {
   return { location: best, distance: bestDist };
 }
 
-async function geocode(address) {
+function looksLikePostalCode(input) {
+  return /^[A-Za-z]\d[A-Za-z]\s*\d[A-Za-z]\d$/.test(input.trim());
+}
+
+function normalizeInput(raw) {
+  let input = raw.trim();
+  // Format loose postal codes: "t4l1n1" → "T4L 1N1"
+  if (/^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/.test(input)) {
+    input = (input.slice(0, 3) + " " + input.slice(3)).toUpperCase();
+  }
+  return input;
+}
+
+async function nominatimSearch(query) {
   const url =
     "https://nominatim.openstreetmap.org/search?" +
-    new URLSearchParams({ q: address, format: "json", limit: "1" });
+    new URLSearchParams({
+      q: query,
+      format: "json",
+      limit: "1",
+      countrycodes: "ca",
+    });
   const res = await fetch(url, {
     headers: { "User-Agent": "PhlebotomistRangeChecker/1.0" },
   });
   const data = await res.json();
   if (!data.length) return null;
   return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+}
+
+async function geocode(rawAddress) {
+  const address = normalizeInput(rawAddress);
+
+  // Try the input as-is with Canada scope
+  let coords = await nominatimSearch(address + ", Canada");
+  if (coords) return coords;
+
+  // If it looks like a postal code, try it standalone
+  if (looksLikePostalCode(address)) {
+    coords = await nominatimSearch(address + ", Canada");
+    if (coords) return coords;
+  }
+
+  // Try without "Canada" as a last resort
+  coords = await nominatimSearch(address);
+  return coords;
 }
 
 function renderResult(nearest) {

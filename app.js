@@ -30,6 +30,11 @@ function findNearest(lat, lng) {
 }
 
 const POSTAL_RE = /[A-Za-z]\d[A-Za-z]\s*\d[A-Za-z]\d/;
+const NOMINATIM_DELAY_MS = 1100; // max 1 req/sec per usage policy
+
+function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
 
 async function nominatimSearch(query) {
   const url =
@@ -41,8 +46,9 @@ async function nominatimSearch(query) {
       countrycodes: "ca",
     });
   const res = await fetch(url, {
-    headers: { "User-Agent": "PhlebotomistRangeChecker/1.0" },
+    headers: { "User-Agent": "PhlebotomistRangeChecker/1.0 (https://github.com/simplesapien/nia-postal-code)" },
   });
+  if (!res.ok) return null;
   const data = await res.json();
   if (!data.length) return null;
   return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
@@ -52,41 +58,45 @@ function buildSearchVariants(raw) {
   const input = raw.trim();
   const variants = [];
 
-  // 1) Full input as-is
-  variants.push(input + ", Canada");
+  // Try simplest/most reliable first (city+province) to minimize API calls
+  const parts = input.split(",").map((s) => s.trim()).filter(Boolean);
+  if (parts.length >= 2) {
+    const cityOnward = parts.slice(1).join(", ").replace(POSTAL_RE, "").replace(/[,\s]+$/, "").trim();
+    if (cityOnward) {
+      variants.push(cityOnward + ", Canada");
+      // "YT" → "Yukon" (better recognized by some geocoders)
+      const yukonVariant = cityOnward.replace(/\bYT\b/i, "Yukon");
+      if (yukonVariant !== cityOnward) variants.push(yukonVariant + ", Canada");
+    }
+  }
 
-  // 2) Strip postal code from end/anywhere and try remaining text
+  // Strip postal code from full input
   const withoutPostal = input.replace(POSTAL_RE, "").replace(/[,\s]+$/, "").trim();
   if (withoutPostal && withoutPostal !== input) {
     variants.push(withoutPostal + ", Canada");
   }
 
-  // 3) If it's just a bare postal code (with or without space), format and try
+  // Bare postal code only
   const compact = input.replace(/\s/g, "");
   if (/^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/.test(compact)) {
     const formatted = (compact.slice(0, 3) + " " + compact.slice(3)).toUpperCase();
     variants.push(formatted + ", Canada");
   }
 
-  // 4) Try extracting just city-like parts (after first comma or the whole thing)
-  const parts = input.split(",").map((s) => s.trim()).filter(Boolean);
-  if (parts.length >= 2) {
-    // "123 Main St, Whitehorse, YT ..." → try "Whitehorse, YT, Canada"
-    const cityOnward = parts.slice(1).join(", ").replace(POSTAL_RE, "").replace(/[,\s]+$/, "").trim();
-    if (cityOnward) variants.push(cityOnward + ", Canada");
-  }
+  // Full input + Canada
+  variants.push(input + ", Canada");
 
-  // 5) Raw input without Canada (last resort)
+  // Raw input as last resort
   variants.push(input);
 
-  // Deduplicate while preserving order
   return [...new Set(variants)];
 }
 
 async function geocode(rawAddress) {
   const variants = buildSearchVariants(rawAddress);
-  for (const query of variants) {
-    const coords = await nominatimSearch(query);
+  for (let i = 0; i < variants.length; i++) {
+    if (i > 0) await sleep(NOMINATIM_DELAY_MS);
+    const coords = await nominatimSearch(variants[i]);
     if (coords) return coords;
   }
   return null;

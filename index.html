@@ -504,29 +504,80 @@
     @media (max-width: 768px) {
       .app {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr minmax(280px, 40vh);
+        grid-template-rows: auto minmax(320px, 1fr);
       }
 
       .panel {
         border-right: none;
         border-bottom: 1px solid var(--line);
-        padding: 20px 16px;
+        padding: 16px 14px;
+        max-height: 45vh;
+        overflow-y: auto;
       }
 
+      .logo { margin-bottom: 14px; }
+      .logo-icon { width: 30px; height: 30px; }
+      .logo-icon svg { width: 14px; height: 14px; }
+      .logo-name { font-size: 1.1rem; }
+
+      .panel-heading { font-size: 1.35rem; margin-bottom: 4px; }
+      .panel-sub {
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+        line-height: 1.4;
+      }
+
+      .coverage-badge {
+        padding: 4px 9px;
+        font-size: 0.65rem;
+        margin-bottom: 12px;
+      }
+
+      .input-label { margin-bottom: 6px; }
+      .input-row { margin-bottom: 8px; }
+      input[type="text"] { padding: 10px 10px 10px 34px; font-size: 0.875rem; }
+      .go-btn { padding: 10px 14px; font-size: 0.8125rem; }
+
+      .chips { margin-bottom: 4px; gap: 4px; }
+      .chip { padding: 2px 7px; font-size: 0.65rem; }
+
+      .input-hint { display: none; }
+      .panel-footer { display: none; }
+      .panel-spacer { display: none; }
+
+      .result-card { padding: 14px; margin-bottom: 12px; }
+      .rc-header { margin-bottom: 10px; }
+      .rc-badge { width: 32px; height: 32px; }
+      .rc-badge svg { width: 14px; height: 14px; }
+      .rc-title { font-size: 0.9rem; }
+      .rc-stats { gap: 6px; margin-bottom: 10px; }
+      .rc-stat-val { font-size: 1.2rem; }
+      .rc-stat-val.small { font-size: 0.8rem; }
+      .rc-note { font-size: 0.72rem; }
+
+      .loading-bar { margin-bottom: 10px; }
+      .error-box { margin-bottom: 10px; font-size: 0.75rem; padding: 8px 12px; }
+
       .map-panel {
-        min-height: 280px;
+        min-height: 320px;
         border-left: none;
         border-top: 2px solid var(--teal-border);
       }
 
       .map-header {
-        padding: 10px 14px;
-        font-size: 0.68rem;
+        padding: 8px 12px;
+        font-size: 0.65rem;
       }
 
-      #map { min-height: 240px; }
+      #map { min-height: 280px; }
 
-      .map-empty { padding: 16px; }
+      .map-empty { padding: 12px; }
+      .map-empty-icon { width: 48px; height: 48px; }
+      .map-empty-icon svg { width: 22px; height: 22px; }
+      .map-empty p { font-size: 0.8125rem; }
+      .map-empty-hint { font-size: 0.7rem; }
+
+      .map-legend { padding: 8px 12px; font-size: 0.65rem; gap: 8px; }
     }
   </style>
 </head>

@@ -496,16 +496,55 @@
     .leg-ring { width:11px; height:11px; border-radius:50%; border:2px solid; flex-shrink:0; background:transparent; }
     .leg-hint { margin-left: auto; font-style: italic; opacity: 0.8; }
 
+    /* ── VIEW TOGGLE (mobile only) ── */
+    .view-toggle { display: none; }
+    .view-toggle-in-header { display: none; }
+    .view-btn {
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: var(--soft);
+      color: var(--muted);
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .view-btn:first-child { border-right: 1px solid var(--line); }
+    .view-btn:hover { background: var(--teal-bg); color: var(--teal-dark); }
+    .view-btn.active { background: var(--white); color: var(--teal-dark); font-weight: 600; box-shadow: inset 0 0 0 1px var(--line); }
+
+
+    .map-search, .map-result, .map-error { display: none; }
+
     /* ── SPIN ── */
     @keyframes spin { to { transform:rotate(360deg); } }
     .spin { animation: spin .7s linear infinite; }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
+      .view-toggle { display: flex; gap: 0; margin-bottom: 12px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); width: fit-content; }
+      .view-toggle-in-header { display: flex; margin-left: auto; }
+      .app.view-form .map-panel { display: none; }
+      .app.view-form { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+      .app.view-map .panel { display: none; }
+      .app.view-map { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+      .app.view-map .map-panel { display: flex !important; min-height: 100%; flex-direction: column; }
+
       .app {
         grid-template-columns: 1fr;
         grid-template-rows: auto minmax(320px, 1fr);
       }
+      .app.view-form .panel { max-height: none; min-height: 100%; padding: 18px 16px; }
+      .app.view-form .panel-spacer { display: block; flex: 1; min-height: 20px; }
+      .app.view-form .panel-footer { display: block; font-size: 0.7rem; padding-top: 16px; }
+      .app.view-form { grid-template-rows: 1fr; }
+      .app.view-map { grid-template-rows: 1fr; }
+      .app.view-map .map-search { display: flex; gap: 8px; padding: 10px 12px; background: var(--white); border-bottom: 1px solid var(--line); }
+      .app.view-map .map-search input { flex: 1; padding: 8px 10px; font-size: 0.875rem; border: 1px solid var(--line); border-radius: 6px; }
+      .app.view-map .map-search-btn { padding: 8px 12px; font-size: 0.8125rem; background: var(--teal); color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+      .app.view-map .map-search-btn svg { width: 14px; height: 14px; }
+      .app.view-map .map-result.visible { display: block; padding: 8px 12px; font-size: 0.8rem; background: var(--teal-bg); color: var(--teal-dark); border-bottom: 1px solid var(--line); }
+      .app.view-map .map-error.visible { display: block; padding: 8px 12px; font-size: 0.75rem; color: var(--red); background: #fef2f2; border-bottom: 1px solid #fecaca; }
 
       .panel {
         border-right: none;
@@ -515,6 +554,7 @@
         overflow-y: auto;
       }
 
+      .app.view-form .logo { margin-bottom: 16px; }
       .logo { margin-bottom: 14px; }
       .logo-icon { width: 30px; height: 30px; }
       .logo-icon svg { width: 14px; height: 14px; }
@@ -545,6 +585,10 @@
       .panel-footer { display: none; }
       .panel-spacer { display: none; }
 
+      .app.view-form .view-toggle { margin-bottom: 16px; }
+      .app.view-form .input-row { margin-bottom: 12px; }
+      .app.view-form .chips { margin-bottom: 12px; }
+      .app.view-form .result-card { padding: 16px; margin-bottom: 16px; }
       .result-card { padding: 14px; margin-bottom: 12px; }
       .rc-header { margin-bottom: 10px; }
       .rc-badge { width: 32px; height: 32px; }
@@ -602,6 +646,11 @@
         Live coverage · BC, AB, ON &amp; SK
       </div>
 
+      <div class="view-toggle" id="view-toggle">
+        <button type="button" class="view-btn active" data-view="form">Form</button>
+        <button type="button" class="view-btn" data-view="map">Map</button>
+      </div>
+
       <label class="input-label" for="address">Your location</label>
       <div class="input-row">
         <div class="input-wrap">
@@ -647,8 +696,21 @@
     <div class="map-panel">
       <div class="map-header">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Service area map
+        <span>Service area map</span>
+        <div class="view-toggle view-toggle-in-header" id="view-toggle-map">
+          <button type="button" class="view-btn" data-view="form">Form</button>
+          <button type="button" class="view-btn active" data-view="map">Map</button>
+        </div>
       </div>
+      <div class="map-search" id="map-search">
+        <input type="text" id="map-address" placeholder="Address, city, or postal code" autocomplete="off" spellcheck="false" />
+        <button type="button" class="map-search-btn" id="map-submit-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Check
+        </button>
+      </div>
+      <div class="map-result" id="map-result"></div>
+      <div class="map-error" id="map-error"></div>
       <div class="map-empty" id="map-empty">
         <div class="map-empty-icon">
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>

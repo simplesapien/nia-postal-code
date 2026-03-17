@@ -367,22 +367,31 @@ function renderResult(nearest, userCoords) {
 // SUBMIT
 // ─────────────────────────────────────────────
 
-async function handleSubmit() {
-  const addressEl = document.getElementById("address");
+async function handleSubmit(opts = {}) {
+  const fromMap = opts.source === "map";
+  const addressEl = fromMap ? document.getElementById("map-address") : document.getElementById("address");
   const address   = addressEl.value.trim();
   if (!address) { addressEl.focus(); return; }
 
-  const btn       = document.getElementById("submit-btn");
-  const errorEl   = document.getElementById("error");
+  const btn       = fromMap ? document.getElementById("map-submit-btn") : document.getElementById("submit-btn");
+  const errorEl   = fromMap ? document.getElementById("map-error") : document.getElementById("error");
   const loadBar   = document.getElementById("loading-bar");
   const card      = document.getElementById("result-card");
   const mapEl     = document.getElementById("map");
   const emptyEl   = document.getElementById("map-empty");
   const legendEl  = document.getElementById("map-legend");
+  const mapResult = document.getElementById("map-result");
+
+  function showErr(msg) {
+    errorEl.textContent = msg;
+    errorEl.classList.add("visible");
+    if (mapResult) { mapResult.classList.remove("visible"); }
+  }
 
   // Reset
   card.classList.remove("visible");
   errorEl.classList.remove("visible");
+  if (mapResult) mapResult.classList.remove("visible");
   mapEl.classList.remove("visible");
   legendEl.classList.remove("visible");
   emptyEl.style.display = "";
@@ -396,21 +405,39 @@ async function handleSubmit() {
     const coords = await geocode(address);
 
     if (!coords) {
-      showError("Couldn't find that location. Try a city name, postal code (e.g. V3T 1Z2), or full address including province.");
+      showErr("Couldn't find that location. Try a city name, postal code (e.g. V3T 1Z2), or full address including province.");
       return;
     }
 
     const nearest = findNearest(coords.lat, coords.lng);
-    if (!nearest) { showError("No service locations found. Please try again later."); return; }
+    if (!nearest) { showErr("No service locations found. Please try again later."); return; }
 
     renderResult(nearest, coords);
 
+    if (fromMap) {
+      document.getElementById("address").value = address;
+    }
+    if (fromMap && mapResult) {
+      const distKm = Math.round(nearest.distance);
+      const loc = nearest.location;
+      const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
+      if (distKm <= RANGE_IN) {
+        mapResult.textContent = `✓ In range · ${distKm} km to ${loc.name}, ${province}`;
+      } else if (distKm <= RANGE_EXTENDED) {
+        mapResult.textContent = `⚠ Extended · ${distKm} km to ${loc.name}, ${province}`;
+      } else {
+        mapResult.textContent = `✗ Out of range · ${distKm} km to ${loc.name}, ${province}`;
+      }
+      mapResult.classList.add("visible");
+    }
+
   } catch (err) {
     console.error(err);
-    showError(err.message || "Something went wrong. Please try again.");
+    showErr(err.message || "Something went wrong. Please try again.");
   } finally {
+    const checkBtn = `<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Check`;
     btn.disabled = false;
-    btn.innerHTML = `<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Check`;
+    btn.innerHTML = checkBtn;
     loadBar.classList.remove("visible");
   }
 }
@@ -419,6 +446,41 @@ function showError(msg) {
   const el = document.getElementById("error");
   el.textContent = msg;
   el.classList.add("visible");
+}
+
+// ─────────────────────────────────────────────
+// VIEW TOGGLE (Map / Text only)
+// ─────────────────────────────────────────────
+
+const STORAGE_VIEW = "nia-view-mode";
+
+function initViewToggle() {
+  const app  = document.querySelector(".app");
+  const btns = document.querySelectorAll(".view-btn");
+  let saved = localStorage.getItem(STORAGE_VIEW) || "form";
+  if (saved === "text") saved = "form"; // migrate old preference
+
+  function setView(mode) {
+    btns.forEach(b => b.classList.toggle("active", b.dataset.view === mode));
+    app.classList.remove("view-form", "view-map");
+    app.classList.add("view-" + mode);
+    localStorage.setItem(STORAGE_VIEW, mode);
+    const addr = document.getElementById("address");
+    const mapAddr = document.getElementById("map-address");
+    if (addr && mapAddr) {
+      if (mode === "map") {
+        mapAddr.value = addr.value;
+        if (addr.value.trim()) handleSubmit({ source: "map" });
+      } else {
+        addr.value = mapAddr.value;
+      }
+    }
+  }
+
+  setView(saved);
+  btns.forEach(btn => {
+    btn.addEventListener("click", () => setView(btn.dataset.view));
+  });
 }
 
 // ─────────────────────────────────────────────
@@ -441,8 +503,15 @@ function initChips() {
 document.addEventListener("DOMContentLoaded", () => {
   init();
   initChips();
-  document.getElementById("submit-btn").addEventListener("click", handleSubmit);
+  initViewToggle();
+  document.getElementById("submit-btn").addEventListener("click", () => handleSubmit());
   document.getElementById("address").addEventListener("keydown", e => {
     if (e.key === "Enter") handleSubmit();
+  });
+  const mapSubmit = document.getElementById("map-submit-btn");
+  const mapAddress = document.getElementById("map-address");
+  if (mapSubmit) mapSubmit.addEventListener("click", () => handleSubmit({ source: "map" }));
+  if (mapAddress) mapAddress.addEventListener("keydown", e => {
+    if (e.key === "Enter") handleSubmit({ source: "map" });
   });
 });

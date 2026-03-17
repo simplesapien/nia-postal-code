@@ -76,6 +76,36 @@ function expandProvince(raw) {
   return null;
 }
 
+// FSA first letter → province (Nominatim returns wrong coords without province context)
+const FSA_PROVINCE = {
+  A: "Newfoundland and Labrador", B: "Nova Scotia", C: "Prince Edward Island",
+  E: "New Brunswick", G: "Quebec", H: "Quebec", J: "Quebec",
+  K: "Ontario", L: "Ontario", M: "Ontario", N: "Ontario", P: "Ontario",
+  R: "Manitoba", S: "Saskatchewan", T: "Alberta", V: "British Columbia",
+  X: "Northwest Territories", Y: "Yukon",
+};
+
+// Rough lng bounds by region (Nominatim sometimes returns wrong province for postal codes)
+const FSA_LNG = {
+  A: [-60, -52], B: [-66, -59], C: [-64, -62], E: [-69, -63],
+  G: [-80, -57], H: [-80, -57], J: [-80, -57],
+  K: [-95, -74], L: [-95, -74], M: [-95, -74], N: [-95, -74], P: [-95, -74],
+  R: [-102, -88], S: [-110, -101], T: [-120, -110], V: [-139, -114],
+  X: [-136, -101], Y: [-141, -123],
+};
+
+function coordsInFsaRegion(lat, lng, fsa) {
+  const bounds = FSA_LNG[fsa[0]];
+  if (!bounds) return true;
+  return lng >= bounds[0] && lng <= bounds[1];
+}
+
+// Fallback city when Nominatim doesn't recognize postal (e.g. B2N 5P0)
+const FSA_FALLBACK_CITY = {
+  B2N: "Truro, Nova Scotia, Canada", B2W: "Halifax, Nova Scotia, Canada",
+  B3H: "Halifax, Nova Scotia, Canada", B4V: "Yarmouth, Nova Scotia, Canada",
+};
+
 // ─────────────────────────────────────────────
 // INPUT CLEANING & PARSING
 // ─────────────────────────────────────────────
@@ -128,7 +158,12 @@ function buildVariants(raw) {
 
   // ── CASE 1: Pure postal code ──────────────
   if (postal && input.replace(/[\s,]/g, "").length <= 7) {
-    if (postal.full) add(formatPostal(postal.full) + ", Canada");
+    const prov = FSA_PROVINCE[postal.fsa[0]];
+    if (postal.full) {
+      if (prov) add(formatPostal(postal.full) + ", " + prov + ", Canada");
+      add(formatPostal(postal.full) + ", Canada");
+    }
+    if (prov) add(postal.fsa + ", " + prov + ", Canada");
     add(postal.fsa + ", Canada");
     return variants;
   }
@@ -202,10 +237,27 @@ function buildVariants(raw) {
 }
 
 // ─────────────────────────────────────────────
-// NOMINATIM
+// GEOCODING — geocoder.ca (primary for Canada) + Nominatim (fallback)
 // ─────────────────────────────────────────────
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// geocoder.ca: reliable for Canadian postal codes & addresses (JSONP for browser CORS)
+async function geocoderCaSearch(locate) {
+  return new Promise((resolve) => {
+    const cb = "gc_" + Date.now();
+    window[cb] = (data) => {
+      delete window[cb];
+      script.remove();
+      if (data?.error || !data?.latt || !data?.longt) resolve(null);
+      else resolve({ lat: parseFloat(data.latt), lng: parseFloat(data.longt) });
+    };
+    const script = document.createElement("script");
+    script.src = "https://geocoder.ca/?locate=" + encodeURIComponent(locate) + "&geoit=xml&jsonp=1&callback=" + cb;
+    document.body.appendChild(script);
+    script.onerror = () => { delete window[cb]; script.remove(); resolve(null); };
+  });
+}
 
 async function nominatimSearch(query) {
   const url = "https://nominatim.openstreetmap.org/search?" + new URLSearchParams({
@@ -222,12 +274,32 @@ async function nominatimSearch(query) {
   } catch { return null; }
 }
 
+function buildGeocoderCaQuery(raw) {
+  const t = raw.trim().replace(/\s{2,}/g, " ");
+  const postal = extractPostal(t);
+  if (postal?.full) return formatPostal(postal.full);
+  return t.replace(/,/g, " ").trim();
+}
+
 async function geocode(rawAddress) {
-  const variants = buildVariants(rawAddress).slice(0, MAX_GEOCODE_TRIES);
+  const postal = extractPostal(rawAddress);
+  const gcQuery = buildGeocoderCaQuery(rawAddress);
+
+  // 1. Try geocoder.ca first (reliable for Canadian postal codes & addresses)
+  const gc = await geocoderCaSearch(gcQuery);
+  if (gc) return gc;
+
+  // 2. Fallback to Nominatim with validation
+  let variants = buildVariants(rawAddress).slice(0, MAX_GEOCODE_TRIES);
+  const fallback = postal && FSA_FALLBACK_CITY[postal.fsa];
+  if (fallback && !variants.includes(fallback)) variants = [...variants, fallback];
   for (let i = 0; i < variants.length; i++) {
     if (i > 0) await sleep(NOMINATIM_DELAY_MS);
     const coords = await nominatimSearch(variants[i]);
-    if (coords) return coords;
+    if (coords) {
+      if (postal && !coordsInFsaRegion(coords.lat, coords.lng, postal.fsa)) continue;
+      return coords;
+    }
   }
   return null;
 }

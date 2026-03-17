@@ -1,107 +1,276 @@
-const fs = require("fs");
-const { parse } = require("csv-parse/sync");
+// build-locations.js
+// Usage: node build-locations.js
+// Reads your local CSV, geocodes each location, writes locations.json
+//
+// Requirements: Node 18+ (uses built-in fetch)
+// If on Node < 18: npm install node-fetch and uncomment the import below
+//
+// import fetch from "node-fetch";
 
-const CSV_PATH = "./Dynacare Workplace HP's-SK AB  ON BC_Feb2026.xlsx - Workplace-Wellness Training.csv";
+const fs   = require("fs");
+const path = require("path");
+
+// ─────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────
+
+// Put your CSV filename here (must be in the same folder as this script)
+const CSV_FILENAME = "Dynacare Workplace HP's-SK AB  ON BC_Feb2026.xlsx - Workplace-Wellness Training.csv";
+
+// Output file
 const OUT_PATH = "./locations.json";
 
-const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
+// Nominatim rate limit — must stay at 1 req/sec per their usage policy
 const DELAY_MS = 1100;
-const BAD_LAT = 49.0004149;
-const BAD_LNG = -112.7880266;
 
-function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
+// Coordinates Nominatim returns when it can't find something
+// (known bad fallback for Canada — reject these)
+const BAD_COORDS = [
+  { lat: 49.0004149, lng: -112.7880266 },
+  { lat: 56.1303673, lng: -106.3467712 }, // center of Canada fallback
+];
+
+// ─────────────────────────────────────────────
+// PROVINCE NORMALIZATION
+// ─────────────────────────────────────────────
+
+const PROV_MAP = {
+  "ON": "Ontario",
+  "BC": "British Columbia",
+  "AB": "Alberta",
+  "SK": "Saskatchewan",
+  "MB": "Manitoba",
+  "QC": "Quebec",
+  "NS": "Nova Scotia",
+  "NB": "New Brunswick",
+  "NL": "Newfoundland and Labrador",
+  "PE": "Prince Edward Island",
+  "NT": "Northwest Territories",
+  "NU": "Nunavut",
+  "YT": "Yukon",
+  // Handle messy real-world values
+  "aB":    "Alberta",
+  "ab":    "Alberta",
+  "AB & SK": "Alberta",
+  "BC ":   "British Columbia",
+};
+
+function normalizeProvince(raw) {
+  if (!raw) return "";
+  const trimmed = raw.trim();
+  if (PROV_MAP[trimmed]) return PROV_MAP[trimmed];
+  if (PROV_MAP[trimmed.toUpperCase()]) return PROV_MAP[trimmed.toUpperCase()];
+  return trimmed;
 }
 
+function normalizePostal(raw) {
+  const compact = raw.replace(/\s+/g, "").toUpperCase();
+  if (/^[A-Z]\d[A-Z]\d[A-Z]\d$/.test(compact)) {
+    return compact.slice(0, 3) + " " + compact.slice(3);
+  }
+  return raw.trim();
+}
+
+// ─────────────────────────────────────────────
+// CSV PARSER
+// Handles quoted fields, BOM, blank rows, messy whitespace
+// ─────────────────────────────────────────────
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i + 1] === '"') { current += '"'; i++; }
+      else inQuotes = !inQuotes;
+    } else if (ch === ',' && !inQuotes) {
+      result.push(current.trim());
+      current = "";
+    } else {
+      current += ch;
+    }
+  }
+  result.push(current.trim());
+  return result;
+}
+
+function parseCSV(raw) {
+  const lines = raw.replace(/^\uFEFF/, "").split(/\r?\n/);
+  if (lines.length < 2) return [];
+
+  const header = parseCSVLine(lines[0]).map(h => h.toLowerCase());
+
+  const cityIdx   = header.findIndex(h => h.includes("city"));
+  const postalIdx = header.findIndex(h => h.includes("postal"));
+  const provIdx   = header.findIndex(h => h.includes("prov"));
+
+  if (cityIdx === -1 || postalIdx === -1) {
+    console.error("ERROR: Could not find 'City' or 'HP Postal Code' columns.");
+    console.error("Found headers:", header);
+    process.exit(1);
+  }
+
+  const seen = new Set();
+  const rows = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCSVLine(lines[i]);
+    const city   = (cols[cityIdx]   || "").trim();
+    const postal = normalizePostal((cols[postalIdx] || "").trim());
+    const prov   = (cols[provIdx]   || "").trim();
+
+    // Skip blank rows
+    if (!city || !postal) continue;
+
+    // Deduplicate by city name
+    const key = city.toUpperCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    rows.push({ city, postal, prov });
+  }
+
+  return rows;
+}
+
+// ─────────────────────────────────────────────
+// GEOCODING
+// ─────────────────────────────────────────────
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
 function isBadCoord(lat, lng) {
-  return Math.abs(lat - BAD_LAT) < 0.001 && Math.abs(lng - BAD_LNG) < 0.01;
+  return BAD_COORDS.some(c =>
+    Math.abs(lat - c.lat) < 0.01 && Math.abs(lng - c.lng) < 0.01
+  );
 }
 
 async function nominatimSearch(query) {
-  const url = `${NOMINATIM_URL}?${new URLSearchParams({
+  const url = "https://nominatim.openstreetmap.org/search?" + new URLSearchParams({
     q: query,
     format: "json",
     limit: "1",
     countrycodes: "ca",
-  })}`;
-  const res = await fetch(url, {
-    headers: { "User-Agent": "PhlebotomistRangeChecker/1.0" },
   });
-  if (!res.ok) return null;
-  const data = await res.json();
-  if (!data.length) return null;
-  return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": "NiaHealthLocationBuilder/1.0 (internal tool)" }
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!data.length) return null;
+
+    const lat = parseFloat(data[0].lat);
+    const lng = parseFloat(data[0].lon);
+    if (isBadCoord(lat, lng)) return null;
+
+    return { lat, lng };
+  } catch {
+    return null;
+  }
 }
 
-async function geocode(postalCode, city, province) {
-  // Try postal code + city + province first
-  let coords = await nominatimSearch(`${postalCode}, ${city}, ${province}, Canada`);
-  if (coords && !isBadCoord(coords.lat, coords.lng)) return coords;
+async function geocode(city, postal, province) {
+  const provExpanded = normalizeProvince(province);
 
-  // Fall back to city + province (more reliable for many Canadian locations)
-  await sleep(DELAY_MS);
-  coords = await nominatimSearch(`${city}, ${province}, Canada`);
-  if (coords && !isBadCoord(coords.lat, coords.lng)) return coords;
+  // Try strategies in order, most reliable first
+  // Each attempt respects the rate limit delay
+  const strategies = [
+    `${city}, ${provExpanded}, Canada`,
+    `${city}, ${province}, Canada`,
+    `${postal}, ${city}, Canada`,
+    `${postal}, Canada`,
+    `${postal.slice(0, 3)}, Canada`,     // FSA (first 3 chars) only
+    `${city}, Canada`,
+  ];
 
-  // Last resort: just postal code
-  await sleep(DELAY_MS);
-  coords = await nominatimSearch(`${postalCode}, Canada`);
-  if (coords && !isBadCoord(coords.lat, coords.lng)) return coords;
+  // Remove duplicate strategies
+  const unique = [...new Set(strategies.filter(Boolean))];
+
+  for (let i = 0; i < unique.length; i++) {
+    if (i > 0) await sleep(DELAY_MS);
+    const coords = await nominatimSearch(unique[i]);
+    if (coords) return { coords, strategy: unique[i] };
+  }
 
   return null;
 }
 
-const PROV_MAP = {
-  ON: "Ontario",
-  BC: "British Columbia",
-  AB: "Alberta",
-  SK: "Saskatchewan",
-  "AB & SK": "Saskatchewan",
-  aB: "Alberta",
-};
+// ─────────────────────────────────────────────
+// MAIN
+// ─────────────────────────────────────────────
 
 async function main() {
-  const raw = fs.readFileSync(CSV_PATH, "utf-8");
-  const records = parse(raw, { columns: true, skip_empty_lines: true, trim: true });
+  const csvPath = path.join(__dirname, CSV_FILENAME);
 
-  const rows = records.filter((r) => r["City"] && r["HP Postal Code"]);
-  console.log(`Found ${rows.length} valid rows in CSV\n`);
-
-  // Deduplicate by city name (keep first postal code per city)
-  const seenCities = new Set();
-  const uniqueRows = [];
-  for (const row of rows) {
-    const cityKey = row["City"].trim().toUpperCase();
-    if (!seenCities.has(cityKey)) {
-      seenCities.add(cityKey);
-      uniqueRows.push(row);
-    }
+  if (!fs.existsSync(csvPath)) {
+    console.error(`ERROR: Could not find ${CSV_FILENAME} in this folder.`);
+    console.error(`Make sure your CSV file is named "${CSV_FILENAME}" and is in the same directory as this script.`);
+    process.exit(1);
   }
-  console.log(`${uniqueRows.length} unique cities after deduplication\n`);
+
+  const raw  = fs.readFileSync(csvPath, "utf-8");
+  const rows = parseCSV(raw);
+
+  console.log(`\nFound ${rows.length} unique locations to geocode.\n`);
+  console.log("This will take approximately", Math.ceil(rows.length * DELAY_MS / 1000 / 60), "minutes.\n");
 
   const locations = [];
+  const failed    = [];
 
-  for (let i = 0; i < uniqueRows.length; i++) {
-    const city = uniqueRows[i]["City"].trim();
-    const postal = uniqueRows[i]["HP Postal Code"].trim().replace(/\s+/g, " ");
-    const provRaw = (uniqueRows[i]["Prov."] || "").trim();
-    const province = PROV_MAP[provRaw] || provRaw;
+  for (let i = 0; i < rows.length; i++) {
+    const { city, postal, prov } = rows[i];
+    const label = `[${i + 1}/${rows.length}] ${city}, ${postal}, ${prov}`;
 
-    console.log(`[${i + 1}/${uniqueRows.length}] ${city}, ${postal}, ${province}...`);
+    process.stdout.write(`${label}...`);
 
-    const coords = await geocode(postal, city, province);
-    if (coords) {
-      locations.push({ name: city, postalCode: postal, province: provRaw, ...coords });
-      console.log(`  -> ${coords.lat}, ${coords.lng}`);
+    const result = await geocode(city, postal, prov);
+
+    if (result) {
+      const { coords, strategy } = result;
+      process.stdout.write(` ✓ ${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)} (via "${strategy}")\n`);
+      locations.push({
+        name:       city,
+        postalCode: postal,
+        province:   prov,
+        provinceExpanded: normalizeProvince(prov),
+        lat:        coords.lat,
+        lng:        coords.lng,
+      });
     } else {
-      console.warn(`  -> FAILED, skipping`);
+      process.stdout.write(` ✗ FAILED — skipping\n`);
+      failed.push({ city, postal, prov });
     }
 
-    if (i < uniqueRows.length - 1) await sleep(DELAY_MS);
+    // Always delay between rows to respect Nominatim rate limit
+    if (i < rows.length - 1) await sleep(DELAY_MS);
   }
 
+  // Write output
   fs.writeFileSync(OUT_PATH, JSON.stringify(locations, null, 2));
-  console.log(`\nDone! Wrote ${locations.length} locations to ${OUT_PATH}`);
+
+  // Summary
+  console.log("\n─────────────────────────────────────");
+  console.log(`✓ Success: ${locations.length} locations written to ${OUT_PATH}`);
+
+  if (failed.length > 0) {
+    console.log(`✗ Failed:  ${failed.length} locations could not be geocoded:`);
+    failed.forEach(f => console.log(`   - ${f.city}, ${f.postal}, ${f.prov}`));
+    console.log("\nFor failed locations, try:");
+    console.log("  1. Check spelling of the city name");
+    console.log("  2. Verify the postal code is correct");
+    console.log("  3. Add them manually to locations.json with approximate lat/lng from Google Maps");
+  } else {
+    console.log("All locations geocoded successfully.");
+  }
+
+  console.log("─────────────────────────────────────\n");
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error("Unexpected error:", err);
+  process.exit(1);
+});

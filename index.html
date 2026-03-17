@@ -3,240 +3,621 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Phlebotomy – Service Area Checker</title>
+  <title>NiaHealth – Service Area Checker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@24,400,1" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green: #16a34a;
-      --green-bg: #f0fdf4;
-      --green-border: #bbf7d0;
-      --amber: #d97706;
-      --amber-bg: #fffbeb;
-      --amber-border: #fde68a;
-      --red: #dc2626;
-      --red-bg: #fef2f2;
-      --red-border: #fecaca;
-      --gray-50: #f9fafb;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-500: #6b7280;
-      --gray-700: #374151;
-      --gray-900: #111827;
-      --blue: #2563eb;
-      --blue-hover: #1d4ed8;
-      --radius: 12px;
+      --teal:        #0d9488;
+      --teal-dark:   #0f766e;
+      --teal-dim:    rgba(13,148,136,0.12);
+      --teal-bg:     #f0fdfa;
+      --teal-border: #5eead4;
+      --amber:       #92400e;
+      --amber-bg:    #fffbeb;
+      --amber-border:#fbbf24;
+      --red:         #9f1239;
+      --red-bg:      #fff1f2;
+      --red-border:  #fb7185;
+      --ink:         #0c1a14;
+      --ink-mid:     #374151;
+      --muted:       #6b7280;
+      --line:        #e5e7eb;
+      --soft:        #f3f4f6;
+      --white:       #ffffff;
+      --page-bg:     #f7f9f8;
+      --r-sm: 10px;
+      --r:    18px;
+      --r-lg: 26px;
     }
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--gray-50);
-      color: var(--gray-900);
-      min-height: 100vh;
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      background: var(--page-bg);
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    /* ── LAYOUT ── */
+    .app {
+      height: 100vh;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      grid-template-rows: 1fr;
+      overflow: hidden;
+    }
+
+    /* ── LEFT PANEL ── */
+    .panel {
+      background: var(--white);
+      border-right: 1px solid var(--line);
       display: flex;
       flex-direction: column;
-      align-items: center;
+      padding: 28px 24px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 2;
+      min-height: 0;
     }
 
-    header {
-      width: 100%;
-      background: #fff;
-      border-bottom: 1px solid var(--gray-200);
-      padding: 20px 24px;
-      text-align: center;
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-border));
     }
 
-    header h1 {
-      font-size: 1.25rem;
-      font-weight: 700;
+    /* Logo */
+    .logo {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      margin-bottom: 24px;
     }
 
-    header h1 .material-symbols-rounded {
-      color: var(--blue);
-      font-size: 28px;
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--teal);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
 
-    header p {
-      color: var(--gray-500);
-      font-size: 0.875rem;
-      margin-top: 4px;
+    .logo-icon svg { width: 18px; height: 18px; fill: white; }
+
+    .logo-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.02em;
     }
 
-    main {
-      width: 100%;
-      max-width: 520px;
-      padding: 32px 20px 60px;
+    /* Heading */
+    .panel-heading {
+      font-family: 'Fraunces', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 8px;
     }
 
-    .card {
-      background: #fff;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    .panel-heading em {
+      font-style: italic;
+      color: var(--teal);
     }
 
-    .card h2 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .card > p {
-      font-size: 0.875rem;
-      color: var(--gray-500);
+    .panel-sub {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.5;
       margin-bottom: 20px;
     }
 
-    label {
+    /* Coverage badge */
+    .coverage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 11px;
+      background: var(--teal-bg);
+      border: 1px solid var(--teal-border);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+
+    .pulse {
+      width: 7px; height: 7px;
+      background: var(--teal);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:0.4; transform:scale(0.75); }
+    }
+
+    /* Input section */
+    .input-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
       display: block;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: var(--gray-700);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .input-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 13px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+      display: flex;
+    }
+
+    .input-icon svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
 
     input[type="text"] {
       width: 100%;
-      padding: 10px 14px;
+      padding: 11px 12px 11px 38px;
       font-size: 0.9375rem;
-      border: 1px solid var(--gray-200);
-      border-radius: 8px;
+      font-family: 'Instrument Sans', sans-serif;
+      border: 1.5px solid var(--line);
+      border-radius: var(--r-sm);
       outline: none;
-      transition: border-color .15s;
-      font-family: inherit;
+      background: var(--soft);
+      color: var(--ink);
+      transition: border-color .15s, box-shadow .15s, background .15s;
     }
 
     input[type="text"]:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+      border-color: var(--teal);
+      background: var(--white);
+      box-shadow: 0 0 0 3px var(--teal-dim);
     }
 
-    button[type="submit"] {
-      margin-top: 16px;
-      width: 100%;
-      padding: 11px 20px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 0.9375rem;
+    input[type="text"]::placeholder { color: #adb5bd; }
+
+    .go-btn {
+      padding: 11px 16px;
+      background: var(--teal);
+      color: white;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.875rem;
       font-weight: 600;
       border: none;
-      border-radius: 8px;
+      border-radius: var(--r-sm);
       cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px;
+      transition: background .15s, transform .1s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .go-btn svg {
+      width: 15px; height: 15px;
+      stroke: white; fill: none;
+      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .go-btn:hover:not(:disabled) { background: var(--teal-dark); transform: translateY(-1px); }
+    .go-btn:active:not(:disabled) { transform: translateY(0); }
+    .go-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* Example chips */
+    .chips {
+      display: flex; flex-wrap: wrap; gap: 5px;
+      margin-bottom: 6px;
+    }
+
+    .chip {
+      padding: 3px 9px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .12s;
+      user-select: none;
+    }
+
+    .chip:hover {
+      background: var(--teal-bg);
+      border-color: var(--teal-border);
+      color: var(--teal-dark);
+    }
+
+    .input-hint {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* Loading bar */
+    .loading-bar { height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 16px; display: none; }
+    .loading-bar.visible { display: block; }
+    .loading-fill {
+      height: 100%; width: 30%; background: var(--teal);
+      border-radius: 2px;
+      animation: load 1.4s ease-in-out infinite;
+    }
+    @keyframes load {
+      0%   { transform:translateX(-100%); width:30%; }
+      50%  { width:60%; }
+      100% { transform:translateX(400%); width:30%; }
+    }
+
+    /* Error */
+    .error-box {
+      padding: 10px 14px;
+      background: var(--red-bg);
+      border: 1px solid var(--red-border);
+      border-radius: var(--r-sm);
+      font-size: 0.8rem;
+      color: var(--red);
+      margin-bottom: 16px;
+      display: none;
+    }
+    .error-box.visible { display: block; }
+
+    /* Result card */
+    .result-card {
+      border-radius: var(--r);
+      padding: 20px;
+      border: 1.5px solid;
+      margin-bottom: 16px;
+      display: none;
+      animation: fadeUp .3s ease forwards;
+    }
+    .result-card.visible { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(8px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .result-card.in-range    { background:var(--teal-bg);  border-color:var(--teal-border); }
+    .result-card.extended    { background:var(--amber-bg); border-color:var(--amber-border); }
+    .result-card.out-of-range { background:var(--red-bg);  border-color:var(--red-border); }
+
+    .rc-header { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; }
+
+    .rc-badge {
+      width:38px; height:38px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+
+    .rc-badge svg {
+      width:18px; height:18px;
+      stroke:white; fill:none;
+      stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;
+    }
+
+    .in-range    .rc-badge { background:var(--teal); }
+    .extended    .rc-badge { background:#d97706; }
+    .out-of-range .rc-badge { background:#e11d48; }
+
+    .rc-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .in-range    .rc-title { color:var(--teal-dark); }
+    .extended    .rc-title { color:var(--amber); }
+    .out-of-range .rc-title { color:var(--red); }
+
+    .rc-sub { font-size: 0.78rem; color: var(--muted); }
+
+    .rc-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .rc-stat {
+      background: rgba(255,255,255,0.65);
+      border-radius: var(--r-sm);
+      padding: 10px 12px;
+    }
+
+    .rc-stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .rc-stat-val {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .rc-stat-val.small {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .rc-note {
+      font-size: 0.78rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* Spacer pushes footer down */
+    .panel-spacer { flex: 1; }
+
+    /* Footer */
+    .panel-footer {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.5;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── RIGHT PANEL — MAP ── */
+    .map-panel {
+      position: relative;
+      background: var(--soft);
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--line);
+      min-height: 0;
+    }
+
+    .map-header {
+      flex-shrink: 0;
+      padding: 14px 20px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      transition: background .15s;
-      font-family: inherit;
     }
 
-    button[type="submit"]:hover:not(:disabled) { background: var(--blue-hover); }
-    button[type="submit"]:disabled { opacity: .65; cursor: not-allowed; }
-
-    .error-msg {
-      margin-top: 14px;
-      font-size: 0.8125rem;
-      color: var(--red);
-      display: none;
+    .map-header svg {
+      width: 16px; height: 16px;
+      stroke: var(--teal); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
-    .error-msg.visible { display: block; }
 
-    #result {
-      margin-top: 20px;
-      display: none;
-    }
-    #result.visible { display: block; }
-
-    .result-card {
-      border-radius: var(--radius);
+    .map-empty {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--muted);
+      user-select: none;
       padding: 24px;
-      text-align: center;
-      border: 1px solid;
     }
 
-    .result-card .result-icon { font-size: 44px; }
-    .result-card h2 { font-size: 1.1rem; margin: 10px 0 8px; }
-    .result-card p { font-size: 0.875rem; line-height: 1.5; }
-
-    .result-card.in-range {
-      background: var(--green-bg);
-      border-color: var(--green-border);
-      color: var(--green);
+    .map-empty-icon {
+      width: 64px; height: 64px;
+      border: 2px dashed var(--teal-border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--teal-bg);
     }
-    .result-card.in-range p { color: var(--gray-700); }
 
-    .result-card.extended {
-      background: var(--amber-bg);
-      border-color: var(--amber-border);
-      color: var(--amber);
+    .map-empty-icon svg {
+      width: 28px; height: 28px;
+      stroke: var(--teal); fill: none;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
     }
-    .result-card.extended p { color: var(--gray-700); }
 
-    .result-card.out-of-range {
-      background: var(--red-bg);
-      border-color: var(--red-border);
-      color: var(--red);
+    .map-empty p {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink-mid);
     }
-    .result-card.out-of-range p { color: var(--gray-700); }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .map-empty .map-empty-hint {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    #map {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      display: none;
+    }
+    #map.visible { display: block; }
+
+    .map-legend {
+      display: none;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 10px 16px;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .map-legend.visible { display: flex; }
+
+    .leg-item { display:flex; align-items:center; gap:6px; }
+    .leg-dot  { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+    .leg-ring { width:11px; height:11px; border-radius:50%; border:2px solid; flex-shrink:0; background:transparent; }
+    .leg-hint { margin-left: auto; font-style: italic; opacity: 0.8; }
+
+    /* ── SPIN ── */
+    @keyframes spin { to { transform:rotate(360deg); } }
     .spin { animation: spin .7s linear infinite; }
 
-    .hint {
-      margin-top: 10px;
-      font-size: 0.75rem;
-      color: var(--gray-500);
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr minmax(280px, 40vh);
+      }
+
+      .panel {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 20px 16px;
+      }
+
+      .map-panel {
+        min-height: 280px;
+        border-left: none;
+        border-top: 2px solid var(--teal-border);
+      }
+
+      .map-header {
+        padding: 10px 14px;
+        font-size: 0.68rem;
+      }
+
+      #map { min-height: 240px; }
+
+      .map-empty { padding: 16px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>
-      <span class="material-symbols-rounded">bloodtype</span>
-      Mobile Phlebotomy
-    </h1>
-    <p>Check if we can service your area</p>
-  </header>
+  <div class="app">
 
-  <main>
-    <div class="card">
-      <h2>Service Area Lookup</h2>
-      <p>Enter your address below and we'll let you know if a mobile phlebotomist can reach you.</p>
+    <!-- LEFT PANEL -->
+    <aside class="panel">
 
-      <form id="check-form" autocomplete="on">
-        <label for="address">Your Address, City, or Postal Code</label>
-        <input
-          type="text"
-          id="address"
-          name="address"
-          placeholder="e.g. Whitehorse, T4L1N1, 123 Main St Toronto"
-          required
-        />
-        <p class="hint">You can enter a full address, just a city name, or a postal code.</p>
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <span class="logo-name">NiaHealth</span>
+      </div>
 
-        <button type="submit" id="submit-btn">
-          <span class="material-symbols-rounded">search</span>
-          Check Service Area
+      <h1 class="panel-heading">Are we near<br><em>you?</em></h1>
+      <p class="panel-sub">Enter any address, city, or postal code — we'll find the nearest mobile phlebotomist and show you exactly how far away they are.</p>
+
+      <div class="coverage-badge">
+        <span class="pulse"></span>
+        Live coverage · BC, AB, ON &amp; SK
+      </div>
+
+      <label class="input-label" for="address">Your location</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <span class="input-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </span>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="e.g. Kelowna, V3T 1Z2, 123 Main St…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+        <button class="go-btn" id="submit-btn" type="button">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Check
         </button>
-      </form>
+      </div>
 
-      <p class="error-msg" id="error"></p>
+      <div class="chips">
+        <span class="chip" data-val="Kelowna, BC">Kelowna BC</span>
+        <span class="chip" data-val="V3T 1Z2">V3T 1Z2</span>
+        <span class="chip" data-val="Saskatoon SK">Saskatoon SK</span>
+        <span class="chip" data-val="Calgary AB">Calgary AB</span>
+        <span class="chip" data-val="Ottawa ON">Ottawa ON</span>
+      </div>
+      <p class="input-hint">Accepts cities, postal codes, full addresses, or abbreviations like "Van BC"</p>
+
+      <div class="loading-bar" id="loading-bar"><div class="loading-fill"></div></div>
+      <div class="error-box" id="error"></div>
+
+      <div class="result-card" id="result-card"></div>
+
+      <div class="panel-spacer"></div>
+
+      <p class="panel-footer">Coverage data is updated manually. For urgent inquiries, contact NiaHealth directly.</p>
+
+    </aside>
+
+    <!-- RIGHT PANEL — MAP -->
+    <div class="map-panel">
+      <div class="map-header">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Service area map
+      </div>
+      <div class="map-empty" id="map-empty">
+        <div class="map-empty-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <p>Enter your location above</p>
+        <span class="map-empty-hint">The map will show you and the nearest phlebotomist</span>
+      </div>
+      <div id="map"></div>
+      <div class="map-legend" id="map-legend">
+        <div class="leg-item"><div class="leg-dot" style="background:#0d9488"></div> Your location</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#2563eb"></div> Nearest phlebotomist</div>
+        <div class="leg-item"><div class="leg-ring" style="border-color:#0d9488"></div> 100 km standard</div>
+        <div class="leg-item"><div class="leg-ring" style="border-color:#d97706"></div> 200 km extended</div>
+        <div class="leg-item leg-hint">Scroll to zoom</div>
+      </div>
     </div>
 
-    <div id="result">
-      <div id="result-card" class="result-card"></div>
-    </div>
-  </main>
+  </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

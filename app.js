@@ -1,99 +1,229 @@
+// ─────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────
+
+const LOCATIONS_URL      = "locations.json";
+const RANGE_IN           = 100;
+const RANGE_EXTENDED     = 200;
+const NOMINATIM_DELAY_MS = 1100;
+const MAX_GEOCODE_TRIES  = 4;  // Fail faster when address not found
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+
 let serviceLocations = [];
+let leafletMap       = null;
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
 
 async function init() {
-  const res = await fetch("locations.json");
-  serviceLocations = await res.json();
+  try {
+    const res = await fetch(LOCATIONS_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    serviceLocations = await res.json();
+    console.log(`Loaded ${serviceLocations.length} locations`);
+  } catch (err) {
+    console.error("Could not load locations.json:", err);
+  }
 }
 
-function haversineKm(lat1, lng1, lat2, lng2) {
-  const R = 6371;
-  const toRad = (deg) => (deg * Math.PI) / 180;
-  const dLat = toRad(lat2 - lat1);
-  const dLng = toRad(lng2 - lng1);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+// ─────────────────────────────────────────────
+// PROVINCE NORMALIZATION
+// ─────────────────────────────────────────────
+
+const PROV_MAP = {
+  ON: "Ontario", BC: "British Columbia", AB: "Alberta",
+  SK: "Saskatchewan", MB: "Manitoba", QC: "Quebec",
+  NS: "Nova Scotia", NB: "New Brunswick",
+  NL: "Newfoundland and Labrador", PE: "Prince Edward Island",
+  NT: "Northwest Territories", NU: "Nunavut", YT: "Yukon",
+  // messy real-world values
+  aB: "Alberta", "AB & SK": "Alberta",
+};
+
+const PROV_NAME_MAP = {
+  ontario: "ON", "british columbia": "BC", alberta: "AB",
+  saskatchewan: "SK", manitoba: "MB", quebec: "QC",
+  "nova scotia": "NS", "new brunswick": "NB",
+  "newfoundland": "NL", "newfoundland and labrador": "NL",
+  "prince edward island": "PE", pei: "PE",
+  "northwest territories": "NT", nunavut: "NU", yukon: "YT",
+  // common abbreviations people type
+  bc: "BC", ab: "AB", on: "ON", sk: "SK", mb: "MB",
+  qc: "QC", ns: "NS", nb: "NB", nl: "NL", nt: "NT",
+  nu: "NU", yt: "YT",
+};
+
+function normalizeProvince(raw) {
+  if (!raw) return "";
+  const t = raw.trim();
+  if (PROV_MAP[t]) return PROV_MAP[t];
+  if (PROV_MAP[t.toUpperCase()]) return PROV_MAP[t.toUpperCase()];
+  if (t.length > 3) return t;
+  return t;
 }
 
-function findNearest(lat, lng) {
-  let best = null;
-  let bestDist = Infinity;
-  for (const loc of serviceLocations) {
-    const d = haversineKm(lat, lng, loc.lat, loc.lng);
-    if (d < bestDist) {
-      bestDist = d;
-      best = loc;
+// Resolve a user-typed province hint to a full name for Nominatim
+function expandProvince(raw) {
+  if (!raw) return null;
+  const key = raw.trim().toLowerCase();
+  const abbr = PROV_NAME_MAP[key];
+  if (abbr) return PROV_MAP[abbr] || raw;
+  if (raw.length > 3) return raw; // already a full name
+  return null;
+}
+
+// ─────────────────────────────────────────────
+// INPUT CLEANING & PARSING
+// ─────────────────────────────────────────────
+
+const POSTAL_RE    = /\b([A-Za-z]\d[A-Za-z])\s*(\d[A-Za-z]\d)\b/;
+const POSTAL_FSA   = /\b([A-Za-z]\d[A-Za-z])\b/;
+
+function extractPostal(input) {
+  const m = input.match(POSTAL_RE);
+  if (m) return { full: (m[1] + m[2]).toUpperCase(), fsa: m[1].toUpperCase() };
+  const f = input.match(POSTAL_FSA);
+  if (f) return { full: null, fsa: f[1].toUpperCase() };
+  return null;
+}
+
+function formatPostal(compact) {
+  return compact.slice(0, 3).toUpperCase() + " " + compact.slice(3).toUpperCase();
+}
+
+// Strip postal code from a string
+function stripPostal(s) {
+  return s.replace(POSTAL_RE, "").replace(POSTAL_FSA, "").replace(/[,\s]+$/, "").replace(/^[,\s]+/, "").trim();
+}
+
+// ─────────────────────────────────────────────
+// BUILD SEARCH VARIANTS
+// Handles every realistic input format:
+//   "Kelowna"
+//   "Kelowna BC" / "Kelowna, BC"
+//   "V1X 7H8" / "v1x7h8"
+//   "123 Main St, Kelowna, BC"
+//   "123 Main St Kelowna BC V1X 7H8"
+//   "kelowna british columbia"
+//   "Van BC"
+// ─────────────────────────────────────────────
+
+function buildVariants(raw) {
+  const input  = raw.trim().replace(/\s{2,}/g, " ");
+  const postal = extractPostal(input);
+  const variants = [];
+  const seen = new Set();
+  const add  = (v) => {
+    if (!v) return;
+    const clean = v.trim().replace(/^[,\s]+|[,\s]+$/g, "");
+    if (clean && !seen.has(clean.toLowerCase())) {
+      seen.add(clean.toLowerCase());
+      variants.push(clean);
+    }
+  };
+
+  // ── CASE 1: Pure postal code ──────────────
+  if (postal && input.replace(/[\s,]/g, "").length <= 7) {
+    if (postal.full) add(formatPostal(postal.full) + ", Canada");
+    add(postal.fsa + ", Canada");
+    return variants;
+  }
+
+  // ── CASE 2: Parse parts ───────────────────
+  // Split on commas first, then try to detect "City Province" patterns
+  const commaParts = input.split(",").map(s => s.trim()).filter(Boolean);
+  const stripped   = postal ? stripPostal(input) : input;
+
+  // Last comma-part might be a province or country
+  let city = null, province = null;
+
+  if (commaParts.length >= 2) {
+    const lastPart   = commaParts[commaParts.length - 1];
+    const provHint   = expandProvince(lastPart.replace(POSTAL_RE, "").trim());
+    if (provHint) {
+      province = provHint;
+      city     = commaParts.slice(0, -1).join(", ").replace(POSTAL_RE, "").trim();
+    } else {
+      city = stripped;
+    }
+  } else {
+    // No commas — try to detect trailing province abbreviation
+    // e.g. "Kelowna BC", "Van BC", "Surrey British Columbia"
+    const words = stripped.split(/\s+/);
+    if (words.length >= 2) {
+      // Check if last 1 or 2 words are a province
+      const last1 = words.slice(-1).join(" ");
+      const last2 = words.slice(-2).join(" ");
+      const prov2 = expandProvince(last2);
+      const prov1 = expandProvince(last1);
+
+      if (prov2) {
+        province = prov2;
+        city     = words.slice(0, -2).join(" ");
+      } else if (prov1) {
+        province = prov1;
+        city     = words.slice(0, -1).join(" ");
+      } else {
+        city = stripped;
+      }
+    } else {
+      city = stripped;
     }
   }
-  return { location: best, distance: bestDist };
+
+  // ── Build variants from parsed city + province ──
+  if (city && province) {
+    add(`${city}, ${province}, Canada`);
+    add(`${city}, Canada`);
+  } else if (city) {
+    add(`${city}, Canada`);
+    // Try with major provinces as fallback guesses
+    ["BC", "Ontario", "Alberta", "Saskatchewan"].forEach(p => add(`${city}, ${p}, Canada`));
+  }
+
+  // Always add the cleaned full input
+  add(stripped + ", Canada");
+
+  // Add postal variants if present
+  if (postal) {
+    if (postal.full) add(formatPostal(postal.full) + ", Canada");
+    add(postal.fsa + ", Canada");
+  }
+
+  // Raw input as absolute last resort
+  add(input + ", Canada");
+  add(input);
+
+  return variants;
 }
 
-const POSTAL_RE = /[A-Za-z]\d[A-Za-z]\s*\d[A-Za-z]\d/;
-const NOMINATIM_DELAY_MS = 1100; // max 1 req/sec per usage policy
+// ─────────────────────────────────────────────
+// NOMINATIM
+// ─────────────────────────────────────────────
 
-function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
-}
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function nominatimSearch(query) {
-  const url =
-    "https://nominatim.openstreetmap.org/search?" +
-    new URLSearchParams({
-      q: query,
-      format: "json",
-      limit: "1",
-      countrycodes: "ca",
-    });
-  const res = await fetch(url, {
-    headers: { "User-Agent": "PhlebotomistRangeChecker/1.0 (https://github.com/simplesapien/nia-postal-code)" },
+  const url = "https://nominatim.openstreetmap.org/search?" + new URLSearchParams({
+    q: query, format: "json", limit: "1", countrycodes: "ca",
   });
-  if (!res.ok) return null;
-  const data = await res.json();
-  if (!data.length) return null;
-  return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
-}
-
-function buildSearchVariants(raw) {
-  const input = raw.trim();
-  const variants = [];
-
-  // Try simplest/most reliable first (city+province) to minimize API calls
-  const parts = input.split(",").map((s) => s.trim()).filter(Boolean);
-  if (parts.length >= 2) {
-    const cityOnward = parts.slice(1).join(", ").replace(POSTAL_RE, "").replace(/[,\s]+$/, "").trim();
-    if (cityOnward) {
-      variants.push(cityOnward + ", Canada");
-      // "YT" → "Yukon" (better recognized by some geocoders)
-      const yukonVariant = cityOnward.replace(/\bYT\b/i, "Yukon");
-      if (yukonVariant !== cityOnward) variants.push(yukonVariant + ", Canada");
-    }
-  }
-
-  // Strip postal code from full input
-  const withoutPostal = input.replace(POSTAL_RE, "").replace(/[,\s]+$/, "").trim();
-  if (withoutPostal && withoutPostal !== input) {
-    variants.push(withoutPostal + ", Canada");
-  }
-
-  // Bare postal code only
-  const compact = input.replace(/\s/g, "");
-  if (/^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/.test(compact)) {
-    const formatted = (compact.slice(0, 3) + " " + compact.slice(3)).toUpperCase();
-    variants.push(formatted + ", Canada");
-  }
-
-  // Full input + Canada
-  variants.push(input + ", Canada");
-
-  // Raw input as last resort
-  variants.push(input);
-
-  return [...new Set(variants)];
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": "NiaHealthServiceChecker/2.0 (https://github.com/simplesapien/nia-postal-code)" }
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!data.length) return null;
+    return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+  } catch { return null; }
 }
 
 async function geocode(rawAddress) {
-  const variants = buildSearchVariants(rawAddress);
+  const variants = buildVariants(rawAddress).slice(0, MAX_GEOCODE_TRIES);
   for (let i = 0; i < variants.length; i++) {
     if (i > 0) await sleep(NOMINATIM_DELAY_MS);
     const coords = await nominatimSearch(variants[i]);
@@ -102,78 +232,217 @@ async function geocode(rawAddress) {
   return null;
 }
 
-function renderResult(nearest) {
-  const distKm = Math.round(nearest.distance);
-  const resultEl = document.getElementById("result");
-  const cardEl = document.getElementById("result-card");
+// ─────────────────────────────────────────────
+// DISTANCE
+// ─────────────────────────────────────────────
 
-  const loc = nearest.location;
-  let icon, title, detail, cls;
-
-  if (distKm <= 100) {
-    icon = "check_circle";
-    title = "You're within service range!";
-    detail = `Your address is approximately <strong>${distKm} km</strong> from our nearest phlebotomist in <strong>${loc.name}, ${loc.province}</strong>. Standard service rates apply.`;
-    cls = "in-range";
-  } else if (distKm <= 200) {
-    icon = "info";
-    title = "You may be in an extended service area";
-    detail = `Your address is approximately <strong>${distKm} km</strong> from our nearest phlebotomist in <strong>${loc.name}, ${loc.province}</strong>. Additional travel fees may apply.`;
-    cls = "extended";
-  } else {
-    icon = "warning";
-    title = "Service availability is uncertain";
-    detail = `Your address is approximately <strong>${distKm} km</strong> from our nearest phlebotomist in <strong>${loc.name}, ${loc.province}</strong>. We may not be able to service this area. Please contact us directly.`;
-    cls = "out-of-range";
-  }
-
-  cardEl.className = "result-card " + cls;
-  cardEl.innerHTML = `
-    <span class="material-symbols-rounded result-icon">${icon}</span>
-    <h2>${title}</h2>
-    <p>${detail}</p>
-  `;
-  resultEl.classList.add("visible");
+function haversineKm(lat1, lng1, lat2, lng2) {
+  const R = 6371, toRad = d => d * Math.PI / 180;
+  const dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-async function handleSubmit(e) {
-  e.preventDefault();
+function findNearest(lat, lng) {
+  let best = null, bestDist = Infinity;
+  for (const loc of serviceLocations) {
+    if (loc.lat == null || loc.lng == null) continue;
+    const d = haversineKm(lat, lng, loc.lat, loc.lng);
+    if (d < bestDist) { bestDist = d; best = loc; }
+  }
+  return best ? { location: best, distance: bestDist } : null;
+}
 
-  const address = document.getElementById("address").value.trim();
-  if (!address) return;
+// ─────────────────────────────────────────────
+// MAP
+// ─────────────────────────────────────────────
 
-  const btn = document.getElementById("submit-btn");
-  const resultEl = document.getElementById("result");
-  const errorEl = document.getElementById("error");
+function showMap(userLat, userLng, nearLat, nearLng, nearLabel) {
+  const mapEl     = document.getElementById("map");
+  const emptyEl   = document.getElementById("map-empty");
+  const legendEl  = document.getElementById("map-legend");
 
-  btn.disabled = true;
-  btn.innerHTML =
-    '<span class="material-symbols-rounded spin">progress_activity</span> Checking…';
-  resultEl.classList.remove("visible");
+  emptyEl.style.display = "none";
+  mapEl.classList.add("visible");
+  legendEl.classList.add("visible");
+
+  if (leafletMap) { leafletMap.remove(); leafletMap = null; }
+
+  leafletMap = L.map("map", { zoomControl: true, scrollWheelZoom: true });
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 16,
+  }).addTo(leafletMap);
+
+  const pin = (color) => L.divIcon({
+    className: "",
+    html: `<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 1px 6px rgba(0,0,0,.3)"></div>`,
+    iconSize: [14,14], iconAnchor: [7,7],
+  });
+
+  L.marker([userLat, userLng], { icon: pin("#0d9488") })
+    .addTo(leafletMap).bindPopup("<b>Your location</b>").openPopup();
+
+  L.marker([nearLat, nearLng], { icon: pin("#2563eb") })
+    .addTo(leafletMap).bindPopup(`<b>Nearest phlebotomist</b><br>${nearLabel}`);
+
+  // 100km and 200km rings around user (always drawn; may appear tiny when zoomed out for distant locations)
+  L.circle([userLat, userLng], {
+    radius: 100000, color:"#0d9488", fillColor:"#0d9488",
+    fillOpacity: 0.06, weight: 1.5, dashArray:"6 4",
+  }).addTo(leafletMap);
+
+  L.circle([userLat, userLng], {
+    radius: 200000, color:"#d97706", fillColor:"#d97706",
+    fillOpacity: 0.04, weight: 1.5, dashArray:"6 4",
+  }).addTo(leafletMap);
+
+  leafletMap.fitBounds(
+    L.latLngBounds([[userLat, userLng],[nearLat, nearLng]]).pad(0.25)
+  );
+  leafletMap.invalidateSize();
+}
+
+// ─────────────────────────────────────────────
+// RENDER RESULT
+// ─────────────────────────────────────────────
+
+function renderResult(nearest, userCoords) {
+  const distKm   = Math.round(nearest.distance);
+  const loc      = nearest.location;
+  const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
+  const card     = document.getElementById("result-card");
+
+  let icon, title, sub, note, cls;
+
+  if (distKm <= RANGE_IN) {
+    icon  = `<svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>`;
+    title = "We're in your area!";
+    sub   = "Standard service rates apply";
+    note  = "A mobile phlebotomist can come to you at home or work. Book your appointment and we'll handle the rest.";
+    cls   = "in-range";
+  } else if (distKm <= RANGE_EXTENDED) {
+    icon  = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+    title = "Extended service area";
+    sub   = "Additional travel fees may apply";
+    note  = "We can likely reach you, but travel fees may be added. Contact us to confirm availability.";
+    cls   = "extended";
+  } else {
+    icon  = `<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+    title = "Outside our coverage";
+    sub   = "Service unavailable in your area";
+    note  = "This address is outside our current range. We're expanding — contact us and we'll let you know when we reach you.";
+    cls   = "out-of-range";
+  }
+
+  card.className = "result-card visible " + cls;
+  card.innerHTML = `
+    <div class="rc-header">
+      <div class="rc-badge">${icon}</div>
+      <div>
+        <div class="rc-title">${title}</div>
+        <div class="rc-sub">${sub}</div>
+      </div>
+    </div>
+    <div class="rc-stats">
+      <div class="rc-stat">
+        <div class="rc-stat-label">Distance</div>
+        <div class="rc-stat-val">${distKm}<span style="font-size:0.9rem;font-family:'Instrument Sans',sans-serif;font-weight:400;color:var(--muted)"> km</span></div>
+      </div>
+      <div class="rc-stat">
+        <div class="rc-stat-label">Nearest location</div>
+        <div class="rc-stat-val small">${loc.name}, ${province}</div>
+      </div>
+    </div>
+    <p class="rc-note">${note}</p>
+  `;
+
+  if (loc.lat && loc.lng && userCoords) {
+    showMap(userCoords.lat, userCoords.lng, loc.lat, loc.lng, `${loc.name}, ${province}`);
+  }
+}
+
+// ─────────────────────────────────────────────
+// SUBMIT
+// ─────────────────────────────────────────────
+
+async function handleSubmit() {
+  const addressEl = document.getElementById("address");
+  const address   = addressEl.value.trim();
+  if (!address) { addressEl.focus(); return; }
+
+  const btn       = document.getElementById("submit-btn");
+  const errorEl   = document.getElementById("error");
+  const loadBar   = document.getElementById("loading-bar");
+  const card      = document.getElementById("result-card");
+  const mapEl     = document.getElementById("map");
+  const emptyEl   = document.getElementById("map-empty");
+  const legendEl  = document.getElementById("map-legend");
+
+  // Reset
+  card.classList.remove("visible");
   errorEl.classList.remove("visible");
+  mapEl.classList.remove("visible");
+  legendEl.classList.remove("visible");
+  emptyEl.style.display = "";
+  loadBar.classList.add("visible");
+  btn.disabled = true;
+  btn.innerHTML = `<svg class="spin" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56" stroke="white" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>`;
 
   try {
+    if (!serviceLocations.length) throw new Error("Location data not loaded. Please refresh.");
+
     const coords = await geocode(address);
+
     if (!coords) {
-      errorEl.textContent =
-        "Could not find that address. Please try a more specific address or include the city and province/state.";
-      errorEl.classList.add("visible");
+      showError("Couldn't find that location. Try a city name, postal code (e.g. V3T 1Z2), or full address including province.");
       return;
     }
+
     const nearest = findNearest(coords.lat, coords.lng);
-    renderResult(nearest);
-  } catch {
-    errorEl.textContent =
-      "Something went wrong while looking up the address. Please try again.";
-    errorEl.classList.add("visible");
+    if (!nearest) { showError("No service locations found. Please try again later."); return; }
+
+    renderResult(nearest, coords);
+
+  } catch (err) {
+    console.error(err);
+    showError(err.message || "Something went wrong. Please try again.");
   } finally {
     btn.disabled = false;
-    btn.innerHTML =
-      '<span class="material-symbols-rounded">search</span> Check Service Area';
+    btn.innerHTML = `<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Check`;
+    loadBar.classList.remove("visible");
   }
 }
+
+function showError(msg) {
+  const el = document.getElementById("error");
+  el.textContent = msg;
+  el.classList.add("visible");
+}
+
+// ─────────────────────────────────────────────
+// CHIPS
+// ─────────────────────────────────────────────
+
+function initChips() {
+  document.querySelectorAll(".chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      document.getElementById("address").value = chip.dataset.val;
+      document.getElementById("address").focus();
+    });
+  });
+}
+
+// ─────────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
   init();
-  document.getElementById("check-form").addEventListener("submit", handleSubmit);
+  initChips();
+  document.getElementById("submit-btn").addEventListener("click", handleSubmit);
+  document.getElementById("address").addEventListener("keydown", e => {
+    if (e.key === "Enter") handleSubmit();
+  });
 });

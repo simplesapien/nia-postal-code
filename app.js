@@ -281,13 +281,17 @@ function buildGeocoderCaQuery(raw) {
   return t.replace(/,/g, " ").trim();
 }
 
+function isInCanada(lat, lng) {
+  return lat >= 41.7 && lat <= 83.2 && lng >= -141.1 && lng <= -52.5;
+}
+
 async function geocode(rawAddress) {
   const postal = extractPostal(rawAddress);
   const gcQuery = buildGeocoderCaQuery(rawAddress);
 
   // 1. Try geocoder.ca first (reliable for Canadian postal codes & addresses)
   const gc = await geocoderCaSearch(gcQuery);
-  if (gc) return gc;
+  if (gc && isInCanada(gc.lat, gc.lng)) return gc;
 
   // 2. Fallback to Nominatim with validation
   let variants = buildVariants(rawAddress).slice(0, MAX_GEOCODE_TRIES);
@@ -297,6 +301,7 @@ async function geocode(rawAddress) {
     if (i > 0) await sleep(NOMINATIM_DELAY_MS);
     const coords = await nominatimSearch(variants[i]);
     if (coords) {
+      if (!isInCanada(coords.lat, coords.lng)) continue;
       if (postal && !coordsInFsaRegion(coords.lat, coords.lng, postal.fsa)) continue;
       return coords;
     }
@@ -477,7 +482,7 @@ async function handleSubmit(opts = {}) {
     const coords = await geocode(address);
 
     if (!coords) {
-      showErr("Couldn't find that location. Try a city name, postal code (e.g. V3T 1Z2), or full address including province.");
+      showErr("Couldn't find that Canadian location. Try a city name, postal code (e.g. V3T 1Z2), or full address. We only cover Canada.");
       return;
     }
 

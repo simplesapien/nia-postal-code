@@ -646,5 +646,266 @@
     "provinceExpanded": "Alberta",
     "lat": 55.17108,
     "lng": -118.7949873
+  },
+  {
+    "name": "Cartier",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.894195,
+    "lng": -97.688404,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "East St. Paul",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.979488,
+    "lng": -97.014771,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Lorette",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.739621,
+    "lng": -96.874328,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Rosenort",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.4596612,
+    "lng": -97.4359644,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Steinbach",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.528528,
+    "lng": -96.691092,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Tuelon",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 50.3807379,
+    "lng": -97.2627562,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Winnipeg",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.8955367,
+    "lng": -97.1384584,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Thunder Bay",
+    "postalCode": null,
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 48.433151,
+    "lng": -89.231761,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Bathurst",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 47.618351,
+    "lng": -65.651336,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Campbellton",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 48.007399,
+    "lng": -66.672206,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Fredericton",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 45.963589,
+    "lng": -66.643115,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Grand Bay-Westfield",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 45.361492,
+    "lng": -66.241698,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Moncton",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 46.0985679,
+    "lng": -64.8004265,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Picadilly",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 45.713416,
+    "lng": -65.400188,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Upper Knoxford",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 46.5370626,
+    "lng": -67.7554576,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "St. John's",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 47.601397,
+    "lng": -52.70191,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Corner Brook",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 48.948997,
+    "lng": -57.950273,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Grand Falls-Windsor",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 48.927669,
+    "lng": -55.657502,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Lethbridge",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 48.369249,
+    "lng": -53.856381,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Antigonish",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 45.622661,
+    "lng": -61.992803,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Darling Lake",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.7163161,
+    "lng": -64.4534589,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Dartmouth",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.665206,
+    "lng": -63.567743,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Elmsdale",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.966971,
+    "lng": -63.506419,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Herring Cove",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.571404,
+    "lng": -63.561965,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Kingston",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.99169,
+    "lng": -64.939406,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Shag Harbour",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 43.4939108,
+    "lng": -65.7179933,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Souris",
+    "postalCode": null,
+    "province": "PE",
+    "provinceExpanded": "Prince Edward Island",
+    "lat": 46.35498,
+    "lng": -62.251834,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Summerside",
+    "postalCode": null,
+    "province": "PE",
+    "provinceExpanded": "Prince Edward Island",
+    "lat": 46.393378,
+    "lng": -63.790233,
+    "source": "dynacare-march-2026"
+  },
+  {
+    "name": "Stratford",
+    "postalCode": null,
+    "province": "PE",
+    "provinceExpanded": "Prince Edward Island",
+    "lat": 46.215926,
+    "lng": -63.08861,
+    "source": "dynacare-march-2026"
   }
 ]

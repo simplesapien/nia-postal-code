@@ -352,16 +352,30 @@ function showMap(userLat, userLng, nearLat, nearLng, nearLabel) {
     maxZoom: 16,
   }).addTo(leafletMap);
 
-  const pin = (color) => L.divIcon({
+  const userPin = L.divIcon({
     className: "",
-    html: `<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 1px 6px rgba(0,0,0,.3)"></div>`,
-    iconSize: [14,14], iconAnchor: [7,7],
+    html: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#0d9488"/>
+      <circle cx="16" cy="15" r="7" fill="white"/>
+      <circle cx="16" cy="15" r="4" fill="#0d9488"/>
+    </svg>`,
+    iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
   });
 
-  L.marker([userLat, userLng], { icon: pin("#0d9488") })
+  const phlebPin = L.divIcon({
+    className: "",
+    html: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#2563eb"/>
+      <circle cx="16" cy="15" r="7" fill="white"/>
+      <path d="M12 15h8M16 11v8" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/>
+    </svg>`,
+    iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
+  });
+
+  L.marker([userLat, userLng], { icon: userPin })
     .addTo(leafletMap).bindPopup("<b>Your location</b>").openPopup();
 
-  L.marker([nearLat, nearLng], { icon: pin("#2563eb") })
+  L.marker([nearLat, nearLng], { icon: phlebPin })
     .addTo(leafletMap).bindPopup(`<b>Nearest phlebotomist</b><br>${nearLabel}`);
 
   // 100km and 200km rings around user (always drawn; may appear tiny when zoomed out for distant locations)

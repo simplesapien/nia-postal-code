@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node build-locations.js",
+    "build": "node scripts/build-locations.js",
     "serve": "npx serve . -l 3000"
   }
 }

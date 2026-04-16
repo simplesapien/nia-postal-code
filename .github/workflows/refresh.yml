@@ -2,8 +2,8 @@ name: Refresh from Google Sheet
 
 on:
   schedule:
-    - cron: "*/15 * * * *" # every 15 minutes
-  workflow_dispatch: # manual trigger from GitHub UI
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
 
 jobs:
   refresh:
@@ -19,9 +19,17 @@ jobs:
 
       - run: npm ci
 
-      - name: Pull latest CSV from published Google Sheet
+      - name: Install rclone
         run: |
-          curl -sL "https://docs.google.com/spreadsheets/d/${{ vars.SHEET_ID }}/export?format=csv" -o data/nia-coverage-master.csv
+          curl -sL https://rclone.org/install.sh | sudo bash
+
+      - name: Configure rclone
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
+
+      - name: Pull Sheet as CSV
+        run: rclone copy gdrive:nia-coverage-master.csv data/ --drive-export-formats csv
 
       - name: Rebuild JSON from CSV
         run: npm run rebuild

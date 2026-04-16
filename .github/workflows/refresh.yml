@@ -26,7 +26,7 @@ jobs:
       - name: Configure rclone
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
+          echo "${{ secrets.RCLONE_CONFIG_B64 }}" | base64 -d > ~/.config/rclone/rclone.conf
 
       - name: Pull Sheet as CSV
         run: rclone copy gdrive:nia-coverage-master.csv data/ --drive-export-formats csv

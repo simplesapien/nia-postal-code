@@ -1,0 +1,452 @@
+NIA POSTAL CODE LIST — FOR MAP INPUT
+======================================
+Generated: April 16, 2026
+
+
+========================================
+LIFELABS — BRITISH COLUMBIA (86 clinics)
+========================================
+
+V6Z 1S4  — Vancouver, Georgia PSC
+V6Z 2E8  — Vancouver, City Centre PSC
+V6Z 2C7  — Vancouver, Burrard PSC
+V6Z 2V4  — Vancouver, Yaletown PSC
+V6A 4E9  — Vancouver, Main & Keefer PSC
+V6A 2Z3  — Vancouver, Three Pillars PSC
+V5Z 3Y1  — Vancouver, Laurel PSC
+V5Z 1H6  — Vancouver, Fairmont PSC
+V5Z 4E1  — Vancouver, Broadway PSC
+V6J 1S2  — Vancouver, Cityview PSC
+V6K 2E1  — Vancouver, Regent PSC
+V5L 1S5  — Vancouver, East Hastings PSC
+V5Z 2E2  — Vancouver, King Edward PSC
+V5V 3R4  — Vancouver, Little Mountain PSC
+V5N 5K4  — Vancouver, Commercial Drive PSC
+V7P 0A8  — North Vancouver, Marine Drive PSC
+V5Z 2M9  — Vancouver, Woodridge PSC
+V7V 4Y1  — West Vancouver, Hollyburn PSC
+V7M 2K2  — North Vancouver, Lonsdale PSC
+V6M 2B4  — Vancouver, Kerrisdale PSC
+V6R 2H7  — Vancouver, Discovery PSC
+V5X 3T5  — Vancouver, Southill PSC
+V5P 3W7  — Vancouver, Victoria Drive PSC
+V6N 3E6  — Vancouver, Dunbar PSC
+V7V 1E1  — West Vancouver, Dundarave PSC
+V5C 2H9  — Burnaby, Norburn PSC
+V5C 4R1  — Burnaby, Hastings PSC
+V5X 0A7  — Vancouver, Sunset PSC
+V7J 2A2  — North Vancouver, Lynn Valley PSC
+V6P 5A3  — Vancouver, Marpole PSC
+V5G 4V8  — Burnaby, BRL PSC (Fertility Only)
+V5S 1Z1  — Vancouver, Champlain Square PSC
+V5H 4T7  — Burnaby, Central Park PSC
+V6X 0V3  — Richmond, Capstan Way PSC
+V5B 1S2  — Burnaby, Kensington PSC
+V5H 2E5  — Burnaby, Metrotown PSC
+V7H 2Y5  — North Vancouver, Parkgate PSC
+V6X 2C9  — Richmond, No 3 Road PSC
+V7C 3V3  — Richmond, Crestwood PSC
+V6Y 2G4  — Richmond, Buswell PSC
+V3N 3N4  — Burnaby, Burnaby Square PSC
+V3M 1X4  — New Westminster, Royal City PSC
+V6W 0B3  — Richmond, Ironwood PSC
+V3J 0C6  — Burnaby, Lougheed PSC
+V3K 3V9  — Coquitlam, North Road PSC
+V3L 0E3  — New Westminster, Sapperton PSC
+V7E 2Z4  — Richmond, Steveston PSC
+V0N 1G1  — Bowen Island PSC
+V3H 2B6  — Port Moody PSC
+V3W 1P6  — Surrey, Scott Road PSC
+V4C 6R2  — Delta PSC
+V4K 4L1  — Delta, Ladner PSC
+V3E 1J7  — Coquitlam, Eagleridge PSC
+V3T 2W4  — Surrey, Surrey Central PSC
+V3T 0M1  — Surrey, Surrey City Centre (CC2)
+V3W 3M8  — Surrey, Satnam Place PSC
+V3C 2K7  — Coquitlam, Gordon PSC
+V4E 2A6  — Delta, Sunwood PSC
+V3C 6C1  — Port Coquitlam, Wilson PSC
+V8W 1G2  — Victoria, Yarrow PSC
+V8V 3M9  — Victoria, Yates PSC
+V9A 7N6  — Victoria, Westside PSC
+V8V 1S5  — Victoria, James Bay PSC
+V8R 1B1  — Victoria, Fort PSC
+V9A 5S2  — Victoria, Esquimalt PSC
+V8T 5G1  — Victoria, Hillside PSC
+V9A 1B7  — Victoria, Burnside PSC
+V8P 2P5  — Victoria, Cedar Hill PSC
+V8Z 3E9  — Victoria, Royal Oak PSC
+V9B 2W7  — Victoria, Colwood PSC
+V9B 3R5  — Victoria, Millstream PSC
+V9B 5E3  — Victoria, Westshore PSC
+V8L 1W2  — Sidney PSC
+V1T 7E3  — Vernon PSC
+V2C 5T1  — Kamloops, St Paul PSC
+V2C 6G6  — Kamloops, Nicola PSC
+V2B 3H7  — Kamloops, Tranquille PSC
+V1S 1M9  — Kamloops, Harrison Way PSC
+V2L 2L5  — Prince George PSC
+V9R 5E2  — Nanaimo, Port Place PSC
+V9R 6L1  — Nanaimo, Southgate PSC
+V9T 5V4  — Nanaimo, Rock City PSC
+V0R 1X3  — Gabriola Island PSC
+V9T 4K6  — Nanaimo, North Town PSC
+V9V 1S5  — Nanaimo, Brickyard PSC
+V9G 1T9  — Ladysmith PSC
+
+
+========================================
+DYNACARE — ONTARIO (112 clinics)
+========================================
+
+P5A 1Y9  — Elliot Lake
+N9E 1S6  — Windsor, Dougall Ave.
+N9K 0A1  — Windsor, Amy Croft
+N0H 2C4  — Port Elgin
+N7A 4N8  — Goderich
+N7L 5K5  — Chatham
+N0K 1W0  — Seaforth
+N7G 1Y7  — Strathroy
+P1B 2T6  — North Bay
+N0L 1Z0  — Newbury
+P2A 3A4  — Parry Sound
+N6K 4L2  — London, Boler
+N6A 2C2  — London, Victoria
+N5Y 5N7  — London, Highbury
+N5W 5Y5  — London, Dundas
+N6E 3Z8  — London, Bradley
+L4R 0E8  — Midland
+P1H 1H8  — Huntsville
+N2C 2N9  — Kitchener
+P1L 1T2  — Bracebridge
+N1G 4T7  — Guelph
+L0G 1W0  — Tottenham
+L7E 4C8  — Bolton
+L4P 0E2  — Keswick
+L6X 0Z8  — Brampton, Mississauga Rd.
+L6S 0E2  — Brampton, Cottrelle Blvd.
+L9T 0J9  — Milton
+L6Y 4M3  — Brampton, Hurontario
+L4H 0R9  — Vaughan, Hwy 27 (Walmart)
+L5R 4B8  — Mississauga, Matheson Blvd. W
+L4E 4L6  — Richmond Hill, Yonge St.
+L4L 8E2  — Vaughan, Weston Rd.
+M9V 5G4  — Toronto (Etobicoke), Humber College Blvd.
+M9V 5G5  — Toronto (Etobicoke), Albion Rd.
+L7M 4Y1  — Burlington, Walkers Line
+L5M 4N4  — Mississauga, Credit Valley
+L6M 4J2  — Oakville, Old Bronte Rd.
+L8P 1B9  — Hamilton, King St. W
+L6A 4P9  — Vaughan, Major MacKenzie Dr. W
+L6H 7S8  — Oakville, Oak Park
+L7R 2J4  — Burlington, Brant St.
+L8L 5G8  — Hamilton, 414 Victoria
+L8L 5G4  — Hamilton, 304 Victoria
+L6H 6P8  — Oakville, Bristol Cir.
+L5B 4A2  — Mississauga, King St. W
+L9A 5H4  — Hamilton, Upper Wentworth St.
+M3J 0L5  — Toronto (North York), Finch Ave. W
+M3J 1N2  — Toronto (North York), Keele St.
+L5A 4C7  — Mississauga, Hurontario St.
+L4J 2J6  — Vaughan (Thornhill), Bathurst St.
+L4B 3P7  — Richmond Hill, Hwy 7
+L0E 1E0  — Cannington
+M3H 5Y8  — Toronto (North York), Bathurst & Sheppard
+M6A 3B5  — Toronto, Lawrence Ave.
+M2M 4J5  — Toronto (North York), Bayview Ave.
+L8K 1K2  — Hamilton, Queenston Rd.
+L3R 1A3  — Markham, Woodbine
+L8J 3W2  — Stoney Creek
+L3R 0W7  — Markham, Unionville Gate
+L6E 0H7  — Markham, Castlemore
+M4P 3H1  — Toronto, Yonge & Eglinton
+M6R 3B2  — Toronto, Roncesvalles Ave.
+M4S 1Y2  — Toronto, Midtown
+M6G 4A1  — Toronto, Bloor St. W
+M5T 3A5  — Toronto, Spadina Ave.
+M1S 4V5  — Toronto (Scarborough), Finch Ave. E
+M5G 1N8  — Toronto, Bay St.
+M5G 1E2  — Toronto, Edward St.
+M5X 2A2  — Toronto, King
+L6B 0P9  — Markham, Copper Creek
+M1P 2P5  — Toronto (Scarborough), Lawrence Ave.
+M4C 1K9  — Toronto, Danforth/Chisholm
+L9L 1L9  — Port Perry
+L1V 6R6  — Pickering
+L1Z 0M1  — Ajax, Rossland Rd.
+K0M 1A0  — Bobcaygeon
+L1N 8M7  — Whitby
+L1J 0C7  — Oshawa, Keith Ross Dr.
+L1H 1B9  — Oshawa, King St. E
+L1E 3C3  — Courtice
+K0J 1B0  — Barry's Bay
+K9J 7C3  — Peterborough
+L2E 7H1  — Niagara Falls
+L1A 3Y9  — Port Hope
+K0H 1L0  — Denbigh
+K7V 0C3  — Renfrew
+K0H 2G0  — Northbrook
+K8P 1A1  — Belleville
+K7S 2P6  — Arnprior
+K7C 0B4  — Carleton Place
+K2L 3C8  — Ottawa (Kanata), Kakulu Rd.
+K2S 1B8  — Ottawa (Stittsville)
+K7M 3X9  — Kingston
+K2M 2G9  — Ottawa (Kanata), Eagleson Rd.
+K2B 8E8  — Ottawa, Bayshore
+K2A 3Z3  — Ottawa, Broadview
+K2P 2A8  — Ottawa, Kent St.
+K1N 6N5  — Ottawa, University of Ottawa
+K1L 8H2  — Ottawa, 150 Montreal Rd.
+K2G 5X2  — Ottawa, Cleopatra Dr.
+K1K 4L2  — Ottawa, 595 Montreal Rd.
+K2J 5V7  — Ottawa, Barrhaven
+K1H 8N4  — Ottawa, 1385 Bank St.
+K1V 1C1  — Ottawa, Hunt Club Rd.
+K1V 1A4  — Ottawa, 2446 Bank St.
+K1V 2P3  — Ottawa, Riverside South
+K1C 1S6  — Ottawa, Orleans
+K4K 0B8  — Rockland
+K0G 1J0  — Kemptville
+K0A 1W1  — Embrun
+K0C 2K0  — Winchester
+K6A 3B2  — Hawkesbury
+
+
+========================================
+DYNACARE — MANITOBA (21 clinics)
+========================================
+
+R7A 5E7  — Brandon
+R6M 2G3  — Morden
+R6W 1J2  — Winkler
+R0C 2Z0  — Stonewall
+R3K 2E7  — Winnipeg, 3653 Portage Ave.
+R3J 0S9  — Winnipeg, Lodge Assiniboine
+R2X 3B9  — Winnipeg, Keewatin St.
+R3P 2S8  — Winnipeg, Sterling Lyon
+R3J 0C6  — Winnipeg, 1600 Portage Ave.
+R2V 3M5  — Winnipeg, McPhillips Garden City
+R3A 1M3  — Winnipeg, 790 Sherbrook
+R3C 0N2  — Winnipeg, 425 St. Mary Ave.
+R3T 5J9  — Winnipeg, 2077 Pembina Hwy
+R2H 0R5  — Winnipeg, Marion Dominion Centre
+R2M 5E5  — Winnipeg, 1225 St. Mary's Rd.
+R2G 1N3  — Winnipeg, 1455 Henderson Hwy
+R2J 2M6  — Winnipeg, Lakewood
+R2C 3B3  — Winnipeg, 1581 Regent Ave.
+R0E 1J2  — Oakbank
+R5G 2P8  — Steinbach
+R0E 0C0  — Beausejour
+
+
+========================================
+MOBILE PHLEBOTOMISTS — BRITISH COLUMBIA
+========================================
+
+V2T 1Z1  — Abbotsford
+V2R 2B5  — Chilliwack
+V2R 0R1  — Chilliwack
+V8H 0A1  — Cobble Hill
+V3B 2W7  — Coquitlam
+V3B 0E8  — Coquitlam
+V9N 5W8  — Courtenay
+V1C 7B2  — Cranbrook
+V2H 1L1  — Kamloops
+V2C 0H7  — Kamloops
+V1X 7H8  — Kelowna
+V9B 6R6  — Langford
+V2Y 4J1  — Langley
+V9R 6N3  — Nanaimo
+V9P 9B7  — Nanoose Bay
+V0G 2J0  — Nelson
+V0C 2A0  — North Pine
+V7G 1S1  — North Vancouver
+V7H 2X5  — North Vancouver
+V0N 2L1  — Pemberton
+V2A 3R3  — Penticton
+V2L 4Y4  — Prince George
+V9Z 0Y3  — Sooke
+V3T 1Z2  — Surrey
+V3R 4J4  — Surrey
+V3S 1Y6  — Surrey
+V4N 5Z8  — Surrey
+V3S 8Y7  — Surrey
+V6H 3P4  — Vancouver
+V1T 9A1  — Vernon
+V9C 3E9  — Victoria
+
+
+========================================
+MOBILE PHLEBOTOMISTS — ALBERTA
+========================================
+
+T4X 0E4  — Beaumont
+T2Z 2N6  — Calgary
+T3M 1H9  — Calgary
+T3N 1K9  — Calgary
+T3G 4C6  — Calgary
+T2X 0M8  — Calgary
+T4C 1E3  — Cochrane
+T6W 3C1  — Edmonton
+T6K 0H7  — Edmonton
+T8L 0M9  — Fort Saskatchewan
+T8V 1V2  — Grande Prairie
+T4L 1N1  — Lacombe
+T0M 1H0  — Leslieville
+T1H 6M8  — Lethbridge
+T1C 0A6  — Medicine Hat
+T0E 1V0  — Onoway
+T8S 1B2  — Peace River
+T4P 0G2  — Red Deer
+T8A 1X2  — Sherwood Park
+T8R 0G8  — Sturgeon County
+T8R 2B5  — Sturgeon County
+
+
+========================================
+MOBILE PHLEBOTOMISTS — SASKATCHEWAN
+========================================
+
+S0M 1M0  — Maidstone
+S9A 2E9  — North Battleford
+S6V 5R2  — Prince Albert
+S4W 0B2  — Regina
+S4S 6Y8  — Regina
+S4T 0R2  — Regina
+S4N 4B5  — Regina
+S7W 1A8  — Saskatoon
+S9H 4S2  — Swift Current
+S4H 1S4  — Weyburn
+
+
+========================================
+MOBILE PHLEBOTOMISTS — MANITOBA
+========================================
+
+MISSING   — Cartier
+MISSING   — East St. Paul
+MISSING   — Lorette
+MISSING   — Rosenort
+MISSING   — Steinbach
+MISSING   — Tuelon
+MISSING   — Winnipeg
+
+
+========================================
+MOBILE PHLEBOTOMISTS — ONTARIO
+========================================
+
+L1Z 1R4  — Ajax
+K0C 1A0  — Alexandria
+K7N 2A3  — Amherstview
+L4M 3N4  — Barrie
+L6R 1R9  — Brampton
+L7A 4T5  — Brampton
+K6V 5T1  — Brockville
+N3H 2H9  — Cambridge
+N0M 1M0  — Crediton
+L9H 5M3  — Dundas
+N7A 1L3  — Goderich
+N1L 0H5  — Guelph
+L8M 1H5  — Hamilton
+N0R 1G0  — Harrow
+K0L 1Z0  — Havelock
+N2A 4C3  — Kitchener
+N9H 1Z7  — Lasalle
+N6G 2W4  — London
+L9T 6Y4  — Milton
+L5N 6R5  — Mississauga
+L5A 1Y7  — Mississauga
+L5A 3L8  — Mississauga
+L5R 3H1  — Mississauga
+L2J 4J7  — Niagara Falls (St. Davids)
+M9L 2H8  — North York
+K4A 0M4  — Orleans
+L1K 0E8  — Oshawa
+K0A 2Z0  — Ottawa
+K1K 1W5  — Ottawa
+N4K 2B7  — Owen Sound
+P2A 1V4  — Parry Sound
+K8H 1Z1  — Petawawa
+L0L 2K0  — Phelpston
+P6B 2G6  — Sault Ste. Marie
+P6C 5L8  — Sault Ste. Marie
+M1L 0H3  — Scarborough
+N5P 3T1  — St. Thomas
+L8E 0E4  — Stoney Creek
+P3C 3L3  — Sudbury
+P3G 1C6  — Sudbury
+MISSING   — Thunder Bay
+M3N 2Z1  — Toronto
+M5N 2N2  — Toronto
+M9R 3G8  — Toronto
+M6P 3N4  — Toronto
+P3N 1A2  — Val Caron
+K0C 2J0  — Williamstown
+
+
+========================================
+MOBILE PHLEBOTOMISTS — NEW BRUNSWICK
+========================================
+
+MISSING   — Bathurst
+MISSING   — Campbellton
+MISSING   — Fredericton
+MISSING   — Grand Bay-Westfield
+MISSING   — Moncton
+MISSING   — Picadilly
+MISSING   — Upper Knoxford
+
+
+========================================
+MOBILE PHLEBOTOMISTS — NEWFOUNDLAND AND LABRADOR
+========================================
+
+MISSING   — St. John's
+MISSING   — Corner Brook
+MISSING   — Grand Falls-Windsor
+MISSING   — Lethbridge
+
+
+========================================
+MOBILE PHLEBOTOMISTS — NOVA SCOTIA
+========================================
+
+MISSING   — Antigonish
+MISSING   — Darling Lake
+MISSING   — Dartmouth
+MISSING   — Elmsdale
+MISSING   — Herring Cove
+MISSING   — Kingston
+MISSING   — Shag Harbour
+
+
+========================================
+MOBILE PHLEBOTOMISTS — PRINCE EDWARD ISLAND
+========================================
+
+MISSING   — Souris
+MISSING   — Summerside
+MISSING   — Stratford
+
+
+========================================
+SUMMARY
+========================================
+
+LifeLabs BC clinics:        86 postal codes
+Dynacare Ontario clinics:  112 postal codes
+Dynacare Manitoba clinics:  21 postal codes
+Mobile — BC:                31 postal codes
+Mobile — AB:                21 postal codes
+Mobile — SK:                10 postal codes
+Mobile — MB:                 7 cities (all MISSING postal codes)
+Mobile — ON:                47 entries (1 MISSING: Thunder Bay)
+Mobile — NB:                 7 cities (all MISSING postal codes)
+Mobile — NL:                 4 cities (all MISSING postal codes)
+Mobile — NS:                 7 cities (all MISSING postal codes)
+Mobile — PE:                 3 cities (all MISSING postal codes)
+
+TOTAL:                     356 entries
+MISSING postal codes:       29 (March 2026 expansion — need from Dynacare)

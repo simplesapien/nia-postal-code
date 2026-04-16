@@ -1,0 +1,1372 @@
+[
+  {
+    "name": "Abbotsford",
+    "postalCode": "V2T 1Z1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.0521162,
+    "lng": -122.329479,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Chilliwack",
+    "postalCode": "V2R 2B5",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1709788,
+    "lng": -121.95255,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Chilliwack",
+    "postalCode": "V2R 0R1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1709788,
+    "lng": -121.95255,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Cobble Hill",
+    "postalCode": "V8H 0A1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 48.683708,
+    "lng": -123.600311,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Coquitlam",
+    "postalCode": "V3B 2W7",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.2842958,
+    "lng": -122.793281,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Coquitlam",
+    "postalCode": "V3B 0E8",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.2842958,
+    "lng": -122.793281,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Courtenay",
+    "postalCode": "V9N 5W8",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.6894061,
+    "lng": -124.9954959,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Cranbrook",
+    "postalCode": "V1C 7B2",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.5107477,
+    "lng": -115.7672772,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Kamloops",
+    "postalCode": "V2H 1L1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 50.6758269,
+    "lng": -120.339415,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Kamloops",
+    "postalCode": "V2C 0H7",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 50.6758269,
+    "lng": -120.339415,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Kelowna",
+    "postalCode": "V1X 7H8",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.8879177,
+    "lng": -119.495902,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Langford",
+    "postalCode": "V9B 6R6",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 48.4497693,
+    "lng": -123.504666,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Langley",
+    "postalCode": "V2Y 4J1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1039289,
+    "lng": -122.657047,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Nanaimo",
+    "postalCode": "V9R 6N3",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.163877,
+    "lng": -123.938122,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Nanoose Bay",
+    "postalCode": "V9P 9B7",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.271116,
+    "lng": -124.1925699,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Nelson",
+    "postalCode": "V0G 2J0",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.494891,
+    "lng": -117.290039,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "North Pine",
+    "postalCode": "V0C 2A0",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 56.4214761,
+    "lng": -120.7957831,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "North Vancouver",
+    "postalCode": "V7G 1S1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.3206294,
+    "lng": -123.0737925,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "North Vancouver",
+    "postalCode": "V7H 2X5",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.3206294,
+    "lng": -123.0737925,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Pemberton",
+    "postalCode": "V0N 2L1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 50.3203804,
+    "lng": -122.808078,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Penticton",
+    "postalCode": "V2A 3R3",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.5003268,
+    "lng": -119.593249,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Prince George",
+    "postalCode": "V2L 4Y4",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 53.9128645,
+    "lng": -122.7453699,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sooke",
+    "postalCode": "V9Z 0Y3",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 48.3825724,
+    "lng": -123.731517,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Surrey",
+    "postalCode": "V3T 1Z2",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1913033,
+    "lng": -122.849143,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Surrey",
+    "postalCode": "V3R 4J4",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1913033,
+    "lng": -122.849143,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Surrey",
+    "postalCode": "V3S 1Y6",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1913033,
+    "lng": -122.849143,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Surrey",
+    "postalCode": "V4N 5Z8",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1913033,
+    "lng": -122.849143,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Surrey",
+    "postalCode": "V3S 8Y7",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.1913033,
+    "lng": -122.849143,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Vancouver",
+    "postalCode": "V6H 3P4",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.2608724,
+    "lng": -123.113952,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Vernon",
+    "postalCode": "V1T 9A1",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 50.2668671,
+    "lng": -119.2718157,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Victoria",
+    "postalCode": "V9C 3E9",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 48.4283182,
+    "lng": -123.364953,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Beaumont",
+    "postalCode": "T4X 0E4",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.3525496,
+    "lng": -113.4151434,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Calgary",
+    "postalCode": "T2Z 2N6",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 51.0456064,
+    "lng": -114.057541,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Calgary",
+    "postalCode": "T3M 1H9",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 51.0456064,
+    "lng": -114.057541,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Calgary",
+    "postalCode": "T3N 1K9",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 51.0456064,
+    "lng": -114.057541,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Calgary",
+    "postalCode": "T3G 4C6",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 51.0456064,
+    "lng": -114.057541,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Calgary",
+    "postalCode": "T2X 0M8",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 51.0456064,
+    "lng": -114.057541,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Cochrane",
+    "postalCode": "T4C 1E3",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 51.1874627,
+    "lng": -114.4710708,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Edmonton",
+    "postalCode": "T6W 3C1",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.5462055,
+    "lng": -113.491241,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Edmonton",
+    "postalCode": "T6K 0H7",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.5462055,
+    "lng": -113.491241,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Fort Saskatchewan",
+    "postalCode": "T8L 0M9",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.7128571,
+    "lng": -113.214894,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Grande Prairie",
+    "postalCode": "T8V 1V2",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 55.17108,
+    "lng": -118.7949873,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Lacombe",
+    "postalCode": "T4L 1N1",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 52.4727515,
+    "lng": -113.733215,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Leslieville",
+    "postalCode": "T0M 1H0",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 52.3827381,
+    "lng": -114.603606,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Lethbridge",
+    "postalCode": "T1H 6M8",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 49.6945782,
+    "lng": -112.8331033,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Medicine Hat",
+    "postalCode": "T1C 0A6",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 50.04303,
+    "lng": -110.679016,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Onoway",
+    "postalCode": "T0E 1V0",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.7038575,
+    "lng": -114.1910354,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Peace River",
+    "postalCode": "T8S 1B2",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 56.2337111,
+    "lng": -117.2910839,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Red Deer",
+    "postalCode": "T4P 0G2",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 52.2690628,
+    "lng": -113.8141464,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sherwood Park",
+    "postalCode": "T8A 1X2",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.5256963,
+    "lng": -113.296631,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sturgeon County",
+    "postalCode": "T8R 0G8",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.8422302,
+    "lng": -113.5406548,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sturgeon County",
+    "postalCode": "T8R 2B5",
+    "province": "AB",
+    "provinceExpanded": "Alberta",
+    "lat": 53.8422302,
+    "lng": -113.5406548,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Maidstone",
+    "postalCode": "S0M 1M0",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 51.0586378,
+    "lng": -113.9518453,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "North Battleford",
+    "postalCode": "S9A 2E9",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 52.776186,
+    "lng": -108.300476,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Prince Albert",
+    "postalCode": "S6V 5R2",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 53.2020289,
+    "lng": -105.7558962,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Regina",
+    "postalCode": "S4W 0B2",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 50.4479733,
+    "lng": -104.6158764,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Regina",
+    "postalCode": "S4S 6Y8",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 50.4479733,
+    "lng": -104.6158764,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Regina",
+    "postalCode": "S4T 0R2",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 50.4479733,
+    "lng": -104.6158764,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Regina",
+    "postalCode": "S4N 4B5",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 50.4479733,
+    "lng": -104.6158764,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Saskatoon",
+    "postalCode": "S7W 1A8",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 52.131802,
+    "lng": -106.660767,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Swift Current",
+    "postalCode": "S9H 4S2",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 50.2849138,
+    "lng": -107.7984496,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Weyburn",
+    "postalCode": "S4H 1S4",
+    "province": "SK",
+    "provinceExpanded": "Saskatchewan",
+    "lat": 49.6651238,
+    "lng": -103.854034,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Cartier",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.894195,
+    "lng": -97.688404,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "East St. Paul",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.979488,
+    "lng": -97.014771,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Lorette",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.739621,
+    "lng": -96.874328,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Rosenort",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.4596612,
+    "lng": -97.4359644,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Steinbach",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.528528,
+    "lng": -96.691092,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Tuelon",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 50.3807379,
+    "lng": -97.2627562,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Winnipeg",
+    "postalCode": null,
+    "province": "MB",
+    "provinceExpanded": "Manitoba",
+    "lat": 49.8955367,
+    "lng": -97.1384584,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Ajax",
+    "postalCode": "L1Z 1R4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.8505287,
+    "lng": -79.0208814,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Alexandria",
+    "postalCode": "K0C 1A0",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 45.3179423,
+    "lng": -74.6397639,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Amherstview",
+    "postalCode": "K7N 2A3",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 44.2200142,
+    "lng": -76.6432363,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Barrie",
+    "postalCode": "L4M 3N4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 44.3893208,
+    "lng": -79.6901302,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Brampton",
+    "postalCode": "L6R 1R9",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.685832,
+    "lng": -79.7599366,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Brampton",
+    "postalCode": "L7A 4T5",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.685832,
+    "lng": -79.7599366,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Brockville",
+    "postalCode": "K6V 5T1",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 44.6039207,
+    "lng": -75.7016829,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Cambridge",
+    "postalCode": "N3H 2H9",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.3600536,
+    "lng": -80.3123023,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Crediton",
+    "postalCode": "N0M 1M0",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.2990303,
+    "lng": -81.5480284,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Dundas",
+    "postalCode": "L9H 5M3",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.2661904,
+    "lng": -79.9546341,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Goderich",
+    "postalCode": "N7A 1L3",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.7430924,
+    "lng": -81.7110949,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Guelph",
+    "postalCode": "N1L 0H5",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.5460516,
+    "lng": -80.2493276,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Hamilton",
+    "postalCode": "L8M 1H5",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.2560802,
+    "lng": -79.8728583,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Harrow",
+    "postalCode": "N0R 1G0",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 42.035586,
+    "lng": -82.9183594,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Havelock",
+    "postalCode": "K0L 1Z0",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 44.4332227,
+    "lng": -77.8872927,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Kitchener",
+    "postalCode": "N2A 4C3",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.451291,
+    "lng": -80.4927815,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Lasalle",
+    "postalCode": "N9H 1Z7",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 42.2450635,
+    "lng": -83.0606534,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "London",
+    "postalCode": "N6G 2W4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 42.9836747,
+    "lng": -81.2496068,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Milton",
+    "postalCode": "L9T 6Y4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.513671,
+    "lng": -79.882817,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Mississauga",
+    "postalCode": "L5N 6R5",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.5884727,
+    "lng": -79.643658,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Mississauga",
+    "postalCode": "L5A 1Y7",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.5884727,
+    "lng": -79.643658,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Mississauga",
+    "postalCode": "L5A 3L8",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.5884727,
+    "lng": -79.643658,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Mississauga",
+    "postalCode": "L5R 3H1",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.5884727,
+    "lng": -79.643658,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Niagara Falls (St. Davids)",
+    "postalCode": "L2J 4J7",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.1500755,
+    "lng": -79.1220462,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "North York",
+    "postalCode": "M9L 2H8",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.7543217,
+    "lng": -79.4491057,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Orleans",
+    "postalCode": "K4A 0M4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 45.4068372,
+    "lng": -75.5274568,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Oshawa",
+    "postalCode": "L1K 0E8",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.8975558,
+    "lng": -78.8635324,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Ottawa",
+    "postalCode": "K0A 2Z0",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 45.4208777,
+    "lng": -75.6901106,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Ottawa",
+    "postalCode": "K1K 1W5",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 45.4208777,
+    "lng": -75.6901106,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Owen Sound",
+    "postalCode": "N4K 2B7",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 44.5678105,
+    "lng": -80.9430094,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Parry Sound",
+    "postalCode": "P2A 1V4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 45.6675279,
+    "lng": -80.1055284,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Petawawa",
+    "postalCode": "K8H 1Z1",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 45.8984286,
+    "lng": -77.2826645,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Phelpston",
+    "postalCode": "L0L 2K0",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 44.518002,
+    "lng": -79.8468118,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sault Ste. Marie",
+    "postalCode": "P6B 2G6",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 46.5126554,
+    "lng": -84.3330301,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sault Ste. Marie",
+    "postalCode": "P6C 5L8",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 46.5126554,
+    "lng": -84.3330301,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Scarborough",
+    "postalCode": "M1L 0H3",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.7729744,
+    "lng": -79.2576479,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "St. Thomas",
+    "postalCode": "N5P 3T1",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 42.779022,
+    "lng": -81.1929882,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Stoney Creek",
+    "postalCode": "L8E 0E4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.2167526,
+    "lng": -79.7567616,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sudbury",
+    "postalCode": "P3C 3L3",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 46.49272,
+    "lng": -80.991211,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Sudbury",
+    "postalCode": "P3G 1C6",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 46.49272,
+    "lng": -80.991211,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Thunder Bay",
+    "postalCode": null,
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 48.433151,
+    "lng": -89.231761,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Toronto",
+    "postalCode": "M3N 2Z1",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.6534817,
+    "lng": -79.3839347,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Toronto",
+    "postalCode": "M5N 2N2",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.6534817,
+    "lng": -79.3839347,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Toronto",
+    "postalCode": "M9R 3G8",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.6534817,
+    "lng": -79.3839347,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Toronto",
+    "postalCode": "M6P 3N4",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 43.6534817,
+    "lng": -79.3839347,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Val Caron",
+    "postalCode": "P3N 1A2",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 46.610391,
+    "lng": -81.0073251,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Williamstown",
+    "postalCode": "K0C 2J0",
+    "province": "ON",
+    "provinceExpanded": "Ontario",
+    "lat": 45.1466728,
+    "lng": -74.5795614,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Bathurst",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 47.618351,
+    "lng": -65.651336,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Campbellton",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 48.007399,
+    "lng": -66.672206,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Fredericton",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 45.963589,
+    "lng": -66.643115,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Grand Bay-Westfield",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 45.361492,
+    "lng": -66.241698,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Moncton",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 46.0985679,
+    "lng": -64.8004265,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Picadilly",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 45.713416,
+    "lng": -65.400188,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Upper Knoxford",
+    "postalCode": null,
+    "province": "NB",
+    "provinceExpanded": "New Brunswick",
+    "lat": 46.5370626,
+    "lng": -67.7554576,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "St. John's",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 47.601397,
+    "lng": -52.70191,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Corner Brook",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 48.948997,
+    "lng": -57.950273,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Grand Falls-Windsor",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 48.927669,
+    "lng": -55.657502,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Lethbridge",
+    "postalCode": null,
+    "province": "NL",
+    "provinceExpanded": "Newfoundland and Labrador",
+    "lat": 48.369249,
+    "lng": -53.856381,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Antigonish",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 45.622661,
+    "lng": -61.992803,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Darling Lake",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.7163161,
+    "lng": -64.4534589,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Dartmouth",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.665206,
+    "lng": -63.567743,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Elmsdale",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.966971,
+    "lng": -63.506419,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Herring Cove",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.571404,
+    "lng": -63.561965,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Kingston",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 44.99169,
+    "lng": -64.939406,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Shag Harbour",
+    "postalCode": null,
+    "province": "NS",
+    "provinceExpanded": "Nova Scotia",
+    "lat": 43.4939108,
+    "lng": -65.7179933,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Souris",
+    "postalCode": null,
+    "province": "PE",
+    "provinceExpanded": "Prince Edward Island",
+    "lat": 46.35498,
+    "lng": -62.251834,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Summerside",
+    "postalCode": null,
+    "province": "PE",
+    "provinceExpanded": "Prince Edward Island",
+    "lat": 46.393378,
+    "lng": -63.790233,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  },
+  {
+    "name": "Stratford",
+    "postalCode": null,
+    "province": "PE",
+    "provinceExpanded": "Prince Edward Island",
+    "lat": 46.215926,
+    "lng": -63.08861,
+    "type": "mobile",
+    "source": "dynacare-mobile"
+  }
+]

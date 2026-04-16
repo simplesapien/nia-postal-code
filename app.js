@@ -2,31 +2,42 @@
 // CONFIG
 // ─────────────────────────────────────────────
 
-const LOCATIONS_URL      = "locations.json";
+const MOBILE_URL         = "mobile-locations.json";
+const CLINIC_URL         = "clinic-locations.json";
 const RANGE_IN           = 100;
 const RANGE_EXTENDED     = 200;
 const NOMINATIM_DELAY_MS = 1100;
-const MAX_GEOCODE_TRIES  = 4;  // Fail faster when address not found
+const MAX_GEOCODE_TRIES  = 4;
 
 // ─────────────────────────────────────────────
 // STATE
 // ─────────────────────────────────────────────
 
-let serviceLocations = [];
-let leafletMap       = null;
+let mobileLocations = [];
+let clinicLocations = [];
+let leafletMap      = null;
 
 // ─────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────
 
+async function loadJSON(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status} loading ${url}`);
+  return res.json();
+}
+
 async function init() {
   try {
-    const res = await fetch(LOCATIONS_URL);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    serviceLocations = await res.json();
-    console.log(`Loaded ${serviceLocations.length} locations`);
+    const [mobile, clinics] = await Promise.all([
+      loadJSON(MOBILE_URL),
+      loadJSON(CLINIC_URL),
+    ]);
+    mobileLocations = mobile;
+    clinicLocations = clinics;
+    console.log(`Loaded ${mobileLocations.length} mobile + ${clinicLocations.length} clinic locations`);
   } catch (err) {
-    console.error("Could not load locations.json:", err);
+    console.error("Could not load location data:", err);
   }
 }
 
@@ -320,14 +331,32 @@ function haversineKm(lat1, lng1, lat2, lng2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-function findNearest(lat, lng) {
+function findNearestIn(lat, lng, locations) {
   let best = null, bestDist = Infinity;
-  for (const loc of serviceLocations) {
+  for (const loc of locations) {
     if (loc.lat == null || loc.lng == null) continue;
     const d = haversineKm(lat, lng, loc.lat, loc.lng);
     if (d < bestDist) { bestDist = d; best = loc; }
   }
   return best ? { location: best, distance: bestDist } : null;
+}
+
+function findNearest(lat, lng) {
+  const mobile = findNearestIn(lat, lng, mobileLocations);
+  const clinic = findNearestIn(lat, lng, clinicLocations);
+  const results = [];
+  if (mobile) results.push(mobile);
+  if (clinic) results.push(clinic);
+  if (!results.length) return null;
+  results.sort((a, b) => a.distance - b.distance);
+  return results[0];
+}
+
+function findNearestByType(lat, lng) {
+  return {
+    mobile: findNearestIn(lat, lng, mobileLocations),
+    clinic: findNearestIn(lat, lng, clinicLocations),
+  };
 }
 
 // ─────────────────────────────────────────────
@@ -403,7 +432,13 @@ function renderResult(nearest, userCoords) {
   const distKm   = Math.round(nearest.distance);
   const loc      = nearest.location;
   const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
+  const isClinic = loc.type === "clinic";
   const card     = document.getElementById("result-card");
+
+  const typeLabel = isClinic ? "In-clinic lab" : "Mobile phlebotomist";
+  const locationLabel = isClinic
+    ? `${loc.name}<br><span style="font-size:0.75rem;color:var(--muted)">${loc.address}, ${loc.city}</span>`
+    : `${loc.name}, ${province}`;
 
   let icon, title, sub, note, cls;
 
@@ -411,7 +446,9 @@ function renderResult(nearest, userCoords) {
     icon  = `<svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>`;
     title = "We're in your area!";
     sub   = "Standard service rates apply";
-    note  = "A mobile phlebotomist can come to you at home or work. Book your appointment and we'll handle the rest.";
+    note  = isClinic
+      ? "There's a lab near you for walk-in bloodwork. Book online or visit directly."
+      : "A mobile phlebotomist can come to you at home or work. Book your appointment and we'll handle the rest.";
     cls   = "in-range";
   } else if (distKm <= RANGE_EXTENDED) {
     icon  = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
@@ -442,15 +479,18 @@ function renderResult(nearest, userCoords) {
         <div class="rc-stat-val">${distKm}<span style="font-size:0.9rem;font-family:'Instrument Sans',sans-serif;font-weight:400;color:var(--muted)"> km</span></div>
       </div>
       <div class="rc-stat">
-        <div class="rc-stat-label">Nearest location</div>
-        <div class="rc-stat-val small">${loc.name}, ${province}</div>
+        <div class="rc-stat-label">${typeLabel}</div>
+        <div class="rc-stat-val small">${locationLabel}</div>
       </div>
     </div>
     <p class="rc-note">${note}</p>
   `;
 
   if (loc.lat && loc.lng && userCoords) {
-    showMap(userCoords.lat, userCoords.lng, loc.lat, loc.lng, `${loc.name}, ${province}`);
+    const pinLabel = isClinic
+      ? `${loc.name}, ${loc.city}`
+      : `${loc.name}, ${province}`;
+    showMap(userCoords.lat, userCoords.lng, loc.lat, loc.lng, pinLabel);
   }
 }
 
@@ -491,7 +531,7 @@ async function handleSubmit(opts = {}) {
   btn.innerHTML = `<svg class="spin" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56" stroke="white" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>`;
 
   try {
-    if (!serviceLocations.length) throw new Error("Location data not loaded. Please refresh.");
+    if (!mobileLocations.length && !clinicLocations.length) throw new Error("Location data not loaded. Please refresh.");
 
     const coords = await geocode(address);
 
@@ -512,12 +552,13 @@ async function handleSubmit(opts = {}) {
       const distKm = Math.round(nearest.distance);
       const loc = nearest.location;
       const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
+      const label = loc.type === "clinic" ? `${loc.name}, ${loc.city}` : `${loc.name}, ${province}`;
       if (distKm <= RANGE_IN) {
-        mapResult.textContent = `✓ In range · ${distKm} km to ${loc.name}, ${province}`;
+        mapResult.textContent = `✓ In range · ${distKm} km to ${label}`;
       } else if (distKm <= RANGE_EXTENDED) {
-        mapResult.textContent = `⚠ Extended · ${distKm} km to ${loc.name}, ${province}`;
+        mapResult.textContent = `⚠ Extended · ${distKm} km to ${label}`;
       } else {
-        mapResult.textContent = `✗ Out of range · ${distKm} km to ${loc.name}, ${province}`;
+        mapResult.textContent = `✗ Out of range · ${distKm} km to ${label}`;
       }
       mapResult.classList.add("visible");
     }

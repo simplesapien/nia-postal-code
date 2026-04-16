@@ -36,8 +36,8 @@ let skipped = 0;
 for (const row of csvRows) {
   const section = (row["Section"] || "").trim();
 
-  // Skip section header rows (=== ... ===)
-  if (!section || section.startsWith("===")) {
+  // Skip section header rows (all-caps with no Type value)
+  if (!section || !(row["Type"] || "").trim()) {
     skipped++;
     continue;
   }

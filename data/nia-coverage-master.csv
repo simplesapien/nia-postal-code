@@ -1,539 +1,560 @@
 Section,Name,Address,City,Province,Postal Code,Latitude,Longitude,Type,Google Maps Link
 LIFELABS (BC),,,,,,,,,
-LifeLabs (BC),Abbotsford PSC,33498 BEVAN AVE,ABBOTSFORD,BC,,,,clinic,
-LifeLabs (BC),Agassiz PSC,7069 CHEAM AVE,AGASSIZ,BC,,,,clinic,
-LifeLabs (BC),Aldergrove PSC,26310 FRASER HWY,ALDERGROVE,BC,,,,clinic,
-LifeLabs (BC),Beverly PSC,2763 BEVERLY ST,DUNCAN,BC,,,,clinic,
-LifeLabs (BC),Brickyard PSC,6010 BRICKYARD RD,NANAIMO,BC,,,,clinic,
-LifeLabs (BC),Broadway PSC,943 WEST BROADWAY,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Brookswood PSC,20103 40TH AVE,LANGLEY,BC,,,,clinic,
-LifeLabs (BC),Burnaby Square PSC,7885 6TH ST,BURNABY,BC,,,,clinic,
-LifeLabs (BC),Burnside PSC,101 BURNSIDE RD W,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Burrard PSC,1200 BURRARD ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Buswell PSC,6451 BUSWELL ST,RICHMOND,BC,,,,clinic,
-LifeLabs (BC),Campbell River PSC,465 MERECROFT RD,CAMPBELL RIVER,BC,,,,clinic,
-LifeLabs (BC),Capstan Way PSC,8155 CAPSTAN WAY,RICHMOND,BC,,,,clinic,
-LifeLabs (BC),Cedar Hill PSC,1590 CEDAR HILL CROSS RD,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Central Park PSC,4250 KINGSWAY,BURNABY,BC,,,,clinic,
-LifeLabs (BC),Champlain Square PSC,3150 EAST 54TH AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Chilliwack PSC,8236 EAGLE LANDING PKY,CHILLIWACK,BC,,,,clinic,
-LifeLabs (BC),City Centre PSC,1160 BURRARD ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Cityview PSC,1530 WEST 7TH AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Clearbrook PSC,2825 CLEARBROOK RD,ABBOTSFORD,BC,,,,clinic,
-LifeLabs (BC),Cloverdale PSC,17760 56TH AVE,SURREY,BC,,,,clinic,
-LifeLabs (BC),Colwood PSC,582 GOLDSTREAM AVE,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Commercial Drive PSC,1750 10TH AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Courtenay PSC,1599 CLIFFE AVE,COURTENAY,BC,,,,clinic,
-LifeLabs (BC),Crestwood PSC,6051 GILBERT RD,RICHMOND,BC,,,,clinic,
-LifeLabs (BC),Dawson Creek PSC,705 103RD AVE,DAWSON CREEK,BC,,,,clinic,
-LifeLabs (BC),Denman Island,3351 PIERCY RD,DENMAN ISLAND,BC,,,,clinic,
-LifeLabs (BC),Discovery PSC,4366 WEST 10TH AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Douglas Crescent PSC,5503 206TH ST,LANGLEY,BC,,,,clinic,
-LifeLabs (BC),Dunbar PSC,3540 WEST 41ST AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Dundarave PSC,2419 BELLEVUE AVE,WEST VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Eagleridge PSC,1194 LANSDOWNE DR,COQUITLAM,BC,,,,clinic,
-LifeLabs (BC),East Hastings PSC,1506 HASTINGS ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Esquimalt PSC,890 ESQUIMALT RD,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Fairmont PSC (Located at 701-750 W. Broadway),750 WEST BROADWAY,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Fort PSC (Located at 103-1625 Oak Bay Ave),1625 OAK BAY AVE,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Gabriola PSC,691 CHURCH ST,GABRIOLA,BC,,,,clinic,
-LifeLabs (BC),Georgia PSC,777 HORNBY ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Gibsons PSC,1100 SUNSHINE COAST HWY,GIBSONS,BC,,,,clinic,
-LifeLabs (BC),Gordon PSC,3001 GORDON AVE,COQUITLAM,BC,,,,clinic,
-LifeLabs (BC),Guildford PSC,15300 105TH AVE,SURREY,BC,,,,clinic,
-LifeLabs (BC),Harrison Way PSC,1966 HARRISON WAY,KAMLOOPS,BC,,,,clinic,
-LifeLabs (BC),Hastings PSC,324 GILMORE AVE,BURNABY,BC,,,,clinic,
-LifeLabs (BC),Hillside PSC,1641 HILLSIDE AVE,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Hollyburn PSC,575 16TH ST,WEST VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Hornby Island,1855 SOLLANS RD,HORNBY ISLAND,BC,,,,clinic,
-LifeLabs (BC),Ingram PSC,149 INGRAM ST,DUNCAN,BC,,,,clinic,
-LifeLabs (BC),Ironwood PSC,10880 NO 5 RD,RICHMOND,BC,,,,clinic,
-LifeLabs (BC),James Bay PSC,547 MICHIGAN ST,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Kensington PSC,6542 HASTINGS ST,BURNABY,BC,,,,clinic,
-LifeLabs (BC),Kerrisdale PSC,2061 WEST 42ND AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Kimberley PSC,260 4TH AVE,KIMBERLEY,BC,,,,clinic,
-LifeLabs (BC),King Edward PSC,972 KING EDWARD AVE W,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Ladner PSC,4515 HARVEST DR,DELTA,BC,,,,clinic,
-LifeLabs (BC),Ladysmith PSC,370 DAVIS RD,LADYSMITH,BC,,,,clinic,
-LifeLabs (BC),Laurel PSC,888 WEST 8TH AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Little Mountain PSC,4527 MAIN ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Lonsdale PSC,1916 LONSDALE AVE,NORTH VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Lougheed PSC (Located above the CIBC),3778 GRAND PROM,BURNABY,BC,,,,clinic,
-LifeLabs (BC),Lynn Valley PSC,1200 LYNN VALLEY RD,NORTH VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Main & Keefer PSC,180 KEEFER ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Maple Ridge PSC,11743 224TH ST,MAPLE RIDGE,BC,,,,clinic,
-LifeLabs (BC),Marine Drive PSC,845 MARINE DR,NORTH VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Marpole PSC,8677 GRANVILLE ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Metrotown PSC,4980 KINGSWAY,BURNABY,BC,,,,clinic,
-LifeLabs (BC),Mill Bay PSC,2720 MILL BAY RD,MILL BAY,BC,,,,clinic,
-LifeLabs (BC),Millstream PSC,2401 MILLSTREAM RD,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Mission PSC,7343 HURD ST,MISSION,BC,,,,clinic,
-LifeLabs (BC),Morgan Creek PSC,15252 32ND AVE,SURREY,BC,,,,clinic,
-LifeLabs (BC),Nelson PSC,806 VERNON ST,NELSON,BC,,,,clinic,
-LifeLabs (BC),Newton PSC,7404 KING GEORGE BLVD,SURREY,BC,,,,clinic,
-LifeLabs (BC),Nicola PSC,321 NICOLA ST,KAMLOOPS,BC,,,,clinic,
-LifeLabs (BC),No 3 Road PSC,5791 NO 3RD,RICHMOND,BC,,,,clinic,
-LifeLabs (BC),Norburn PSC,4012 HASTINGS ST,BURNABY,BC,,,,clinic,
-LifeLabs (BC),North Road PSC,435 NORTH RD,COQUITLAM,BC,,,,clinic,
-LifeLabs (BC),North Town PSC,4750 RUTHERFORD RD,NANAIMO,BC,,,,clinic,
-LifeLabs (BC),Parkgate PSC,3650 MT SEYMOUR PKY,NORTH VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Parksville PSC,489 ALBERNI HWY,PARKSVILLE,BC,,,,clinic,
-LifeLabs (BC),Peace Arch PSC,15331 16TH AVE,SURREY,BC,,,,clinic,
-LifeLabs (BC),Pitt Meadows PSC,12195 HARRIS RD,PITT MEADOWS,BC,,,,clinic,
-LifeLabs (BC),Poco PSC,1465 SALISBURY AVE,PORT COQUITLAM,BC,,,,clinic,
-LifeLabs (BC),Port Alberni PSC,3949 MAPLE WAY,PORT ALBERNI,BC,,,,clinic,
-LifeLabs (BC),Port Moody PSC,2624 ST JOHNS ST,PORT MOODY,BC,,,,clinic,
-LifeLabs (BC),Port Place PSC,650 SOUTH TERMINAL AVE,NANAIMO,BC,,,,clinic,
-LifeLabs (BC),Prince George PSC,1669 VICTORIA ST,PRINCE GEORGE,BC,,,,clinic,
-LifeLabs (BC),Qualicum PSC,670 MEMORIAL AVE,QUALICUM BEACH,BC,,,,clinic,
-LifeLabs (BC),Quesnel PSC,665 FRONT ST,QUESNEL,BC,,,,clinic,
-LifeLabs (BC),Regent PSC,2184 WEST BROADWAY,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Rock City PSC,2980 ISLAND HWY N,NANAIMO,BC,,,,clinic,
-LifeLabs (BC),Royal City PSC,625 FIFTH AVE,NEW WESTMINSTER,BC,,,,clinic,
-LifeLabs (BC),Royal Oak PSC,4480 WEST SAANICH RD,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Sapperton PSC,227 NELSON CRES,NEW WESTMINSTER,BC,,,,clinic,
-LifeLabs (BC),Satnam Place PSC,7130 120TH ST,SURREY,BC,,,,clinic,
-LifeLabs (BC),Scott Road PSC,12080 NORDEL WAY,SURREY,BC,,,,clinic,
-LifeLabs (BC),Sechelt PSC,5531 INLET AVE,SECHELT,BC,,,,clinic,
-LifeLabs (BC),Sidney PSC,2475 BEVAN AVE,SIDNEY,BC,,,,clinic,
-LifeLabs (BC),Simon PSC,32475 SIMON AVE,ABBOTSFORD,BC,,,,clinic,
-LifeLabs (BC),Sooke PSC,6660 SOOKE RD,SOOKE,BC,,,,clinic,
-LifeLabs (BC),Southgate PSC,50 TENTH ST,NANAIMO,BC,,,,clinic,
-LifeLabs (BC),Southill PSC,6540 FRASER ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),St Paul PSC,546 ST PAUL ST,KAMLOOPS,BC,,,,clinic,
-LifeLabs (BC),Steveston PSC,3811 CHATHAM RD,RICHMOND,BC,,,,clinic,
-LifeLabs (BC),Sunset PSC,8207 ONTARIO ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Surrey Central PSC,10166 KING GEORGE BLVD,SURREY,BC,,,,clinic,
-LifeLabs (BC),Surrey City Centre (CC2),9639 137TH ST,SURREY,BC,,,,clinic,
-LifeLabs (BC),Terrace PSC,4634 PARK AVE,TERRACE,BC,,,,clinic,
-LifeLabs (BC),Three Pillars PSC,407 GORE AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Tranquille PSC,685 TRANQUILLE RD,KAMLOOPS,BC,,,,clinic,
-LifeLabs (BC),Tsawwassen PSC,1077 56TH ST,DELTA,BC,,,,clinic,
-LifeLabs (BC),Vernon PSC,2306 HWY 6,VERNON,BC,,,,clinic,
-LifeLabs (BC),Victoria Drive PSC,5786 VICTORIA DR,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Walnut Grove PSC,20999 88TH AVE,LANGLEY,BC,,,,clinic,
-LifeLabs (BC),Westshore PSC,2945 JACKLIN RD,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Westside PSC,174 WILSON ST,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),White Rock PSC,1656 MARTIN DR,SURREY,BC,,,,clinic,
-LifeLabs (BC),Willowbrook PSC,19653 WILLOWBROOK DR,LANGLEY,BC,,,,clinic,
-LifeLabs (BC),Wilson PSC,2185 WILSON AVE,PORT COQUITLAM,BC,,,,clinic,
-LifeLabs (BC),Woodridge PSC,650 WEST 41ST AVE,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Yaletown PSC,136 DAVIE ST,VANCOUVER,BC,,,,clinic,
-LifeLabs (BC),Yarrow PSC,645 FORT ST,VICTORIA,BC,,,,clinic,
-LifeLabs (BC),Yates PSC,1120 YATES ST,VICTORIA,BC,,,,clinic,
+LifeLabs (BC),Abbotsford PSC,33498 BEVAN AVE,ABBOTSFORD,BC,,49.044641,-122.29587,clinic,"https://maps.google.com/?q=49.044641,-122.29587"
+LifeLabs (BC),Agassiz PSC,7069 CHEAM AVE,AGASSIZ,BC,,49.238452,-121.765623,clinic,"https://maps.google.com/?q=49.238452,-121.765623"
+LifeLabs (BC),Aldergrove PSC,26310 FRASER HWY,ALDERGROVE,BC,,49.058239,-122.494853,clinic,"https://maps.google.com/?q=49.058239,-122.494853"
+LifeLabs (BC),Beverly PSC,2763 BEVERLY ST,DUNCAN,BC,,48.786081,-123.708428,clinic,"https://maps.google.com/?q=48.786081,-123.708428"
+LifeLabs (BC),Brickyard PSC,6010 BRICKYARD RD,NANAIMO,BC,,49.234479,-124.025849,clinic,"https://maps.google.com/?q=49.234479,-124.025849"
+LifeLabs (BC),Broadway PSC,943 WEST BROADWAY,VANCOUVER,BC,,49.263651,-123.125072,clinic,"https://maps.google.com/?q=49.263651,-123.125072"
+LifeLabs (BC),Brookswood PSC,20103 40TH AVE,LANGLEY,BC,,49.103929,-122.657047,clinic,"https://maps.google.com/?q=49.103929,-122.657047"
+LifeLabs (BC),Burnaby Square PSC,7885 6TH ST,BURNABY,BC,,49.219023,-122.928017,clinic,"https://maps.google.com/?q=49.219023,-122.928017"
+LifeLabs (BC),Burnside PSC,101 BURNSIDE RD W,VICTORIA,BC,,48.428318,-123.364953,clinic,"https://maps.google.com/?q=48.428318,-123.364953"
+LifeLabs (BC),Burrard PSC,1200 BURRARD ST,VANCOUVER,BC,,49.278655,-123.129166,clinic,"https://maps.google.com/?q=49.278655,-123.129166"
+LifeLabs (BC),Buswell PSC,6451 BUSWELL ST,RICHMOND,BC,,49.166878,-123.133888,clinic,"https://maps.google.com/?q=49.166878,-123.133888"
+LifeLabs (BC),Campbell River PSC,465 MERECROFT RD,CAMPBELL RIVER,BC,,49.999299,-125.246562,clinic,"https://maps.google.com/?q=49.999299,-125.246562"
+LifeLabs (BC),Capstan Way PSC,8155 CAPSTAN WAY,RICHMOND,BC,,49.189207,-123.133402,clinic,"https://maps.google.com/?q=49.189207,-123.133402"
+LifeLabs (BC),Cedar Hill PSC,1590 CEDAR HILL CROSS RD,VICTORIA,BC,,48.46149,-123.33261,clinic,"https://maps.google.com/?q=48.46149,-123.33261"
+LifeLabs (BC),Central Park PSC,4250 KINGSWAY,BURNABY,BC,,49.231418,-123.009174,clinic,"https://maps.google.com/?q=49.231418,-123.009174"
+LifeLabs (BC),Champlain Square PSC,3150 EAST 54TH AVE,VANCOUVER,BC,,49.219088,-123.040183,clinic,"https://maps.google.com/?q=49.219088,-123.040183"
+LifeLabs (BC),Chilliwack PSC,8236 EAGLE LANDING PKY,CHILLIWACK,BC,,49.157234,-121.975414,clinic,"https://maps.google.com/?q=49.157234,-121.975414"
+LifeLabs (BC),City Centre PSC,1160 BURRARD ST,VANCOUVER,BC,,49.279234,-123.128154,clinic,"https://maps.google.com/?q=49.279234,-123.128154"
+LifeLabs (BC),Cityview PSC,1530 WEST 7TH AVE,VANCOUVER,BC,,49.265239,-123.139671,clinic,"https://maps.google.com/?q=49.265239,-123.139671"
+LifeLabs (BC),Clearbrook PSC,2825 CLEARBROOK RD,ABBOTSFORD,BC,,49.053509,-122.338534,clinic,"https://maps.google.com/?q=49.053509,-122.338534"
+LifeLabs (BC),Cloverdale PSC,17760 56TH AVE,SURREY,BC,,49.191303,-122.849143,clinic,"https://maps.google.com/?q=49.191303,-122.849143"
+LifeLabs (BC),Colwood PSC,582 GOLDSTREAM AVE,VICTORIA,BC,,48.428318,-123.364953,clinic,"https://maps.google.com/?q=48.428318,-123.364953"
+LifeLabs (BC),Commercial Drive PSC,1750 10TH AVE,VANCOUVER,BC,,49.262468,-123.144729,clinic,"https://maps.google.com/?q=49.262468,-123.144729"
+LifeLabs (BC),Courtenay PSC,1599 CLIFFE AVE,COURTENAY,BC,,49.683826,-124.992693,clinic,"https://maps.google.com/?q=49.683826,-124.992693"
+LifeLabs (BC),Crestwood PSC,6051 GILBERT RD,RICHMOND,BC,,49.169729,-123.14813,clinic,"https://maps.google.com/?q=49.169729,-123.14813"
+LifeLabs (BC),Dawson Creek PSC,705 103RD AVE,DAWSON CREEK,BC,,55.760531,-120.236445,clinic,"https://maps.google.com/?q=55.760531,-120.236445"
+LifeLabs (BC),Denman Island,3351 PIERCY RD,DENMAN ISLAND,BC,,49.54177,-124.794502,clinic,"https://maps.google.com/?q=49.54177,-124.794502"
+LifeLabs (BC),Discovery PSC,4366 WEST 10TH AVE,VANCOUVER,BC,,49.263651,-123.196968,clinic,"https://maps.google.com/?q=49.263651,-123.196968"
+LifeLabs (BC),Douglas Crescent PSC,5503 206TH ST,LANGLEY,BC,,49.103929,-122.657047,clinic,"https://maps.google.com/?q=49.103929,-122.657047"
+LifeLabs (BC),Dunbar PSC,3540 WEST 41ST AVE,VANCOUVER,BC,,49.234511,-123.183346,clinic,"https://maps.google.com/?q=49.234511,-123.183346"
+LifeLabs (BC),Dundarave PSC,2419 BELLEVUE AVE,WEST VANCOUVER,BC,,49.331985,-123.174563,clinic,"https://maps.google.com/?q=49.331985,-123.174563"
+LifeLabs (BC),Eagleridge PSC,1194 LANSDOWNE DR,COQUITLAM,BC,,49.283348,-122.809691,clinic,"https://maps.google.com/?q=49.283348,-122.809691"
+LifeLabs (BC),East Hastings PSC,1506 HASTINGS ST,VANCOUVER,BC,,49.290449,-123.128875,clinic,"https://maps.google.com/?q=49.290449,-123.128875"
+LifeLabs (BC),Esquimalt PSC,890 ESQUIMALT RD,VICTORIA,BC,,48.430886,-123.40073,clinic,"https://maps.google.com/?q=48.430886,-123.40073"
+LifeLabs (BC),Fairmont PSC (Located at 701-750 W. Broadway),750 WEST BROADWAY,VANCOUVER,BC,,49.26306,-123.121055,clinic,"https://maps.google.com/?q=49.26306,-123.121055"
+LifeLabs (BC),Fort PSC (Located at 103-1625 Oak Bay Ave),1625 OAK BAY AVE,VICTORIA,BC,,48.426335,-123.335334,clinic,"https://maps.google.com/?q=48.426335,-123.335334"
+LifeLabs (BC),Gabriola PSC,691 CHURCH ST,GABRIOLA,BC,,49.176295,-123.835227,clinic,"https://maps.google.com/?q=49.176295,-123.835227"
+LifeLabs (BC),Georgia PSC,777 HORNBY ST,VANCOUVER,BC,,49.283127,-123.121623,clinic,"https://maps.google.com/?q=49.283127,-123.121623"
+LifeLabs (BC),Gibsons PSC,1100 SUNSHINE COAST HWY,GIBSONS,BC,,49.407798,-123.5311,clinic,"https://maps.google.com/?q=49.407798,-123.5311"
+LifeLabs (BC),Gordon PSC,3001 GORDON AVE,COQUITLAM,BC,,49.271801,-122.79293,clinic,"https://maps.google.com/?q=49.271801,-122.79293"
+LifeLabs (BC),Guildford PSC,15300 105TH AVE,SURREY,BC,,49.191303,-122.849143,clinic,"https://maps.google.com/?q=49.191303,-122.849143"
+LifeLabs (BC),Harrison Way PSC,1966 HARRISON WAY,KAMLOOPS,BC,,50.649619,-120.373506,clinic,"https://maps.google.com/?q=50.649619,-120.373506"
+LifeLabs (BC),Hastings PSC,324 GILMORE AVE,BURNABY,BC,,49.281721,-123.014026,clinic,"https://maps.google.com/?q=49.281721,-123.014026"
+LifeLabs (BC),Hillside PSC,1641 HILLSIDE AVE,VICTORIA,BC,,48.445173,-123.333957,clinic,"https://maps.google.com/?q=48.445173,-123.333957"
+LifeLabs (BC),Hollyburn PSC,575 16TH ST,WEST VANCOUVER,BC,,49.329171,-123.159312,clinic,"https://maps.google.com/?q=49.329171,-123.159312"
+LifeLabs (BC),Hornby Island,1855 SOLLANS RD,HORNBY ISLAND,BC,,49.520751,-124.674251,clinic,"https://maps.google.com/?q=49.520751,-124.674251"
+LifeLabs (BC),Ingram PSC,149 INGRAM ST,DUNCAN,BC,,48.779481,-123.70932,clinic,"https://maps.google.com/?q=48.779481,-123.70932"
+LifeLabs (BC),Ironwood PSC,10880 NO 5 RD,RICHMOND,BC,,49.163168,-123.137414,clinic,"https://maps.google.com/?q=49.163168,-123.137414"
+LifeLabs (BC),James Bay PSC,547 MICHIGAN ST,VICTORIA,BC,,48.416712,-123.371293,clinic,"https://maps.google.com/?q=48.416712,-123.371293"
+LifeLabs (BC),Kensington PSC,6542 HASTINGS ST,BURNABY,BC,,49.279487,-122.968348,clinic,"https://maps.google.com/?q=49.279487,-122.968348"
+LifeLabs (BC),Kerrisdale PSC,2061 WEST 42ND AVE,VANCOUVER,BC,,49.233902,-123.154413,clinic,"https://maps.google.com/?q=49.233902,-123.154413"
+LifeLabs (BC),Kimberley PSC,260 4TH AVE,KIMBERLEY,BC,,49.689224,-115.986694,clinic,"https://maps.google.com/?q=49.689224,-115.986694"
+LifeLabs (BC),King Edward PSC,972 KING EDWARD AVE W,VANCOUVER,BC,,49.248727,-123.125247,clinic,"https://maps.google.com/?q=49.248727,-123.125247"
+LifeLabs (BC),Ladner PSC,4515 HARVEST DR,DELTA,BC,,49.085041,-123.06464,clinic,"https://maps.google.com/?q=49.085041,-123.06464"
+LifeLabs (BC),Ladysmith PSC,370 DAVIS RD,LADYSMITH,BC,,48.978255,-123.804704,clinic,"https://maps.google.com/?q=48.978255,-123.804704"
+LifeLabs (BC),Laurel PSC,888 WEST 8TH AVE,VANCOUVER,BC,,49.264007,-123.123417,clinic,"https://maps.google.com/?q=49.264007,-123.123417"
+LifeLabs (BC),Little Mountain PSC,4527 MAIN ST,VANCOUVER,BC,,49.24424,-123.101593,clinic,"https://maps.google.com/?q=49.24424,-123.101593"
+LifeLabs (BC),Lonsdale PSC,1916 LONSDALE AVE,NORTH VANCOUVER,BC,,49.326851,-123.071654,clinic,"https://maps.google.com/?q=49.326851,-123.071654"
+LifeLabs (BC),Lougheed PSC (Located above the CIBC),3778 GRAND PROM,BURNABY,BC,,49.249574,-122.894643,clinic,"https://maps.google.com/?q=49.249574,-122.894643"
+LifeLabs (BC),Lynn Valley PSC,1200 LYNN VALLEY RD,NORTH VANCOUVER,BC,,49.329062,-123.05345,clinic,"https://maps.google.com/?q=49.329062,-123.05345"
+LifeLabs (BC),Main & Keefer PSC,180 KEEFER ST,VANCOUVER,BC,,49.279099,-123.101458,clinic,"https://maps.google.com/?q=49.279099,-123.101458"
+LifeLabs (BC),Maple Ridge PSC,11743 224TH ST,MAPLE RIDGE,BC,,49.219735,-122.599707,clinic,"https://maps.google.com/?q=49.219735,-122.599707"
+LifeLabs (BC),Marine Drive PSC,845 MARINE DR,NORTH VANCOUVER,BC,,49.320838,-123.096076,clinic,"https://maps.google.com/?q=49.320838,-123.096076"
+LifeLabs (BC),Marpole PSC,8677 GRANVILLE ST,VANCOUVER,BC,,49.215405,-123.14031,clinic,"https://maps.google.com/?q=49.215405,-123.14031"
+LifeLabs (BC),Metrotown PSC,4980 KINGSWAY,BURNABY,BC,,49.225427,-122.993961,clinic,"https://maps.google.com/?q=49.225427,-122.993961"
+LifeLabs (BC),Mill Bay PSC,2720 MILL BAY RD,MILL BAY,BC,,48.65119,-123.559012,clinic,"https://maps.google.com/?q=48.65119,-123.559012"
+LifeLabs (BC),Millstream PSC,2401 MILLSTREAM RD,VICTORIA,BC,,48.428318,-123.364953,clinic,"https://maps.google.com/?q=48.428318,-123.364953"
+LifeLabs (BC),Mission PSC,7343 HURD ST,MISSION,BC,,49.133313,-122.329347,clinic,"https://maps.google.com/?q=49.133313,-122.329347"
+LifeLabs (BC),Morgan Creek PSC,15252 32ND AVE,SURREY,BC,,49.191303,-122.849143,clinic,"https://maps.google.com/?q=49.191303,-122.849143"
+LifeLabs (BC),Nelson PSC,806 VERNON ST,NELSON,BC,,49.491338,-117.298303,clinic,"https://maps.google.com/?q=49.491338,-117.298303"
+LifeLabs (BC),Newton PSC,7404 KING GEORGE BLVD,SURREY,BC,,49.137628,-122.845263,clinic,"https://maps.google.com/?q=49.137628,-122.845263"
+LifeLabs (BC),Nicola PSC,321 NICOLA ST,KAMLOOPS,BC,,50.672145,-120.334084,clinic,"https://maps.google.com/?q=50.672145,-120.334084"
+LifeLabs (BC),No 3 Road PSC,5791 NO 3RD,RICHMOND,BC,,49.163168,-123.137414,clinic,"https://maps.google.com/?q=49.163168,-123.137414"
+LifeLabs (BC),Norburn PSC,4012 HASTINGS ST,BURNABY,BC,,49.280861,-123.015825,clinic,"https://maps.google.com/?q=49.280861,-123.015825"
+LifeLabs (BC),North Road PSC,435 NORTH RD,COQUITLAM,BC,,49.247815,-122.890887,clinic,"https://maps.google.com/?q=49.247815,-122.890887"
+LifeLabs (BC),North Town PSC,4750 RUTHERFORD RD,NANAIMO,BC,,49.217837,-124.028858,clinic,"https://maps.google.com/?q=49.217837,-124.028858"
+LifeLabs (BC),Parkgate PSC,3650 MT SEYMOUR PKY,NORTH VANCOUVER,BC,,49.316838,-122.971043,clinic,"https://maps.google.com/?q=49.316838,-122.971043"
+LifeLabs (BC),Parksville PSC,489 ALBERNI HWY,PARKSVILLE,BC,,49.31026,-124.324658,clinic,"https://maps.google.com/?q=49.31026,-124.324658"
+LifeLabs (BC),Peace Arch PSC,15331 16TH AVE,SURREY,BC,,49.191303,-122.849143,clinic,"https://maps.google.com/?q=49.191303,-122.849143"
+LifeLabs (BC),Pitt Meadows PSC,12195 HARRIS RD,PITT MEADOWS,BC,,49.224287,-122.690237,clinic,"https://maps.google.com/?q=49.224287,-122.690237"
+LifeLabs (BC),Poco PSC,1465 SALISBURY AVE,PORT COQUITLAM,BC,,49.272505,-122.75474,clinic,"https://maps.google.com/?q=49.272505,-122.75474"
+LifeLabs (BC),Port Alberni PSC,3949 MAPLE WAY,PORT ALBERNI,BC,,49.264062,-124.791461,clinic,"https://maps.google.com/?q=49.264062,-124.791461"
+LifeLabs (BC),Port Moody PSC,2624 ST JOHNS ST,PORT MOODY,BC,,49.276864,-122.852731,clinic,"https://maps.google.com/?q=49.276864,-122.852731"
+LifeLabs (BC),Port Place PSC,650 SOUTH TERMINAL AVE,NANAIMO,BC,,49.163877,-123.938122,clinic,"https://maps.google.com/?q=49.163877,-123.938122"
+LifeLabs (BC),Prince George PSC,1669 VICTORIA ST,PRINCE GEORGE,BC,,53.908624,-122.755373,clinic,"https://maps.google.com/?q=53.908624,-122.755373"
+LifeLabs (BC),Qualicum PSC,670 MEMORIAL AVE,QUALICUM BEACH,BC,,49.347662,-124.441416,clinic,"https://maps.google.com/?q=49.347662,-124.441416"
+LifeLabs (BC),Quesnel PSC,665 FRONT ST,QUESNEL,BC,,52.985861,-122.499827,clinic,"https://maps.google.com/?q=52.985861,-122.499827"
+LifeLabs (BC),Regent PSC,2184 WEST BROADWAY,VANCOUVER,BC,,49.263635,-123.154876,clinic,"https://maps.google.com/?q=49.263635,-123.154876"
+LifeLabs (BC),Rock City PSC,2980 ISLAND HWY N,NANAIMO,BC,,49.203983,-123.997049,clinic,"https://maps.google.com/?q=49.203983,-123.997049"
+LifeLabs (BC),Royal City PSC,625 FIFTH AVE,NEW WESTMINSTER,BC,,49.211318,-122.919978,clinic,"https://maps.google.com/?q=49.211318,-122.919978"
+LifeLabs (BC),Royal Oak PSC,4480 WEST SAANICH RD,VICTORIA,BC,,48.428318,-123.364953,clinic,"https://maps.google.com/?q=48.428318,-123.364953"
+LifeLabs (BC),Sapperton PSC,227 NELSON CRES,NEW WESTMINSTER,BC,,49.224173,-122.892183,clinic,"https://maps.google.com/?q=49.224173,-122.892183"
+LifeLabs (BC),Satnam Place PSC,7130 120TH ST,SURREY,BC,,49.191303,-122.849143,clinic,"https://maps.google.com/?q=49.191303,-122.849143"
+LifeLabs (BC),Scott Road PSC,12080 NORDEL WAY,SURREY,BC,,49.160943,-122.888499,clinic,"https://maps.google.com/?q=49.160943,-122.888499"
+LifeLabs (BC),Sechelt PSC,5531 INLET AVE,SECHELT,BC,,49.471605,-123.756369,clinic,"https://maps.google.com/?q=49.471605,-123.756369"
+LifeLabs (BC),Sidney PSC,2475 BEVAN AVE,SIDNEY,BC,,48.647469,-123.397396,clinic,"https://maps.google.com/?q=48.647469,-123.397396"
+LifeLabs (BC),Simon PSC,32475 SIMON AVE,ABBOTSFORD,BC,,49.05359,-122.324425,clinic,"https://maps.google.com/?q=49.05359,-122.324425"
+LifeLabs (BC),Sooke PSC,6660 SOOKE RD,SOOKE,BC,,48.379414,-123.72252,clinic,"https://maps.google.com/?q=48.379414,-123.72252"
+LifeLabs (BC),Southgate PSC,50 TENTH ST,NANAIMO,BC,,49.131686,-123.923339,clinic,"https://maps.google.com/?q=49.131686,-123.923339"
+LifeLabs (BC),Southill PSC,6540 FRASER ST,VANCOUVER,BC,,49.256677,-123.089772,clinic,"https://maps.google.com/?q=49.256677,-123.089772"
+LifeLabs (BC),St Paul PSC,546 ST PAUL ST,KAMLOOPS,BC,,50.674247,-120.328265,clinic,"https://maps.google.com/?q=50.674247,-120.328265"
+LifeLabs (BC),Steveston PSC,3811 CHATHAM RD,RICHMOND,BC,,49.163168,-123.137414,clinic,"https://maps.google.com/?q=49.163168,-123.137414"
+LifeLabs (BC),Sunset PSC,8207 ONTARIO ST,VANCOUVER,BC,,49.231066,-123.105741,clinic,"https://maps.google.com/?q=49.231066,-123.105741"
+LifeLabs (BC),Surrey Central PSC,10166 KING GEORGE BLVD,SURREY,BC,,49.187309,-122.844545,clinic,"https://maps.google.com/?q=49.187309,-122.844545"
+LifeLabs (BC),Surrey City Centre (CC2),9639 137TH ST,SURREY,BC,,49.191303,-122.849143,clinic,"https://maps.google.com/?q=49.191303,-122.849143"
+LifeLabs (BC),Terrace PSC,4634 PARK AVE,TERRACE,BC,,54.517726,-128.580982,clinic,"https://maps.google.com/?q=54.517726,-128.580982"
+LifeLabs (BC),Three Pillars PSC,407 GORE AVE,VANCOUVER,BC,,49.280866,-123.097608,clinic,"https://maps.google.com/?q=49.280866,-123.097608"
+LifeLabs (BC),Tranquille PSC,685 TRANQUILLE RD,KAMLOOPS,BC,,50.696926,-120.361367,clinic,"https://maps.google.com/?q=50.696926,-120.361367"
+LifeLabs (BC),Tsawwassen PSC,1077 56TH ST,DELTA,BC,,49.084626,-123.057938,clinic,"https://maps.google.com/?q=49.084626,-123.057938"
+LifeLabs (BC),Vernon PSC,2306 HWY 6,VERNON,BC,,50.256299,-119.265037,clinic,"https://maps.google.com/?q=50.256299,-119.265037"
+LifeLabs (BC),Victoria Drive PSC,5786 VICTORIA DR,VANCOUVER,BC,,49.231539,-123.065346,clinic,"https://maps.google.com/?q=49.231539,-123.065346"
+LifeLabs (BC),Walnut Grove PSC,20999 88TH AVE,LANGLEY,BC,,49.103929,-122.657047,clinic,"https://maps.google.com/?q=49.103929,-122.657047"
+LifeLabs (BC),Westshore PSC,2945 JACKLIN RD,VICTORIA,BC,,48.428318,-123.364953,clinic,"https://maps.google.com/?q=48.428318,-123.364953"
+LifeLabs (BC),Westside PSC,174 WILSON ST,VICTORIA,BC,,48.433217,-123.380605,clinic,"https://maps.google.com/?q=48.433217,-123.380605"
+LifeLabs (BC),White Rock PSC,1656 MARTIN DR,SURREY,BC,,49.031925,-122.804847,clinic,"https://maps.google.com/?q=49.031925,-122.804847"
+LifeLabs (BC),Willowbrook PSC,19653 WILLOWBROOK DR,LANGLEY,BC,,49.115747,-122.67961,clinic,"https://maps.google.com/?q=49.115747,-122.67961"
+LifeLabs (BC),Wilson PSC,2185 WILSON AVE,PORT COQUITLAM,BC,,49.260878,-122.786489,clinic,"https://maps.google.com/?q=49.260878,-122.786489"
+LifeLabs (BC),Woodridge PSC,650 WEST 41ST AVE,VANCOUVER,BC,,49.233989,-123.120398,clinic,"https://maps.google.com/?q=49.233989,-123.120398"
+LifeLabs (BC),Yaletown PSC,136 DAVIE ST,VANCOUVER,BC,,49.273086,-123.121033,clinic,"https://maps.google.com/?q=49.273086,-123.121033"
+LifeLabs (BC),Yarrow PSC,645 FORT ST,VICTORIA,BC,,48.424678,-123.366687,clinic,"https://maps.google.com/?q=48.424678,-123.366687"
+LifeLabs (BC),Yates PSC,1120 YATES ST,VICTORIA,BC,,48.425252,-123.352518,clinic,"https://maps.google.com/?q=48.425252,-123.352518"
 LifeLabs (BC),Bowen Island Patient Service Centre,#228-1037 Miller Road,Bowen Island,BC,V0N 1G1,49.383107,-123.339775,clinic,https://maps.google.com/?q=49.383107
 ,,,,,,,,,
 DYNACARE ONTARIO,,,,,,,,,
-Dynacare Ontario,TORONTO,B1-360 COLLEGE ST,TORONTO,ON,M5T 1S6,,,clinic,
-Dynacare Ontario,BOLTON,B2-30 MARTHA ST,BOLTON,ON,L7E 5V1,,,clinic,
-Dynacare Ontario,SUDBURY,B4-2009 LONG LAKE RD,SUDBURY,ON,P3E 6C3,,,clinic,
-Dynacare Ontario,SIMCOE,204-216 WEST ST,SIMCOE,ON,N3Y 1S8,,,clinic,
-Dynacare Ontario,TORONTO,620-170 ST GEORGE ST,TORONTO,ON,M5R 2M8,,,clinic,
-Dynacare Ontario,MASSEY,250 CAMERON ST,MASSEY,ON,P0P 1P0,,,clinic,
-Dynacare Ontario,TORONTO,304-1223 ST CLAIR AVE W,TORONTO,ON,M6E 1B5,,,clinic,
-Dynacare Ontario,OSHAWA,211 SIMCOE ST S,OSHAWA,ON,L1H 4H2,,,clinic,
-Dynacare Ontario,BRAMPTON,387-25 PEEL CENTRE DR,BRAMPTON,ON,L6T 3R5,,,clinic,
-Dynacare Ontario,TORONTO,245 EGLINTON AVE E,TORONTO,ON,M4P 3B7,,,clinic,
-Dynacare Ontario,PICKERING,1-720 SHEPPARD AVE,PICKERING,ON,L1V 1G5,,,clinic,
-Dynacare Ontario,BOLTON,202-12295 HIGHWAY 50,BOLTON,ON,L7E 1M2,,,clinic,
-Dynacare Ontario,SCARBOROUGH,B-1346 KINGSTON RD,SCARBOROUGH,ON,M1N 1P9,,,clinic,
-Dynacare Ontario,SCARBOROUGH,2600 EGLINTON AVE E,SCARBOROUGH,ON,M6M 2R9,,,clinic,
-Dynacare Ontario,TORONTO,344 BLOOR ST W,TORONTO,ON,M5S 3A7,,,clinic,
-Dynacare Ontario,BOWMANVILLE,222 KING ST E,BOWMANVILLE,ON,L1C 1P6,,,clinic,
-Dynacare Ontario,NORTH YORK,306 FINCH AVE E,NORTH YORK,ON,M2N 4S5,,,clinic,
-Dynacare Ontario,SCARBOROUGH,9 NEILSON RD,SCARBOROUGH,ON,M1E 5E1,,,clinic,
-Dynacare Ontario,EAST YORK,200 DAWES RD,EAST YORK,ON,M4C 5M8,,,clinic,
-Dynacare Ontario,TILLSONBURG,154 ROLPH ST,TILLSONBURG,ON,N4G 3Z1,,,clinic,
-Dynacare Ontario,THORNHILL,206-7330 YONGE ST,THORNHILL,ON,L4J 7Y7,,,clinic,
-Dynacare Ontario,TORONTO,1ST FL-250 UNIVERSITY AVE,TORONTO,ON,M5H 3E5,,,clinic,
-Dynacare Ontario,ST CATHARINES,524 LAKE ST,ST CATHARINES,ON,L2N 4H4,,,clinic,
-Dynacare Ontario,LONDON,190 WORTLEY RD,LONDON,ON,N6C 4Y7,,,clinic,
-Dynacare Ontario,WOODSTOCK,550 INGERSOLL AVE,WOODSTOCK,ON,N4S 4Y3,,,clinic,
-Dynacare Ontario,STRATFORD,287 HURON ST,STRATFORD,ON,N5A 5T3,,,clinic,
-Dynacare Ontario,LONDON,201-1135 ADELAIDE ST N,LONDON,ON,N5Y 5K7,,,clinic,
-Dynacare Ontario,WINDSOR,3950 DOUGALL AVE,WINDSOR,ON,N9G 1X2,,,clinic,
-Dynacare Ontario,LONDON,600 SANATORIUM RD,LONDON,ON,N6H 3W7,,,clinic,
-Dynacare Ontario,BRACEBRIDGE,8 TAYLOR RD,BRACEBRIDGE,ON,P1L 1S6,,,clinic,
-Dynacare Ontario,NEPEAN,250B GREENBANK RD,NEPEAN,ON,K2H 8X4,,,clinic,
-Dynacare Ontario,NEPEAN,1637 WOODROFFE AVE,NEPEAN,ON,K2G 1W2,,,clinic,
-Dynacare Ontario,OTTAWA,11 ROSEMOUNT AVE,OTTAWA,ON,K1Y 4R8,,,clinic,
-Dynacare Ontario,PRESCOTT,276 KING ST W,PRESCOTT,ON,K0E 1T0,,,clinic,
-Dynacare Ontario,OTTAWA,550-1335 CARLING AVE,OTTAWA,ON,K1Z 8N8,,,clinic,
-Dynacare Ontario,CARP,119 LANGSTAFF DR,CARP,ON,K0A 1L0,,,clinic,
-Dynacare Ontario,OTTAWA,356 WOODROFFE AVE,OTTAWA,ON,K2A 3V6,,,clinic,
-Dynacare Ontario,VANIER,261 MONTREAL RD,VANIER,ON,K1L 8C7,,,clinic,
-Dynacare Ontario,VANIER,390 MCARTHUR AVE,VANIER,ON,K1L 6N6,,,clinic,
-Dynacare Ontario,VANIER,311 MCARTHUR AVE,VANIER,ON,K1L 8M3,,,clinic,
-Dynacare Ontario,VANIER,355 MONTREAL RD,VANIER,ON,K1L 8H3,,,clinic,
-Dynacare Ontario,GLOUCESTER,1651 MONTREAL RD,GLOUCESTER,ON,K1J 6N6,,,clinic,
-Dynacare Ontario,OTTAWA,1729 BANK ST,OTTAWA,ON,K1V 7Z5,,,clinic,
-Dynacare Ontario,OTTAWA,306-2211 RIVERSIDE DR,OTTAWA,ON,K1H 7X5,,,clinic,
-Dynacare Ontario,OTTAWA,248 FRIEL ST,OTTAWA,ON,K1N 7V9,,,clinic,
-Dynacare Ontario,OTTAWA,1355 BANK ST,OTTAWA,ON,K1H 8K7,,,clinic,
-Dynacare Ontario,OTTAWA,1719 BANK ST,OTTAWA,ON,K1V 7Z4,,,clinic,
-Dynacare Ontario,OTTAWA,260 DALHOUSIE ST,OTTAWA,ON,K1N 7E4,,,clinic,
-Dynacare Ontario,Mississauga,E229A-5100 Erin Mills Pky,Mississauga,ON,L5M 4Z5,,,clinic,
-Dynacare Ontario,TORONTO,2075 BAYVIEW AVE,TORONTO,ON,M4N 3M5,,,clinic,
-Dynacare Ontario,Richmond Hill,317-550 Hwy 7 E,Richmond Hill,ON,L4B 3Z4,,,clinic,
-Dynacare Ontario,RICHMOND HILL,9355 LESLIE ST,RICHMOND HILL,ON,L4B 0J3,,,clinic,
-Dynacare Ontario,Toronto,2404 Eglinton Ave. W,Toronto,ON,M6M 1S6,,,clinic,
-Dynacare Ontario,Keswick,4/7-23546 Woodbine Ave.,Keswick,ON,L4P 0E2,,,clinic,
-Dynacare Ontario,Orangeville,140 Rolling Hills Dr.,Orangeville,ON,L9W 4X8,,,clinic,
-Dynacare Ontario,Vaughan,531 Atkinson Ave.,Vaughan,ON,L4J 8L7,,,clinic,
-Dynacare Ontario,Vaughan,B01-8333 Weston Rd.,Vaughan,ON,L4L 8E2,,,clinic,
-Dynacare Ontario,Richmond Hill,103-13291 Yonge St.,Richmond Hill,ON,L4E 4L6,,,clinic,
-Dynacare Ontario,Orangeville,100-1 Elizabeth St.,Orangeville,ON,L9W 7N7,,,clinic,
-Dynacare Ontario,Tottenham,B-6672 3rd Line,Tottenham,ON,L0W 1G0,,,clinic,
-Dynacare Ontario,Vaughan,121-9401 Jane St.,Vaughan,ON,L6A 4H7,,,clinic,
-Dynacare Ontario,East Gwillimbury,181 Green Lane E,East Gwillimbury,ON,L9N 0C9,,,clinic,
-Dynacare Ontario,Richmond Hill,10660 Yonge St.,Richmond Hill,ON,L4C 3C9,,,clinic,
-Dynacare Ontario,Toronto,491 Eglinton Ave. W,Toronto,ON,M5N 1A8,,,clinic,
-Dynacare Ontario,Markham,109-7155 Woodbine Ave.,Markham,ON,L3R 1A3,,,clinic,
-Dynacare Ontario,Toronto,LL1-1849 Yonge St.,Toronto,ON,M4S 1Y2,,,clinic,
-Dynacare Ontario,Toronto,107-2401 Yonge St.,Toronto,ON,M4P 3H1,,,clinic,
-Dynacare Ontario,Toronto,204-3292 Bayview Ave.,Toronto,ON,M2M 4J5,,,clinic,
-Dynacare Ontario,Richmond Hill,210-328 Hwy 7 E,Richmond Hill,ON,L4B 3P7,,,clinic,
-Dynacare Ontario,Vaughan,206-2900 Steeles Ave. E,Vaughan,ON,L3T 4X1,,,clinic,
-Dynacare Ontario,Markham,2-9255 Woodbine Ave.,Markham,ON,L6C 1Y9,,,clinic,
-Dynacare Ontario,Vaughan,L55-7117 Bathurst St.,Vaughan,ON,L4J 2J6,,,clinic,
-Dynacare Ontario,Vaughan,209-955 Major MacKenzie Dr. W,Vaughan,ON,L6A 4P9,,,clinic,
-Dynacare Ontario,Whitby,700 Gordon St.,Whitby,ON,L1N 5S9,,,clinic,
-Dynacare Ontario,Toronto,76 Grenville St.,Toronto,ON,M5S 1B2,,,clinic,
-Dynacare Ontario,Whitby,202-220 Dundas St. W,Whitby,ON,L1N 8M7,,,clinic,
-Dynacare Ontario,Ajax,208-95 Bayly St W,Ajax,ON,L1S 7K8,,,clinic,
-Dynacare Ontario,Kingston,201-190 Wellington St.,Kingston,ON,K7L 3E4,,,clinic,
-Dynacare Ontario,Ajax,101-300 Rossland Rd. E,Ajax,ON,L1Z 0M1,,,clinic,
-Dynacare Ontario,Pickering,111-1885 Glenanna Rd.,Pickering,ON,L1V 6R6,,,clinic,
-Dynacare Ontario,Toronto,B05-3030 Lawrence Ave. E,Toronto,ON,M1P 2T7,,,clinic,
-Dynacare Ontario,TORONTO,3-140 THE ESPLANADE,TORONTO,ON,M5A 4P5,,,clinic,
-Dynacare Ontario,TORONTO,1ST FLOOR-410 SHERBOURNE ST,TORONTO,ON,M4X 1K2,,,clinic,
-Dynacare Ontario,Toronto,60 Scottfield Dr.,Toronto,ON,M1S 5T7,,,clinic,
-Dynacare Ontario,TORONTO,401-235 DANFORTH AVE,TORONTO,ON,M4K 1N2,,,clinic,
-Dynacare Ontario,Oshawa,LL-1290 Keith Ross Dr.,Oshawa,ON,L1J 0C7,,,clinic,
-Dynacare Ontario,Courtice,LL-1450 Hwy 2,Courtice,ON,L1E 3C3,,,clinic,
-Dynacare Ontario,Toronto,10-78 Corporate Dr.,Toronto,ON,M1H 3G4,,,clinic,
-Dynacare Ontario,Belleville,2 Dundas St. W,Belleville,ON,K8P 1A1,,,clinic,
-Dynacare Ontario,Denbigh,31 Central St.,Denbigh,ON,K0H 1L0,,,clinic,
-Dynacare Ontario,Port Hope,110-249 Ontario St.,Port Hope,ON,L1A 3Y9,,,clinic,
-Dynacare Ontario,Peterborough,LL05-26 Hospital Dr.,Peterborough,ON,K9J 7C3,,,clinic,
-Dynacare Ontario,Oshawa,LL-117 King St. E,Oshawa,ON,L1H 1B9,,,clinic,
-Dynacare Ontario,Port Perry,B03-462 Paxton St.,Port Perry,ON,L9L 1L9,,,clinic,
-Dynacare Ontario,Amherstview,200 Speers Blvd.,Amherstview,ON,K7N 0B6,,,clinic,
-Dynacare Ontario,Northbrook,12357 Hwy 41,Northbrook,ON,K0H 2G0,,,clinic,
-Dynacare Ontario,Bobcaygeon,100 East St. S,Bobcaygeon,ON,K0M 1A0,,,clinic,
-Dynacare Ontario,Cannington,127-39 Cameron St. W,Cannington,ON,L0E 1E0,,,clinic,
-Dynacare Ontario,Kingston,B006A-690 Gardiners Rd.,Kingston,ON,K7M 3X9,,,clinic,
-Dynacare Ontario,Bracebridge,4-55 Muskoka Rd. 118 W,Bracebridge,ON,P1L 1T2,,,clinic,
-Dynacare Ontario,Huntsville,106-348 Muskoka Rd. 3 N,Huntsville,ON,P1H 1H8,,,clinic,
-Dynacare Ontario,North Bay,303-111 Main St. W,North Bay,ON,P1B 2T6,,,clinic,
-Dynacare Ontario,Gravenhurst,1-5 Pineridge Gate,Gravenhurst,ON,P1P 1Z3,,,clinic,
-Dynacare Ontario,SUDBURY,119-40 ELM ST,SUDBURY,ON,P3C 1S8,,,clinic,
-Dynacare Ontario,Penetanguishene,T-117-500 Church St.,Penetanguishene,ON,L9M 1G3,,,clinic,
-Dynacare Ontario,Elliot Lake,305-31 Nova Scotia Walk,Elliot Lake,ON,P5A 1Y9,,,clinic,
-Dynacare Ontario,Midland,100B-240 Penetanguishene Rd.,Midland,ON,L4R 4P4,,,clinic,
-Dynacare Ontario,Parry Sound,8 Albert St.,Parry Sound,ON,P2A 3A4,,,clinic,
-Dynacare Ontario,Markham,3-1210 Castlemore Ave.,Markham,ON,L6E 0H7,,,clinic,
-Dynacare Ontario,Toronto,2251 Lawrence Ave. E,Toronto,ON,M1P 2P5,,,clinic,
-Dynacare Ontario,Toronto,L55-4040 Finch Ave. E,Toronto,ON,M1S 4V5,,,clinic,
-Dynacare Ontario,Markham,102-10 Unionville Gate,Markham,ON,L3R 0W7,,,clinic,
-Dynacare Ontario,Markham,104-110 Copper Creek Dr.,Markham,ON,L6B 0P9,,,clinic,
-Dynacare Ontario,OSHAWA,11 GIBB ST,OSHAWA,ON,L1H 2J9,,,clinic,
-Dynacare Ontario,ETOBICOKE,200-5359 DUNDAS ST W,ETOBICOKE,ON,M9B 1B1,,,clinic,
-Dynacare Ontario,BRAMPTON,303-18 KENSINGTON RD,BRAMPTON,ON,L6T 4S5,,,clinic,
-Dynacare Ontario,OAKVILLE,LL-78 JONES ST,OAKVILLE,ON,L6L 6C5,,,clinic,
-Dynacare Ontario,HAMILTON,204-565 SANATORIUM ROAD,HAMILTON,ON,L9C 7N4,,,clinic,
-Dynacare Ontario,Hamilton,100-304 Victoria Ave. N,Hamilton,ON,L8L 5G4,,,clinic,
-Dynacare Ontario,Burlington,LL-2951 Walkers Line,Burlington,ON,L7M 4Y1,,,clinic,
-Dynacare Ontario,TORONTO,160 JARVIS ST,TORONTO,ON,M5B 2E1,,,clinic,
-Dynacare Ontario,TORONTO,B2-474 COLLEGE ST,TORONTO,ON,M6G 1A4,,,clinic,
-Dynacare Ontario,MISSISSAUGA,204-3420 HURONTARIO ST,MISSISSAUGA,ON,L5B 4A9,,,clinic,
-Dynacare Ontario,BARRIE,102-49 HIGH ST,BARRIE,ON,L4N 5J4,,,clinic,
-Dynacare Ontario,Hamilton,100-849 Upper Wentworth St.,Hamilton,ON,L9A 5H4,,,clinic,
-Dynacare Ontario,Hamilton,700 Main St. E,Hamilton,ON,L8M 1K7,,,clinic,
-Dynacare Ontario,Hamilton,505 King St. W,Hamilton,ON,L8P 1B9,,,clinic,
-Dynacare Ontario,SCARBOROUGH,520 ELLESMERE RD,SCARBOROUGH,ON,M1R 0B1,,,clinic,
-Dynacare Ontario,NORTH YORK,303-2830 KEELE ST,NORTH YORK,ON,M3M 3E5,,,clinic,
-Dynacare Ontario,Richmond Hill,9625 Yonge St.,Richmond Hill,ON,L4C 5T2,,,clinic,
-Dynacare Ontario,Toronto,20-1450 O'Connor Dr,Toronto,ON,M4B 2T8,,,clinic,
-Dynacare Ontario,LONDON,1051 WONDERLAND RD S,LONDON,ON,N6K 3X4,,,clinic,
-Dynacare Ontario,Hamilton,113-414 Victoria St. N,Hamilton,ON,L8L 5G8,,,clinic,
-Dynacare Ontario,Burlington,102-809 Brant St.,Burlington,ON,L7R 2J4,,,clinic,
-Dynacare Ontario,Kitchener,200A-385 Fairway Rd. S,Kitchener,ON,N2C 2N9,,,clinic,
-Dynacare Ontario,Hamilton,B-640 Queenston Rd.,Hamilton,ON,L8K 1K2,,,clinic,
-Dynacare Ontario,Niagara Falls,104-6453 Morrison St.,Niagara Falls,ON,L2E 7H1,,,clinic,
-Dynacare Ontario,Stoney Creek,1D-35 Upper Centennial Pkwy.,Stoney Creek,ON,L8J 3W2,,,clinic,
-Dynacare Ontario,Guelph,104-649 Scottsdale Dr.,Guelph,ON,N1G 4T7,,,clinic,
-Dynacare Ontario,Mississauga,107-2000 Credit Valley Rd.,Mississauga,ON,L5M 4N4,,,clinic,
-Dynacare Ontario,Mississauga,5425 Creditview Rd.,Mississauga,ON,L5V 2P3,,,clinic,
-Dynacare Ontario,Mississauga,1-1960 Dundas St. W,Mississauga,ON,L5K 2R9,,,clinic,
-Dynacare Ontario,Mississauga,1240 Eglinton Ave. W,Mississauga,ON,L5V 1N3,,,clinic,
-Dynacare Ontario,Mississauga,5055 Plantation Place,Mississauga,ON,L5M 6J3,,,clinic,
-Dynacare Ontario,Milton,3C-1030 Kennedy Cir.,Milton,ON,L9T 0J9,,,clinic,
-Dynacare Ontario,Oakville,100-209 Oak Park Blvd.,Oakville,ON,L6H 0M2,,,clinic,
-Dynacare Ontario,Acton,10 Eastern Ave.,Acton,ON,L7J 0A5,,,clinic,
-Dynacare Ontario,Oakville,180-2525 Old Bronte Rd.,Oakville,ON,L6M 4J2,,,clinic,
-Dynacare Ontario,TORONTO,2772 DANFORTH AVE,TORONTO,ON,M4C 1L7,,,clinic,
-Dynacare Ontario,Mississauga,111-33 City Centre Dr.,Mississauga,ON,L5B 2N5,,,clinic,
-Dynacare Ontario,Mississauga,411 Burnhamthorpe Rd. W,Mississauga,ON,L5B 0J5,,,clinic,
-Dynacare Ontario,Brampton,108-164 Queen St. E,Brampton,ON,L6V 1B4,,,clinic,
-Dynacare Ontario,MISSISSAUGA,7330 GOREWAY DR,MISSISSAUGA,ON,L4T 4J2,,,clinic,
-Dynacare Ontario,Brampton,101-7700 Hurontario St.,Brampton,ON,L6Y 4M3,,,clinic,
-Dynacare Ontario,Oakville,103-2315 Bristol Cir.,Oakville,ON,L6H 6P8,,,clinic,
-Dynacare Ontario,Mississauga,1000 Middlegate Rd.,Mississauga,ON,L4Y 1M4,,,clinic,
-Dynacare Ontario,Mississauga,19-2325 Hurontario St.,Mississauga,ON,L5A 4C7,,,clinic,
-Dynacare Ontario,Mississauga,305-71 King St. W,Mississauga,ON,L5B 4A2,,,clinic,
-Dynacare Ontario,Mississauga,1B-600 Matheson Blvd. W,Mississauga,ON,L5R 4B8,,,clinic,
-Dynacare Ontario,ORILLIA,300A-100 COLBORNE ST W,ORILLIA,ON,L3V 2Y9,,,clinic,
-Dynacare Ontario,Toronto,217/218-1275 Finch Ave. W,Toronto,ON,M3J 0L5,,,clinic,
-Dynacare Ontario,Vaughan,8300 Hwy 27,Vaughan,ON,L4H 0R9,,,clinic,
-Dynacare Ontario,Toronto,2920 Dufferin St.,Toronto,ON,M6B 3S8,,,clinic,
-Dynacare Ontario,Toronto,102-960 Lawrence Ave. W,Toronto,ON,M6A 3B5,,,clinic,
-Dynacare Ontario,Toronto,105-3695 Keele St.,Toronto,ON,M3J 1N2,,,clinic,
-Dynacare Ontario,Toronto,102-4256 Bathurst St.,Toronto,ON,M3H 5Y8,,,clinic,
-Dynacare Ontario,Toronto,101-1525 Albion Rd.,Toronto,ON,M9V 5G5,,,clinic,
-Dynacare Ontario,Toronto,105-100 Humber College Blvd.,Toronto,ON,M9V 5G4,,,clinic,
-Dynacare Ontario,Toronto,215-1735 Kipling Ave,Toronto,ON,M9R 2Y8,,,clinic,
-Dynacare Ontario,Toronto,928 St. Clair Ave. W,Toronto,ON,M6C 1C6,,,clinic,
-Dynacare Ontario,Toronto,CWW1 - 130 King St. W,Toronto,ON,M5X 2A2,,,clinic,
-Dynacare Ontario,Toronto,440 Bathurst St.,Toronto,ON,M5T 2S6,,,clinic,
-Dynacare Ontario,Toronto,301-280 Spadina Ave.,Toronto,ON,M5T 3A5,,,clinic,
-Dynacare Ontario,Toronto,B-2494 Danforth Ave.,Toronto,ON,M4C 1K9,,,clinic,
-Dynacare Ontario,Toronto,9th Floor-1240 Bay St.,Toronto,ON,M5R 2A7,,,clinic,
-Dynacare Ontario,Toronto,530-790 Bay St.,Toronto,ON,M5G 1N8,,,clinic,
-Dynacare Ontario,Toronto,808-123 Edward St.,Toronto,ON,M5G 1E2,,,clinic,
-Dynacare Ontario,Toronto,105A-27 Roncesvalles Ave.,Toronto,ON,M6R 3B2,,,clinic,
-Dynacare Ontario,Toronto,103-726 Bloor St. W,Toronto,ON,M6G 4A1,,,clinic,
-Dynacare Ontario,Port Elgin,466 Goderich St.,Port Elgin,ON,N0H 2C4,,,clinic,
-Dynacare Ontario,Brampton,9960 Airport Rd.,Brampton,ON,L6S 0C5,,,clinic,
-Dynacare Ontario,Brampton,169 Queen St. E,Brampton,ON,L6V 1B3,,,clinic,
-Dynacare Ontario,Brampton,8/9-9525 Mississauga Rd.,Brampton,ON,L6X 0Z8,,,clinic,
-Dynacare Ontario,Bolton,102-170 McEwan Dr. E,Bolton,ON,L7E 4C8,,,clinic,
-Dynacare Ontario,Brampton,108-10 Cottrelle Blvd.,Brampton,ON,L6S 0E2,,,clinic,
-Dynacare Ontario,Ottawa,5307 Canotek Rd.,Ottawa,ON,K1J 9M2,,,clinic,
-Dynacare Ontario,London,1228 Commissioners Rd. W,London,ON,N6K 1C7,,,clinic,
-Dynacare Ontario,London,295 Saskatoon St.,London,ON,N5W 6A2,,,clinic,
-Dynacare Ontario,Carleton Place,6-1 Costello Dr.,Carleton Place,ON,K7C 0B4,,,clinic,
-Dynacare Ontario,Renfrew,102-100 Health Village Lane,Renfrew,ON,K7V 0C3,,,clinic,
-Dynacare Ontario,NEPEAN,B1-16 GREEN ST,NEPEAN,ON,K2J 3R2,,,clinic,
-Dynacare Ontario,Arnprior,61-346 John St. N,Arnprior,ON,K7S 2P6,,,clinic,
-Dynacare Ontario,Ottawa,700 Eagleson Rd.,Ottawa,ON,K2M 2G9,,,clinic,
-Dynacare Ontario,Ottawa,107-99 Kakulu Rd.,Ottawa,ON,K2L 3C8,,,clinic,
-Dynacare Ontario,Ottawa,B-1609 Stittsville Main St.,Ottawa,ON,K2S 1B8,,,clinic,
-Dynacare Ontario,Ottawa,3-3771 Spratt Rd.,Ottawa,ON,K1V 2P3,,,clinic,
-Dynacare Ontario,Ottawa,3029 Carling Ave.,Ottawa,ON,K2B 8E8,,,clinic,
-Dynacare Ontario,Ottawa,1221 Greenbank Rd.,Ottawa,ON,K2J 5V7,,,clinic,
-Dynacare Ontario,Barry's Bay,Main Floor-21 St. Francis Memorial Dr.,Barry's Bay,ON,K0J 1B0,,,clinic,
-Dynacare Ontario,Ottawa,203-100 Marie-Curie Private,Ottawa,ON,K1N 1A2,,,clinic,
-Dynacare Ontario,Ottawa,104-380 Hunt Club Rd.,Ottawa,ON,K1V 1C1,,,clinic,
-Dynacare Ontario,Ottawa,200-316 Rideau St.,Ottawa,ON,K1N 5Y5,,,clinic,
-Dynacare Ontario,Ottawa,110-595 Montreal Rd.,Ottawa,ON,K1K 4L2,,,clinic,
-Dynacare Ontario,Ottawa,1000-381 Kent St.,Ottawa,ON,K2P 2A8,,,clinic,
-Dynacare Ontario,Ottawa,100-150 Montreal Rd.,Ottawa,ON,K1L 8H2,,,clinic,
-Dynacare Ontario,Ottawa,105-2446 Bank St.,Ottawa,ON,K1V 1A4,,,clinic,
-Dynacare Ontario,Ottawa,114-152 Cleopatra Dr.,Ottawa,ON,K2G 5X2,,,clinic,
-Dynacare Ontario,Ottawa,B9-770 Broadview Ave.,Ottawa,ON,K2A 3Z3,,,clinic,
-Dynacare Ontario,Ottawa,B22/B24-550 Terminal Ave.,Ottawa,ON,K1G 0Z3,,,clinic,
-Dynacare Ontario,Ottawa,208-2555 St. Joseph Blvd.,Ottawa,ON,K1C 1S6,,,clinic,
-Dynacare Ontario,Ottawa,500-1385 Bank St.,Ottawa,ON,K1H 8N4,,,clinic,
-Dynacare Ontario,Rockland,205-2741 Chamberland St.,Rockland,ON,K4K 0B4,,,clinic,
-Dynacare Ontario,Hawkesbury,106-1062 Ghislain St.,Hawkesbury,ON,K6A 3B2,,,clinic,
-Dynacare Ontario,Kemptville,2113-2671 Concession Rd.,Kemptville,ON,K0G 1J0,,,clinic,
-Dynacare Ontario,Winchester,550 Louise St.,Winchester,ON,K0C 2K0,,,clinic,
-Dynacare Ontario,Russell,110 Craig St.,Russell,ON,K4R 1A1,,,clinic,
-Dynacare Ontario,Ottawa,4270 Innes Rd.,Ottawa,ON,K4A 5E6,,,clinic,
-Dynacare Ontario,Ottawa,2-1650 Queensdale Ave.,Ottawa,ON,K1T 1N8,,,clinic,
-Dynacare Ontario,Hawkesbury,750 Laurier St,Hawkesbury,ON,K6A 3N9,,,clinic,
-Dynacare Ontario,Embrun,738 Notre Dame St.,Embrun,ON,K0A 1W1,,,clinic,
-Dynacare Ontario,Ottawa,220B-43 Bruyere St,Ottawa,ON,K1N 5C8,,,clinic,
-Dynacare Ontario,Ottawa,171 Slater St.,Ottawa,ON,K1P 5H7,,,clinic,
-Dynacare Ontario,Ottawa,104-1105 Carling Ave,Ottawa,ON,K1Y 4G5,,,clinic,
-Dynacare Ontario,Ottawa,60 Cambridge St N,Ottawa,ON,K1R 7A5,,,clinic,
-Dynacare Ontario,Kemptville,90 Royal Landing Gate,Kemptville,ON,K0G 1J0,,,clinic,
-Dynacare Ontario,Embrun,869 Notre Dame St.,Embrun,ON,K0A 1W1,,,clinic,
-Dynacare Ontario,WINDSOR,1428 OUELLETTE AVE,WINDSOR,ON,N8X 1K4,,,clinic,
-Dynacare Ontario,SARNIA,481 LONDON RD,SARNIA,ON,N7T 4X3,,,clinic,
-Dynacare Ontario,Glencoe,A-253 Main St.,Glencoe,ON,N0L 1M0,,,clinic,
-Dynacare Ontario,LONDON,346 PLATT'S LANE,LONDON,ON,N6G 1J1,,,clinic,
-Dynacare Ontario,Peterborough,380 Burnham St.,Peterborough,ON,K9H 1T6,,,clinic,
-Dynacare Ontario,Peterborough,555 George St. N,Peterborough,ON,K9H 3S1,,,clinic,
-Dynacare Ontario,Corunna,208 Hill St.,Corunna,ON,N0N 1G0,,,clinic,
-Dynacare Ontario,London,E-1553 Dundas St.,London,ON,N5W 5Y5,,,clinic,
-Dynacare Ontario,Newbury,M-522-1824 Concession Dr.,Newbury,ON,N0L 1Z0,,,clinic,
-Dynacare Ontario,Windsor,3-18 Amy Croft Dr.,Windsor,ON,N9K 0A1,,,clinic,
-Dynacare Ontario,London,1570 Highbury Ave. N,London,ON,N5Y 5N7,,,clinic,
-Dynacare Ontario,West Lorne,153 Main St.,West Lorne,ON,N0L 2P0,,,clinic,
-Dynacare Ontario,London,102-440 Boler Rd.,London,ON,N6K 4L2,,,clinic,
-Dynacare Ontario,LONDON,304-240 WHARNCLIFFE RD N,LONDON,ON,N6H 4P2,,,clinic,
-Dynacare Ontario,Goderich,180 Cambria Rd. N,Goderich,ON,N7A 4N8,,,clinic,
-Dynacare Ontario,London,Suite 112-230 Victoria St.,London,ON,N6A 2C2,,,clinic,
-Dynacare Ontario,London,E-595 Bradley Ave.,London,ON,N6E 3Z8,,,clinic,
-Dynacare Ontario,Seaforth,32B-1 Centennial Dr.,Seaforth,ON,N0K 1W0,,,clinic,
-Dynacare Ontario,Stratford,106-444 Douro St.,Stratford,ON,N5A 0E6,,,clinic,
-Dynacare Ontario,London,105-1807 Wonderland Rd N,London,ON,N6G 5C2,,,clinic,
-Dynacare Ontario,Lucan,280 Main St.,Lucan,ON,N0M 2J0,,,clinic,
-Dynacare Ontario,Mt. Brydges,22262 Mill Rd.,Mt. Brydges,ON,N0L 1W0,,,clinic,
-Dynacare Ontario,Strathroy,74 Front St. E,Strathroy,ON,N7G 1Y7,,,clinic,
-Dynacare Ontario,Chatham,10-20 Emma St.,Chatham,ON,N7L 5K5,,,clinic,
-Dynacare Ontario,Windsor,22-3176 Dougall Ave.,Windsor,ON,N9E 1S6,,,clinic,
-Dynacare Ontario,LaSalle,2125 Front Rd.,LaSalle,ON,N9J 2C1,,,clinic,
+Dynacare Ontario,TORONTO,B1-360 COLLEGE ST,TORONTO,ON,M5T 1S6,43.657288,-79.404403,clinic,"https://maps.google.com/?q=43.657288,-79.404403"
+Dynacare Ontario,BOLTON,B2-30 MARTHA ST,BOLTON,ON,L7E 5V1,43.872784,-79.73162,clinic,"https://maps.google.com/?q=43.872784,-79.73162"
+Dynacare Ontario,SUDBURY,B4-2009 LONG LAKE RD,SUDBURY,ON,P3E 6C3,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,SIMCOE,204-216 WEST ST,SIMCOE,ON,N3Y 1S8,44.50255,-80.209282,clinic,"https://maps.google.com/?q=44.50255,-80.209282"
+Dynacare Ontario,TORONTO,620-170 ST GEORGE ST,TORONTO,ON,M5R 2M8,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,MASSEY,250 CAMERON ST,MASSEY,ON,P0P 1P0,46.209907,-82.072502,clinic,"https://maps.google.com/?q=46.209907,-82.072502"
+Dynacare Ontario,TORONTO,304-1223 ST CLAIR AVE W,TORONTO,ON,M6E 1B5,43.667912,-79.487206,clinic,"https://maps.google.com/?q=43.667912,-79.487206"
+Dynacare Ontario,OSHAWA,211 SIMCOE ST S,OSHAWA,ON,L1H 4H2,43.892134,-78.86093,clinic,"https://maps.google.com/?q=43.892134,-78.86093"
+Dynacare Ontario,BRAMPTON,387-25 PEEL CENTRE DR,BRAMPTON,ON,L6T 3R5,43.719429,-79.720874,clinic,"https://maps.google.com/?q=43.719429,-79.720874"
+Dynacare Ontario,TORONTO,245 EGLINTON AVE E,TORONTO,ON,M4P 3B7,43.708166,-79.389593,clinic,"https://maps.google.com/?q=43.708166,-79.389593"
+Dynacare Ontario,PICKERING,1-720 SHEPPARD AVE,PICKERING,ON,L1V 1G5,43.821018,-79.121917,clinic,"https://maps.google.com/?q=43.821018,-79.121917"
+Dynacare Ontario,BOLTON,202-12295 HIGHWAY 50,BOLTON,ON,L7E 1M2,43.854451,-79.702314,clinic,"https://maps.google.com/?q=43.854451,-79.702314"
+Dynacare Ontario,SCARBOROUGH,B-1346 KINGSTON RD,SCARBOROUGH,ON,M1N 1P9,43.715854,-79.24298,clinic,"https://maps.google.com/?q=43.715854,-79.24298"
+Dynacare Ontario,SCARBOROUGH,2600 EGLINTON AVE E,SCARBOROUGH,ON,M6M 2R9,43.73589,-79.252917,clinic,"https://maps.google.com/?q=43.73589,-79.252917"
+Dynacare Ontario,TORONTO,344 BLOOR ST W,TORONTO,ON,M5S 3A7,43.666721,-79.404264,clinic,"https://maps.google.com/?q=43.666721,-79.404264"
+Dynacare Ontario,BOWMANVILLE,222 KING ST E,BOWMANVILLE,ON,L1C 1P6,43.91148,-78.677561,clinic,"https://maps.google.com/?q=43.91148,-78.677561"
+Dynacare Ontario,NORTH YORK,306 FINCH AVE E,NORTH YORK,ON,M2N 4S5,43.785017,-79.394048,clinic,"https://maps.google.com/?q=43.785017,-79.394048"
+Dynacare Ontario,SCARBOROUGH,9 NEILSON RD,SCARBOROUGH,ON,M1E 5E1,43.781646,-79.20311,clinic,"https://maps.google.com/?q=43.781646,-79.20311"
+Dynacare Ontario,EAST YORK,200 DAWES RD,EAST YORK,ON,M4C 5M8,43.695767,-79.298623,clinic,"https://maps.google.com/?q=43.695767,-79.298623"
+Dynacare Ontario,TILLSONBURG,154 ROLPH ST,TILLSONBURG,ON,N4G 3Z1,42.863013,-80.734218,clinic,"https://maps.google.com/?q=42.863013,-80.734218"
+Dynacare Ontario,THORNHILL,206-7330 YONGE ST,THORNHILL,ON,L4J 7Y7,43.815993,-79.424627,clinic,"https://maps.google.com/?q=43.815993,-79.424627"
+Dynacare Ontario,TORONTO,1ST FL-250 UNIVERSITY AVE,TORONTO,ON,M5H 3E5,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,ST CATHARINES,524 LAKE ST,ST CATHARINES,ON,L2N 4H4,43.190314,-79.25178,clinic,"https://maps.google.com/?q=43.190314,-79.25178"
+Dynacare Ontario,LONDON,190 WORTLEY RD,LONDON,ON,N6C 4Y7,42.970923,-81.251907,clinic,"https://maps.google.com/?q=42.970923,-81.251907"
+Dynacare Ontario,WOODSTOCK,550 INGERSOLL AVE,WOODSTOCK,ON,N4S 4Y3,43.137016,-80.755263,clinic,"https://maps.google.com/?q=43.137016,-80.755263"
+Dynacare Ontario,STRATFORD,287 HURON ST,STRATFORD,ON,N5A 5T3,43.376384,-80.993566,clinic,"https://maps.google.com/?q=43.376384,-80.993566"
+Dynacare Ontario,LONDON,201-1135 ADELAIDE ST N,LONDON,ON,N5Y 5K7,43.03723,-81.256641,clinic,"https://maps.google.com/?q=43.03723,-81.256641"
+Dynacare Ontario,WINDSOR,3950 DOUGALL AVE,WINDSOR,ON,N9G 1X2,42.250644,-82.999116,clinic,"https://maps.google.com/?q=42.250644,-82.999116"
+Dynacare Ontario,LONDON,600 SANATORIUM RD,LONDON,ON,N6H 3W7,42.965489,-81.33446,clinic,"https://maps.google.com/?q=42.965489,-81.33446"
+Dynacare Ontario,BRACEBRIDGE,8 TAYLOR RD,BRACEBRIDGE,ON,P1L 1S6,45.041893,-79.31001,clinic,"https://maps.google.com/?q=45.041893,-79.31001"
+Dynacare Ontario,NEPEAN,250B GREENBANK RD,NEPEAN,ON,K2H 8X4,45.249767,-75.733841,clinic,"https://maps.google.com/?q=45.249767,-75.733841"
+Dynacare Ontario,NEPEAN,1637 WOODROFFE AVE,NEPEAN,ON,K2G 1W2,45.33127,-75.749986,clinic,"https://maps.google.com/?q=45.33127,-75.749986"
+Dynacare Ontario,OTTAWA,11 ROSEMOUNT AVE,OTTAWA,ON,K1Y 4R8,45.401965,-75.725898,clinic,"https://maps.google.com/?q=45.401965,-75.725898"
+Dynacare Ontario,PRESCOTT,276 KING ST W,PRESCOTT,ON,K0E 1T0,44.708756,-75.515781,clinic,"https://maps.google.com/?q=44.708756,-75.515781"
+Dynacare Ontario,OTTAWA,550-1335 CARLING AVE,OTTAWA,ON,K1Z 8N8,45.395151,-75.712087,clinic,"https://maps.google.com/?q=45.395151,-75.712087"
+Dynacare Ontario,CARP,119 LANGSTAFF DR,CARP,ON,K0A 1L0,45.345433,-76.031836,clinic,"https://maps.google.com/?q=45.345433,-76.031836"
+Dynacare Ontario,OTTAWA,356 WOODROFFE AVE,OTTAWA,ON,K2A 3V6,45.370317,-75.771309,clinic,"https://maps.google.com/?q=45.370317,-75.771309"
+Dynacare Ontario,VANIER,261 MONTREAL RD,VANIER,ON,K1L 8C7,45.436693,-75.660767,clinic,"https://maps.google.com/?q=45.436693,-75.660767"
+Dynacare Ontario,VANIER,390 MCARTHUR AVE,VANIER,ON,K1L 6N6,45.43181,-75.650244,clinic,"https://maps.google.com/?q=45.43181,-75.650244"
+Dynacare Ontario,VANIER,311 MCARTHUR AVE,VANIER,ON,K1L 8M3,45.432001,-75.655328,clinic,"https://maps.google.com/?q=45.432001,-75.655328"
+Dynacare Ontario,VANIER,355 MONTREAL RD,VANIER,ON,K1L 8H3,45.438803,-75.655811,clinic,"https://maps.google.com/?q=45.438803,-75.655811"
+Dynacare Ontario,GLOUCESTER,1651 MONTREAL RD,GLOUCESTER,ON,K1J 6N6,45.446782,-75.614175,clinic,"https://maps.google.com/?q=45.446782,-75.614175"
+Dynacare Ontario,OTTAWA,1729 BANK ST,OTTAWA,ON,K1V 7Z5,45.374221,-75.66461,clinic,"https://maps.google.com/?q=45.374221,-75.66461"
+Dynacare Ontario,OTTAWA,306-2211 RIVERSIDE DR,OTTAWA,ON,K1H 7X5,45.376032,-75.690038,clinic,"https://maps.google.com/?q=45.376032,-75.690038"
+Dynacare Ontario,OTTAWA,248 FRIEL ST,OTTAWA,ON,K1N 7V9,45.428108,-75.680757,clinic,"https://maps.google.com/?q=45.428108,-75.680757"
+Dynacare Ontario,OTTAWA,1355 BANK ST,OTTAWA,ON,K1H 8K7,45.388004,-75.675076,clinic,"https://maps.google.com/?q=45.388004,-75.675076"
+Dynacare Ontario,OTTAWA,1719 BANK ST,OTTAWA,ON,K1V 7Z4,45.374505,-75.664677,clinic,"https://maps.google.com/?q=45.374505,-75.664677"
+Dynacare Ontario,OTTAWA,260 DALHOUSIE ST,OTTAWA,ON,K1N 7E4,45.430622,-75.692876,clinic,"https://maps.google.com/?q=45.430622,-75.692876"
+Dynacare Ontario,Mississauga,E229A-5100 Erin Mills Pky,Mississauga,ON,L5M 4Z5,43.551322,-79.69622,clinic,"https://maps.google.com/?q=43.551322,-79.69622"
+Dynacare Ontario,TORONTO,2075 BAYVIEW AVE,TORONTO,ON,M4N 3M5,43.722018,-79.372254,clinic,"https://maps.google.com/?q=43.722018,-79.372254"
+Dynacare Ontario,Richmond Hill,317-550 Hwy 7 E,Richmond Hill,ON,L4B 3Z4,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,RICHMOND HILL,9355 LESLIE ST,RICHMOND HILL,ON,L4B 0J3,43.846407,-79.382828,clinic,"https://maps.google.com/?q=43.846407,-79.382828"
+Dynacare Ontario,Toronto,2404 Eglinton Ave. W,Toronto,ON,M6M 1S6,43.687324,-79.487567,clinic,"https://maps.google.com/?q=43.687324,-79.487567"
+Dynacare Ontario,Keswick,4/7-23546 Woodbine Ave.,Keswick,ON,L4P 0E2,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Orangeville,140 Rolling Hills Dr.,Orangeville,ON,L9W 4X8,43.920095,-80.071356,clinic,"https://maps.google.com/?q=43.920095,-80.071356"
+Dynacare Ontario,Vaughan,531 Atkinson Ave.,Vaughan,ON,L4J 8L7,43.818174,-79.450824,clinic,"https://maps.google.com/?q=43.818174,-79.450824"
+Dynacare Ontario,Vaughan,B01-8333 Weston Rd.,Vaughan,ON,L4L 8E2,43.804987,-79.55035,clinic,"https://maps.google.com/?q=43.804987,-79.55035"
+Dynacare Ontario,Richmond Hill,103-13291 Yonge St.,Richmond Hill,ON,L4E 4L6,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Orangeville,100-1 Elizabeth St.,Orangeville,ON,L9W 7N7,43.918455,-80.110705,clinic,"https://maps.google.com/?q=43.918455,-80.110705"
+Dynacare Ontario,Tottenham,B-6672 3rd Line,Tottenham,ON,L0W 1G0,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Vaughan,121-9401 Jane St.,Vaughan,ON,L6A 4H7,43.828108,-79.532824,clinic,"https://maps.google.com/?q=43.828108,-79.532824"
+Dynacare Ontario,East Gwillimbury,181 Green Lane E,East Gwillimbury,ON,L9N 0C9,44.073871,-79.480416,clinic,"https://maps.google.com/?q=44.073871,-79.480416"
+Dynacare Ontario,Richmond Hill,10660 Yonge St.,Richmond Hill,ON,L4C 3C9,43.886871,-79.441119,clinic,"https://maps.google.com/?q=43.886871,-79.441119"
+Dynacare Ontario,Toronto,491 Eglinton Ave. W,Toronto,ON,M5N 1A8,43.703465,-79.412851,clinic,"https://maps.google.com/?q=43.703465,-79.412851"
+Dynacare Ontario,Markham,109-7155 Woodbine Ave.,Markham,ON,L3R 1A3,43.869478,-79.360448,clinic,"https://maps.google.com/?q=43.869478,-79.360448"
+Dynacare Ontario,Toronto,LL1-1849 Yonge St.,Toronto,ON,M4S 1Y2,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Toronto,107-2401 Yonge St.,Toronto,ON,M4P 3H1,43.673083,-79.388289,clinic,"https://maps.google.com/?q=43.673083,-79.388289"
+Dynacare Ontario,Toronto,204-3292 Bayview Ave.,Toronto,ON,M2M 4J5,43.789867,-79.393797,clinic,"https://maps.google.com/?q=43.789867,-79.393797"
+Dynacare Ontario,Richmond Hill,210-328 Hwy 7 E,Richmond Hill,ON,L4B 3P7,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Vaughan,206-2900 Steeles Ave. E,Vaughan,ON,L3T 4X1,43.812943,-79.359463,clinic,"https://maps.google.com/?q=43.812943,-79.359463"
+Dynacare Ontario,Markham,2-9255 Woodbine Ave.,Markham,ON,L6C 1Y9,43.869478,-79.360448,clinic,"https://maps.google.com/?q=43.869478,-79.360448"
+Dynacare Ontario,Vaughan,L55-7117 Bathurst St.,Vaughan,ON,L4J 2J6,43.794011,-79.445516,clinic,"https://maps.google.com/?q=43.794011,-79.445516"
+Dynacare Ontario,Vaughan,209-955 Major MacKenzie Dr. W,Vaughan,ON,L6A 4P9,43.864306,-79.468812,clinic,"https://maps.google.com/?q=43.864306,-79.468812"
+Dynacare Ontario,Whitby,700 Gordon St.,Whitby,ON,L1N 5S9,43.848859,-78.945368,clinic,"https://maps.google.com/?q=43.848859,-78.945368"
+Dynacare Ontario,Toronto,76 Grenville St.,Toronto,ON,M5S 1B2,43.66173,-79.387539,clinic,"https://maps.google.com/?q=43.66173,-79.387539"
+Dynacare Ontario,Whitby,202-220 Dundas St. W,Whitby,ON,L1N 8M7,43.873205,-78.971788,clinic,"https://maps.google.com/?q=43.873205,-78.971788"
+Dynacare Ontario,Ajax,208-95 Bayly St W,Ajax,ON,L1S 7K8,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Kingston,201-190 Wellington St.,Kingston,ON,K7L 3E4,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Ajax,101-300 Rossland Rd. E,Ajax,ON,L1Z 0M1,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Pickering,111-1885 Glenanna Rd.,Pickering,ON,L1V 6R6,43.835929,-79.106017,clinic,"https://maps.google.com/?q=43.835929,-79.106017"
+Dynacare Ontario,Toronto,B05-3030 Lawrence Ave. E,Toronto,ON,M1P 2T7,43.756465,-79.247935,clinic,"https://maps.google.com/?q=43.756465,-79.247935"
+Dynacare Ontario,TORONTO,3-140 THE ESPLANADE,TORONTO,ON,M5A 4P5,43.647809,-79.372123,clinic,"https://maps.google.com/?q=43.647809,-79.372123"
+Dynacare Ontario,TORONTO,1ST FLOOR-410 SHERBOURNE ST,TORONTO,ON,M4X 1K2,43.666358,-79.374687,clinic,"https://maps.google.com/?q=43.666358,-79.374687"
+Dynacare Ontario,Toronto,60 Scottfield Dr.,Toronto,ON,M1S 5T7,43.80869,-79.25454,clinic,"https://maps.google.com/?q=43.80869,-79.25454"
+Dynacare Ontario,TORONTO,401-235 DANFORTH AVE,TORONTO,ON,M4K 1N2,43.676849,-79.35613,clinic,"https://maps.google.com/?q=43.676849,-79.35613"
+Dynacare Ontario,Oshawa,LL-1290 Keith Ross Dr.,Oshawa,ON,L1J 0C7,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Courtice,LL-1450 Hwy 2,Courtice,ON,L1E 3C3,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Toronto,10-78 Corporate Dr.,Toronto,ON,M1H 3G4,43.778746,-79.255183,clinic,"https://maps.google.com/?q=43.778746,-79.255183"
+Dynacare Ontario,Belleville,2 Dundas St. W,Belleville,ON,K8P 1A1,44.160463,-77.38601,clinic,"https://maps.google.com/?q=44.160463,-77.38601"
+Dynacare Ontario,Denbigh,31 Central St.,Denbigh,ON,K0H 1L0,45.138636,-77.274703,clinic,"https://maps.google.com/?q=45.138636,-77.274703"
+Dynacare Ontario,Port Hope,110-249 Ontario St.,Port Hope,ON,L1A 3Y9,43.963032,-78.289739,clinic,"https://maps.google.com/?q=43.963032,-78.289739"
+Dynacare Ontario,Peterborough,LL05-26 Hospital Dr.,Peterborough,ON,K9J 7C3,44.301229,-78.345661,clinic,"https://maps.google.com/?q=44.301229,-78.345661"
+Dynacare Ontario,Oshawa,LL-117 King St. E,Oshawa,ON,L1H 1B9,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Port Perry,B03-462 Paxton St.,Port Perry,ON,L9L 1L9,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Amherstview,200 Speers Blvd.,Amherstview,ON,K7N 0B6,44.218982,-76.660247,clinic,"https://maps.google.com/?q=44.218982,-76.660247"
+Dynacare Ontario,Northbrook,12357 Hwy 41,Northbrook,ON,K0H 2G0,44.738026,-77.161268,clinic,"https://maps.google.com/?q=44.738026,-77.161268"
+Dynacare Ontario,Bobcaygeon,100 East St. S,Bobcaygeon,ON,K0M 1A0,44.538032,-78.538512,clinic,"https://maps.google.com/?q=44.538032,-78.538512"
+Dynacare Ontario,Cannington,127-39 Cameron St. W,Cannington,ON,L0E 1E0,44.349066,-79.043699,clinic,"https://maps.google.com/?q=44.349066,-79.043699"
+Dynacare Ontario,Kingston,B006A-690 Gardiners Rd.,Kingston,ON,K7M 3X9,44.245483,-76.565603,clinic,"https://maps.google.com/?q=44.245483,-76.565603"
+Dynacare Ontario,Bracebridge,4-55 Muskoka Rd. 118 W,Bracebridge,ON,P1L 1T2,45.04381,-79.327181,clinic,"https://maps.google.com/?q=45.04381,-79.327181"
+Dynacare Ontario,Huntsville,106-348 Muskoka Rd. 3 N,Huntsville,ON,P1H 1H8,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,North Bay,303-111 Main St. W,North Bay,ON,P1B 2T6,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Gravenhurst,1-5 Pineridge Gate,Gravenhurst,ON,P1P 1Z3,44.9099,-79.36143,clinic,"https://maps.google.com/?q=44.9099,-79.36143"
+Dynacare Ontario,SUDBURY,119-40 ELM ST,SUDBURY,ON,P3C 1S8,46.582465,-81.194379,clinic,"https://maps.google.com/?q=46.582465,-81.194379"
+Dynacare Ontario,Penetanguishene,T-117-500 Church St.,Penetanguishene,ON,L9M 1G3,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Elliot Lake,305-31 Nova Scotia Walk,Elliot Lake,ON,P5A 1Y9,46.385824,-82.648716,clinic,"https://maps.google.com/?q=46.385824,-82.648716"
+Dynacare Ontario,Midland,100B-240 Penetanguishene Rd.,Midland,ON,L4R 4P4,44.741726,-79.914237,clinic,"https://maps.google.com/?q=44.741726,-79.914237"
+Dynacare Ontario,Parry Sound,8 Albert St.,Parry Sound,ON,P2A 3A4,45.341236,-80.019277,clinic,"https://maps.google.com/?q=45.341236,-80.019277"
+Dynacare Ontario,Markham,3-1210 Castlemore Ave.,Markham,ON,L6E 0H7,43.896459,-79.306497,clinic,"https://maps.google.com/?q=43.896459,-79.306497"
+Dynacare Ontario,Toronto,2251 Lawrence Ave. E,Toronto,ON,M1P 2P5,43.748807,-79.276725,clinic,"https://maps.google.com/?q=43.748807,-79.276725"
+Dynacare Ontario,Toronto,L55-4040 Finch Ave. E,Toronto,ON,M1S 4V5,43.802498,-79.294193,clinic,"https://maps.google.com/?q=43.802498,-79.294193"
+Dynacare Ontario,Markham,102-10 Unionville Gate,Markham,ON,L3R 0W7,43.856271,-79.306881,clinic,"https://maps.google.com/?q=43.856271,-79.306881"
+Dynacare Ontario,Markham,104-110 Copper Creek Dr.,Markham,ON,L6B 0P9,43.871166,-79.218976,clinic,"https://maps.google.com/?q=43.871166,-79.218976"
+Dynacare Ontario,OSHAWA,11 GIBB ST,OSHAWA,ON,L1H 2J9,43.889925,-78.860714,clinic,"https://maps.google.com/?q=43.889925,-78.860714"
+Dynacare Ontario,ETOBICOKE,200-5359 DUNDAS ST W,ETOBICOKE,ON,M9B 1B1,43.63644,-79.539496,clinic,"https://maps.google.com/?q=43.63644,-79.539496"
+Dynacare Ontario,BRAMPTON,303-18 KENSINGTON RD,BRAMPTON,ON,L6T 4S5,43.72027,-79.719931,clinic,"https://maps.google.com/?q=43.72027,-79.719931"
+Dynacare Ontario,OAKVILLE,LL-78 JONES ST,OAKVILLE,ON,L6L 6C5,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,HAMILTON,204-565 SANATORIUM ROAD,HAMILTON,ON,L9C 7N4,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Hamilton,100-304 Victoria Ave. N,Hamilton,ON,L8L 5G4,43.262208,-79.852527,clinic,"https://maps.google.com/?q=43.262208,-79.852527"
+Dynacare Ontario,Burlington,LL-2951 Walkers Line,Burlington,ON,L7M 4Y1,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,TORONTO,160 JARVIS ST,TORONTO,ON,M5B 2E1,43.654595,-79.37397,clinic,"https://maps.google.com/?q=43.654595,-79.37397"
+Dynacare Ontario,TORONTO,B2-474 COLLEGE ST,TORONTO,ON,M6G 1A4,43.65628,-79.409486,clinic,"https://maps.google.com/?q=43.65628,-79.409486"
+Dynacare Ontario,MISSISSAUGA,204-3420 HURONTARIO ST,MISSISSAUGA,ON,L5B 4A9,43.579142,-79.615493,clinic,"https://maps.google.com/?q=43.579142,-79.615493"
+Dynacare Ontario,BARRIE,102-49 HIGH ST,BARRIE,ON,L4N 5J4,44.388085,-79.695097,clinic,"https://maps.google.com/?q=44.388085,-79.695097"
+Dynacare Ontario,Hamilton,100-849 Upper Wentworth St.,Hamilton,ON,L9A 5H4,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Hamilton,700 Main St. E,Hamilton,ON,L8M 1K7,43.248116,-79.841966,clinic,"https://maps.google.com/?q=43.248116,-79.841966"
+Dynacare Ontario,Hamilton,505 King St. W,Hamilton,ON,L8P 1B9,43.260683,-79.8841,clinic,"https://maps.google.com/?q=43.260683,-79.8841"
+Dynacare Ontario,SCARBOROUGH,520 ELLESMERE RD,SCARBOROUGH,ON,M1R 0B1,43.763074,-79.295321,clinic,"https://maps.google.com/?q=43.763074,-79.295321"
+Dynacare Ontario,NORTH YORK,303-2830 KEELE ST,NORTH YORK,ON,M3M 3E5,43.777765,-79.494074,clinic,"https://maps.google.com/?q=43.777765,-79.494074"
+Dynacare Ontario,Richmond Hill,9625 Yonge St.,Richmond Hill,ON,L4C 5T2,43.861923,-79.432469,clinic,"https://maps.google.com/?q=43.861923,-79.432469"
+Dynacare Ontario,Toronto,20-1450 O'Connor Dr,Toronto,ON,M4B 2T8,43.713161,-79.307753,clinic,"https://maps.google.com/?q=43.713161,-79.307753"
+Dynacare Ontario,LONDON,1051 WONDERLAND RD S,LONDON,ON,N6K 3X4,42.940238,-81.281922,clinic,"https://maps.google.com/?q=42.940238,-81.281922"
+Dynacare Ontario,Hamilton,113-414 Victoria St. N,Hamilton,ON,L8L 5G8,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Burlington,102-809 Brant St.,Burlington,ON,L7R 2J4,43.334418,-79.810093,clinic,"https://maps.google.com/?q=43.334418,-79.810093"
+Dynacare Ontario,Kitchener,200A-385 Fairway Rd. S,Kitchener,ON,N2C 2N9,43.420215,-80.441675,clinic,"https://maps.google.com/?q=43.420215,-80.441675"
+Dynacare Ontario,Hamilton,B-640 Queenston Rd.,Hamilton,ON,L8K 1K2,43.228108,-79.764563,clinic,"https://maps.google.com/?q=43.228108,-79.764563"
+Dynacare Ontario,Niagara Falls,104-6453 Morrison St.,Niagara Falls,ON,L2E 7H1,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Stoney Creek,1D-35 Upper Centennial Pkwy.,Stoney Creek,ON,L8J 3W2,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Guelph,104-649 Scottsdale Dr.,Guelph,ON,N1G 4T7,43.514007,-80.237891,clinic,"https://maps.google.com/?q=43.514007,-80.237891"
+Dynacare Ontario,Mississauga,107-2000 Credit Valley Rd.,Mississauga,ON,L5M 4N4,43.558024,-79.700947,clinic,"https://maps.google.com/?q=43.558024,-79.700947"
+Dynacare Ontario,Mississauga,5425 Creditview Rd.,Mississauga,ON,L5V 2P3,43.586683,-79.696146,clinic,"https://maps.google.com/?q=43.586683,-79.696146"
+Dynacare Ontario,Mississauga,1-1960 Dundas St. W,Mississauga,ON,L5K 2R9,43.520732,-79.686416,clinic,"https://maps.google.com/?q=43.520732,-79.686416"
+Dynacare Ontario,Mississauga,1240 Eglinton Ave. W,Mississauga,ON,L5V 1N3,43.579033,-79.681665,clinic,"https://maps.google.com/?q=43.579033,-79.681665"
+Dynacare Ontario,Mississauga,5055 Plantation Place,Mississauga,ON,L5M 6J3,43.552545,-79.714908,clinic,"https://maps.google.com/?q=43.552545,-79.714908"
+Dynacare Ontario,Milton,3C-1030 Kennedy Cir.,Milton,ON,L9T 0J9,43.517511,-79.851703,clinic,"https://maps.google.com/?q=43.517511,-79.851703"
+Dynacare Ontario,Oakville,100-209 Oak Park Blvd.,Oakville,ON,L6H 0M2,43.483576,-79.714667,clinic,"https://maps.google.com/?q=43.483576,-79.714667"
+Dynacare Ontario,Acton,10 Eastern Ave.,Acton,ON,L7J 0A5,43.633632,-80.036499,clinic,"https://maps.google.com/?q=43.633632,-80.036499"
+Dynacare Ontario,Oakville,180-2525 Old Bronte Rd.,Oakville,ON,L6M 4J2,43.435627,-79.775717,clinic,"https://maps.google.com/?q=43.435627,-79.775717"
+Dynacare Ontario,TORONTO,2772 DANFORTH AVE,TORONTO,ON,M4C 1L7,43.689372,-79.29703,clinic,"https://maps.google.com/?q=43.689372,-79.29703"
+Dynacare Ontario,Mississauga,111-33 City Centre Dr.,Mississauga,ON,L5B 2N5,43.589302,-79.642485,clinic,"https://maps.google.com/?q=43.589302,-79.642485"
+Dynacare Ontario,Mississauga,411 Burnhamthorpe Rd. W,Mississauga,ON,L5B 0J5,43.574767,-79.65689,clinic,"https://maps.google.com/?q=43.574767,-79.65689"
+Dynacare Ontario,Brampton,108-164 Queen St. E,Brampton,ON,L6V 1B4,43.719552,-79.723001,clinic,"https://maps.google.com/?q=43.719552,-79.723001"
+Dynacare Ontario,MISSISSAUGA,7330 GOREWAY DR,MISSISSAUGA,ON,L4T 4J2,43.720349,-79.64116,clinic,"https://maps.google.com/?q=43.720349,-79.64116"
+Dynacare Ontario,Brampton,101-7700 Hurontario St.,Brampton,ON,L6Y 4M3,43.734324,-79.825152,clinic,"https://maps.google.com/?q=43.734324,-79.825152"
+Dynacare Ontario,Oakville,103-2315 Bristol Cir.,Oakville,ON,L6H 6P8,43.520681,-79.681048,clinic,"https://maps.google.com/?q=43.520681,-79.681048"
+Dynacare Ontario,Mississauga,1000 Middlegate Rd.,Mississauga,ON,L4Y 1M4,43.596987,-79.585559,clinic,"https://maps.google.com/?q=43.596987,-79.585559"
+Dynacare Ontario,Mississauga,19-2325 Hurontario St.,Mississauga,ON,L5A 4C7,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Mississauga,305-71 King St. W,Mississauga,ON,L5B 4A2,43.576201,-79.61652,clinic,"https://maps.google.com/?q=43.576201,-79.61652"
+Dynacare Ontario,Mississauga,1B-600 Matheson Blvd. W,Mississauga,ON,L5R 4B8,43.6124,-79.686551,clinic,"https://maps.google.com/?q=43.6124,-79.686551"
+Dynacare Ontario,ORILLIA,300A-100 COLBORNE ST W,ORILLIA,ON,L3V 2Y9,44.60534,-79.423554,clinic,"https://maps.google.com/?q=44.60534,-79.423554"
+Dynacare Ontario,Toronto,217/218-1275 Finch Ave. W,Toronto,ON,M3J 0L5,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Vaughan,8300 Hwy 27,Vaughan,ON,L4H 0R9,43.786392,-79.626232,clinic,"https://maps.google.com/?q=43.786392,-79.626232"
+Dynacare Ontario,Toronto,2920 Dufferin St.,Toronto,ON,M6B 3S8,43.647602,-79.430656,clinic,"https://maps.google.com/?q=43.647602,-79.430656"
+Dynacare Ontario,Toronto,102-960 Lawrence Ave. W,Toronto,ON,M6A 3B5,43.713802,-79.457478,clinic,"https://maps.google.com/?q=43.713802,-79.457478"
+Dynacare Ontario,Toronto,105-3695 Keele St.,Toronto,ON,M3J 1N2,43.664164,-79.464432,clinic,"https://maps.google.com/?q=43.664164,-79.464432"
+Dynacare Ontario,Toronto,102-4256 Bathurst St.,Toronto,ON,M3H 5Y8,43.68663,-79.419842,clinic,"https://maps.google.com/?q=43.68663,-79.419842"
+Dynacare Ontario,Toronto,101-1525 Albion Rd.,Toronto,ON,M9V 5G5,43.74101,-79.58372,clinic,"https://maps.google.com/?q=43.74101,-79.58372"
+Dynacare Ontario,Toronto,105-100 Humber College Blvd.,Toronto,ON,M9V 5G4,43.73052,-79.605868,clinic,"https://maps.google.com/?q=43.73052,-79.605868"
+Dynacare Ontario,Toronto,215-1735 Kipling Ave,Toronto,ON,M9R 2Y8,43.728705,-79.57381,clinic,"https://maps.google.com/?q=43.728705,-79.57381"
+Dynacare Ontario,Toronto,928 St. Clair Ave. W,Toronto,ON,M6C 1C6,43.680043,-79.434561,clinic,"https://maps.google.com/?q=43.680043,-79.434561"
+Dynacare Ontario,Toronto,CWW1 - 130 King St. W,Toronto,ON,M5X 2A2,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Toronto,440 Bathurst St.,Toronto,ON,M5T 2S6,43.655029,-79.407314,clinic,"https://maps.google.com/?q=43.655029,-79.407314"
+Dynacare Ontario,Toronto,301-280 Spadina Ave.,Toronto,ON,M5T 3A5,43.652547,-79.398362,clinic,"https://maps.google.com/?q=43.652547,-79.398362"
+Dynacare Ontario,Toronto,B-2494 Danforth Ave.,Toronto,ON,M4C 1K9,43.685002,-79.317412,clinic,"https://maps.google.com/?q=43.685002,-79.317412"
+Dynacare Ontario,Toronto,9th Floor-1240 Bay St.,Toronto,ON,M5R 2A7,43.670286,-79.39028,clinic,"https://maps.google.com/?q=43.670286,-79.39028"
+Dynacare Ontario,Toronto,530-790 Bay St.,Toronto,ON,M5G 1N8,43.660459,-79.386039,clinic,"https://maps.google.com/?q=43.660459,-79.386039"
+Dynacare Ontario,Toronto,808-123 Edward St.,Toronto,ON,M5G 1E2,43.655683,-79.386699,clinic,"https://maps.google.com/?q=43.655683,-79.386699"
+Dynacare Ontario,Toronto,105A-27 Roncesvalles Ave.,Toronto,ON,M6R 3B2,43.639776,-79.44623,clinic,"https://maps.google.com/?q=43.639776,-79.44623"
+Dynacare Ontario,Toronto,103-726 Bloor St. W,Toronto,ON,M6G 4A1,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Port Elgin,466 Goderich St.,Port Elgin,ON,N0H 2C4,44.432856,-81.391714,clinic,"https://maps.google.com/?q=44.432856,-81.391714"
+Dynacare Ontario,Brampton,9960 Airport Rd.,Brampton,ON,L6S 0C5,43.761834,-79.720723,clinic,"https://maps.google.com/?q=43.761834,-79.720723"
+Dynacare Ontario,Brampton,169 Queen St. E,Brampton,ON,L6V 1B3,43.692483,-79.752733,clinic,"https://maps.google.com/?q=43.692483,-79.752733"
+Dynacare Ontario,Brampton,8/9-9525 Mississauga Rd.,Brampton,ON,L6X 0Z8,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Bolton,102-170 McEwan Dr. E,Bolton,ON,L7E 4C8,43.862917,-79.709556,clinic,"https://maps.google.com/?q=43.862917,-79.709556"
+Dynacare Ontario,Brampton,108-10 Cottrelle Blvd.,Brampton,ON,L6S 0E2,43.784062,-79.661461,clinic,"https://maps.google.com/?q=43.784062,-79.661461"
+Dynacare Ontario,Ottawa,5307 Canotek Rd.,Ottawa,ON,K1J 9M2,45.452892,-75.587703,clinic,"https://maps.google.com/?q=45.452892,-75.587703"
+Dynacare Ontario,London,1228 Commissioners Rd. W,London,ON,N6K 1C7,42.958931,-81.330506,clinic,"https://maps.google.com/?q=42.958931,-81.330506"
+Dynacare Ontario,London,295 Saskatoon St.,London,ON,N5W 6A2,42.997942,-81.187579,clinic,"https://maps.google.com/?q=42.997942,-81.187579"
+Dynacare Ontario,Carleton Place,6-1 Costello Dr.,Carleton Place,ON,K7C 0B4,45.144246,-76.127722,clinic,"https://maps.google.com/?q=45.144246,-76.127722"
+Dynacare Ontario,Renfrew,102-100 Health Village Lane,Renfrew,ON,K7V 0C3,45.482192,-76.70116,clinic,"https://maps.google.com/?q=45.482192,-76.70116"
+Dynacare Ontario,NEPEAN,B1-16 GREEN ST,NEPEAN,ON,K2J 3R2,45.286288,-75.757017,clinic,"https://maps.google.com/?q=45.286288,-75.757017"
+Dynacare Ontario,Arnprior,61-346 John St. N,Arnprior,ON,K7S 2P6,45.43305,-76.354655,clinic,"https://maps.google.com/?q=45.43305,-76.354655"
+Dynacare Ontario,Ottawa,700 Eagleson Rd.,Ottawa,ON,K2M 2G9,45.285721,-75.867461,clinic,"https://maps.google.com/?q=45.285721,-75.867461"
+Dynacare Ontario,Ottawa,107-99 Kakulu Rd.,Ottawa,ON,K2L 3C8,45.309904,-75.886886,clinic,"https://maps.google.com/?q=45.309904,-75.886886"
+Dynacare Ontario,Ottawa,B-1609 Stittsville Main St.,Ottawa,ON,K2S 1B8,45.286183,-75.930831,clinic,"https://maps.google.com/?q=45.286183,-75.930831"
+Dynacare Ontario,Ottawa,3-3771 Spratt Rd.,Ottawa,ON,K1V 2P3,45.283065,-75.686454,clinic,"https://maps.google.com/?q=45.283065,-75.686454"
+Dynacare Ontario,Ottawa,3029 Carling Ave.,Ottawa,ON,K2B 8E8,45.355123,-75.806045,clinic,"https://maps.google.com/?q=45.355123,-75.806045"
+Dynacare Ontario,Ottawa,1221 Greenbank Rd.,Ottawa,ON,K2J 5V7,45.274907,-75.747338,clinic,"https://maps.google.com/?q=45.274907,-75.747338"
+Dynacare Ontario,Barry's Bay,Main Floor-21 St. Francis Memorial Dr.,Barry's Bay,ON,K0J 1B0,45.475406,-77.673784,clinic,"https://maps.google.com/?q=45.475406,-77.673784"
+Dynacare Ontario,Ottawa,203-100 Marie-Curie Private,Ottawa,ON,K1N 1A2,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Ottawa,104-380 Hunt Club Rd.,Ottawa,ON,K1V 1C1,45.33531,-75.689403,clinic,"https://maps.google.com/?q=45.33531,-75.689403"
+Dynacare Ontario,Ottawa,200-316 Rideau St.,Ottawa,ON,K1N 5Y5,45.428759,-75.685119,clinic,"https://maps.google.com/?q=45.428759,-75.685119"
+Dynacare Ontario,Ottawa,110-595 Montreal Rd.,Ottawa,ON,K1K 4L2,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,Ottawa,1000-381 Kent St.,Ottawa,ON,K2P 2A8,45.417727,-75.701567,clinic,"https://maps.google.com/?q=45.417727,-75.701567"
+Dynacare Ontario,Ottawa,100-150 Montreal Rd.,Ottawa,ON,K1L 8H2,45.44218,-75.643805,clinic,"https://maps.google.com/?q=45.44218,-75.643805"
+Dynacare Ontario,Ottawa,105-2446 Bank St.,Ottawa,ON,K1V 1A4,45.421506,-75.702062,clinic,"https://maps.google.com/?q=45.421506,-75.702062"
+Dynacare Ontario,Ottawa,114-152 Cleopatra Dr.,Ottawa,ON,K2G 5X2,45.332434,-75.728739,clinic,"https://maps.google.com/?q=45.332434,-75.728739"
+Dynacare Ontario,Ottawa,B9-770 Broadview Ave.,Ottawa,ON,K2A 3Z3,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Ottawa,B22/B24-550 Terminal Ave.,Ottawa,ON,K1G 0Z3,45.414066,-75.648901,clinic,"https://maps.google.com/?q=45.414066,-75.648901"
+Dynacare Ontario,Ottawa,208-2555 St. Joseph Blvd.,Ottawa,ON,K1C 1S6,45.47843,-75.512315,clinic,"https://maps.google.com/?q=45.47843,-75.512315"
+Dynacare Ontario,Ottawa,500-1385 Bank St.,Ottawa,ON,K1H 8N4,45.421506,-75.702062,clinic,"https://maps.google.com/?q=45.421506,-75.702062"
+Dynacare Ontario,Rockland,205-2741 Chamberland St.,Rockland,ON,K4K 0B4,45.540505,-75.305166,clinic,"https://maps.google.com/?q=45.540505,-75.305166"
+Dynacare Ontario,Hawkesbury,106-1062 Ghislain St.,Hawkesbury,ON,K6A 3B2,45.598693,-74.608716,clinic,"https://maps.google.com/?q=45.598693,-74.608716"
+Dynacare Ontario,Kemptville,2113-2671 Concession Rd.,Kemptville,ON,K0G 1J0,45.020668,-75.654434,clinic,"https://maps.google.com/?q=45.020668,-75.654434"
+Dynacare Ontario,Winchester,550 Louise St.,Winchester,ON,K0C 2K0,45.089561,-75.35333,clinic,"https://maps.google.com/?q=45.089561,-75.35333"
+Dynacare Ontario,Russell,110 Craig St.,Russell,ON,K4R 1A1,45.257497,-75.369785,clinic,"https://maps.google.com/?q=45.257497,-75.369785"
+Dynacare Ontario,Ottawa,4270 Innes Rd.,Ottawa,ON,K4A 5E6,45.456681,-75.494418,clinic,"https://maps.google.com/?q=45.456681,-75.494418"
+Dynacare Ontario,Ottawa,2-1650 Queensdale Ave.,Ottawa,ON,K1T 1N8,45.344794,-75.632214,clinic,"https://maps.google.com/?q=45.344794,-75.632214"
+Dynacare Ontario,Hawkesbury,750 Laurier St,Hawkesbury,ON,K6A 3N9,45.604833,-74.597247,clinic,"https://maps.google.com/?q=45.604833,-74.597247"
+Dynacare Ontario,Embrun,738 Notre Dame St.,Embrun,ON,K0A 1W1,45.266947,-75.303807,clinic,"https://maps.google.com/?q=45.266947,-75.303807"
+Dynacare Ontario,Ottawa,220B-43 Bruyere St,Ottawa,ON,K1N 5C8,45.432287,-75.696062,clinic,"https://maps.google.com/?q=45.432287,-75.696062"
+Dynacare Ontario,Ottawa,171 Slater St.,Ottawa,ON,K1P 5H7,45.420166,-75.698363,clinic,"https://maps.google.com/?q=45.420166,-75.698363"
+Dynacare Ontario,Ottawa,104-1105 Carling Ave,Ottawa,ON,K1Y 4G5,45.386382,-75.739799,clinic,"https://maps.google.com/?q=45.386382,-75.739799"
+Dynacare Ontario,Ottawa,60 Cambridge St N,Ottawa,ON,K1R 7A5,45.413497,-75.708826,clinic,"https://maps.google.com/?q=45.413497,-75.708826"
+Dynacare Ontario,Kemptville,90 Royal Landing Gate,Kemptville,ON,K0G 1J0,45.035686,-75.681077,clinic,"https://maps.google.com/?q=45.035686,-75.681077"
+Dynacare Ontario,Embrun,869 Notre Dame St.,Embrun,ON,K0A 1W1,45.27066,-75.291757,clinic,"https://maps.google.com/?q=45.27066,-75.291757"
+Dynacare Ontario,WINDSOR,1428 OUELLETTE AVE,WINDSOR,ON,N8X 1K4,42.319847,-83.040473,clinic,"https://maps.google.com/?q=42.319847,-83.040473"
+Dynacare Ontario,SARNIA,481 LONDON RD,SARNIA,ON,N7T 4X3,42.977852,-82.388754,clinic,"https://maps.google.com/?q=42.977852,-82.388754"
+Dynacare Ontario,Glencoe,A-253 Main St.,Glencoe,ON,N0L 1M0,42.7488,-81.712149,clinic,"https://maps.google.com/?q=42.7488,-81.712149"
+Dynacare Ontario,LONDON,346 PLATT'S LANE,LONDON,ON,N6G 1J1,42.994357,-81.274321,clinic,"https://maps.google.com/?q=42.994357,-81.274321"
+Dynacare Ontario,Peterborough,380 Burnham St.,Peterborough,ON,K9H 1T6,44.305492,-78.311843,clinic,"https://maps.google.com/?q=44.305492,-78.311843"
+Dynacare Ontario,Peterborough,555 George St. N,Peterborough,ON,K9H 3S1,44.31067,-78.320576,clinic,"https://maps.google.com/?q=44.31067,-78.320576"
+Dynacare Ontario,Corunna,208 Hill St.,Corunna,ON,N0N 1G0,42.888675,-82.451171,clinic,"https://maps.google.com/?q=42.888675,-82.451171"
+Dynacare Ontario,London,E-1553 Dundas St.,London,ON,N5W 5Y5,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,Newbury,M-522-1824 Concession Dr.,Newbury,ON,N0L 1Z0,42.683304,-81.789086,clinic,"https://maps.google.com/?q=42.683304,-81.789086"
+Dynacare Ontario,Windsor,3-18 Amy Croft Dr.,Windsor,ON,N9K 0A1,42.307991,-82.867441,clinic,"https://maps.google.com/?q=42.307991,-82.867441"
+Dynacare Ontario,London,1570 Highbury Ave. N,London,ON,N5Y 5N7,43.034268,-81.222463,clinic,"https://maps.google.com/?q=43.034268,-81.222463"
+Dynacare Ontario,West Lorne,153 Main St.,West Lorne,ON,N0L 2P0,42.601366,-81.61019,clinic,"https://maps.google.com/?q=42.601366,-81.61019"
+Dynacare Ontario,London,102-440 Boler Rd.,London,ON,N6K 4L2,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,LONDON,304-240 WHARNCLIFFE RD N,LONDON,ON,N6H 4P2,42.991391,-81.264923,clinic,"https://maps.google.com/?q=42.991391,-81.264923"
+Dynacare Ontario,Goderich,180 Cambria Rd. N,Goderich,ON,N7A 4N8,43.749572,-81.704442,clinic,"https://maps.google.com/?q=43.749572,-81.704442"
+Dynacare Ontario,London,Suite 112-230 Victoria St.,London,ON,N6A 2C2,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,London,E-595 Bradley Ave.,London,ON,N6E 3Z8,42.933382,-81.232693,clinic,"https://maps.google.com/?q=42.933382,-81.232693"
+Dynacare Ontario,Seaforth,32B-1 Centennial Dr.,Seaforth,ON,N0K 1W0,43.552342,-81.383427,clinic,"https://maps.google.com/?q=43.552342,-81.383427"
+Dynacare Ontario,Stratford,106-444 Douro St.,Stratford,ON,N5A 0E6,38.67524,-0.809962,clinic,"https://maps.google.com/?q=38.67524,-0.809962"
+Dynacare Ontario,London,105-1807 Wonderland Rd N,London,ON,N6G 5C2,43.00419,-81.303317,clinic,"https://maps.google.com/?q=43.00419,-81.303317"
+Dynacare Ontario,Lucan,280 Main St.,Lucan,ON,N0M 2J0,43.192664,-81.41351,clinic,"https://maps.google.com/?q=43.192664,-81.41351"
+Dynacare Ontario,Mt. Brydges,22262 Mill Rd.,Mt. Brydges,ON,N0L 1W0,42.899498,-81.480966,clinic,"https://maps.google.com/?q=42.899498,-81.480966"
+Dynacare Ontario,Strathroy,74 Front St. E,Strathroy,ON,N7G 1Y7,42.959736,-81.621583,clinic,"https://maps.google.com/?q=42.959736,-81.621583"
+Dynacare Ontario,Chatham,10-20 Emma St.,Chatham,ON,N7L 5K5,42.406738,-82.191276,clinic,"https://maps.google.com/?q=42.406738,-82.191276"
+Dynacare Ontario,Windsor,22-3176 Dougall Ave.,Windsor,ON,N9E 1S6,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Ontario,LaSalle,2125 Front Rd.,LaSalle,ON,N9J 2C1,42.227722,-83.101862,clinic,"https://maps.google.com/?q=42.227722,-83.101862"
 ,,,,,,,,,
 DYNACARE MANITOBA,,,,,,,,,
+Dynacare Manitoba,Winnipeg 425 St. Mary Ave. Winnipeg Clinic,Main Floor-425 St. Mary Ave.,Winnipeg,MB,R3C 0N2,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Manitoba,Winnipeg 790 Sherbrook Manitoba Clinic,LL-790 Sherbrook St.,Winnipeg,MB,R3A 1M3,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Manitoba,Winnipeg Marion Dominion Centre,55 Marion St.,Winnipeg,MB,R2H 0R5,49.882081,-97.106274,clinic,"https://maps.google.com/?q=49.882081,-97.106274"
+Dynacare Manitoba,Winnipeg 1600 Portage Ave. St. James,1600 Portage Ave.,Winnipeg,MB,R3J 0C6,49.879845,-97.202094,clinic,"https://maps.google.com/?q=49.879845,-97.202094"
+Dynacare Manitoba,Winnipeg 1581 Regent Ave. Crossroads,3-1581 Regent Ave. W,Winnipeg,MB,R2C 3B3,49.895478,-97.02662,clinic,"https://maps.google.com/?q=49.895478,-97.02662"
+Dynacare Manitoba,Winnipeg Keewatin St. Access Norwest,14-785 Keewatin St.,Winnipeg,MB,R2X 3B9,49.937695,-97.197057,clinic,"https://maps.google.com/?q=49.937695,-97.197057"
+Dynacare Manitoba,Winnipeg McPhillips Garden City,D-2211 McPhillips St.,Winnipeg,MB,R2V 3M5,49.950962,-97.147947,clinic,"https://maps.google.com/?q=49.950962,-97.147947"
+Dynacare Manitoba,Winnipeg Lakewood,30 Lakewood Blvd.,Winnipeg,MB,R2J 2M6,49.855128,-97.080165,clinic,"https://maps.google.com/?q=49.855128,-97.080165"
+Dynacare Manitoba,Winnipeg - 1455 Henderson Hwy,103-1455 Henderson Hwy,Winnipeg,MB,R2G 1N3,49.938784,-97.092588,clinic,"https://maps.google.com/?q=49.938784,-97.092588"
+Dynacare Manitoba,Winnipeg Sterling Lyon Seasons,1-515 Sterling Lyon Pkwy.,Winnipeg,MB,R3P 2S8,49.845143,-97.231064,clinic,"https://maps.google.com/?q=49.845143,-97.231064"
+Dynacare Manitoba,Winnipeg 1225 St. Mary's Rd. St. Vital,111-1225 St. Mary's Rd.,Winnipeg,MB,R2M 5E5,49.854302,-97.111595,clinic,"https://maps.google.com/?q=49.854302,-97.111595"
+Dynacare Manitoba,Winnipeg 2077 Pembina Hwy,1-2077 Pembina Hwy,Winnipeg,MB,R3T 5J9,49.848549,-97.152403,clinic,"https://maps.google.com/?q=49.848549,-97.152403"
+Dynacare Manitoba,Winnipeg Lodge Assiniboine Clinic,633 Lodge Ave.,Winnipeg,MB,R3J 0S9,49.880275,-97.273383,clinic,"https://maps.google.com/?q=49.880275,-97.273383"
+Dynacare Manitoba,Winnipeg 3653 Portage Ave. SmartCentres,3-3653 Portage Ave.,Winnipeg,MB,R3K 2E7,49.892594,-97.143739,clinic,"https://maps.google.com/?q=49.892594,-97.143739"
+Dynacare Manitoba,Oakbank,622 Main St.,Oakbank,MB,R0E 1J2,49.944852,-96.842345,clinic,"https://maps.google.com/?q=49.944852,-96.842345"
+Dynacare Manitoba,Stonewall,330 3rd Ave. S,Stonewall,MB,R0C 2Z0,50.130352,-97.335041,clinic,"https://maps.google.com/?q=50.130352,-97.335041"
+Dynacare Manitoba,Beausejour,31 First St. S,Beausejour,MB,R0E 0C0,50.057153,-96.521046,clinic,"https://maps.google.com/?q=50.057153,-96.521046"
+Dynacare Manitoba,Steinbach,103-381 Stone Bridge Crossing,Steinbach,MB,R5G 2P8,49.535108,-96.67411,clinic,"https://maps.google.com/?q=49.535108,-96.67411"
+Dynacare Manitoba,Winkler,130-385 Main St.,Winkler,MB,R6W 1J2,37.605657,-82.324309,clinic,"https://maps.google.com/?q=37.605657,-82.324309"
+Dynacare Manitoba,Morden,130-30 Stephen St.,Morden,MB,R6M 2G3,49.189949,-98.094008,clinic,"https://maps.google.com/?q=49.189949,-98.094008"
+Dynacare Manitoba,Brandon Dennis Brandon Clinic,620 Dennis St.,Brandon,MB,R7A 5E7,49.833927,-99.937662,clinic,"https://maps.google.com/?q=49.833927,-99.937662"
 ,,,,,,,,,
 MOBILE — ALBERTA,,,,,,,,,
-Mobile — Alberta,Beaumont,,Beaumont,AB,T4X 0E4,,,mobile,
-Mobile — Alberta,Calgary,,Calgary,AB,T2Z 2N6,,,mobile,
-Mobile — Alberta,Calgary,,Calgary,AB,T3M 1H9,,,mobile,
-Mobile — Alberta,Calgary,,Calgary,AB,T3N 1K9,,,mobile,
-Mobile — Alberta,Calgary,,Calgary,AB,T3G 4C6,,,mobile,
-Mobile — Alberta,Calgary,,Calgary,AB,T2X 0M8,,,mobile,
-Mobile — Alberta,Cochrane,,Cochrane,AB,T4C 1E3,,,mobile,
-Mobile — Alberta,Edmonton,,Edmonton,AB,T6W 3C1,,,mobile,
-Mobile — Alberta,Edmonton,,Edmonton,AB,,,,mobile,
-Mobile — Alberta,Fort Saskatchewan,,Fort Saskatchewan,AB,T8L 0M9,,,mobile,
-Mobile — Alberta,Lacombe,,Lacombe,AB,T4L 1N1,,,mobile,
-Mobile — Alberta,Leslieville,,Leslieville,AB,T0M 1H0,,,mobile,
-Mobile — Alberta,Lethbridge,,Lethbridge,AB,T1H 6M8,,,mobile,
-Mobile — Alberta,Medicine Hat,,Medicine Hat,AB,T1C 0A6,,,mobile,
-Mobile — Alberta,Onoway,,Onoway,AB,T0E 1V0,,,mobile,
-Mobile — Alberta,Red Deer,,Red Deer,AB,T4P 0G2,,,mobile,
-Mobile — Alberta,Sherwood Park,,Sherwood Park,AB,T8A 1X2,,,mobile,
-Mobile — Alberta,Sturgeon County,,Sturgeon County,AB,T8R 0G8,,,mobile,
-Mobile — Alberta,Sturgeon County,,Sturgeon County,AB,T8R 2B5,,,mobile,
-Mobile — Alberta,Grande Prairie,,Grande Prairie,AB,,,,mobile,
-Mobile — Alberta,Peace River,,Peace River,AB,,,,mobile,
+Mobile — Alberta,Beaumont,,Beaumont,AB,T4X 0E4,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Alberta,Calgary,,Calgary,AB,T2Z 2N6,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Calgary,,Calgary,AB,T3M 1H9,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Calgary,,Calgary,AB,T3N 1K9,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Calgary,,Calgary,AB,T3G 4C6,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Calgary,,Calgary,AB,T2X 0M8,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Cochrane,,Cochrane,AB,T4C 1E3,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Alberta,Edmonton,,Edmonton,AB,T6W 3C1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Edmonton,,Edmonton,AB,,53.546205,-113.491241,mobile,"https://maps.google.com/?q=53.546205,-113.491241"
+Mobile — Alberta,Fort Saskatchewan,,Fort Saskatchewan,AB,T8L 0M9,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Alberta,Lacombe,,Lacombe,AB,T4L 1N1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Leslieville,,Leslieville,AB,T0M 1H0,52.383949,-114.606541,mobile,"https://maps.google.com/?q=52.383949,-114.606541"
+Mobile — Alberta,Lethbridge,,Lethbridge,AB,T1H 6M8,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Medicine Hat,,Medicine Hat,AB,T1C 0A6,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Onoway,,Onoway,AB,T0E 1V0,53.726228,-114.148919,mobile,"https://maps.google.com/?q=53.726228,-114.148919"
+Mobile — Alberta,Red Deer,,Red Deer,AB,T4P 0G2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Sherwood Park,,Sherwood Park,AB,T8A 1X2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Sturgeon County,,Sturgeon County,AB,T8R 0G8,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Sturgeon County,,Sturgeon County,AB,T8R 2B5,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Alberta,Grande Prairie,,Grande Prairie,AB,,55.17108,-118.794987,mobile,"https://maps.google.com/?q=55.17108,-118.794987"
+Mobile — Alberta,Peace River,,Peace River,AB,,56.233711,-117.291084,mobile,"https://maps.google.com/?q=56.233711,-117.291084"
 ,,,,,,,,,
 MOBILE — BRITISH COLUMBIA,,,,,,,,,
-Mobile — British Columbia,Abbotsford,,Abbotsford,BC,V2T 1Z1,,,mobile,
-Mobile — British Columbia,Chilliwack,,Chilliwack,BC,V2R 2B5,,,mobile,
-Mobile — British Columbia,Chilliwack,,Chilliwack,BC,V2R 0R1,,,mobile,
-Mobile — British Columbia,Cobble Hill,,Cobble Hill,BC,V8H 0A1,,,mobile,
-Mobile — British Columbia,Coquitlam,,Coquitlam,BC,V3B 0E8,,,mobile,
-Mobile — British Columbia,Coquitlam,,Coquitlam,BC,V3B 2W7,,,mobile,
-Mobile — British Columbia,Courtenay,,Courtenay,BC,V9N 5W8,,,mobile,
-Mobile — British Columbia,Cranbrook,,Cranbrook,BC,V1C 7B2,,,mobile,
-Mobile — British Columbia,Kamloops,,Kamloops,BC,V2H 1L1,,,mobile,
-Mobile — British Columbia,Kamloops,,Kamloops,BC,V2C 0H7,,,mobile,
-Mobile — British Columbia,Langford,,Langford,BC,V9B 6R6,,,mobile,
-Mobile — British Columbia,Langley,,Langley,BC,V2Y 4J1,,,mobile,
-Mobile — British Columbia,Nanaimo,,Nanaimo,BC,V9R 6N3,,,mobile,
-Mobile — British Columbia,Nanoose Bay,,Nanoose Bay,BC,V9P 9B7,,,mobile,
-Mobile — British Columbia,Nelson,,Nelson,BC,V0G 2J0,,,mobile,
-Mobile — British Columbia,North Pine,,North Pine,BC,V0C 2A0,,,mobile,
-Mobile — British Columbia,North Vancouver,,North Vancouver,BC,V7G 1S1,,,mobile,
-Mobile — British Columbia,Pemberton,,Pemberton,BC,V0N 2L1,,,mobile,
-Mobile — British Columbia,Penticton,,Penticton,BC,V2A 3R3,,,mobile,
-Mobile — British Columbia,Prince George,,Prince George,BC,V2L 4Y4,,,mobile,
-Mobile — British Columbia,Sooke,,Sooke,BC,V9Z 0Y3,,,mobile,
-Mobile — British Columbia,Summerland,,Summerland,BC,V0H 1Z1,,,mobile,
-Mobile — British Columbia,Surrey,,Surrey,BC,V3T 1Z2,,,mobile,
-Mobile — British Columbia,Surrey,,Surrey,BC,V3R 4J4,,,mobile,
-Mobile — British Columbia,Surrey,,Surrey,BC,V3S 1Y6,,,mobile,
-Mobile — British Columbia,Surrey,,Surrey,BC,V4N 5Z8,,,mobile,
-Mobile — British Columbia,Surrey,,Surrey,BC,V3S 8Y7,,,mobile,
-Mobile — British Columbia,Vancouver,,Vancouver,BC,V2N 1L3,,,mobile,
-Mobile — British Columbia,Vancouver,,Vancouver,BC,V6H 3P4,,,mobile,
-Mobile — British Columbia,Vernon,,Vernon,BC,V1T 9A1,,,mobile,
-Mobile — British Columbia,Victoria,,Victoria,BC,V9C 3E9,,,mobile,
-Mobile — British Columbia,Kelowna,,Kelowna,BC,,,,mobile,
+Mobile — British Columbia,Abbotsford,,Abbotsford,BC,V2T 1Z1,49.050126,-122.348565,mobile,"https://maps.google.com/?q=49.050126,-122.348565"
+Mobile — British Columbia,Chilliwack,,Chilliwack,BC,V2R 2B5,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Chilliwack,,Chilliwack,BC,V2R 0R1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Cobble Hill,,Cobble Hill,BC,V8H 0A1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Coquitlam,,Coquitlam,BC,V3B 0E8,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — British Columbia,Coquitlam,,Coquitlam,BC,V3B 2W7,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Courtenay,,Courtenay,BC,V9N 5W8,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Cranbrook,,Cranbrook,BC,V1C 7B2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Kamloops,,Kamloops,BC,V2H 1L1,50.79308,-120.317947,mobile,"https://maps.google.com/?q=50.79308,-120.317947"
+Mobile — British Columbia,Kamloops,,Kamloops,BC,V2C 0H7,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Langford,,Langford,BC,V9B 6R6,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Langley,,Langley,BC,V2Y 4J1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Nanaimo,,Nanaimo,BC,V9R 6N3,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Nanoose Bay,,Nanoose Bay,BC,V9P 9B7,49.30635,-124.238098,mobile,"https://maps.google.com/?q=49.30635,-124.238098"
+Mobile — British Columbia,Nelson,,Nelson,BC,V0G 2J0,49.610861,-117.5627,mobile,"https://maps.google.com/?q=49.610861,-117.5627"
+Mobile — British Columbia,North Pine,,North Pine,BC,V0C 2A0,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,North Vancouver,,North Vancouver,BC,V7G 1S1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Pemberton,,Pemberton,BC,V0N 2L1,50.318821,-122.803234,mobile,"https://maps.google.com/?q=50.318821,-122.803234"
+Mobile — British Columbia,Penticton,,Penticton,BC,V2A 3R3,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Prince George,,Prince George,BC,V2L 4Y4,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — British Columbia,Sooke,,Sooke,BC,V9Z 0Y3,48.384299,-123.70641,mobile,"https://maps.google.com/?q=48.384299,-123.70641"
+Mobile — British Columbia,Summerland,,Summerland,BC,V0H 1Z1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Surrey,,Surrey,BC,V3T 1Z2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Surrey,,Surrey,BC,V3R 4J4,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Surrey,,Surrey,BC,V3S 1Y6,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Surrey,,Surrey,BC,V4N 5Z8,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Surrey,,Surrey,BC,V3S 8Y7,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Vancouver,,Vancouver,BC,V2N 1L3,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — British Columbia,Vancouver,,Vancouver,BC,V6H 3P4,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — British Columbia,Vernon,,Vernon,BC,V1T 9A1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — British Columbia,Victoria,,Victoria,BC,V9C 3E9,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — British Columbia,Kelowna,,Kelowna,BC,,49.887918,-119.495902,mobile,"https://maps.google.com/?q=49.887918,-119.495902"
 ,,,,,,,,,
 MOBILE — MANITOBA,,,,,,,,,
-Mobile — Manitoba,Cartier,,Cartier,MB,,,,mobile,
-Mobile — Manitoba,East St. Paul,,East St. Paul,MB,,,,mobile,
-Mobile — Manitoba,Lorette,,Lorette,MB,,,,mobile,
-Mobile — Manitoba,Rosenort,,Rosenort,MB,,,,mobile,
-Mobile — Manitoba,Steinbach,,Steinbach,MB,,,,mobile,
-Mobile — Manitoba,Tuelon,,Tuelon,MB,,,,mobile,
-Mobile — Manitoba,Winnipeg,,Winnipeg,MB,,,,mobile,
+Mobile — Manitoba,Cartier,,Cartier,MB,,49.926697,-97.727869,mobile,"https://maps.google.com/?q=49.926697,-97.727869"
+Mobile — Manitoba,East St. Paul,,East St. Paul,MB,,49.979488,-97.014771,mobile,"https://maps.google.com/?q=49.979488,-97.014771"
+Mobile — Manitoba,Lorette,,Lorette,MB,,49.739359,-96.874248,mobile,"https://maps.google.com/?q=49.739359,-96.874248"
+Mobile — Manitoba,Rosenort,,Rosenort,MB,,49.459661,-97.435964,mobile,"https://maps.google.com/?q=49.459661,-97.435964"
+Mobile — Manitoba,Steinbach,,Steinbach,MB,,49.525441,-96.685428,mobile,"https://maps.google.com/?q=49.525441,-96.685428"
+Mobile — Manitoba,Tuelon,,Tuelon,MB,,50.380738,-97.262756,mobile,"https://maps.google.com/?q=50.380738,-97.262756"
+Mobile — Manitoba,Winnipeg,,Winnipeg,MB,,49.895537,-97.138458,mobile,"https://maps.google.com/?q=49.895537,-97.138458"
 ,,,,,,,,,
 MOBILE — NEW BRUNSWICK,,,,,,,,,
-Mobile — New Brunswick,Bathurst,,Bathurst,NB,,,,mobile,
-Mobile — New Brunswick,Campbellton,,Campbellton,NB,,,,mobile,
-Mobile — New Brunswick,Fredericton,,Fredericton,NB,,,,mobile,
-Mobile — New Brunswick,Grand Bay-Westfield,,Grand Bay-Westfield,NB,,,,mobile,
-Mobile — New Brunswick,Moncton,,Moncton,NB,,,,mobile,
-Mobile — New Brunswick,Picadilly,,Picadilly,NB,,,,mobile,
-Mobile — New Brunswick,Upper Knoxford,,Upper Knoxford,NB,,,,mobile,
+Mobile — New Brunswick,Bathurst,,Bathurst,NB,,47.620867,-65.653755,mobile,"https://maps.google.com/?q=47.620867,-65.653755"
+Mobile — New Brunswick,Campbellton,,Campbellton,NB,,48.004663,-66.676599,mobile,"https://maps.google.com/?q=48.004663,-66.676599"
+Mobile — New Brunswick,Fredericton,,Fredericton,NB,,45.948828,-66.629183,mobile,"https://maps.google.com/?q=45.948828,-66.629183"
+Mobile — New Brunswick,Grand Bay-Westfield,,Grand Bay-Westfield,NB,,45.322195,-66.202517,mobile,"https://maps.google.com/?q=45.322195,-66.202517"
+Mobile — New Brunswick,Moncton,,Moncton,NB,,46.098568,-64.800427,mobile,"https://maps.google.com/?q=46.098568,-64.800427"
+Mobile — New Brunswick,Picadilly,,Picadilly,NB,,45.728034,-65.386874,mobile,"https://maps.google.com/?q=45.728034,-65.386874"
+Mobile — New Brunswick,Upper Knoxford,,Upper Knoxford,NB,,46.537063,-67.755458,mobile,"https://maps.google.com/?q=46.537063,-67.755458"
 ,,,,,,,,,
 MOBILE — NEWFOUNDLAND AND LABRADOR,,,,,,,,,
-Mobile — Newfoundland and Labrador,St. John's,,St. John's,NL,,,,mobile,
-Mobile — Newfoundland and Labrador,Corner Brook,,Corner Brook,NL,,,,mobile,
-Mobile — Newfoundland and Labrador,Grand Falls-Windsor,,Grand Falls-Windsor,NL,,,,mobile,
-Mobile — Newfoundland and Labrador,Lethbridge,,Lethbridge,NL,,,,mobile,
+Mobile — Newfoundland and Labrador,St. John's,,St. John's,NL,,47.564679,-52.706696,mobile,"https://maps.google.com/?q=47.564679,-52.706696"
+Mobile — Newfoundland and Labrador,Corner Brook,,Corner Brook,NL,,48.95317,-57.947388,mobile,"https://maps.google.com/?q=48.95317,-57.947388"
+Mobile — Newfoundland and Labrador,Grand Falls-Windsor,,Grand Falls-Windsor,NL,,48.944151,-55.652618,mobile,"https://maps.google.com/?q=48.944151,-55.652618"
+Mobile — Newfoundland and Labrador,Lethbridge,,Lethbridge,NL,,48.369312,-53.856544,mobile,"https://maps.google.com/?q=48.369312,-53.856544"
 ,,,,,,,,,
 MOBILE — NOVA SCOTIA,,,,,,,,,
-Mobile — Nova Scotia,Antigonish,,Antigonish,NS,,,,mobile,
-Mobile — Nova Scotia,Darling Lake,,Darling Lake,NS,,,,mobile,
-Mobile — Nova Scotia,Dartmouth,,Dartmouth,NS,,,,mobile,
-Mobile — Nova Scotia,Elmsdale,,Elmsdale,NS,,,,mobile,
-Mobile — Nova Scotia,Herring Cove,,Herring Cove,NS,,,,mobile,
-Mobile — Nova Scotia,Kingston,,Kingston,NS,,,,mobile,
-Mobile — Nova Scotia,Shag Harbour,,Shag Harbour,NS,,,,mobile,
+Mobile — Nova Scotia,Antigonish,,Antigonish,NS,,45.621361,-61.990493,mobile,"https://maps.google.com/?q=45.621361,-61.990493"
+Mobile — Nova Scotia,Darling Lake,,Darling Lake,NS,,44.716316,-64.453459,mobile,"https://maps.google.com/?q=44.716316,-64.453459"
+Mobile — Nova Scotia,Dartmouth,,Dartmouth,NS,,44.679971,-63.572023,mobile,"https://maps.google.com/?q=44.679971,-63.572023"
+Mobile — Nova Scotia,Elmsdale,,Elmsdale,NS,,44.967179,-63.504811,mobile,"https://maps.google.com/?q=44.967179,-63.504811"
+Mobile — Nova Scotia,Herring Cove,,Herring Cove,NS,,44.571283,-63.558271,mobile,"https://maps.google.com/?q=44.571283,-63.558271"
+Mobile — Nova Scotia,Kingston,,Kingston,NS,,44.987085,-64.949963,mobile,"https://maps.google.com/?q=44.987085,-64.949963"
+Mobile — Nova Scotia,Shag Harbour,,Shag Harbour,NS,,43.493911,-65.717993,mobile,"https://maps.google.com/?q=43.493911,-65.717993"
 ,,,,,,,,,
 MOBILE — ONTARIO,,,,,,,,,
-Mobile — Ontario,AJAX,,AJAX,ON,L1Z 1R4,,,mobile,
-Mobile — Ontario,ALEXANDRIA,,ALEXANDRIA,ON,K0C 1A0,,,mobile,
-Mobile — Ontario,AMHERSTVIEW,,AMHERSTVIEW,ON,K7N 2A3,,,mobile,
-Mobile — Ontario,Barrie,,Barrie,ON,L4M 3N4,,,mobile,
-Mobile — Ontario,Brampton,,Brampton,ON,L6R 1R9,,,mobile,
-Mobile — Ontario,Brampton,,Brampton,ON,L7A 4T5,,,mobile,
-Mobile — Ontario,Brampton,,Brampton,ON,L6S 3Z7,,,mobile,
-Mobile — Ontario,Brockville,,Brockville,ON,K6V 5T1,,,mobile,
-Mobile — Ontario,Cambridge,,Cambridge,ON,N3H 2H9,,,mobile,
-Mobile — Ontario,Crediton,,Crediton,ON,N0M 1M0,,,mobile,
-Mobile — Ontario,Dundas,,Dundas,ON,L9H 5M3,,,mobile,
-Mobile — Ontario,Goderich,,Goderich,ON,N7A 1L3,,,mobile,
-Mobile — Ontario,Guelph,,Guelph,ON,N1L 0H5,,,mobile,
-Mobile — Ontario,Hamilton,,Hamilton,ON,L8M 1H5,,,mobile,
-Mobile — Ontario,Harrow,,Harrow,ON,N0R 1G0,,,mobile,
-Mobile — Ontario,Havelock,,Havelock,ON,K0L 1Z0,,,mobile,
-Mobile — Ontario,Kitchener,,Kitchener,ON,N2A 4C3,,,mobile,
-Mobile — Ontario,Lasalle,,Lasalle,ON,N9H 1Z7,,,mobile,
-Mobile — Ontario,London,,London,ON,N6G 2W4,,,mobile,
-Mobile — Ontario,Milton,,Milton,ON,L9T 6Y4,,,mobile,
-Mobile — Ontario,Mississauga,,Mississauga,ON,L5N 6R5,,,mobile,
-Mobile — Ontario,Mississauga,,Mississauga,ON,L5A 1Y7,,,mobile,
-Mobile — Ontario,Mississauga,,Mississauga,ON,L5A 3L8,,,mobile,
-Mobile — Ontario,Mississauga,,Mississauga,ON,L5R 3H1,,,mobile,
-Mobile — Ontario,Nepean,,Nepean,ON,K2J 4Y2,,,mobile,
-Mobile — Ontario,Niagara Falls ( St. Davids),,Niagara Falls ( St. Davids),ON,L2J 4J7,,,mobile,
-Mobile — Ontario,North York,,North York,ON,M9L 2H8,,,mobile,
-Mobile — Ontario,Orleans,,Orleans,ON,K4A 0M4,,,mobile,
-Mobile — Ontario,Oshawa,,Oshawa,ON,L1K 0E8,,,mobile,
-Mobile — Ontario,Ottawa,,Ottawa,ON,K0A 2Z0,,,mobile,
-Mobile — Ontario,Owen Sound,,Owen Sound,ON,N4K 2B7,,,mobile,
-Mobile — Ontario,Parry Sound,,Parry Sound,ON,P2A 1V4,,,mobile,
-Mobile — Ontario,Petawawa,,Petawawa,ON,K8H 1Z1,,,mobile,
-Mobile — Ontario,Phelpston,,Phelpston,ON,L0L 2K0,,,mobile,
-Mobile — Ontario,Richmond Hill,,Richmond Hill,ON,L4E 5B1,,,mobile,
-Mobile — Ontario,SAULT STE. MARIE,,SAULT STE. MARIE,ON,P6B 2G6,,,mobile,
-Mobile — Ontario,SAULT STE. MARIE,,SAULT STE. MARIE,ON,P6C 5L8,,,mobile,
-Mobile — Ontario,Scarborough,,Scarborough,ON,M1L 0H3,,,mobile,
-Mobile — Ontario,St. Thomas,,St. Thomas,ON,N5P 3T1,,,mobile,
-Mobile — Ontario,Stoney Creek,,Stoney Creek,ON,L8E 0E4,,,mobile,
-Mobile — Ontario,Toronto,,Toronto,ON,M3N 2Z1,,,mobile,
-Mobile — Ontario,Toronto,,Toronto,ON,M5N 2N2,,,mobile,
-Mobile — Ontario,Toronto,,Toronto,ON,M9R 3G8,,,mobile,
-Mobile — Ontario,Toronto,,Toronto,ON,M6P 3N4,,,mobile,
-Mobile — Ontario,Val Caron,,Val Caron,ON,P3N 1A2,,,mobile,
-Mobile — Ontario,Williamstown,,Williamstown,ON,K0C 2J0,,,mobile,
-Mobile — Ontario,Thunder Bay,,Thunder Bay,ON,,,,mobile,
-Mobile — Ontario,Niagara Falls,,Niagara Falls,ON,,,,mobile,
-Mobile — Ontario,Sudbury,,Sudbury,ON,,,,mobile,
+Mobile — Ontario,AJAX,,AJAX,ON,L1Z 1R4,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,ALEXANDRIA,,ALEXANDRIA,ON,K0C 1A0,45.31289,-74.638469,mobile,"https://maps.google.com/?q=45.31289,-74.638469"
+Mobile — Ontario,AMHERSTVIEW,,AMHERSTVIEW,ON,K7N 2A3,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Barrie,,Barrie,ON,L4M 3N4,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Brampton,,Brampton,ON,L6R 1R9,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Brampton,,Brampton,ON,L7A 4T5,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Brampton,,Brampton,ON,L6S 3Z7,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Brockville,,Brockville,ON,K6V 5T1,44.609802,-75.67471,mobile,"https://maps.google.com/?q=44.609802,-75.67471"
+Mobile — Ontario,Cambridge,,Cambridge,ON,N3H 2H9,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Crediton,,Crediton,ON,N0M 1M0,43.300308,-81.538203,mobile,"https://maps.google.com/?q=43.300308,-81.538203"
+Mobile — Ontario,Dundas,,Dundas,ON,L9H 5M3,43.262038,-79.956493,mobile,"https://maps.google.com/?q=43.262038,-79.956493"
+Mobile — Ontario,Goderich,,Goderich,ON,N7A 1L3,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Guelph,,Guelph,ON,N1L 0H5,43.530267,-80.195662,mobile,"https://maps.google.com/?q=43.530267,-80.195662"
+Mobile — Ontario,Hamilton,,Hamilton,ON,L8M 1H5,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Harrow,,Harrow,ON,N0R 1G0,42.043099,-82.95036,mobile,"https://maps.google.com/?q=42.043099,-82.95036"
+Mobile — Ontario,Havelock,,Havelock,ON,K0L 1Z0,44.443772,-77.866737,mobile,"https://maps.google.com/?q=44.443772,-77.866737"
+Mobile — Ontario,Kitchener,,Kitchener,ON,N2A 4C3,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Lasalle,,Lasalle,ON,N9H 1Z7,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,London,,London,ON,N6G 2W4,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Milton,,Milton,ON,L9T 6Y4,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Mississauga,,Mississauga,ON,L5N 6R5,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Mississauga,,Mississauga,ON,L5A 1Y7,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Mississauga,,Mississauga,ON,L5A 3L8,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Mississauga,,Mississauga,ON,L5R 3H1,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Nepean,,Nepean,ON,K2J 4Y2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Niagara Falls ( St. Davids),,Niagara Falls ( St. Davids),ON,L2J 4J7,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,North York,,North York,ON,M9L 2H8,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Orleans,,Orleans,ON,K4A 0M4,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Oshawa,,Oshawa,ON,L1K 0E8,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Ottawa,,Ottawa,ON,K0A 2Z0,45.189612,-75.832005,mobile,"https://maps.google.com/?q=45.189612,-75.832005"
+Mobile — Ontario,Owen Sound,,Owen Sound,ON,N4K 2B7,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Parry Sound,,Parry Sound,ON,P2A 1V4,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Petawawa,,Petawawa,ON,K8H 1Z1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Phelpston,,Phelpston,ON,L0L 2K0,44.521728,-79.824945,mobile,"https://maps.google.com/?q=44.521728,-79.824945"
+Mobile — Ontario,Richmond Hill,,Richmond Hill,ON,L4E 5B1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,SAULT STE. MARIE,,SAULT STE. MARIE,ON,P6B 2G6,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,SAULT STE. MARIE,,SAULT STE. MARIE,ON,P6C 5L8,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Scarborough,,Scarborough,ON,M1L 0H3,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,St. Thomas,,St. Thomas,ON,N5P 3T1,42.836443,-81.20944,mobile,"https://maps.google.com/?q=42.836443,-81.20944"
+Mobile — Ontario,Stoney Creek,,Stoney Creek,ON,L8E 0E4,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Ontario,Toronto,,Toronto,ON,M3N 2Z1,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Toronto,,Toronto,ON,M5N 2N2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Toronto,,Toronto,ON,M9R 3G8,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Toronto,,Toronto,ON,M6P 3N4,43.661603,-79.448736,mobile,"https://maps.google.com/?q=43.661603,-79.448736"
+Mobile — Ontario,Val Caron,,Val Caron,ON,P3N 1A2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Ontario,Williamstown,,Williamstown,ON,K0C 2J0,45.16762,-74.580672,mobile,"https://maps.google.com/?q=45.16762,-74.580672"
+Mobile — Ontario,Thunder Bay,,Thunder Bay,ON,,48.406414,-89.259796,mobile,"https://maps.google.com/?q=48.406414,-89.259796"
+Mobile — Ontario,Niagara Falls,,Niagara Falls,ON,,43.10656,-79.063904,mobile,"https://maps.google.com/?q=43.10656,-79.063904"
+Mobile — Ontario,Sudbury,,Sudbury,ON,,46.49272,-80.991211,mobile,"https://maps.google.com/?q=46.49272,-80.991211"
 ,,,,,,,,,
 MOBILE — PRINCE EDWARD ISLAND,,,,,,,,,
-Mobile — Prince Edward Island,Souris,,Souris,PE,,,,mobile,
-Mobile — Prince Edward Island,Summerside,,Summerside,PE,,,,mobile,
-Mobile — Prince Edward Island,Stratford,,Stratford,PE,,,,mobile,
+Mobile — Prince Edward Island,Souris,,Souris,PE,,46.356529,-62.250428,mobile,"https://maps.google.com/?q=46.356529,-62.250428"
+Mobile — Prince Edward Island,Summerside,,Summerside,PE,,46.394259,-63.789239,mobile,"https://maps.google.com/?q=46.394259,-63.789239"
+Mobile — Prince Edward Island,Stratford,,Stratford,PE,,46.217109,-63.089253,mobile,"https://maps.google.com/?q=46.217109,-63.089253"
 ,,,,,,,,,
 MOBILE — SASKATCHEWAN,,,,,,,,,
-Mobile — Saskatchewan,Maidstone,,Maidstone,SK,S0M 1M0,,,mobile,
-Mobile — Saskatchewan,North Battleford,,North Battleford,SK,S9A 2E9,,,mobile,
-Mobile — Saskatchewan,Prince Albert,,Prince Albert,SK,S6V 5R2,,,mobile,
-Mobile — Saskatchewan,Regina,,Regina,SK,S4W 0B2,,,mobile,
-Mobile — Saskatchewan,Regina,,Regina,SK,S4S 6Y8,,,mobile,
-Mobile — Saskatchewan,Regina,,Regina,SK,S4T 0R2,,,mobile,
-Mobile — Saskatchewan,Regina,,Regina,SK,S4N 4B5,,,mobile,
-Mobile — Saskatchewan,Saskatoon,,Saskatoon,SK,S7W 1A8,,,mobile,
-Mobile — Saskatchewan,Swift Current,,Swift Current,SK,S9H 4S2,,,mobile,
-Mobile — Saskatchewan,Weyburn,,Weyburn,SK,S4H 1S4,,,mobile,
-Mobile — Saskatchewan,Maidstone,,Maidstone,SK,,,,mobile,
+Mobile — Saskatchewan,Maidstone,,Maidstone,SK,S0M 1M0,53.085337,-109.289629,mobile,"https://maps.google.com/?q=53.085337,-109.289629"
+Mobile — Saskatchewan,North Battleford,,North Battleford,SK,S9A 2E9,38.67524,-0.809962,mobile,"https://maps.google.com/?q=38.67524,-0.809962"
+Mobile — Saskatchewan,Prince Albert,,Prince Albert,SK,S6V 5R2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Saskatchewan,Regina,,Regina,SK,S4W 0B2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Saskatchewan,Regina,,Regina,SK,S4S 6Y8,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Saskatchewan,Regina,,Regina,SK,S4T 0R2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Saskatchewan,Regina,,Regina,SK,S4N 4B5,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Saskatchewan,Saskatoon,,Saskatoon,SK,S7W 1A8,52.14185,-106.55962,mobile,"https://maps.google.com/?q=52.14185,-106.55962"
+Mobile — Saskatchewan,Swift Current,,Swift Current,SK,S9H 4S2,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Saskatchewan,Weyburn,,Weyburn,SK,S4H 1S4,37.605657,-82.324309,mobile,"https://maps.google.com/?q=37.605657,-82.324309"
+Mobile — Saskatchewan,Maidstone,,Maidstone,SK,,53.086227,-109.296096,mobile,"https://maps.google.com/?q=53.086227,-109.296096"

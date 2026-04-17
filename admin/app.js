@@ -163,7 +163,8 @@ async function loadCSV() {
     if (!res.ok) throw new Error("Failed to load CSV");
     const data = await res.json();
     sha = data.sha;
-    const text = atob(data.content.replace(/\n/g, ""));
+    const bytes = Uint8Array.from(atob(data.content.replace(/\n/g, "")), c => c.charCodeAt(0));
+    const text = new TextDecoder("utf-8").decode(bytes);
     rows = parseCSV(text);
     dirty.clear();
     render();
@@ -444,7 +445,7 @@ function esc(s) {
 }
 
 function cellInput(idx, col, val) {
-  return `<input value="${esc(val || "")}" data-row="${idx}" data-col="${col}" />`;
+  return `<input value="${esc(val || "")}" placeholder="-" data-row="${idx}" data-col="${col}" />`;
 }
 
 function typeSelect(idx, val) {

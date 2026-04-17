@@ -56,13 +56,13 @@ for (const row of csvRows) {
   const lng        = parseFloat(row["Longitude"]);
   const type       = (row["Type"] || "").trim();
 
-  if (!name || isNaN(lat) || isNaN(lng)) {
+  if ((!name && !city) || isNaN(lat) || isNaN(lng)) {
     skipped++;
     continue;
   }
 
   if (!isInCanada(lat, lng)) {
-    console.warn(`  ⚠ Skipping "${name}, ${province}" — coords (${lat}, ${lng}) outside Canada`);
+    console.warn(`  ⚠ Skipping "${name || city}, ${province}" — coords (${lat}, ${lng}) outside Canada`);
     badCoords++;
     continue;
   }
@@ -80,7 +80,7 @@ for (const row of csvRows) {
 
   if (type === "mobile") {
     mobileLocations.push({
-      name,
+      name: name || city,
       postalCode,
       province,
       provinceExpanded,

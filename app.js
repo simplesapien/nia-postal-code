@@ -13,9 +13,11 @@ const MAX_GEOCODE_TRIES  = 4;
 // STATE
 // ─────────────────────────────────────────────
 
-let mobileLocations = [];
-let clinicLocations = [];
-let leafletMap      = null;
+let mobileLocations  = [];
+let clinicLocations  = [];
+let leafletMap       = null;
+let currentMode      = "mobile";
+let lastSearchCoords = null;
 
 // ─────────────────────────────────────────────
 // INIT
@@ -358,14 +360,34 @@ function findNearestByType(lat, lng) {
   };
 }
 
+function findNearestN(lat, lng, locations, n) {
+  const scored = [];
+  for (const loc of locations) {
+    if (loc.lat == null || loc.lng == null) continue;
+    scored.push({ location: loc, distance: haversineKm(lat, lng, loc.lat, loc.lng) });
+  }
+  scored.sort((a, b) => a.distance - b.distance);
+  return scored.slice(0, n);
+}
+
 // ─────────────────────────────────────────────
 // MAP
 // ─────────────────────────────────────────────
 
-function showMap(userLat, userLng, results) {
-  const mapEl     = document.getElementById("map");
-  const emptyEl   = document.getElementById("map-empty");
-  const legendEl  = document.getElementById("map-legend");
+const PIN_SVG = {
+  user: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#0d9488"/><circle cx="16" cy="15" r="7" fill="white"/><circle cx="16" cy="15" r="4" fill="#0d9488"/></svg>`,
+  mobile: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#2563eb"/><circle cx="16" cy="15" r="7" fill="white"/><path d="M12 15h8M16 11v8" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/></svg>`,
+  clinic: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#7c3aed"/><circle cx="16" cy="15" r="7" fill="white"/><rect x="12" y="11" width="8" height="8" rx="1.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/><path d="M14 15h4" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+};
+
+function makePin(type) {
+  return L.divIcon({ className: "", html: PIN_SVG[type], iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36] });
+}
+
+function showMap(userLat, userLng, results, opts = {}) {
+  const mapEl    = document.getElementById("map");
+  const emptyEl  = document.getElementById("map-empty");
+  const legendEl = document.getElementById("map-legend");
 
   emptyEl.style.display = "none";
   mapEl.classList.add("visible");
@@ -380,38 +402,7 @@ function showMap(userLat, userLng, results) {
     maxZoom: 16,
   }).addTo(leafletMap);
 
-  const userPin = L.divIcon({
-    className: "",
-    html: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#0d9488"/>
-      <circle cx="16" cy="15" r="7" fill="white"/>
-      <circle cx="16" cy="15" r="4" fill="#0d9488"/>
-    </svg>`,
-    iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
-  });
-
-  const mobilePin = L.divIcon({
-    className: "",
-    html: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#2563eb"/>
-      <circle cx="16" cy="15" r="7" fill="white"/>
-      <path d="M12 15h8M16 11v8" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/>
-    </svg>`,
-    iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
-  });
-
-  const clinicPin = L.divIcon({
-    className: "",
-    html: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#7c3aed"/>
-      <circle cx="16" cy="15" r="7" fill="white"/>
-      <rect x="12" y="11" width="8" height="8" rx="1.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
-      <path d="M14 15h4" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round"/>
-    </svg>`,
-    iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
-  });
-
-  L.marker([userLat, userLng], { icon: userPin })
+  L.marker([userLat, userLng], { icon: makePin("user") })
     .addTo(leafletMap).bindPopup("<b>Your location</b>").openPopup();
 
   const bounds = [[userLat, userLng]];
@@ -420,25 +411,27 @@ function showMap(userLat, userLng, results) {
     if (!r) continue;
     const loc = r.location;
     const isClinic = loc.type === "clinic";
-    const pin = isClinic ? clinicPin : mobilePin;
+    const pin = makePin(isClinic ? "clinic" : "mobile");
     const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
     const label = isClinic
-      ? `<b>Nearest clinic</b><br>${loc.name}<br><span style="font-size:0.75rem;color:#666">${loc.address}, ${loc.city}</span>`
-      : `<b>Nearest mobile phlebotomist</b><br>${loc.name}, ${province}`;
+      ? `<b>${loc.name}</b><br><span style="font-size:0.75rem;color:#666">${loc.address}, ${loc.city}</span>`
+      : `<b>${loc.name}</b>, ${province}`;
     L.marker([loc.lat, loc.lng], { icon: pin })
       .addTo(leafletMap).bindPopup(label);
     bounds.push([loc.lat, loc.lng]);
   }
 
-  L.circle([userLat, userLng], {
-    radius: 100000, color:"#0d9488", fillColor:"#0d9488",
-    fillOpacity: 0.06, weight: 1.5, dashArray:"6 4",
-  }).addTo(leafletMap);
+  if (opts.showRangeRings) {
+    L.circle([userLat, userLng], {
+      radius: 100000, color:"#0d9488", fillColor:"#0d9488",
+      fillOpacity: 0.06, weight: 1.5, dashArray:"6 4",
+    }).addTo(leafletMap);
 
-  L.circle([userLat, userLng], {
-    radius: 200000, color:"#d97706", fillColor:"#d97706",
-    fillOpacity: 0.04, weight: 1.5, dashArray:"6 4",
-  }).addTo(leafletMap);
+    L.circle([userLat, userLng], {
+      radius: 200000, color:"#d97706", fillColor:"#d97706",
+      fillOpacity: 0.04, weight: 1.5, dashArray:"6 4",
+    }).addTo(leafletMap);
+  }
 
   leafletMap.fitBounds(L.latLngBounds(bounds).pad(0.25));
   leafletMap.invalidateSize();
@@ -448,23 +441,11 @@ function showMap(userLat, userLng, results) {
 // RENDER RESULT
 // ─────────────────────────────────────────────
 
-function renderOptionHtml(result, label) {
-  if (!result) return `<div class="rc-option muted"><div class="rc-option-label">${label}</div><div class="rc-option-detail">No ${label.toLowerCase()} found nearby</div></div>`;
-  const loc = result.location;
-  const km = Math.round(result.distance);
+function renderMobileResult(mobileResult, userCoords) {
+  if (!mobileResult) return;
+  const distKm = Math.round(mobileResult.distance);
+  const loc    = mobileResult.location;
   const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
-  const detail = loc.type === "clinic"
-    ? `${loc.name}<br><span class="rc-addr">${loc.address}, ${loc.city}</span>`
-    : `${loc.name}, ${province}`;
-  return `<div class="rc-option"><div class="rc-option-label">${label}</div><div class="rc-option-detail">${detail}</div><div class="rc-option-dist">${km} km</div></div>`;
-}
-
-function renderResult(byType, userCoords) {
-  const { mobile, clinic } = byType;
-  const nearest = [mobile, clinic].filter(Boolean).sort((a, b) => a.distance - b.distance)[0];
-  if (!nearest) return;
-
-  const distKm = Math.round(nearest.distance);
   const card   = document.getElementById("result-card");
 
   let icon, title, sub, note, cls;
@@ -473,7 +454,7 @@ function renderResult(byType, userCoords) {
     icon  = `<svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>`;
     title = "We're in your area!";
     sub   = "Standard service rates apply";
-    note  = "A mobile phlebotomist can come to your home or work, or visit a nearby clinic for walk-in bloodwork.";
+    note  = "A mobile phlebotomist can come to your home or work. Book your appointment and we'll handle the rest.";
     cls   = "in-range";
   } else if (distKm <= RANGE_EXTENDED) {
     icon  = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
@@ -484,8 +465,8 @@ function renderResult(byType, userCoords) {
   } else {
     icon  = `<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
     title = "Outside our coverage";
-    sub   = "Service unavailable in your area";
-    note  = "This address is outside our current range. We're expanding — contact us and we'll let you know when we reach you.";
+    sub   = "No mobile service in your area";
+    note  = "This address is outside our current mobile range. We're expanding — contact us and we'll let you know when we reach you.";
     cls   = "out-of-range";
   }
 
@@ -498,16 +479,62 @@ function renderResult(byType, userCoords) {
         <div class="rc-sub">${sub}</div>
       </div>
     </div>
-    <div class="rc-options">
-      ${renderOptionHtml(mobile, "Mobile phlebotomist")}
-      ${renderOptionHtml(clinic, "In-clinic lab")}
+    <div class="rc-stats">
+      <div class="rc-stat">
+        <div class="rc-stat-label">Distance</div>
+        <div class="rc-stat-val">${distKm}<span style="font-size:0.9rem;font-family:'Instrument Sans',sans-serif;font-weight:400;color:var(--muted)"> km</span></div>
+      </div>
+      <div class="rc-stat">
+        <div class="rc-stat-label">Nearest phlebotomist</div>
+        <div class="rc-stat-val small">${loc.name}, ${province}</div>
+      </div>
     </div>
     <p class="rc-note">${note}</p>
   `;
 
+  if (userCoords && loc.lat && loc.lng) {
+    showMap(userCoords.lat, userCoords.lng, [mobileResult], { showRangeRings: true });
+  }
+}
+
+function renderClinicResult(clinicResults, userCoords) {
+  if (!clinicResults.length) return;
+  const card = document.getElementById("result-card");
+
+  const itemsHtml = clinicResults.map((r, i) => {
+    const loc = r.location;
+    const km  = Math.round(r.distance);
+    const addr = [loc.address, loc.city].filter(Boolean).join(", ");
+    const mapsUrl = loc.lat && loc.lng
+      ? `https://www.google.com/maps/dir/?api=1&destination=${loc.lat},${loc.lng}`
+      : "#";
+    return `<div class="clinic-item">
+      <div class="clinic-rank">${i + 1}</div>
+      <div class="clinic-info">
+        <div class="clinic-name">${loc.name}</div>
+        <div class="clinic-addr">${addr}${mapsUrl !== "#" ? ` · <a href="${mapsUrl}" target="_blank" rel="noopener">Directions</a>` : ""}</div>
+      </div>
+      <div class="clinic-dist">${km} <span>km</span></div>
+    </div>`;
+  }).join("");
+
+  card.className = "result-card visible clinic-results";
+  card.innerHTML = `
+    <div class="rc-header" style="margin-bottom:8px">
+      <div class="rc-badge" style="background:#7c3aed">
+        <svg viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="2" width="14" height="19" rx="2"/></svg>
+      </div>
+      <div>
+        <div class="rc-title" style="color:var(--ink)">Nearest clinics</div>
+        <div class="rc-sub">${clinicResults.length} closest lab${clinicResults.length > 1 ? "s" : ""} to you</div>
+      </div>
+    </div>
+    <div class="clinic-list">${itemsHtml}</div>
+  `;
+
   if (userCoords) {
-    const mapResults = [mobile, clinic].filter(r => r && r.location.lat && r.location.lng);
-    if (mapResults.length) showMap(userCoords.lat, userCoords.lng, mapResults);
+    const mapResults = clinicResults.filter(r => r.location.lat && r.location.lng);
+    if (mapResults.length) showMap(userCoords.lat, userCoords.lng, mapResults, { showRangeRings: false });
   }
 }
 
@@ -550,35 +577,46 @@ async function handleSubmit(opts = {}) {
   try {
     if (!mobileLocations.length && !clinicLocations.length) throw new Error("Location data not loaded. Please refresh.");
 
-    const coords = await geocode(address);
+    const coords = opts.coords || await geocode(address);
 
     if (!coords) {
       showErr("Couldn't find that Canadian location. Try a city name, postal code (e.g. V3T 1Z2), or full address. We only cover Canada.");
       return;
     }
 
-    const byType = findNearestByType(coords.lat, coords.lng);
-    if (!byType.mobile && !byType.clinic) { showErr("No service locations found. Please try again later."); return; }
+    lastSearchCoords = coords;
 
-    renderResult(byType, coords);
+    if (currentMode === "mobile") {
+      const nearest = findNearestIn(coords.lat, coords.lng, mobileLocations);
+      if (!nearest) { showErr("No mobile phlebotomists found. Please try again later."); return; }
+      renderMobileResult(nearest, coords);
+      updateLegend();
+
+      if (fromMap && mapResult) {
+        const distKm = Math.round(nearest.distance);
+        const loc = nearest.location;
+        const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
+        if (distKm <= RANGE_IN) mapResult.textContent = `✓ In range · ${distKm} km to ${loc.name}, ${province}`;
+        else if (distKm <= RANGE_EXTENDED) mapResult.textContent = `⚠ Extended · ${distKm} km to ${loc.name}, ${province}`;
+        else mapResult.textContent = `✗ Out of range · ${distKm} km to ${loc.name}, ${province}`;
+        mapResult.classList.add("visible");
+      }
+    } else {
+      const nearest3 = findNearestN(coords.lat, coords.lng, clinicLocations, 3);
+      if (!nearest3.length) { showErr("No clinics found. Please try again later."); return; }
+      renderClinicResult(nearest3, coords);
+      updateLegend();
+
+      if (fromMap && mapResult) {
+        const loc = nearest3[0].location;
+        const distKm = Math.round(nearest3[0].distance);
+        mapResult.textContent = `Nearest: ${loc.name}, ${loc.city} · ${distKm} km`;
+        mapResult.classList.add("visible");
+      }
+    }
 
     if (fromMap) {
       document.getElementById("address").value = address;
-    }
-    if (fromMap && mapResult) {
-      const nearest = [byType.mobile, byType.clinic].filter(Boolean).sort((a, b) => a.distance - b.distance)[0];
-      const distKm = Math.round(nearest.distance);
-      const loc = nearest.location;
-      const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
-      const label = loc.type === "clinic" ? `${loc.name}, ${loc.city}` : `${loc.name}, ${province}`;
-      if (distKm <= RANGE_IN) {
-        mapResult.textContent = `✓ In range · ${distKm} km to ${label}`;
-      } else if (distKm <= RANGE_EXTENDED) {
-        mapResult.textContent = `⚠ Extended · ${distKm} km to ${label}`;
-      } else {
-        mapResult.textContent = `✗ Out of range · ${distKm} km to ${label}`;
-      }
-      mapResult.classList.add("visible");
     }
 
   } catch (err) {
@@ -634,6 +672,66 @@ function initViewToggle() {
 }
 
 // ─────────────────────────────────────────────
+// MODE TOGGLE (Mobile / Clinic)
+// ─────────────────────────────────────────────
+
+const MODE_COPY = {
+  mobile: {
+    heading: 'Are we near<br><em>you?</em>',
+    sub: 'Enter any address, city, or postal code — we\'ll check if a mobile phlebotomist can reach you.',
+    emptyHint: 'The map will show you and the nearest mobile phlebotomist',
+  },
+  clinic: {
+    heading: 'Find a lab<br>near <em>you</em>',
+    sub: 'Enter any address, city, or postal code — we\'ll find the 3 closest in-clinic labs.',
+    emptyHint: 'The map will show you and the nearest clinics',
+  },
+};
+
+function updateModeUI() {
+  const copy = MODE_COPY[currentMode];
+  document.querySelector(".panel-heading").innerHTML = copy.heading;
+  document.querySelector(".panel-sub").innerHTML = copy.sub;
+  const hint = document.querySelector(".map-empty-hint");
+  if (hint) hint.textContent = copy.emptyHint;
+
+  document.querySelectorAll(".mode-btn").forEach(b => {
+    b.classList.toggle("active", b.dataset.mode === currentMode);
+  });
+}
+
+function updateLegend() {
+  document.querySelectorAll(".leg-mobile").forEach(el => el.style.display = currentMode === "mobile" ? "" : "none");
+  document.querySelectorAll(".leg-clinic").forEach(el => el.style.display = currentMode === "clinic" ? "" : "none");
+}
+
+function initModeToggle() {
+  const btns = document.querySelectorAll(".mode-btn");
+  btns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const newMode = btn.dataset.mode;
+      if (newMode === currentMode) return;
+      currentMode = newMode;
+      updateModeUI();
+      updateLegend();
+
+      // Clear current results
+      const card = document.getElementById("result-card");
+      card.classList.remove("visible");
+      card.className = "result-card";
+
+      // Re-run search if user already searched
+      if (lastSearchCoords) {
+        handleSubmit({ coords: lastSearchCoords });
+      }
+    });
+  });
+
+  updateModeUI();
+  updateLegend();
+}
+
+// ─────────────────────────────────────────────
 // CHIPS
 // ─────────────────────────────────────────────
 
@@ -653,6 +751,7 @@ function initChips() {
 document.addEventListener("DOMContentLoaded", () => {
   init();
   initChips();
+  initModeToggle();
   initViewToggle();
   document.getElementById("submit-btn").addEventListener("click", () => handleSubmit());
   document.getElementById("address").addEventListener("keydown", e => {

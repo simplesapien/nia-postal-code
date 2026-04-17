@@ -1408,5 +1408,15 @@
     "lng": -109.296096,
     "type": "mobile",
     "source": "dynacare-mobile"
+  },
+  {
+    "name": "Vancouver",
+    "postalCode": "V6K3Z9",
+    "province": "BC",
+    "provinceExpanded": "British Columbia",
+    "lat": 49.263112,
+    "lng": -123.170462,
+    "type": "mobile",
+    "source": "dynacare-mobile"
   }
 ]

@@ -613,6 +613,14 @@
 
     .mode-btn.active svg { stroke: var(--teal); }
 
+    .mode-toggle-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background: var(--white);
+      padding-bottom: 4px;
+    }
+
     /* ── Clinic results list ── */
     .result-card.clinic-results {
       background: var(--white);
@@ -828,15 +836,17 @@
         Live coverage · BC, AB, SK, MB, ON, NB, NS, NL &amp; PE
       </div>
 
-      <div class="mode-toggle" id="mode-toggle">
-        <button type="button" class="mode-btn active" data-mode="mobile">
-          <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-          Mobile
-        </button>
-        <button type="button" class="mode-btn" data-mode="clinic">
-          <svg viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="2" width="14" height="19" rx="2"/></svg>
-          In-clinic
-        </button>
+      <div class="mode-toggle-wrap">
+        <div class="mode-toggle" id="mode-toggle">
+          <button type="button" class="mode-btn active" data-mode="mobile">
+            <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            Mobile
+          </button>
+          <button type="button" class="mode-btn" data-mode="clinic">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="2" width="14" height="19" rx="2"/></svg>
+            In-clinic
+          </button>
+        </div>
       </div>
 
       <div class="view-toggle" id="view-toggle">

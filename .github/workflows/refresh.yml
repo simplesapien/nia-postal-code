@@ -1,12 +1,13 @@
-name: Refresh from Google Sheet
+name: Rebuild location data
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
+  push:
+    paths:
+      - "data/nia-coverage-master.csv"
   workflow_dispatch:
 
 jobs:
-  refresh:
+  rebuild:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,19 +20,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Install rclone
-        run: |
-          curl -sL https://rclone.org/install.sh | sudo bash
-
-      - name: Configure rclone
-        run: |
-          mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONFIG_B64 }}" | base64 -d > ~/.config/rclone/rclone.conf
-
-      - name: Pull Sheet as CSV
-        run: rclone copy gdrive:nia-coverage-master.csv data/ --drive-export-formats csv
-
-      - name: Geocode new rows (if any)
+      - name: Geocode rows missing coordinates
         run: node scripts/geocode-missing.js
 
       - name: Rebuild JSON from CSV
@@ -43,5 +32,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/nia-coverage-master.csv mobile-locations.json clinic-locations.json
           git diff --staged --quiet && echo "No changes" && exit 0
-          git commit -m "Auto-refresh data from Google Sheet"
+          git commit -m "Rebuild location data"
           git push

@@ -1,13 +1,9 @@
 {
   "name": "nia-postal-code",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "rebuild": "node scripts/rebuild-data.js",
-    "pull": "rclone copy gdrive:nia-coverage-master.csv data/ --drive-export-formats csv && echo '✓ Pulled Sheet → data/nia-coverage-master.csv'",
-    "push": "rclone copy data/nia-coverage-master.csv gdrive: --drive-import-formats csv --drive-export-formats csv && echo '✓ Pushed CSV → Google Sheet'",
-    "refresh": "npm run pull && npm run rebuild",
-    "watch": "node scripts/watch-sheet.js",
     "serve": "npx serve . -l 3000"
   },
   "dependencies": {

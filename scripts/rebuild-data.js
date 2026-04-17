@@ -29,9 +29,14 @@ const csvRows = parse(csvRaw, {
   relax_column_count: true,
 });
 
+function isInCanada(lat, lng) {
+  return lat >= 41.7 && lat <= 83.2 && lng >= -141.1 && lng <= -52.5;
+}
+
 const mobileLocations = [];
 const clinicLocations = [];
 let skipped = 0;
+let badCoords = 0;
 
 for (const row of csvRows) {
   const section = (row["Section"] || "").trim();
@@ -53,6 +58,12 @@ for (const row of csvRows) {
 
   if (!name || isNaN(lat) || isNaN(lng)) {
     skipped++;
+    continue;
+  }
+
+  if (!isInCanada(lat, lng)) {
+    console.warn(`  ⚠ Skipping "${name}, ${province}" — coords (${lat}, ${lng}) outside Canada`);
+    badCoords++;
     continue;
   }
 
@@ -122,7 +133,9 @@ for (const l of clinicLocations) {
 
 console.log("\n=== Rebuild Complete ===\n");
 console.log(`Source: nia-coverage-master.csv`);
-console.log(`Rows skipped (headers/empty): ${skipped}\n`);
+console.log(`Rows skipped (headers/empty): ${skipped}`);
+if (badCoords) console.log(`Rows rejected (coords outside Canada): ${badCoords}`);
+console.log("");
 
 console.log(`Mobile locations: ${mobileLocations.length}`);
 for (const [prov, count] of Object.entries(mobileByProv).sort()) {

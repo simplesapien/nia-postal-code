@@ -384,6 +384,58 @@
       line-height: 1.3;
     }
 
+    .rc-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .rc-option {
+      background: rgba(255,255,255,0.65);
+      border-radius: var(--r-sm);
+      padding: 10px 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 2px 12px;
+    }
+
+    .rc-option.muted { opacity: 0.5; }
+
+    .rc-option-label {
+      grid-column: 1 / -1;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .rc-option-detail {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
+    .rc-addr {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .rc-option-dist {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--ink);
+      align-self: end;
+      white-space: nowrap;
+    }
+
     .rc-note {
       font-size: 0.78rem;
       color: var(--ink-mid);
@@ -597,6 +649,9 @@
       .rc-stats { gap: 6px; margin-bottom: 10px; }
       .rc-stat-val { font-size: 1.2rem; }
       .rc-stat-val.small { font-size: 0.8rem; }
+      .rc-option { padding: 8px 10px; }
+      .rc-option-detail { font-size: 0.8rem; }
+      .rc-option-dist { font-size: 1.1rem; }
       .rc-note { font-size: 0.72rem; }
 
       .loading-bar { margin-bottom: 10px; }
@@ -639,7 +694,7 @@
       </div>
 
       <h1 class="panel-heading">Are we near<br><em>you?</em></h1>
-      <p class="panel-sub">Enter any address, city, or postal code — we'll find the nearest mobile phlebotomist and show you exactly how far away they are.</p>
+      <p class="panel-sub">Enter any address, city, or postal code — we'll find the nearest mobile phlebotomist and in-clinic lab near you.</p>
 
       <div class="coverage-badge">
         <span class="pulse"></span>
@@ -688,7 +743,7 @@
 
       <div class="panel-spacer"></div>
 
-      <p class="panel-footer">Coverage data is updated manually. For urgent inquiries, contact NiaHealth directly. Geocoding by <a href="https://geocoder.ca" target="_blank" rel="noopener">geocoder.ca</a>.</p>
+      <p class="panel-footer">Coverage data refreshes automatically every 15 minutes. For urgent inquiries, contact NiaHealth directly.</p>
 
     </aside>
 
@@ -716,15 +771,15 @@
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <p>Enter your location above</p>
-        <span class="map-empty-hint">The map will show you and the nearest phlebotomist</span>
+        <span class="map-empty-hint">The map will show you, the nearest phlebotomist, and the nearest clinic</span>
       </div>
       <div id="map"></div>
       <div class="map-legend" id="map-legend">
-        <div class="leg-item"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#0d9488"/><circle cx="16" cy="15" r="4" fill="white"/></svg> Your location</div>
-        <div class="leg-item"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#2563eb"/><path d="M12 15h8M16 11v8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg> Nearest phlebotomist</div>
-        <div class="leg-item"><div class="leg-ring" style="border-color:#0d9488"></div> 100 km standard</div>
-        <div class="leg-item"><div class="leg-ring" style="border-color:#d97706"></div> 200 km extended</div>
-        <div class="leg-item leg-hint">Scroll to zoom</div>
+        <div class="leg-item"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#0d9488"/><circle cx="16" cy="15" r="4" fill="white"/></svg> You</div>
+        <div class="leg-item"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#2563eb"/><path d="M12 15h8M16 11v8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg> Mobile</div>
+        <div class="leg-item"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#7c3aed"/><rect x="12" y="11" width="8" height="8" rx="1.5" stroke="white" stroke-width="1.8" fill="none"/></svg> Clinic</div>
+        <div class="leg-item"><div class="leg-ring" style="border-color:#0d9488"></div> 100 km</div>
+        <div class="leg-item"><div class="leg-ring" style="border-color:#d97706"></div> 200 km</div>
       </div>
     </div>
 

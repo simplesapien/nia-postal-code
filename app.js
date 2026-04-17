@@ -51,8 +51,7 @@ const PROV_MAP = {
   NS: "Nova Scotia", NB: "New Brunswick",
   NL: "Newfoundland and Labrador", PE: "Prince Edward Island",
   NT: "Northwest Territories", NU: "Nunavut", YT: "Yukon",
-  // messy real-world values
-  aB: "Alberta", "AB & SK": "Alberta",
+  aB: "Alberta",
 };
 
 const PROV_NAME_MAP = {
@@ -363,7 +362,7 @@ function findNearestByType(lat, lng) {
 // MAP
 // ─────────────────────────────────────────────
 
-function showMap(userLat, userLng, nearLat, nearLng, nearLabel) {
+function showMap(userLat, userLng, results) {
   const mapEl     = document.getElementById("map");
   const emptyEl   = document.getElementById("map-empty");
   const legendEl  = document.getElementById("map-legend");
@@ -391,7 +390,7 @@ function showMap(userLat, userLng, nearLat, nearLng, nearLabel) {
     iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
   });
 
-  const phlebPin = L.divIcon({
+  const mobilePin = L.divIcon({
     className: "",
     html: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#2563eb"/>
@@ -401,13 +400,36 @@ function showMap(userLat, userLng, nearLat, nearLng, nearLabel) {
     iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
   });
 
+  const clinicPin = L.divIcon({
+    className: "",
+    html: `<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#7c3aed"/>
+      <circle cx="16" cy="15" r="7" fill="white"/>
+      <rect x="12" y="11" width="8" height="8" rx="1.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+      <path d="M14 15h4" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>`,
+    iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36],
+  });
+
   L.marker([userLat, userLng], { icon: userPin })
     .addTo(leafletMap).bindPopup("<b>Your location</b>").openPopup();
 
-  L.marker([nearLat, nearLng], { icon: phlebPin })
-    .addTo(leafletMap).bindPopup(`<b>Nearest phlebotomist</b><br>${nearLabel}`);
+  const bounds = [[userLat, userLng]];
 
-  // 100km and 200km rings around user (always drawn; may appear tiny when zoomed out for distant locations)
+  for (const r of results) {
+    if (!r) continue;
+    const loc = r.location;
+    const isClinic = loc.type === "clinic";
+    const pin = isClinic ? clinicPin : mobilePin;
+    const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
+    const label = isClinic
+      ? `<b>Nearest clinic</b><br>${loc.name}<br><span style="font-size:0.75rem;color:#666">${loc.address}, ${loc.city}</span>`
+      : `<b>Nearest mobile phlebotomist</b><br>${loc.name}, ${province}`;
+    L.marker([loc.lat, loc.lng], { icon: pin })
+      .addTo(leafletMap).bindPopup(label);
+    bounds.push([loc.lat, loc.lng]);
+  }
+
   L.circle([userLat, userLng], {
     radius: 100000, color:"#0d9488", fillColor:"#0d9488",
     fillOpacity: 0.06, weight: 1.5, dashArray:"6 4",
@@ -418,9 +440,7 @@ function showMap(userLat, userLng, nearLat, nearLng, nearLabel) {
     fillOpacity: 0.04, weight: 1.5, dashArray:"6 4",
   }).addTo(leafletMap);
 
-  leafletMap.fitBounds(
-    L.latLngBounds([[userLat, userLng],[nearLat, nearLng]]).pad(0.25)
-  );
+  leafletMap.fitBounds(L.latLngBounds(bounds).pad(0.25));
   leafletMap.invalidateSize();
 }
 
@@ -428,17 +448,24 @@ function showMap(userLat, userLng, nearLat, nearLng, nearLabel) {
 // RENDER RESULT
 // ─────────────────────────────────────────────
 
-function renderResult(nearest, userCoords) {
-  const distKm   = Math.round(nearest.distance);
-  const loc      = nearest.location;
+function renderOptionHtml(result, label) {
+  if (!result) return `<div class="rc-option muted"><div class="rc-option-label">${label}</div><div class="rc-option-detail">No ${label.toLowerCase()} found nearby</div></div>`;
+  const loc = result.location;
+  const km = Math.round(result.distance);
   const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;
-  const isClinic = loc.type === "clinic";
-  const card     = document.getElementById("result-card");
-
-  const typeLabel = isClinic ? "In-clinic lab" : "Mobile phlebotomist";
-  const locationLabel = isClinic
-    ? `${loc.name}<br><span style="font-size:0.75rem;color:var(--muted)">${loc.address}, ${loc.city}</span>`
+  const detail = loc.type === "clinic"
+    ? `${loc.name}<br><span class="rc-addr">${loc.address}, ${loc.city}</span>`
     : `${loc.name}, ${province}`;
+  return `<div class="rc-option"><div class="rc-option-label">${label}</div><div class="rc-option-detail">${detail}</div><div class="rc-option-dist">${km} km</div></div>`;
+}
+
+function renderResult(byType, userCoords) {
+  const { mobile, clinic } = byType;
+  const nearest = [mobile, clinic].filter(Boolean).sort((a, b) => a.distance - b.distance)[0];
+  if (!nearest) return;
+
+  const distKm = Math.round(nearest.distance);
+  const card   = document.getElementById("result-card");
 
   let icon, title, sub, note, cls;
 
@@ -446,9 +473,7 @@ function renderResult(nearest, userCoords) {
     icon  = `<svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>`;
     title = "We're in your area!";
     sub   = "Standard service rates apply";
-    note  = isClinic
-      ? "There's a lab near you for walk-in bloodwork. Book online or visit directly."
-      : "A mobile phlebotomist can come to you at home or work. Book your appointment and we'll handle the rest.";
+    note  = "A mobile phlebotomist can come to your home or work, or visit a nearby clinic for walk-in bloodwork.";
     cls   = "in-range";
   } else if (distKm <= RANGE_EXTENDED) {
     icon  = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
@@ -473,24 +498,16 @@ function renderResult(nearest, userCoords) {
         <div class="rc-sub">${sub}</div>
       </div>
     </div>
-    <div class="rc-stats">
-      <div class="rc-stat">
-        <div class="rc-stat-label">Distance</div>
-        <div class="rc-stat-val">${distKm}<span style="font-size:0.9rem;font-family:'Instrument Sans',sans-serif;font-weight:400;color:var(--muted)"> km</span></div>
-      </div>
-      <div class="rc-stat">
-        <div class="rc-stat-label">${typeLabel}</div>
-        <div class="rc-stat-val small">${locationLabel}</div>
-      </div>
+    <div class="rc-options">
+      ${renderOptionHtml(mobile, "Mobile phlebotomist")}
+      ${renderOptionHtml(clinic, "In-clinic lab")}
     </div>
     <p class="rc-note">${note}</p>
   `;
 
-  if (loc.lat && loc.lng && userCoords) {
-    const pinLabel = isClinic
-      ? `${loc.name}, ${loc.city}`
-      : `${loc.name}, ${province}`;
-    showMap(userCoords.lat, userCoords.lng, loc.lat, loc.lng, pinLabel);
+  if (userCoords) {
+    const mapResults = [mobile, clinic].filter(r => r && r.location.lat && r.location.lng);
+    if (mapResults.length) showMap(userCoords.lat, userCoords.lng, mapResults);
   }
 }
 
@@ -540,15 +557,16 @@ async function handleSubmit(opts = {}) {
       return;
     }
 
-    const nearest = findNearest(coords.lat, coords.lng);
-    if (!nearest) { showErr("No service locations found. Please try again later."); return; }
+    const byType = findNearestByType(coords.lat, coords.lng);
+    if (!byType.mobile && !byType.clinic) { showErr("No service locations found. Please try again later."); return; }
 
-    renderResult(nearest, coords);
+    renderResult(byType, coords);
 
     if (fromMap) {
       document.getElementById("address").value = address;
     }
     if (fromMap && mapResult) {
+      const nearest = [byType.mobile, byType.clinic].filter(Boolean).sort((a, b) => a.distance - b.distance)[0];
       const distKm = Math.round(nearest.distance);
       const loc = nearest.location;
       const province = loc.provinceExpanded || normalizeProvince(loc.province) || loc.province;

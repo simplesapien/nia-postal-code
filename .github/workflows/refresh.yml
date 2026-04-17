@@ -31,6 +31,9 @@ jobs:
       - name: Pull Sheet as CSV
         run: rclone copy gdrive:nia-coverage-master.csv data/ --drive-export-formats csv
 
+      - name: Geocode new rows (if any)
+        run: node scripts/geocode-missing.js
+
       - name: Rebuild JSON from CSV
         run: npm run rebuild
 

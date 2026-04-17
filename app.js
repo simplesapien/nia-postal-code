@@ -16,6 +16,7 @@ const MAX_GEOCODE_TRIES  = 4;
 let mobileLocations  = [];
 let clinicLocations  = [];
 let leafletMap       = null;
+let mapOverlays      = [];
 let currentMode      = "mobile";
 let lastSearchCoords = null;
 
@@ -384,26 +385,38 @@ function makePin(type) {
   return L.divIcon({ className: "", html: PIN_SVG[type], iconSize: [32, 42], iconAnchor: [16, 42], popupAnchor: [0, -36] });
 }
 
-function showMap(userLat, userLng, results, opts = {}) {
-  const mapEl    = document.getElementById("map");
-  const emptyEl  = document.getElementById("map-empty");
-  const legendEl = document.getElementById("map-legend");
+function ensureMap() {
+  const mapEl   = document.getElementById("map");
+  const emptyEl = document.getElementById("map-empty");
 
   emptyEl.style.display = "none";
   mapEl.classList.add("visible");
-  legendEl.classList.add("visible");
 
-  if (leafletMap) { leafletMap.remove(); leafletMap = null; }
+  if (leafletMap) return;
 
-  leafletMap = L.map("map", { zoomControl: true, scrollWheelZoom: true });
+  leafletMap = L.map("map", { zoomControl: true, scrollWheelZoom: true }).setView([56, -96], 4);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 16,
   }).addTo(leafletMap);
+}
 
-  L.marker([userLat, userLng], { icon: makePin("user") })
+function clearMapOverlays() {
+  for (const layer of mapOverlays) leafletMap.removeLayer(layer);
+  mapOverlays = [];
+}
+
+function showMap(userLat, userLng, results, opts = {}) {
+  const legendEl = document.getElementById("map-legend");
+  legendEl.classList.add("visible");
+
+  ensureMap();
+  clearMapOverlays();
+
+  const userMarker = L.marker([userLat, userLng], { icon: makePin("user") })
     .addTo(leafletMap).bindPopup("<b>Your location</b>").openPopup();
+  mapOverlays.push(userMarker);
 
   const bounds = [[userLat, userLng]];
 
@@ -416,21 +429,24 @@ function showMap(userLat, userLng, results, opts = {}) {
     const label = isClinic
       ? `<b>${loc.name}</b><br><span style="font-size:0.75rem;color:#666">${loc.address}, ${loc.city}</span>`
       : `<b>${loc.name}</b>, ${province}`;
-    L.marker([loc.lat, loc.lng], { icon: pin })
+    const marker = L.marker([loc.lat, loc.lng], { icon: pin })
       .addTo(leafletMap).bindPopup(label);
+    mapOverlays.push(marker);
     bounds.push([loc.lat, loc.lng]);
   }
 
   if (opts.showRangeRings) {
-    L.circle([userLat, userLng], {
+    const ring100 = L.circle([userLat, userLng], {
       radius: 100000, color:"#0d9488", fillColor:"#0d9488",
       fillOpacity: 0.06, weight: 1.5, dashArray:"6 4",
     }).addTo(leafletMap);
 
-    L.circle([userLat, userLng], {
+    const ring200 = L.circle([userLat, userLng], {
       radius: 200000, color:"#d97706", fillColor:"#d97706",
       fillOpacity: 0.04, weight: 1.5, dashArray:"6 4",
     }).addTo(leafletMap);
+
+    mapOverlays.push(ring100, ring200);
   }
 
   leafletMap.fitBounds(L.latLngBounds(bounds).pad(0.25));

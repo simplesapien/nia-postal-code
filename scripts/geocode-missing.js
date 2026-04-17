@@ -14,6 +14,10 @@ const DELAY = 1100;
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+function isInCanada(lat, lng) {
+  return lat >= 41.7 && lat <= 83.2 && lng >= -141.1 && lng <= -52.5;
+}
+
 async function geocode(addr, city, prov, pc) {
   const queries = [];
   if (addr && city && prov) queries.push(`${addr}, ${city}, ${prov}, Canada`);
@@ -32,10 +36,13 @@ async function geocode(addr, city, prov, pc) {
       if (!res.ok) continue;
       const data = await res.json();
       if (data.length) {
-        return {
-          lat: parseFloat(data[0].lat).toFixed(6),
-          lng: parseFloat(data[0].lon).toFixed(6),
-        };
+        const lat = parseFloat(data[0].lat);
+        const lng = parseFloat(data[0].lon);
+        if (!isInCanada(lat, lng)) {
+          console.error(`  ⚠ Nominatim returned (${lat}, ${lng}) for "${q}" — outside Canada, skipping`);
+          continue;
+        }
+        return { lat: lat.toFixed(6), lng: lng.toFixed(6) };
       }
     } catch (e) {
       console.error(`  ✗ Error geocoding "${q}": ${e.message}`);

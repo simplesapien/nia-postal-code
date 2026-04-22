@@ -897,8 +897,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("address").addEventListener("keydown", e => {
     if (e.key === "Enter") handleSubmit();
   });
-  document.querySelector(".logo").addEventListener("click", (e) => {
-    e.preventDefault();
+  document.getElementById("hero")?.addEventListener("click", () => {
     document.body.classList.remove("searched");
     document.getElementById("results-card").classList.remove("visible");
     document.getElementById("results-card").innerHTML = "";

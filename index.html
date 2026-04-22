@@ -7,932 +7,758 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --teal:        #0d9488;
-      --teal-dark:   #0f766e;
-      --teal-dim:    rgba(13,148,136,0.12);
-      --teal-bg:     #f0fdfa;
-      --teal-border: #5eead4;
-      --amber:       #92400e;
-      --amber-bg:    #fffbeb;
-      --amber-border:#fbbf24;
-      --red:         #9f1239;
-      --red-bg:      #fff1f2;
-      --red-border:  #fb7185;
-      --ink:         #0c1a14;
-      --ink-mid:     #374151;
-      --muted:       #6b7280;
-      --line:        #e5e7eb;
-      --soft:        #f3f4f6;
-      --white:       #ffffff;
-      --page-bg:     #f7f9f8;
-      --r-sm: 10px;
-      --r:    18px;
-      --r-lg: 26px;
+      --ink:         #1A1A1A;
+      --ink-mid:     #4A4A4A;
+      --muted:       #777;
+      --gold:        #BFA15E;
+      --maroon:      #5C2434;
+      --maroon-dark: #3D1820;
+      --green:       #3B8C5A;
+      --green-light: #E8F5EC;
+      --orange:      #D94F30;
+      --white:       #FFFFFF;
+      --cream:       #FAF7F2;
+      --cream-dark:  #F0EDE6;
+      --line:        #E0DCD4;
+      --r:           12px;
+      --r-lg:        16px;
+      --r-pill:      100px;
     }
 
     html, body {
       height: 100%;
       margin: 0;
       font-family: 'Instrument Sans', system-ui, sans-serif;
-      background: var(--page-bg);
       color: var(--ink);
       overflow: hidden;
     }
 
-    /* ── LAYOUT ── */
-    .app {
-      height: 100vh;
-      min-height: 0;
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      grid-template-rows: 1fr;
-      overflow: hidden;
+    /* ── FULL-SCREEN MAP ── */
+    #map {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
     }
 
-    /* ── LEFT PANEL ── */
-    .panel {
-      background: var(--white);
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      padding: 28px 24px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      position: relative;
-      z-index: 2;
-      min-height: 0;
+    .leaflet-tile-pane {
+      filter: sepia(0.12) saturate(0.82) brightness(1.04);
     }
 
-    .panel::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--teal), var(--teal-border));
-    }
-
-    /* Logo */
+    /* ── LOGO ── */
     .logo {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
     }
 
     .logo-icon {
-      width: 36px; height: 36px;
-      background: var(--teal);
-      border-radius: 9px;
+      width: 32px; height: 32px;
+      background: var(--ink);
+      border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
 
-    .logo-icon svg { width: 18px; height: 18px; fill: white; }
+    .logo-icon svg { width: 16px; height: 16px; fill: white; }
 
     .logo-name {
       font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 500;
-      color: var(--ink);
       letter-spacing: -0.02em;
     }
 
-    /* Heading */
-    .panel-heading {
+    /* ── SEARCH OVERLAY ── */
+    .search-overlay {
+      position: fixed;
+      z-index: 1000;
+      top: 32%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: top 0.4s ease, transform 0.4s ease;
+    }
+
+    body.searched .search-overlay {
+      top: 16px;
+      transform: translate(-50%, 0);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+      transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+      max-height: 300px;
+      overflow: hidden;
+    }
+
+    body.searched .hero {
+      opacity: 0;
+      max-height: 0;
+      margin-bottom: 0;
+      pointer-events: none;
+    }
+
+    .hero-heading {
       font-family: 'Fraunces', serif;
-      font-size: 1.75rem;
-      font-weight: 300;
-      line-height: 1.2;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.08;
       letter-spacing: -0.03em;
       color: var(--ink);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
-    .panel-heading em {
+    .hero-heading em {
       font-style: italic;
-      color: var(--teal);
+      font-weight: 300;
+      color: var(--gold);
     }
 
-    .panel-sub {
-      font-size: 0.8125rem;
-      color: var(--muted);
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
       line-height: 1.5;
-      margin-bottom: 20px;
+      max-width: 420px;
+      margin: 0 auto;
     }
 
-    /* Coverage badge */
-    .coverage-badge {
-      display: inline-flex;
+    /* ── SEARCH BAR ── */
+    .search-bar {
+      display: flex;
       align-items: center;
-      gap: 7px;
-      padding: 5px 11px;
-      background: var(--teal-bg);
-      border: 1px solid var(--teal-border);
-      border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--teal-dark);
-      margin-bottom: 20px;
-      width: fit-content;
-    }
-
-    .pulse {
-      width: 7px; height: 7px;
-      background: var(--teal);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50%      { opacity:0.4; transform:scale(0.75); }
-    }
-
-    /* Input section */
-    .input-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .input-row {
-      display: flex;
+      width: 100%;
+      max-width: 520px;
+      background: var(--white);
+      border: 2px solid var(--ink);
+      border-radius: var(--r-pill);
+      padding: 5px 5px 5px 18px;
       gap: 8px;
-      margin-bottom: 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     }
 
-    .input-wrap {
-      position: relative;
-      flex: 1;
-    }
-
-    .input-icon {
-      position: absolute;
-      left: 13px; top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      pointer-events: none;
+    .search-bar-icon {
       display: flex;
+      flex-shrink: 0;
+      color: var(--muted);
     }
 
-    .input-icon svg {
-      width: 16px; height: 16px;
+    .search-bar-icon svg {
+      width: 18px; height: 18px;
       stroke: currentColor; fill: none;
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
 
-    input[type="text"] {
-      width: 100%;
-      padding: 11px 12px 11px 38px;
+    .search-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
       font-size: 0.9375rem;
       font-family: 'Instrument Sans', sans-serif;
-      border: 1.5px solid var(--line);
-      border-radius: var(--r-sm);
-      outline: none;
-      background: var(--soft);
       color: var(--ink);
-      transition: border-color .15s, box-shadow .15s, background .15s;
+      background: transparent;
+      min-width: 0;
     }
 
-    input[type="text"]:focus {
-      border-color: var(--teal);
-      background: var(--white);
-      box-shadow: 0 0 0 3px var(--teal-dim);
+    .search-bar input::placeholder { color: #AAA; }
+
+    .clear-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: var(--line);
+      border-radius: 50%;
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      line-height: 1;
+      transition: background 0.15s;
     }
 
-    input[type="text"]::placeholder { color: #adb5bd; }
+    .clear-btn:hover { background: #ccc; }
+    .clear-btn.visible { display: flex; }
 
-    .go-btn {
-      padding: 11px 16px;
-      background: var(--teal);
+    .check-btn {
+      flex-shrink: 0;
+      padding: 10px 22px;
+      background: var(--ink);
       color: white;
       font-family: 'Instrument Sans', sans-serif;
       font-size: 0.875rem;
       font-weight: 600;
       border: none;
-      border-radius: var(--r-sm);
+      border-radius: var(--r-pill);
       cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
       gap: 6px;
-      transition: background .15s, transform .1s;
+      transition: background 0.15s, transform 0.1s;
       white-space: nowrap;
+    }
+
+    .check-btn:hover:not(:disabled) { background: #333; }
+    .check-btn:active:not(:disabled) { transform: scale(0.97); }
+    .check-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .check-btn .arrow { font-size: 1.1em; }
+
+    /* ── ERROR ── */
+    .error-box {
+      width: 100%;
+      max-width: 520px;
+      padding: 10px 18px;
+      background: #FFF1F0;
+      border: 1px solid #FFCCC7;
+      border-radius: var(--r);
+      font-size: 0.8rem;
+      color: #CF1322;
+      display: none;
+      text-align: center;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .error-box.visible { display: block; }
+
+    /* ── LOADING ── */
+    .loading-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      z-index: 2000;
+      display: none;
+    }
+
+    .loading-bar.visible { display: block; }
+
+    .loading-fill {
+      height: 100%;
+      width: 30%;
+      background: var(--maroon);
+      border-radius: 2px;
+      animation: load 1.4s ease-in-out infinite;
+    }
+
+    @keyframes load {
+      0%   { transform: translateX(-100%); width: 30%; }
+      50%  { width: 60%; }
+      100% { transform: translateX(400%); width: 30%; }
+    }
+
+    /* ── RESULTS CARD ── */
+    .results-card {
+      position: fixed;
+      z-index: 1000;
+      left: 16px;
+      top: 72px;
+      bottom: 16px;
+      width: 420px;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideIn 0.35s ease;
+    }
+
+    .results-card.visible { display: flex; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-16px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Banner */
+    .rc-banner {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
       flex-shrink: 0;
     }
 
-    .go-btn svg {
-      width: 15px; height: 15px;
+    .rc-banner.in-area {
+      background: var(--maroon-dark);
+      color: white;
+    }
+
+    .rc-banner.extended {
+      background: #5C3D10;
+      color: white;
+    }
+
+    .rc-banner-badge {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .rc-banner.in-area .rc-banner-badge { background: var(--green); }
+    .rc-banner.extended .rc-banner-badge { background: #D4A843; }
+
+    .rc-banner-badge svg {
+      width: 20px; height: 20px;
       stroke: white; fill: none;
       stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
     }
 
-    .go-btn:hover:not(:disabled) { background: var(--teal-dark); transform: translateY(-1px); }
-    .go-btn:active:not(:disabled) { transform: translateY(0); }
-    .go-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-
-    /* Example chips */
-    .chips {
-      display: flex; flex-wrap: wrap; gap: 5px;
-      margin-bottom: 6px;
-    }
-
-    .chip {
-      padding: 3px 9px;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 100px;
-      font-size: 0.72rem;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all .12s;
-      user-select: none;
-    }
-
-    .chip:hover {
-      background: var(--teal-bg);
-      border-color: var(--teal-border);
-      color: var(--teal-dark);
-    }
-
-    .input-hint {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    /* Loading bar */
-    .loading-bar { height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 16px; display: none; }
-    .loading-bar.visible { display: block; }
-    .loading-fill {
-      height: 100%; width: 30%; background: var(--teal);
-      border-radius: 2px;
-      animation: load 1.4s ease-in-out infinite;
-    }
-    @keyframes load {
-      0%   { transform:translateX(-100%); width:30%; }
-      50%  { width:60%; }
-      100% { transform:translateX(400%); width:30%; }
-    }
-
-    /* Error */
-    .error-box {
-      padding: 10px 14px;
-      background: var(--red-bg);
-      border: 1px solid var(--red-border);
-      border-radius: var(--r-sm);
-      font-size: 0.8rem;
-      color: var(--red);
-      margin-bottom: 16px;
-      display: none;
-    }
-    .error-box.visible { display: block; }
-
-    /* Result card */
-    .result-card {
-      border-radius: var(--r);
-      padding: 20px;
-      border: 1.5px solid;
-      margin-bottom: 16px;
-      display: none;
-      animation: fadeUp .3s ease forwards;
-    }
-    .result-card.visible { display: block; }
-
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(8px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    .result-card.in-range    { background:var(--teal-bg);  border-color:var(--teal-border); }
-    .result-card.extended    { background:var(--amber-bg); border-color:var(--amber-border); }
-    .result-card.out-of-range { background:var(--red-bg);  border-color:var(--red-border); }
-
-    .rc-header { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; }
-
-    .rc-badge {
-      width:38px; height:38px; border-radius:10px;
-      display:flex; align-items:center; justify-content:center;
-      flex-shrink:0;
-    }
-
-    .rc-badge svg {
-      width:18px; height:18px;
-      stroke:white; fill:none;
-      stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;
-    }
-
-    .in-range    .rc-badge { background:var(--teal); }
-    .extended    .rc-badge { background:#d97706; }
-    .out-of-range .rc-badge { background:#e11d48; }
-
-    .rc-title {
+    .rc-banner-text h2 {
       font-family: 'Fraunces', serif;
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 1.3;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.2;
       margin-bottom: 2px;
     }
 
-    .in-range    .rc-title { color:var(--teal-dark); }
-    .extended    .rc-title { color:var(--amber); }
-    .out-of-range .rc-title { color:var(--red); }
-
-    .rc-sub { font-size: 0.78rem; color: var(--muted); }
-
-    .rc-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .rc-stat {
-      background: rgba(255,255,255,0.65);
-      border-radius: var(--r-sm);
-      padding: 10px 12px;
-    }
-
-    .rc-stat-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 3px;
-    }
-
-    .rc-stat-val {
-      font-family: 'Fraunces', serif;
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1;
-    }
-
-    .rc-stat-val.small {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      line-height: 1.3;
-    }
-
-    .rc-options {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .rc-option {
-      background: rgba(255,255,255,0.65);
-      border-radius: var(--r-sm);
-      padding: 10px 12px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      grid-template-rows: auto auto;
-      gap: 2px 12px;
-    }
-
-    .rc-option.muted { opacity: 0.5; }
-
-    .rc-option-label {
-      grid-column: 1 / -1;
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 2px;
-    }
-
-    .rc-option-detail {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      line-height: 1.3;
-      color: var(--ink);
-    }
-
-    .rc-addr {
+    .rc-banner-text p {
       font-size: 0.75rem;
-      color: var(--muted);
-      font-weight: 400;
+      opacity: 0.75;
     }
 
-    .rc-option-dist {
-      font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
-      font-weight: 300;
-      color: var(--ink);
-      align-self: end;
-      white-space: nowrap;
-    }
-
-    .rc-note {
-      font-size: 0.78rem;
-      color: var(--ink-mid);
-      line-height: 1.6;
-    }
-
-    /* Spacer pushes footer down */
-    .panel-spacer { flex: 1; }
-
-    /* Footer */
-    .panel-footer {
-      font-size: 0.7rem;
-      color: var(--muted);
-      line-height: 1.5;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-    }
-
-    /* ── RIGHT PANEL — MAP ── */
-    .map-panel {
-      position: relative;
-      background: var(--soft);
+    /* Tabs */
+    .rc-tabs {
       display: flex;
-      flex-direction: column;
-      border-left: 1px solid var(--line);
-      min-height: 0;
-    }
-
-    .map-header {
-      flex-shrink: 0;
-      padding: 14px 20px;
-      background: var(--white);
       border-bottom: 1px solid var(--line);
-      font-size: 0.75rem;
+      flex-shrink: 0;
+      background: var(--cream);
+    }
+
+    .rc-tab {
+      flex: 1;
+      padding: 11px 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: center;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      font-family: 'Instrument Sans', sans-serif;
+    }
+
+    .rc-tab:hover { color: var(--ink); }
+    .rc-tab.active {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--teal-dark);
+    }
+
+    /* Scrollable content */
+    .rc-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      min-height: 0;
+    }
+
+    /* Section headers */
+    .rc-section-header {
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .map-header svg {
-      width: 16px; height: 16px;
-      stroke: var(--teal); fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-    }
-
-    .map-empty {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      color: var(--muted);
-      user-select: none;
-      padding: 24px;
-    }
-
-    .map-empty-icon {
-      width: 64px; height: 64px;
-      border: 2px dashed var(--teal-border);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--teal-bg);
-    }
-
-    .map-empty-icon svg {
-      width: 28px; height: 28px;
-      stroke: var(--teal); fill: none;
-      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
-    }
-
-    .map-empty p {
-      font-size: 0.9375rem;
-      font-weight: 500;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--ink-mid);
+      margin-bottom: 10px;
     }
 
-    .map-empty .map-empty-hint {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: var(--muted);
+    .rc-section-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    #map {
-      flex: 1;
-      width: 100%;
-      min-height: 0;
-      display: none;
-    }
-    #map.visible { display: block; }
-
-    .map-legend {
-      display: none;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 10px 16px;
-      background: var(--white);
-      border-top: 1px solid var(--line);
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-    .map-legend.visible { display: flex; }
-
-    .leg-item { display:flex; align-items:center; gap:6px; }
-    .leg-dot  { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
-    .leg-ring { width:11px; height:11px; border-radius:50%; border:2px solid; flex-shrink:0; background:transparent; }
-    .leg-hint { margin-left: auto; font-style: italic; opacity: 0.8; }
-
-    /* ── VIEW TOGGLE (mobile only) ── */
-    .view-toggle { display: none; }
-    .view-toggle-in-header { display: none; }
-    .view-btn {
-      padding: 6px 14px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      background: var(--soft);
-      color: var(--muted);
-      border: none;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-    .view-btn:first-child { border-right: 1px solid var(--line); }
-    .view-btn:hover { background: var(--teal-bg); color: var(--teal-dark); }
-    .view-btn.active { background: var(--white); color: var(--teal-dark); font-weight: 600; box-shadow: inset 0 0 0 1px var(--line); }
-
-
-    /* ── MODE TOGGLE (mobile vs clinic) ── */
-    .mode-toggle {
-      display: flex;
-      gap: 0;
-      margin-bottom: 16px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1.5px solid var(--line);
-      width: 100%;
-    }
-
-    .mode-btn {
-      flex: 1;
-      padding: 9px 14px;
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      background: var(--soft);
-      color: var(--muted);
-      border: none;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-    }
-
-    .mode-btn:first-child { border-right: 1.5px solid var(--line); }
-
-    .mode-btn svg {
-      width: 15px; height: 15px;
+    .rc-section-icon {
+      width: 16px; height: 16px;
       stroke: currentColor; fill: none;
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+      opacity: 0.6;
     }
 
-    .mode-btn:hover { background: var(--teal-bg); color: var(--teal-dark); }
+    /* Mobile availability section */
+    .rc-mobile-section { margin-bottom: 20px; }
 
-    .mode-btn.active {
-      background: var(--white);
-      color: var(--teal-dark);
-      font-weight: 600;
-      box-shadow: inset 0 0 0 1px var(--teal-border);
+    .rc-mobile-card {
+      background: var(--cream);
+      border-radius: var(--r);
+      padding: 14px 16px;
     }
 
-    .mode-btn.active svg { stroke: var(--teal); }
-
-    .mode-toggle-wrap {
-      position: sticky;
-      top: 0;
-      z-index: 3;
-      background: var(--white);
-      padding-bottom: 4px;
+    .rc-mobile-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--ink);
     }
 
-    /* ── Clinic results list ── */
-    .result-card.clinic-results {
-      background: var(--white);
-      border-color: var(--line);
+    .rc-mobile-card p {
+      font-size: 0.8rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
     }
 
-    .clinic-list {
+    /* Clinic list section */
+    .rc-clinic-section { margin-bottom: 12px; }
+
+    .rc-clinic-list {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
-    .clinic-item {
+    .rc-clinic-item {
       display: grid;
-      grid-template-columns: 28px 1fr auto;
+      grid-template-columns: 24px 1fr auto;
       gap: 0 10px;
-      padding: 12px 0;
+      padding: 11px 0;
       border-bottom: 1px solid var(--line);
       align-items: start;
     }
 
-    .clinic-item:last-child { border-bottom: none; }
+    .rc-clinic-item:last-child { border-bottom: none; }
 
-    .clinic-rank {
+    .rc-clinic-rank {
       font-family: 'Fraunces', serif;
-      font-size: 1.1rem;
-      font-weight: 300;
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--muted);
-      text-align: center;
-      padding-top: 1px;
+      line-height: 1.3;
     }
 
-    .clinic-info { min-width: 0; }
-
-    .clinic-name {
-      font-size: 0.875rem;
+    .rc-clinic-name {
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--ink);
       line-height: 1.3;
       margin-bottom: 2px;
     }
 
-    .clinic-addr {
-      font-size: 0.75rem;
+    .rc-clinic-addr {
+      font-size: 0.72rem;
       color: var(--muted);
-      line-height: 1.4;
+      line-height: 1.3;
     }
 
-    .clinic-addr a {
-      color: var(--teal);
-      text-decoration: none;
-    }
-
-    .clinic-addr a:hover { text-decoration: underline; }
-
-    .clinic-dist {
+    .rc-clinic-dist {
       font-family: 'Fraunces', serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 300;
       color: var(--ink);
       white-space: nowrap;
-      padding-top: 1px;
+      line-height: 1.3;
     }
 
-    .clinic-dist span {
+    .rc-clinic-dist span {
       font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 400;
       color: var(--muted);
     }
 
-    .map-search, .map-result, .map-error { display: none; }
+    .rc-clinic-dist.dist-close { color: var(--green); }
+    .rc-clinic-dist.dist-close span { color: var(--green); }
+    .rc-clinic-dist.dist-mid { color: #B8860B; }
+    .rc-clinic-dist.dist-mid span { color: #B8860B; }
+    .rc-clinic-dist.dist-far { color: var(--orange); }
+    .rc-clinic-dist.dist-far span { color: var(--orange); }
+
+    /* Out-of-area card */
+    .rc-out-of-area { padding: 24px 20px; }
+
+    .rc-oor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .rc-oor-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .rc-oor-heading {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .rc-oor-heading em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .rc-oor-sub {
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .rc-oor-form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .rc-oor-form input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1.5px solid var(--line);
+      border-radius: var(--r);
+      font-size: 0.85rem;
+      font-family: 'Instrument Sans', sans-serif;
+      outline: none;
+      color: var(--ink);
+      background: var(--cream);
+    }
+
+    .rc-oor-form input::placeholder { color: #AAA; }
+    .rc-oor-form input:focus { border-color: var(--ink); background: var(--white); }
+
+    .rc-oor-form button {
+      padding: 10px 18px;
+      background: var(--ink);
+      color: white;
+      border: none;
+      border-radius: var(--r);
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Instrument Sans', sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .rc-oor-form button:hover { background: #333; }
+
+    /* Disclaimer */
+    .rc-disclaimer {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .rc-disclaimer a {
+      color: var(--ink);
+      text-decoration: underline;
+    }
 
     /* ── SPIN ── */
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .spin { animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spin { animation: spin 0.7s linear infinite; }
+
+    /* ── MARKER STYLES ── */
+    .marker-label {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+      text-shadow: 0 0 4px rgba(255,255,255,1), 0 0 8px rgba(255,255,255,0.8);
+    }
+
+    .numbered-pin {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: white;
+      font-family: 'Fraunces', serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      border: 2px solid white;
+    }
+
+    /* ── LEAFLET OVERRIDES ── */
+    .leaflet-control-zoom {
+      border: none !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    }
+
+    .leaflet-control-zoom a {
+      border-radius: 8px !important;
+      width: 34px !important;
+      height: 34px !important;
+      line-height: 34px !important;
+      font-size: 16px !important;
+      background: var(--white) !important;
+      color: var(--ink) !important;
+    }
+
+    .leaflet-control-zoom a:first-child { border-radius: 8px 8px 0 0 !important; }
+    .leaflet-control-zoom a:last-child  { border-radius: 0 0 8px 8px !important; }
+
+    .leaflet-control-attribution {
+      font-size: 10px !important;
+      background: rgba(255,255,255,0.7) !important;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 10px !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15) !important;
+    }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
-      .view-toggle { display: flex; gap: 0; margin-bottom: 12px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); width: fit-content; }
-      .view-toggle-in-header { display: flex; margin-left: auto; }
-      .app.view-form .map-panel { display: none; }
-      .app.view-form { grid-template-columns: 1fr; grid-template-rows: 1fr; }
-      .app.view-map .panel { display: none; }
-      .app.view-map { grid-template-columns: 1fr; grid-template-rows: 1fr; }
-      .app.view-map .map-panel { display: flex !important; min-height: 100%; flex-direction: column; }
-
-      .app {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(320px, 1fr);
-      }
-      .app.view-form .panel { max-height: none; min-height: 100%; padding: 18px 16px; }
-      .app.view-form .panel-spacer { display: block; flex: 1; min-height: 20px; }
-      .app.view-form .panel-footer { display: block; font-size: 0.7rem; padding-top: 16px; }
-      .app.view-form { grid-template-rows: 1fr; }
-      .app.view-map { grid-template-rows: 1fr; }
-      .app.view-map .map-search { display: flex; gap: 8px; padding: 10px 12px; background: var(--white); border-bottom: 1px solid var(--line); }
-      .app.view-map .map-search input { flex: 1; padding: 8px 10px; font-size: 0.875rem; border: 1px solid var(--line); border-radius: 6px; }
-      .app.view-map .map-search-btn { padding: 8px 12px; font-size: 0.8125rem; background: var(--teal); color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-      .app.view-map .map-search-btn svg { width: 14px; height: 14px; }
-      .app.view-map .map-result.visible { display: block; padding: 8px 12px; font-size: 0.8rem; background: var(--teal-bg); color: var(--teal-dark); border-bottom: 1px solid var(--line); }
-      .app.view-map .map-error.visible { display: block; padding: 8px 12px; font-size: 0.75rem; color: var(--red); background: #fef2f2; border-bottom: 1px solid #fecaca; }
-
-      .panel {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding: 16px 14px;
-        max-height: 45vh;
-        overflow-y: auto;
-      }
-
-      .app.view-form .logo { margin-bottom: 16px; }
-      .logo { margin-bottom: 14px; }
-      .logo-icon { width: 30px; height: 30px; }
+      .logo { top: 12px; left: 12px; }
+      .logo-name { font-size: 1rem; }
+      .logo-icon { width: 28px; height: 28px; }
       .logo-icon svg { width: 14px; height: 14px; }
-      .logo-name { font-size: 1.1rem; }
 
-      .panel-heading { font-size: 1.35rem; margin-bottom: 4px; }
-      .panel-sub {
-        font-size: 0.75rem;
-        margin-bottom: 12px;
-        line-height: 1.4;
+      .search-overlay {
+        top: 38%;
+        width: 92%;
+        padding: 0 4px;
       }
 
-      .coverage-badge {
-        padding: 4px 9px;
-        font-size: 0.65rem;
-        margin-bottom: 12px;
+      .hero-heading { font-size: 2.2rem; }
+      .hero-sub { font-size: 0.85rem; max-width: 300px; }
+      .hero { margin-bottom: 16px; }
+
+      .search-bar { padding: 4px 4px 4px 14px; }
+      .search-bar input { font-size: 0.875rem; }
+      .check-btn { padding: 9px 16px; font-size: 0.8125rem; }
+      .check-btn .arrow { display: none; }
+
+      body.searched .logo {
+        display: none;
       }
 
-      .mode-toggle { margin-bottom: 12px; }
-      .mode-btn { padding: 7px 10px; font-size: 0.75rem; }
-      .mode-btn svg { width: 13px; height: 13px; }
-      .clinic-item { padding: 10px 0; }
-      .clinic-rank { font-size: 1rem; }
-      .clinic-name { font-size: 0.8rem; }
-      .clinic-addr { font-size: 0.7rem; }
-      .clinic-dist { font-size: 1rem; }
-
-      .input-label { margin-bottom: 6px; }
-      .input-row { margin-bottom: 8px; }
-      input[type="text"] { padding: 10px 10px 10px 34px; font-size: 0.875rem; }
-      .go-btn { padding: 10px 14px; font-size: 0.8125rem; }
-
-      .chips { margin-bottom: 4px; gap: 4px; }
-      .chip { padding: 2px 7px; font-size: 0.65rem; }
-
-      .input-hint { display: none; }
-      .panel-footer { display: none; }
-      .panel-spacer { display: none; }
-
-      .app.view-form .view-toggle { margin-bottom: 16px; }
-      .app.view-form .input-row { margin-bottom: 12px; }
-      .app.view-form .chips { margin-bottom: 12px; }
-      .app.view-form .result-card { padding: 16px; margin-bottom: 16px; }
-      .result-card { padding: 14px; margin-bottom: 12px; }
-      .rc-header { margin-bottom: 10px; }
-      .rc-badge { width: 32px; height: 32px; }
-      .rc-badge svg { width: 14px; height: 14px; }
-      .rc-title { font-size: 0.9rem; }
-      .rc-stats { gap: 6px; margin-bottom: 10px; }
-      .rc-stat-val { font-size: 1.2rem; }
-      .rc-stat-val.small { font-size: 0.8rem; }
-      .rc-option { padding: 8px 10px; }
-      .rc-option-detail { font-size: 0.8rem; }
-      .rc-option-dist { font-size: 1.1rem; }
-      .rc-note { font-size: 0.72rem; }
-
-      .loading-bar { margin-bottom: 10px; }
-      .error-box { margin-bottom: 10px; font-size: 0.75rem; padding: 8px 12px; }
-
-      .map-panel {
-        min-height: 320px;
-        border-left: none;
-        border-top: 2px solid var(--teal-border);
+      body.searched .search-overlay {
+        top: 10px;
+        width: 94%;
       }
 
-      .map-header {
-        padding: 8px 12px;
-        font-size: 0.65rem;
+      .error-box { font-size: 0.75rem; }
+
+      .results-card {
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        max-height: 58vh;
+        border-radius: var(--r-lg) var(--r-lg) 0 0;
+        animation: slideUp 0.35s ease;
       }
 
-      #map { min-height: 280px; }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(100%); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
 
-      .map-empty { padding: 12px; }
-      .map-empty-icon { width: 48px; height: 48px; }
-      .map-empty-icon svg { width: 22px; height: 22px; }
-      .map-empty p { font-size: 0.8125rem; }
-      .map-empty-hint { font-size: 0.7rem; }
-
-      .map-legend { padding: 8px 12px; font-size: 0.65rem; gap: 8px; }
+      .rc-banner { padding: 14px 16px; gap: 12px; }
+      .rc-banner-badge { width: 34px; height: 34px; }
+      .rc-banner-badge svg { width: 18px; height: 18px; }
+      .rc-banner-text h2 { font-size: 1rem; }
+      .rc-banner-text p { font-size: 0.7rem; }
+      .rc-content { padding: 14px 16px; }
+      .rc-tab { font-size: 0.75rem; padding: 9px 8px; }
+      .rc-mobile-card { padding: 12px 14px; }
+      .rc-mobile-card h3 { font-size: 0.9rem; }
+      .rc-mobile-card p { font-size: 0.78rem; }
+      .rc-clinic-name { font-size: 0.8rem; }
+      .rc-clinic-addr { font-size: 0.68rem; }
+      .rc-clinic-dist { font-size: 1rem; }
+      .rc-oor-heading { font-size: 1.3rem; }
+      .rc-oor-sub { font-size: 0.8rem; }
+      .rc-out-of-area { padding: 20px 16px; }
     }
   </style>
 </head>
 <body>
-  <div class="app">
 
-    <!-- LEFT PANEL -->
-    <aside class="panel">
+  <!-- Full-screen map -->
+  <div id="map"></div>
 
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </div>
-        <span class="logo-name">NiaHealth</span>
-      </div>
-
-      <h1 class="panel-heading">Are we near<br><em>you?</em></h1>
-      <p class="panel-sub">Enter any address, city, or postal code — we'll find the nearest mobile phlebotomist and in-clinic lab near you.</p>
-
-      <div class="coverage-badge">
-        <span class="pulse"></span>
-        Live coverage · BC, AB, SK, MB, ON, NB, NS, NL &amp; PE
-      </div>
-
-      <div class="mode-toggle-wrap">
-        <div class="mode-toggle" id="mode-toggle">
-          <button type="button" class="mode-btn active" data-mode="mobile">
-            <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-            Mobile
-          </button>
-          <button type="button" class="mode-btn" data-mode="clinic">
-            <svg viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="2" width="14" height="19" rx="2"/></svg>
-            In-clinic
-          </button>
-        </div>
-      </div>
-
-      <div class="view-toggle" id="view-toggle">
-        <button type="button" class="view-btn active" data-view="form">Form</button>
-        <button type="button" class="view-btn" data-view="map">Map</button>
-      </div>
-
-      <label class="input-label" for="address">Your location</label>
-      <div class="input-row">
-        <div class="input-wrap">
-          <span class="input-icon">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          </span>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            placeholder="e.g. Kelowna, V3T 1Z2, 123 Main St…"
-            autocomplete="off"
-            spellcheck="false"
-          />
-        </div>
-        <button class="go-btn" id="submit-btn" type="button">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          Check
-        </button>
-      </div>
-
-      <div class="chips">
-        <span class="chip" data-val="Kelowna, BC">Kelowna BC</span>
-        <span class="chip" data-val="V3T 1Z2">V3T 1Z2</span>
-        <span class="chip" data-val="Saskatoon SK">Saskatoon SK</span>
-        <span class="chip" data-val="Calgary AB">Calgary AB</span>
-        <span class="chip" data-val="Ottawa ON">Ottawa ON</span>
-      </div>
-      <p class="input-hint">Accepts cities, postal codes, full addresses, or abbreviations like "Van BC"</p>
-
-      <div class="loading-bar" id="loading-bar"><div class="loading-fill"></div></div>
-      <div class="error-box" id="error"></div>
-
-      <div class="result-card" id="result-card"></div>
-
-      <div class="panel-spacer"></div>
-
-      <p class="panel-footer">Coverage data refreshes automatically every 15 minutes. For urgent inquiries, contact NiaHealth directly.</p>
-
-    </aside>
-
-    <!-- RIGHT PANEL — MAP -->
-    <div class="map-panel">
-      <div class="map-header">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Service area map</span>
-        <div class="view-toggle view-toggle-in-header" id="view-toggle-map">
-          <button type="button" class="view-btn" data-view="form">Form</button>
-          <button type="button" class="view-btn active" data-view="map">Map</button>
-        </div>
-      </div>
-      <div class="map-search" id="map-search">
-        <input type="text" id="map-address" placeholder="Address, city, or postal code" autocomplete="off" spellcheck="false" />
-        <button type="button" class="map-search-btn" id="map-submit-btn">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          Check
-        </button>
-      </div>
-      <div class="map-result" id="map-result"></div>
-      <div class="map-error" id="map-error"></div>
-      <div class="map-empty" id="map-empty">
-        <div class="map-empty-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <p>Enter your location above</p>
-        <span class="map-empty-hint">The map will show you, the nearest phlebotomist, and the nearest clinic</span>
-      </div>
-      <div id="map"></div>
-      <div class="map-legend" id="map-legend">
-        <div class="leg-item"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#0d9488"/><circle cx="16" cy="15" r="4" fill="white"/></svg> You</div>
-        <div class="leg-item leg-mobile"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#2563eb"/><path d="M12 15h8M16 11v8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg> Mobile</div>
-        <div class="leg-item leg-clinic"><svg width="14" height="18" viewBox="0 0 32 42"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#7c3aed"/><rect x="12" y="11" width="8" height="8" rx="1.5" stroke="white" stroke-width="1.8" fill="none"/></svg> Clinic</div>
-        <div class="leg-item leg-mobile"><div class="leg-ring" style="border-color:#0d9488"></div> 100 km</div>
-        <div class="leg-item leg-mobile"><div class="leg-ring" style="border-color:#d97706"></div> 200 km</div>
-      </div>
+  <!-- Logo -->
+  <a class="logo" href="#">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
     </div>
+    <span class="logo-name">NiaHealth</span>
+  </a>
 
+  <!-- Search overlay (centered → moves to top after search) -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="hero" id="hero">
+      <h1 class="hero-heading">Are we near <em>you?</em></h1>
+      <p class="hero-sub">Check if a mobile phlebotomist can reach you, or find the closest in&#8209;clinic lab.</p>
+    </div>
+    <div class="search-bar" id="search-bar">
+      <span class="search-bar-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input
+        type="text"
+        id="address"
+        placeholder="Address, city, or postal code"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear search">&times;</button>
+      <button type="button" id="submit-btn" class="check-btn">
+        Check <span class="arrow">&rarr;</span>
+      </button>
+    </div>
+    <div class="error-box" id="error"></div>
   </div>
+
+  <!-- Loading bar -->
+  <div class="loading-bar" id="loading-bar"><div class="loading-fill"></div></div>
+
+  <!-- Results card -->
+  <div class="results-card" id="results-card"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="app.js"></script>

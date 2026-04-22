@@ -93,11 +93,16 @@
       flex-direction: column;
       align-items: center;
       transition: top 0.4s ease, transform 0.4s ease;
+      padding: 40px 20px;
+      border-radius: 24px;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.6) 55%, transparent 80%);
     }
 
     body.searched .search-overlay {
       top: 16px;
       transform: translate(-50%, 0);
+      background: none;
+      padding: 0;
     }
 
     /* ── HERO ── */
@@ -124,6 +129,7 @@
       letter-spacing: -0.03em;
       color: var(--ink);
       margin-bottom: 12px;
+      text-shadow: 0 1px 6px rgba(255,255,255,0.8);
     }
 
     .hero-heading em {
@@ -138,6 +144,7 @@
       line-height: 1.5;
       max-width: 420px;
       margin: 0 auto;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.9);
     }
 
     /* ── SEARCH BAR ── */
@@ -745,17 +752,18 @@
         placeholder="Address, city, or postal code"
         autocomplete="off"
         spellcheck="false"
+        disabled
       />
       <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear search">&times;</button>
-      <button type="button" id="submit-btn" class="check-btn">
+      <button type="button" id="submit-btn" class="check-btn" disabled>
         Check <span class="arrow">&rarr;</span>
       </button>
     </div>
     <div class="error-box" id="error"></div>
   </div>
 
-  <!-- Loading bar -->
-  <div class="loading-bar" id="loading-bar"><div class="loading-fill"></div></div>
+  <!-- Loading bar (visible on boot until data loads) -->
+  <div class="loading-bar visible" id="loading-bar"><div class="loading-fill"></div></div>
 
   <!-- Results card -->
   <div class="results-card" id="results-card"></div>

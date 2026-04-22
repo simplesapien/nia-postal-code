@@ -49,6 +49,13 @@ async function init() {
     buildLocalIndexes();
   } catch (err) {
     console.error("Could not load location data:", err);
+  } finally {
+    const lb = document.getElementById("loading-bar");
+    if (lb) lb.classList.remove("visible");
+    const addrEl = document.getElementById("address");
+    if (addrEl) addrEl.removeAttribute("disabled");
+    const btnEl = document.getElementById("submit-btn");
+    if (btnEl) btnEl.removeAttribute("disabled");
   }
 }
 

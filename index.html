@@ -156,19 +156,19 @@
 
     .search-bar input::placeholder { color: #AAA; }
 
-    .search-bar { position: relative; }
-
     .autocomplete-list {
       display: none;
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0; right: 0;
+      width: 100%;
+      max-width: 520px;
+      margin: 4px 0 0;
+      padding: 0;
       background: var(--white);
+      border: 1px solid var(--line);
       border-radius: var(--r);
       box-shadow: 0 4px 20px rgba(0,0,0,0.12);
       max-height: 200px;
       overflow-y: auto;
-      z-index: 100;
+      z-index: 1000;
       list-style: none;
     }
 
@@ -696,21 +696,26 @@
         transition: max-height 0.3s ease;
       }
 
-      .results-card.collapsed { max-height: 72px; overflow: hidden; }
+      .results-card.collapsed {
+        max-height: 80px;
+        overflow: hidden;
+      }
 
       .rc-drag-handle {
         display: flex;
         justify-content: center;
-        padding: 8px 0 4px;
+        align-items: center;
+        padding: 10px 0 6px;
         cursor: pointer;
         flex-shrink: 0;
+        -webkit-tap-highlight-color: transparent;
       }
 
       .rc-drag-handle::after {
         content: "";
-        width: 36px; height: 4px;
-        border-radius: 2px;
-        background: var(--line);
+        width: 40px; height: 5px;
+        border-radius: 3px;
+        background: var(--muted);
       }
 
       @keyframes slideUp {
@@ -764,8 +769,8 @@
       <button type="button" id="submit-btn" class="check-btn" disabled>
         Check <span class="arrow">&rarr;</span>
       </button>
-      <ul class="autocomplete-list" id="autocomplete-list"></ul>
     </div>
+    <ul class="autocomplete-list" id="autocomplete-list"></ul>
     <div class="error-box" id="error"></div>
   </div>
 

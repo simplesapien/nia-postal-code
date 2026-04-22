@@ -742,6 +742,7 @@ function renderResults(mobileResult, clinicResults, userCoords, addressText) {
   `;
 
   card.classList.add("visible");
+  injectMobileHandle(card);
 
   initTabs();
   showMap(userCoords.lat, userCoords.lng, clinicResults, mobileResult);
@@ -776,6 +777,7 @@ function renderOutOfArea(mobileResult, clinicResults, city, addressText, userCoo
   `;
 
   card.classList.add("visible");
+  injectMobileHandle(card);
 
   showMap(userCoords.lat, userCoords.lng, null, null);
 }
@@ -966,29 +968,24 @@ function setupAutocomplete() {
     if (suggestions[idx]) select(suggestions[idx]);
   });
 
-  document.addEventListener("click", (e) => { if (!e.target.closest(".search-bar")) hide(); });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-bar") && !e.target.closest(".autocomplete-list")) hide();
+  });
 }
 
 // ─────────────────────────────────────────────
 // MOBILE CARD COLLAPSE
 // ─────────────────────────────────────────────
 
-function setupMobileCardCollapse() {
-  const card = document.getElementById("results-card");
-  if (!card) return;
-  const observer = new MutationObserver(() => {
-    if (!card.classList.contains("visible")) return;
-    if (window.innerWidth > 768) return;
-    card.classList.remove("collapsed");
-    if (card.querySelector(".rc-drag-handle")) return;
-    const handle = document.createElement("div");
-    handle.className = "rc-drag-handle";
-    card.insertBefore(handle, card.firstChild);
-    handle.addEventListener("click", () => {
-      card.classList.toggle("collapsed");
-    });
+function injectMobileHandle(card) {
+  if (window.innerWidth > 768) return;
+  if (card.querySelector(".rc-drag-handle")) return;
+  const handle = document.createElement("div");
+  handle.className = "rc-drag-handle";
+  card.insertBefore(handle, card.firstChild);
+  handle.addEventListener("click", () => {
+    card.classList.toggle("collapsed");
   });
-  observer.observe(card, { attributes: true, attributeFilter: ["class"] });
 }
 
 // ─────────────────────────────────────────────
@@ -1001,7 +998,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("submit-btn").addEventListener("click", () => handleSubmit());
   document.getElementById("address").addEventListener("keydown", e => {
-    if (e.key === "Enter") handleSubmit();
+    if (e.key === "Enter") {
+      const acList = document.getElementById("autocomplete-list");
+      if (acList?.classList.contains("visible") && acList.querySelector("li.active")) return;
+      handleSubmit();
+    }
   });
   document.getElementById("hero")?.addEventListener("click", () => {
     document.body.classList.remove("searched");
@@ -1025,5 +1026,4 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("autocomplete-list")?.classList.remove("visible");
   });
   setupAutocomplete();
-  setupMobileCardCollapse();
 });

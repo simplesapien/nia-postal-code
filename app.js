@@ -818,6 +818,63 @@ function initTabs() {
 }
 
 // ─────────────────────────────────────────────
+// GEOLOCATION
+// ─────────────────────────────────────────────
+
+function handleGeolocate() {
+  if (!navigator.geolocation) return;
+  const gpsBtn = document.getElementById("gps-btn");
+  const addressEl = document.getElementById("address");
+  const btn = document.getElementById("submit-btn");
+  const errorEl = document.getElementById("error");
+  const loadBar = document.getElementById("loading-bar");
+  const card = document.getElementById("results-card");
+
+  gpsBtn.classList.add("loading");
+  navigator.geolocation.getCurrentPosition(
+    async (pos) => {
+      gpsBtn.classList.remove("loading");
+      const lat = pos.coords.latitude;
+      const lng = pos.coords.longitude;
+      addressEl.value = "My location";
+      document.getElementById("clear-btn")?.classList.add("visible");
+
+      card.classList.remove("visible");
+      card.innerHTML = "";
+      errorEl.classList.remove("visible");
+      loadBar.classList.add("visible");
+      btn.disabled = true;
+      btn.innerHTML = `<svg class="spin" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M21 12a9 9 0 1 1-6.219-8.56" stroke="white" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg> Searching...`;
+      document.body.classList.add("searched");
+      document.getElementById("autocomplete-list")?.classList.remove("visible");
+
+      if (dataReady) await dataReady;
+
+      try {
+        const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`, { headers: { "Accept-Language": "en" } });
+        const data = await resp.json();
+        if (data.display_name) addressEl.value = data.display_name.split(",").slice(0, 3).join(",").trim();
+      } catch (e) {}
+
+      const userCoords = { lat, lng };
+      const mobile = findNearest(lat, lng, mobileLocations);
+      const clinics = findNearestClinics(lat, lng, clinicLocations, 5);
+      renderResults(mobile, clinics, userCoords, addressEl.value);
+
+      loadBar.classList.remove("visible");
+      btn.disabled = false;
+      btn.innerHTML = `Check <span class="arrow">&rarr;</span>`;
+    },
+    (err) => {
+      gpsBtn.classList.remove("loading");
+      errorEl.textContent = "Location access denied. Please type your address instead.";
+      errorEl.classList.add("visible");
+    },
+    { enableHighAccuracy: true, timeout: 8000 }
+  );
+}
+
+// ─────────────────────────────────────────────
 // SUBMIT
 // ─────────────────────────────────────────────
 
@@ -895,11 +952,19 @@ async function handleSubmit() {
 function getAutocompleteSuggestions(query, limit = 6) {
   const q = query.trim().toLowerCase();
   if (q.length < 2) return [];
+
+  if (/^[a-z]\d[a-z]\s*\d?[a-z]?\d?$/i.test(q)) return [];
+
+  const alphaOnly = q.replace(/[0-9]+/g, "").replace(/\s+/g, " ").trim();
+  const searchTerms = alphaOnly.length >= 2 ? alphaOnly.split(/\s+/) : [q];
+  const lastWord = searchTerms[searchTerms.length - 1];
+  if (lastWord.length < 2) return [];
+
   const results = [];
   const seen = new Set();
   for (const key of Object.keys(cityIndex)) {
     if (key.includes("|")) continue;
-    if (key.startsWith(q) || key.includes(" " + q)) {
+    if (key.startsWith(lastWord) || key.includes(" " + lastWord)) {
       if (seen.has(key)) continue;
       seen.add(key);
       const entry = cityIndex[key];
@@ -910,7 +975,7 @@ function getAutocompleteSuggestions(query, limit = 6) {
   if (results.length < limit) {
     for (const key of Object.keys(cityIndex)) {
       if (key.includes("|") || seen.has(key)) continue;
-      if (key.includes(q)) {
+      if (key.includes(lastWord)) {
         seen.add(key);
         const entry = cityIndex[key];
         results.push({ city: titleCase(key), province: entry.province, lat: entry.lat, lng: entry.lng });
@@ -1042,6 +1107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ensureMap();
 
   document.getElementById("submit-btn").addEventListener("click", () => handleSubmit());
+  document.getElementById("gps-btn")?.addEventListener("click", () => handleGeolocate());
   document.getElementById("address").addEventListener("keydown", e => {
     if (e.key === "Enter") {
       const acList = document.getElementById("autocomplete-list");

@@ -131,13 +131,30 @@
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     }
 
-    .search-bar-icon {
+    .gps-btn {
       display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
+      width: 32px; height: 32px;
+      border: none;
+      background: none;
+      border-radius: 50%;
       color: var(--muted);
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.15s, background 0.15s;
     }
 
-    .search-bar-icon svg {
+    .gps-btn:hover { color: var(--ink); background: var(--cream); }
+    .gps-btn.loading { animation: gpsPulse 1s ease infinite; }
+
+    @keyframes gpsPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .gps-btn svg {
       width: 18px; height: 18px;
       stroke: currentColor; fill: none;
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
@@ -695,7 +712,7 @@
         top: auto;
         bottom: 0;
         width: 100%;
-        max-height: 58vh;
+        max-height: 88vh;
         border-radius: var(--r-lg) var(--r-lg) 0 0;
         animation: slideUp 0.35s ease;
         transition: max-height 0.3s ease;
@@ -770,9 +787,9 @@
       <p class="hero-sub">Check if a mobile phlebotomist can reach you, or find the closest in&#8209;clinic lab.</p>
     </div>
     <div class="search-bar" id="search-bar">
-      <span class="search-bar-icon">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      </span>
+      <button type="button" id="gps-btn" class="gps-btn" aria-label="Use my location" title="Use my location">
+        <svg viewBox="0 0 24 24"><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8"/></svg>
+      </button>
       <input
         type="text"
         id="address"

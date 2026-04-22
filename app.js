@@ -53,15 +53,16 @@ async function init() {
 }
 
 function buildLocalIndexes() {
+  const PRIORITY_PROVS = new Set(["ON", "BC", "AB", "MB"]);
   const allLocations = [...mobileLocations, ...clinicLocations];
 
   for (const loc of allLocations) {
     const cityName = (loc.city || loc.name || "").trim().toLowerCase();
     const province = (loc.province || "").trim().toUpperCase();
     if (cityName && loc.lat != null && loc.lng != null) {
-      const key = cityName;
-      if (!cityIndex[key]) {
-        cityIndex[key] = { lat: loc.lat, lng: loc.lng, province };
+      const existing = cityIndex[cityName];
+      if (!existing || (!PRIORITY_PROVS.has(existing.province) && PRIORITY_PROVS.has(province))) {
+        cityIndex[cityName] = { lat: loc.lat, lng: loc.lng, province };
       }
       if (province) {
         const keyProv = cityName + "|" + province;
@@ -309,7 +310,7 @@ function buildGeocoderCaQuery(raw) {
 }
 
 function isInCanada(lat, lng) {
-  return lat >= 44.0 && lat <= 83.2 && lng >= -141.1 && lng <= -52.5;
+  return lat >= 41.7 && lat <= 83.2 && lng >= -141.1 && lng <= -52.5;
 }
 
 function localLookup(rawAddress) {

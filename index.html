@@ -122,7 +122,6 @@
       display: flex;
       align-items: center;
       width: 100%;
-      max-width: 520px;
       background: var(--white);
       border: 2px solid var(--ink);
       border-radius: var(--r-pill);
@@ -173,11 +172,19 @@
 
     .search-bar input::placeholder { color: #AAA; }
 
-    .autocomplete-list {
-      display: none;
+    .search-wrap {
+      position: relative;
       width: 100%;
       max-width: 520px;
-      margin: 4px 0 0;
+    }
+
+    .autocomplete-list {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      margin: 0;
       padding: 0;
       background: var(--white);
       border: 1px solid var(--line);
@@ -786,24 +793,26 @@
       <h1 class="hero-heading">Are we near <em>you?</em></h1>
       <p class="hero-sub">Check if a mobile phlebotomist can reach you, or find the closest in&#8209;clinic lab.</p>
     </div>
-    <div class="search-bar" id="search-bar">
-      <button type="button" id="gps-btn" class="gps-btn" aria-label="Use my location" title="Use my location">
-        <svg viewBox="0 0 24 24"><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8"/></svg>
-      </button>
-      <input
-        type="text"
-        id="address"
-        placeholder="Address, city, or postal code"
-        autocomplete="off"
-        spellcheck="false"
-        disabled
-      />
-      <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear search">&times;</button>
-      <button type="button" id="submit-btn" class="check-btn" disabled>
-        Check <span class="arrow">&rarr;</span>
-      </button>
+    <div class="search-wrap">
+      <div class="search-bar" id="search-bar">
+        <button type="button" id="gps-btn" class="gps-btn" aria-label="Use my location" title="Use my location">
+          <svg viewBox="0 0 24 24"><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8"/></svg>
+        </button>
+        <input
+          type="text"
+          id="address"
+          placeholder="Address, city, or postal code"
+          autocomplete="off"
+          spellcheck="false"
+          disabled
+        />
+        <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear search">&times;</button>
+        <button type="button" id="submit-btn" class="check-btn" disabled>
+          Check <span class="arrow">&rarr;</span>
+        </button>
+      </div>
+      <ul class="autocomplete-list" id="autocomplete-list"></ul>
     </div>
-    <ul class="autocomplete-list" id="autocomplete-list"></ul>
     <div class="error-box" id="error"></div>
   </div>
 

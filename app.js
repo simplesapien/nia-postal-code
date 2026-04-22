@@ -270,22 +270,33 @@ function buildVariants(raw) {
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function geocoderCaSearch(locate) {
+  const t0 = performance.now();
+  console.log("📡 geocoder.ca → query:", JSON.stringify(locate));
   return new Promise((resolve) => {
     const cb = "gc_" + Date.now();
     window[cb] = (data) => {
       delete window[cb];
       script.remove();
-      if (data?.error || !data?.latt || !data?.longt) resolve(null);
-      else resolve({ lat: parseFloat(data.latt), lng: parseFloat(data.longt) });
+      const ms = (performance.now() - t0).toFixed(0);
+      if (data?.error || !data?.latt || !data?.longt) {
+        console.log("📡 geocoder.ca ← null (" + ms + "ms)", data?.error || "no coords");
+        resolve(null);
+      } else {
+        const result = { lat: parseFloat(data.latt), lng: parseFloat(data.longt) };
+        console.log("📡 geocoder.ca ←", result.lat.toFixed(6), result.lng.toFixed(6), "(" + ms + "ms)");
+        resolve(result);
+      }
     };
     const script = document.createElement("script");
     script.src = "https://geocoder.ca/?locate=" + encodeURIComponent(locate) + "&geoit=xml&jsonp=1&callback=" + cb;
     document.body.appendChild(script);
-    script.onerror = () => { delete window[cb]; script.remove(); resolve(null); };
+    script.onerror = () => { delete window[cb]; script.remove(); console.log("📡 geocoder.ca ← error (" + (performance.now() - t0).toFixed(0) + "ms)"); resolve(null); };
   });
 }
 
 async function nominatimSearch(query) {
+  const t0 = performance.now();
+  console.log("🌐 nominatim → query:", JSON.stringify(query));
   const url = "https://nominatim.openstreetmap.org/search?" + new URLSearchParams({
     q: query, format: "json", limit: "1", countrycodes: "ca",
   });
@@ -293,11 +304,14 @@ async function nominatimSearch(query) {
     const res = await fetch(url, {
       headers: { "User-Agent": "NiaHealthServiceChecker/2.0 (https://github.com/simplesapien/nia-postal-code)" }
     });
-    if (!res.ok) return null;
+    const ms = (performance.now() - t0).toFixed(0);
+    if (!res.ok) { console.log("🌐 nominatim ← HTTP", res.status, "(" + ms + "ms)"); return null; }
     const data = await res.json();
-    if (!data.length) return null;
-    return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
-  } catch { return null; }
+    if (!data.length) { console.log("🌐 nominatim ← no results (" + ms + "ms)"); return null; }
+    const result = { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+    console.log("🌐 nominatim ←", result.lat.toFixed(6), result.lng.toFixed(6), "|", data[0].display_name, "(" + ms + "ms)");
+    return result;
+  } catch (e) { console.log("🌐 nominatim ← error:", e.message, "(" + (performance.now() - t0).toFixed(0) + "ms)"); return null; }
 }
 
 function buildGeocoderCaQuery(raw) {
@@ -315,25 +329,34 @@ function isInCanada(lat, lng) {
 
 function localLookup(rawAddress) {
   const input = rawAddress.trim();
+  console.group("🔍 localLookup");
+  console.log("Input:", JSON.stringify(input));
 
   const postal = extractPostal(input);
   if (postal) {
+    console.log("Postal detected:", postal);
     if (postal.full) {
       const fullKey = postal.full.replace(/\s/g, "").toUpperCase();
-      if (postalIndex[fullKey]) return postalIndex[fullKey];
+      if (postalIndex[fullKey]) { console.log("✅ postalIndex hit:", fullKey, postalIndex[fullKey]); console.groupEnd(); return postalIndex[fullKey]; }
       const fsa = fullKey.slice(0, 3);
-      if (fsaIndex[fsa]) return fsaIndex[fsa];
+      if (fsaIndex[fsa]) { console.log("✅ fsaIndex hit:", fsa, fsaIndex[fsa]); console.groupEnd(); return fsaIndex[fsa]; }
+      console.log("No postal/FSA index match for", fullKey, "/", fsa);
     } else if (postal.fsa) {
-      if (fsaIndex[postal.fsa]) return fsaIndex[postal.fsa];
+      if (fsaIndex[postal.fsa]) { console.log("✅ fsaIndex hit:", postal.fsa, fsaIndex[postal.fsa]); console.groupEnd(); return fsaIndex[postal.fsa]; }
+      console.log("No FSA index match for", postal.fsa);
     }
+  } else {
+    console.log("No postal code detected");
   }
 
   let cleaned = input
     .replace(/\b[A-Za-z]\d[A-Za-z]\s*\d?[A-Za-z]?\d?\b/g, "")
     .replace(/,?\s*canada\s*$/i, "")
     .trim();
+  console.log("Cleaned for city lookup:", JSON.stringify(cleaned));
 
   const parts = cleaned.split(",").map(s => s.trim()).filter(Boolean);
+  console.log("Comma parts:", parts);
 
   if (parts.length >= 2) {
     const maybeProv = parts[parts.length - 1];
@@ -341,17 +364,21 @@ function localLookup(rawAddress) {
     if (provAbbr) {
       const cityPart = parts.slice(0, -1).join(", ").toLowerCase();
       const keyProv = cityPart + "|" + provAbbr;
-      if (cityIndex[keyProv]) return cityIndex[keyProv];
-      if (cityIndex[cityPart]) return cityIndex[cityPart];
+      console.log("Trying city+prov:", keyProv, "→", cityIndex[keyProv] || "miss");
+      if (cityIndex[keyProv]) { console.log("✅ city+prov hit"); console.groupEnd(); return cityIndex[keyProv]; }
+      console.log("Trying city only:", cityPart, "→", cityIndex[cityPart] || "miss");
+      if (cityIndex[cityPart]) { console.log("✅ city hit"); console.groupEnd(); return cityIndex[cityPart]; }
     }
   }
 
   const lowerCleaned = cleaned.toLowerCase();
-  if (cityIndex[lowerCleaned]) return cityIndex[lowerCleaned];
+  console.log("Trying full cleaned:", JSON.stringify(lowerCleaned), "→", cityIndex[lowerCleaned] || "miss");
+  if (cityIndex[lowerCleaned]) { console.log("✅ city hit"); console.groupEnd(); return cityIndex[lowerCleaned]; }
 
   if (parts.length >= 1) {
     const firstPart = parts[0].toLowerCase();
-    if (cityIndex[firstPart]) return cityIndex[firstPart];
+    console.log("Trying first part:", JSON.stringify(firstPart), "→", cityIndex[firstPart] || "miss");
+    if (cityIndex[firstPart]) { console.log("✅ first-part hit"); console.groupEnd(); return cityIndex[firstPart]; }
   }
 
   const words = lowerCleaned.split(/\s+/);
@@ -361,39 +388,74 @@ function localLookup(rawAddress) {
       const cityPart = words.slice(0, -1).join(" ");
       const provAbbr = PROV_NAME_MAP[lastWord];
       const keyProv = cityPart + "|" + provAbbr;
-      if (cityIndex[keyProv]) return cityIndex[keyProv];
-      if (cityIndex[cityPart]) return cityIndex[cityPart];
+      console.log("Trying word-split city+prov:", keyProv, "→", cityIndex[keyProv] || "miss");
+      if (cityIndex[keyProv]) { console.log("✅ word-split hit"); console.groupEnd(); return cityIndex[keyProv]; }
+      console.log("Trying word-split city:", cityPart, "→", cityIndex[cityPart] || "miss");
+      if (cityIndex[cityPart]) { console.log("✅ word-split city hit"); console.groupEnd(); return cityIndex[cityPart]; }
     }
   }
 
+  console.log("❌ No local match");
+  console.groupEnd();
   return null;
 }
 
 async function geocode(rawAddress) {
+  const t0 = performance.now();
+  console.group("🗺️ geocode(" + JSON.stringify(rawAddress) + ")");
+  console.log("Index sizes — cities:", Object.keys(cityIndex).length, "| FSAs:", Object.keys(fsaIndex).length, "| postals:", Object.keys(postalIndex).length);
+
   const local = localLookup(rawAddress);
-  if (local && isInCanada(local.lat, local.lng)) {
-    console.log("Resolved locally:", local);
-    return local;
+  if (local) {
+    const inCa = isInCanada(local.lat, local.lng);
+    console.log("Local result:", local.lat.toFixed(6), local.lng.toFixed(6), "| isInCanada:", inCa);
+    if (inCa) {
+      console.log("✅ Resolved locally in", (performance.now() - t0).toFixed(0) + "ms");
+      console.groupEnd();
+      return local;
+    }
+    console.log("⚠️ Local match rejected by isInCanada");
+  } else {
+    console.log("Local lookup returned null — falling through to external APIs");
   }
 
   const postal = extractPostal(rawAddress);
   const gcQuery = buildGeocoderCaQuery(rawAddress);
+  console.log("geocoder.ca query:", JSON.stringify(gcQuery));
 
   const gc = await geocoderCaSearch(gcQuery);
-  if (gc && isInCanada(gc.lat, gc.lng)) return gc;
+  if (gc) {
+    const inCa = isInCanada(gc.lat, gc.lng);
+    console.log("geocoder.ca isInCanada:", inCa);
+    if (inCa) {
+      console.log("✅ Resolved via geocoder.ca in", (performance.now() - t0).toFixed(0) + "ms");
+      console.groupEnd();
+      return gc;
+    }
+    console.log("⚠️ geocoder.ca result rejected by isInCanada");
+  }
 
   let variants = buildVariants(rawAddress).slice(0, MAX_GEOCODE_TRIES);
   const fallback = postal && FSA_FALLBACK_CITY[postal.fsa];
   if (fallback && !variants.includes(fallback)) variants = [...variants, fallback];
+  console.log("Nominatim variants:", variants);
+
   for (let i = 0; i < variants.length; i++) {
-    if (i > 0) await sleep(NOMINATIM_DELAY_MS);
+    if (i > 0) { console.log("Waiting", NOMINATIM_DELAY_MS + "ms before next variant..."); await sleep(NOMINATIM_DELAY_MS); }
     const coords = await nominatimSearch(variants[i]);
     if (coords) {
-      if (!isInCanada(coords.lat, coords.lng)) continue;
-      if (postal && !coordsInFsaRegion(coords.lat, coords.lng, postal.fsa)) continue;
+      const inCa = isInCanada(coords.lat, coords.lng);
+      const inFsa = postal ? coordsInFsaRegion(coords.lat, coords.lng, postal.fsa) : true;
+      console.log("Nominatim check — isInCanada:", inCa, "| inFsaRegion:", inFsa);
+      if (!inCa) { console.log("⚠️ Rejected: outside Canada"); continue; }
+      if (postal && !inFsa) { console.log("⚠️ Rejected: outside FSA region for", postal.fsa); continue; }
+      console.log("✅ Resolved via nominatim in", (performance.now() - t0).toFixed(0) + "ms");
+      console.groupEnd();
       return coords;
     }
   }
+  console.log("❌ All geocoding attempts failed in", (performance.now() - t0).toFixed(0) + "ms");
+  console.groupEnd();
   return null;
 }
 
@@ -480,6 +542,11 @@ function makeNumberedIcon(num) {
 }
 
 function showMap(userLat, userLng, clinicResults, mobileResult) {
+  console.group("🗺️ showMap");
+  console.log("User pin:", userLat.toFixed(6), userLng.toFixed(6));
+  console.log("Mobile result:", mobileResult ? (mobileResult.location.name || mobileResult.location.city) + " (" + mobileResult.location.lat + ", " + mobileResult.location.lng + ") " + mobileResult.distance.toFixed(1) + "km" : "null");
+  console.log("Clinic results:", clinicResults ? clinicResults.length + " clinics" : "null");
+
   ensureMap();
   clearMapOverlays();
   mobileCircleLayer = null;
@@ -515,6 +582,7 @@ function showMap(userLat, userLng, clinicResults, mobileResult) {
     clinicResults.forEach((r, i) => {
       const loc = r.location;
       if (!loc.lat || !loc.lng) return;
+      console.log("Clinic pin", i + 1 + ":", (loc.name || loc.city), "(" + loc.lat + ", " + loc.lng + ")", r.distance.toFixed(1) + "km");
       const marker = L.marker([loc.lat, loc.lng], {
         icon: makeNumberedIcon(i + 1),
         zIndexOffset: 500,
@@ -524,6 +592,9 @@ function showMap(userLat, userLng, clinicResults, mobileResult) {
       bounds.push([loc.lat, loc.lng]);
     });
   }
+
+  console.log("Map bounds:", JSON.stringify(bounds));
+  console.groupEnd();
 
   leafletMap.invalidateSize();
   setTimeout(() => {
@@ -765,13 +836,20 @@ async function handleSubmit() {
   if (clearBtnEl) clearBtnEl.classList.add("visible");
 
   try {
+    const submitT0 = performance.now();
+    console.group("🚀 handleSubmit(" + JSON.stringify(address) + ")");
+    console.log("Data loaded:", mobileLocations.length, "mobile,", clinicLocations.length, "clinic");
+
     if (!mobileLocations.length && !clinicLocations.length) {
       throw new Error("Location data not loaded. Please refresh.");
     }
 
     const coords = await geocode(address);
+    console.log("Geocode result:", coords);
 
     if (!coords) {
+      console.log("❌ No coords — showing error");
+      console.groupEnd();
       errorEl.textContent = "Couldn't find that Canadian location. Try a city name, postal code (e.g. V3T 1Z2), or full address.";
       errorEl.classList.add("visible");
       return;
@@ -781,6 +859,11 @@ async function handleSubmit() {
 
     const mobileResult  = findNearestIn(coords.lat, coords.lng, mobileLocations);
     const clinicResults = findNearestN(coords.lat, coords.lng, clinicLocations, 3);
+
+    console.log("Nearest mobile:", mobileResult ? (mobileResult.location.name || mobileResult.location.city) + " @ " + mobileResult.distance.toFixed(1) + "km (" + mobileResult.location.lat + ", " + mobileResult.location.lng + ")" : "none");
+    console.log("Nearest clinics:", (clinicResults || []).map(r => (r.location.name || r.location.city) + " @ " + r.distance.toFixed(1) + "km").join(" | "));
+    console.log("Total handleSubmit:", (performance.now() - submitT0).toFixed(0) + "ms");
+    console.groupEnd();
 
     renderResults(mobileResult, clinicResults, coords, address);
 

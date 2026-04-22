@@ -191,6 +191,11 @@
       margin-left: 4px;
     }
 
+    .autocomplete-list li.ac-address {
+      font-size: 0.8rem;
+      color: var(--ink-mid);
+    }
+
     .clear-btn {
       display: none;
       align-items: center;
@@ -697,25 +702,36 @@
       }
 
       .results-card.collapsed {
-        max-height: 80px;
+        max-height: 110px;
         overflow: hidden;
       }
 
       .rc-drag-handle {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        padding: 10px 0 6px;
+        padding: 12px 0 8px;
         cursor: pointer;
         flex-shrink: 0;
         -webkit-tap-highlight-color: transparent;
+        min-height: 40px;
       }
 
-      .rc-drag-handle::after {
+      .rc-drag-handle::before {
         content: "";
         width: 40px; height: 5px;
         border-radius: 3px;
         background: var(--muted);
+      }
+
+      .rc-handle-label {
+        display: block;
+        font-size: 0.68rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 4px;
+        font-family: 'Instrument Sans', sans-serif;
       }
 
       @keyframes slideUp {

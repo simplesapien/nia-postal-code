@@ -921,31 +921,74 @@ function getAutocompleteSuggestions(query, limit = 6) {
   return results;
 }
 
+function fetchNominatimSuggestions(query) {
+  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query + ", Canada")}&format=json&countrycodes=ca&limit=4&addressdetails=1`;
+  return fetch(url, { headers: { "Accept-Language": "en" } })
+    .then(r => r.json())
+    .then(results => results.map(r => {
+      const addr = r.address || {};
+      const city = addr.city || addr.town || addr.village || addr.hamlet || "";
+      const prov = addr.state || "";
+      const road = addr.road || "";
+      const num  = addr.house_number || "";
+      const label = road ? `${num ? num + " " : ""}${road}, ${city}` : r.display_name.split(",").slice(0, 2).join(",");
+      return { label: label.trim(), province: prov, displayName: r.display_name };
+    }))
+    .catch(() => []);
+}
+
 function setupAutocomplete() {
   const input = document.getElementById("address");
   const list = document.getElementById("autocomplete-list");
   if (!input || !list) return;
   let activeIdx = -1;
+  let allSuggestions = [];
+  let nominatimTimer = null;
+  let lastQuery = "";
 
-  function show(suggestions) {
-    list.innerHTML = suggestions.map((s, i) =>
-      `<li data-idx="${i}">${s.city}<span class="ac-prov">${s.province}</span></li>`
-    ).join("");
-    list.classList.toggle("visible", suggestions.length > 0);
+  function render() {
+    list.innerHTML = allSuggestions.map((s, i) => {
+      if (s.type === "city") {
+        return `<li data-idx="${i}">${s.city}<span class="ac-prov">${s.province}</span></li>`;
+      }
+      return `<li data-idx="${i}" class="ac-address">${s.label}<span class="ac-prov">${s.province}</span></li>`;
+    }).join("");
+    list.classList.toggle("visible", allSuggestions.length > 0);
     activeIdx = -1;
   }
 
-  function hide() { list.classList.remove("visible"); list.innerHTML = ""; activeIdx = -1; }
+  function hide() { list.classList.remove("visible"); list.innerHTML = ""; activeIdx = -1; allSuggestions = []; }
 
   function select(s) {
-    input.value = s.city + ", " + s.province;
+    input.value = s.type === "city" ? s.city + ", " + s.province : s.displayName || s.label;
     hide();
     handleSubmit();
   }
 
+  function looksLikeAddress(q) {
+    return /\d/.test(q) || q.split(/\s+/).length >= 3;
+  }
+
   input.addEventListener("input", () => {
-    const suggestions = getAutocompleteSuggestions(input.value);
-    show(suggestions);
+    const q = input.value.trim();
+    lastQuery = q;
+    if (nominatimTimer) clearTimeout(nominatimTimer);
+
+    const citySuggestions = getAutocompleteSuggestions(q).map(s => ({ ...s, type: "city" }));
+    allSuggestions = citySuggestions;
+    render();
+
+    if (q.length >= 4 && looksLikeAddress(q)) {
+      nominatimTimer = setTimeout(async () => {
+        if (input.value.trim() !== q) return;
+        const nomResults = await fetchNominatimSuggestions(q);
+        if (input.value.trim() !== q) return;
+        const addressItems = nomResults.map(r => ({ ...r, type: "address" }));
+        const cityPart = getAutocompleteSuggestions(q).map(s => ({ ...s, type: "city" }));
+        allSuggestions = [...cityPart, ...addressItems];
+        render();
+      }, 400);
+    }
   });
 
   input.addEventListener("keydown", (e) => {
@@ -955,17 +998,15 @@ function setupAutocomplete() {
     else if (e.key === "ArrowUp") { e.preventDefault(); activeIdx = Math.max(activeIdx - 1, 0); items.forEach((li, i) => li.classList.toggle("active", i === activeIdx)); }
     else if (e.key === "Enter" && activeIdx >= 0) {
       e.preventDefault();
-      const suggestions = getAutocompleteSuggestions(input.value);
-      if (suggestions[activeIdx]) select(suggestions[activeIdx]);
+      if (allSuggestions[activeIdx]) select(allSuggestions[activeIdx]);
     } else if (e.key === "Escape") { hide(); }
   });
 
   list.addEventListener("click", (e) => {
     const li = e.target.closest("li");
     if (!li) return;
-    const suggestions = getAutocompleteSuggestions(input.value);
     const idx = parseInt(li.dataset.idx);
-    if (suggestions[idx]) select(suggestions[idx]);
+    if (allSuggestions[idx]) select(allSuggestions[idx]);
   });
 
   document.addEventListener("click", (e) => {
@@ -982,9 +1023,13 @@ function injectMobileHandle(card) {
   if (card.querySelector(".rc-drag-handle")) return;
   const handle = document.createElement("div");
   handle.className = "rc-drag-handle";
+  handle.innerHTML = '<span class="rc-handle-label">Tap to expand</span>';
   card.insertBefore(handle, card.firstChild);
+  card.classList.add("collapsed");
   handle.addEventListener("click", () => {
+    const willExpand = card.classList.contains("collapsed");
     card.classList.toggle("collapsed");
+    handle.querySelector(".rc-handle-label").textContent = willExpand ? "Tap to minimize" : "Tap to expand";
   });
 }
 

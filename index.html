@@ -65,7 +65,7 @@
       transition: top 0.4s ease, transform 0.4s ease;
       padding: 40px 20px;
       border-radius: 24px;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.6) 55%, transparent 80%);
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.15) 65%, transparent 90%);
     }
 
     body.searched .search-overlay {
@@ -155,6 +155,41 @@
     }
 
     .search-bar input::placeholder { color: #AAA; }
+
+    .search-bar { position: relative; }
+
+    .autocomplete-list {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
+      background: var(--white);
+      border-radius: var(--r);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 100;
+      list-style: none;
+    }
+
+    .autocomplete-list.visible { display: block; }
+
+    .autocomplete-list li {
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .autocomplete-list li:last-child { border-bottom: none; }
+    .autocomplete-list li:hover, .autocomplete-list li.active { background: var(--cream); }
+
+    .autocomplete-list li .ac-prov {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-left: 4px;
+    }
 
     .clear-btn {
       display: none;
@@ -658,6 +693,24 @@
         max-height: 58vh;
         border-radius: var(--r-lg) var(--r-lg) 0 0;
         animation: slideUp 0.35s ease;
+        transition: max-height 0.3s ease;
+      }
+
+      .results-card.collapsed { max-height: 72px; overflow: hidden; }
+
+      .rc-drag-handle {
+        display: flex;
+        justify-content: center;
+        padding: 8px 0 4px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .rc-drag-handle::after {
+        content: "";
+        width: 36px; height: 4px;
+        border-radius: 2px;
+        background: var(--line);
       }
 
       @keyframes slideUp {
@@ -711,6 +764,7 @@
       <button type="button" id="submit-btn" class="check-btn" disabled>
         Check <span class="arrow">&rarr;</span>
       </button>
+      <ul class="autocomplete-list" id="autocomplete-list"></ul>
     </div>
     <div class="error-box" id="error"></div>
   </div>

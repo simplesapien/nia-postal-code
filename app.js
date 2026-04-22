@@ -839,6 +839,7 @@ async function handleSubmit() {
   btn.innerHTML = `<svg class="spin" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M21 12a9 9 0 1 1-6.219-8.56" stroke="white" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg> Searching...`;
 
   document.body.classList.add("searched");
+  document.getElementById("autocomplete-list")?.classList.remove("visible");
   const clearBtnEl = document.getElementById("clear-btn");
   if (clearBtnEl) clearBtnEl.classList.add("visible");
 
@@ -886,6 +887,111 @@ async function handleSubmit() {
 }
 
 // ─────────────────────────────────────────────
+// AUTOCOMPLETE
+// ─────────────────────────────────────────────
+
+function getAutocompleteSuggestions(query, limit = 6) {
+  const q = query.trim().toLowerCase();
+  if (q.length < 2) return [];
+  const results = [];
+  const seen = new Set();
+  for (const key of Object.keys(cityIndex)) {
+    if (key.includes("|")) continue;
+    if (key.startsWith(q) || key.includes(" " + q)) {
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const entry = cityIndex[key];
+      results.push({ city: titleCase(key), province: entry.province, lat: entry.lat, lng: entry.lng });
+      if (results.length >= limit) break;
+    }
+  }
+  if (results.length < limit) {
+    for (const key of Object.keys(cityIndex)) {
+      if (key.includes("|") || seen.has(key)) continue;
+      if (key.includes(q)) {
+        seen.add(key);
+        const entry = cityIndex[key];
+        results.push({ city: titleCase(key), province: entry.province, lat: entry.lat, lng: entry.lng });
+        if (results.length >= limit) break;
+      }
+    }
+  }
+  return results;
+}
+
+function setupAutocomplete() {
+  const input = document.getElementById("address");
+  const list = document.getElementById("autocomplete-list");
+  if (!input || !list) return;
+  let activeIdx = -1;
+
+  function show(suggestions) {
+    list.innerHTML = suggestions.map((s, i) =>
+      `<li data-idx="${i}">${s.city}<span class="ac-prov">${s.province}</span></li>`
+    ).join("");
+    list.classList.toggle("visible", suggestions.length > 0);
+    activeIdx = -1;
+  }
+
+  function hide() { list.classList.remove("visible"); list.innerHTML = ""; activeIdx = -1; }
+
+  function select(s) {
+    input.value = s.city + ", " + s.province;
+    hide();
+    handleSubmit();
+  }
+
+  input.addEventListener("input", () => {
+    const suggestions = getAutocompleteSuggestions(input.value);
+    show(suggestions);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    const items = list.querySelectorAll("li");
+    if (!items.length) return;
+    if (e.key === "ArrowDown") { e.preventDefault(); activeIdx = Math.min(activeIdx + 1, items.length - 1); items.forEach((li, i) => li.classList.toggle("active", i === activeIdx)); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); activeIdx = Math.max(activeIdx - 1, 0); items.forEach((li, i) => li.classList.toggle("active", i === activeIdx)); }
+    else if (e.key === "Enter" && activeIdx >= 0) {
+      e.preventDefault();
+      const suggestions = getAutocompleteSuggestions(input.value);
+      if (suggestions[activeIdx]) select(suggestions[activeIdx]);
+    } else if (e.key === "Escape") { hide(); }
+  });
+
+  list.addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+    if (!li) return;
+    const suggestions = getAutocompleteSuggestions(input.value);
+    const idx = parseInt(li.dataset.idx);
+    if (suggestions[idx]) select(suggestions[idx]);
+  });
+
+  document.addEventListener("click", (e) => { if (!e.target.closest(".search-bar")) hide(); });
+}
+
+// ─────────────────────────────────────────────
+// MOBILE CARD COLLAPSE
+// ─────────────────────────────────────────────
+
+function setupMobileCardCollapse() {
+  const card = document.getElementById("results-card");
+  if (!card) return;
+  const observer = new MutationObserver(() => {
+    if (!card.classList.contains("visible")) return;
+    if (window.innerWidth > 768) return;
+    card.classList.remove("collapsed");
+    if (card.querySelector(".rc-drag-handle")) return;
+    const handle = document.createElement("div");
+    handle.className = "rc-drag-handle";
+    card.insertBefore(handle, card.firstChild);
+    handle.addEventListener("click", () => {
+      card.classList.toggle("collapsed");
+    });
+  });
+  observer.observe(card, { attributes: true, attributeFilter: ["class"] });
+}
+
+// ─────────────────────────────────────────────
 // BOOT
 // ─────────────────────────────────────────────
 
@@ -916,5 +1022,8 @@ document.addEventListener("DOMContentLoaded", () => {
     addressInput.value = "";
     addressInput.focus();
     clearBtn.classList.remove("visible");
+    document.getElementById("autocomplete-list")?.classList.remove("visible");
   });
+  setupAutocomplete();
+  setupMobileCardCollapse();
 });

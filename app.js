@@ -8,7 +8,7 @@ const RANGE_IN           = 100;
 const RANGE_EXTENDED     = 200;
 const NOMINATIM_DELAY_MS = 1100;
 const MAX_GEOCODE_TRIES  = 4;
-const SERVICE_AREA_RADIUS = 25000; // meters – visual radius for the dark circle
+const SERVICE_AREA_RADIUS = 100000; // meters – visual radius matches RANGE_IN (100 km)
 
 // ─────────────────────────────────────────────
 // STATE
@@ -680,7 +680,10 @@ function renderResults(mobileResult, clinicResults, userCoords, addressText) {
   const mobileStatus = inArea ? "AVAILABLE" : "EXTENDED AREA";
   const mobileDesc = inArea
     ? `Your address is inside our mobile coverage zone (≈ ${distKm} km radius). A phlebotomist will travel to your home or office.`
-    : `Your address is in our extended service zone (${distKm} km away). Additional travel fees may apply. Contact us to confirm availability.`;
+    : `Your address is in our extended service zone (${distKm} km away). Additional travel fees may apply and availability is limited — contact us to confirm.`;
+  const extendedClinicNudge = (!inArea && clinicResults && clinicResults.length)
+    ? `<p style="margin-top:10px;font-size:0.8rem;color:var(--ink-mid);">For guaranteed same-week service, consider one of our <a href="#" data-switch-tab="clinic" style="color:var(--maroon);font-weight:600;text-decoration:none;">partner clinics →</a></p>`
+    : "";
 
   const clinicItemsHtml = (clinicResults || []).map((r, i) => {
     const loc = r.location;
@@ -721,6 +724,7 @@ function renderResults(mobileResult, clinicResults, userCoords, addressText) {
         <div class="rc-mobile-card">
           <h3>${mobileCity} service area</h3>
           <p>${mobileDesc}</p>
+          ${extendedClinicNudge}
         </div>
       </div>
       ${clinicCount ? `<div class="rc-clinic-section" data-section="clinic">
@@ -736,7 +740,7 @@ function renderResults(mobileResult, clinicResults, userCoords, addressText) {
       </div>
       <div class="rc-disclaimer">
         <span>ⓘ</span>
-        <span>Mobile coverage is approximate and may change — for confirmation before booking, text us at <a href="sms:16479310600">+1 (647) 931-0600</a>.</span>
+        <span>Coverage radius is based on straight-line distance and may not reflect actual driving routes. Areas separated by water or with limited road access may be outside practical range — text us at <a href="sms:16479310600">+1 (647) 931-0600</a> to confirm before booking.</span>
       </div>
     </div>
   `;
@@ -749,7 +753,66 @@ function renderResults(mobileResult, clinicResults, userCoords, addressText) {
 }
 
 function renderOutOfArea(mobileResult, clinicResults, city, addressText, userCoords) {
-  const card  = document.getElementById("results-card");
+  const card = document.getElementById("results-card");
+
+  const nearbyClinics = (clinicResults || []).filter(r => r.distance <= 200);
+
+  if (nearbyClinics.length > 0) {
+    const clinicItemsHtml = nearbyClinics.map((r, i) => {
+      const loc = r.location;
+      const km  = r.distance < 10 ? r.distance.toFixed(1) : Math.round(r.distance);
+      const addr = [titleCase(loc.address), titleCase(loc.city)].filter(Boolean).join(", ");
+      const distClass = r.distance <= 10 ? "dist-close" : r.distance <= 50 ? "dist-mid" : "dist-far";
+      return `<div class="rc-clinic-item">
+        <div class="rc-clinic-rank">${i + 1}</div>
+        <div>
+          <div class="rc-clinic-name">${loc.name}${(() => { const p = getPartnerLabel(loc); return p ? ` <span style="font-weight:400;color:var(--muted);font-size:0.75rem">· ${p}</span>` : ""; })()}</div>
+          <div class="rc-clinic-addr">${addr}</div>
+        </div>
+        <div class="rc-clinic-dist ${distClass}">${km} <span>km</span></div>
+      </div>`;
+    }).join("");
+
+    const clinicCount = nearbyClinics.length;
+
+    card.innerHTML = `
+      <div class="rc-banner clinic-only">
+        <div class="rc-banner-badge">
+          <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+        </div>
+        <div class="rc-banner-text">
+          <h2>In-clinic available — ${city}</h2>
+          <p>${addressText}</p>
+        </div>
+      </div>
+      <div class="rc-content">
+        <div style="padding:10px 16px 6px;background:var(--cream);border-radius:var(--r);margin-bottom:14px;font-size:0.8rem;color:var(--ink-mid);display:flex;align-items:center;gap:8px;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:0.6"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          At-home mobile visits aren't available in your area yet — but you can get your labs done at a nearby partner clinic.
+        </div>
+        <div class="rc-clinic-section" data-section="clinic">
+          <div class="rc-section-header">
+            <div class="rc-section-dot" style="background:var(--maroon)"></div>
+            ${clinicCount} PARTNER CLINIC${clinicCount > 1 ? "S" : ""} IN YOUR REGION
+          </div>
+          <div class="rc-clinic-list">${clinicItemsHtml}</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--cream);border-radius:var(--r);margin-top:16px;margin-bottom:16px;text-align:center;">
+          <p style="font-size:0.82rem;color:var(--ink-mid);margin-bottom:10px;">Ready to get started?</p>
+          <a href="https://niahealth.ca/plans" style="display:inline-block;padding:10px 24px;background:var(--maroon);color:white;border-radius:var(--r-pill);font-size:0.85rem;font-weight:600;text-decoration:none;font-family:'Instrument Sans',sans-serif;">See plans →</a>
+        </div>
+        <div class="rc-disclaimer">
+          <span>ⓘ</span>
+          <span>Clinic availability may change — for confirmation before booking, text us at <a href="sms:16479310600">+1 (647) 931-0600</a>.</span>
+        </div>
+      </div>
+    `;
+
+    card.classList.add("visible");
+    injectMobileHandle(card);
+    showMap(userCoords.lat, userCoords.lng, nearbyClinics, null);
+    return;
+  }
 
   let nearestText = "";
   if (mobileResult && mobileResult.distance <= 500) {
@@ -778,7 +841,6 @@ function renderOutOfArea(mobileResult, clinicResults, city, addressText, userCoo
 
   card.classList.add("visible");
   injectMobileHandle(card);
-
   showMap(userCoords.lat, userCoords.lng, null, null);
 }
 
@@ -788,33 +850,49 @@ function renderOutOfArea(mobileResult, clinicResults, city, addressText, userCoo
 
 function initTabs() {
   const tabs = document.querySelectorAll(".rc-tab");
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      currentTab = tab.dataset.tab;
-      tabs.forEach(t => t.classList.toggle("active", t === tab));
 
-      const mobileSec = document.querySelector('[data-section="mobile"]');
-      const clinicSec = document.querySelector('[data-section="clinic"]');
+  function activateTab(tabName) {
+    currentTab = tabName;
+    tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === tabName));
 
-      if (mobileSec) mobileSec.style.display = (currentTab === "all" || currentTab === "mobile") ? "" : "none";
-      if (clinicSec) clinicSec.style.display = (currentTab === "all" || currentTab === "clinic") ? "" : "none";
+    const mobileSec = document.querySelector('[data-section="mobile"]');
+    const clinicSec = document.querySelector('[data-section="clinic"]');
 
-      if (mobileCircleLayer) {
-        if (currentTab === "all" || currentTab === "mobile") {
-          leafletMap.addLayer(mobileCircleLayer);
-        } else {
-          leafletMap.removeLayer(mobileCircleLayer);
-        }
+    if (mobileSec) mobileSec.style.display = (currentTab === "all" || currentTab === "mobile") ? "" : "none";
+    if (clinicSec) clinicSec.style.display = (currentTab === "all" || currentTab === "clinic") ? "" : "none";
+
+    if (mobileCircleLayer) {
+      if (currentTab === "all" || currentTab === "mobile") {
+        leafletMap.addLayer(mobileCircleLayer);
+      } else {
+        leafletMap.removeLayer(mobileCircleLayer);
       }
-      clinicMarkerLayers.forEach(marker => {
-        if (currentTab === "all" || currentTab === "clinic") {
-          leafletMap.addLayer(marker);
-        } else {
-          leafletMap.removeLayer(marker);
-        }
-      });
+    }
+    clinicMarkerLayers.forEach(marker => {
+      if (currentTab === "all" || currentTab === "clinic") {
+        leafletMap.addLayer(marker);
+      } else {
+        leafletMap.removeLayer(marker);
+      }
     });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => activateTab(tab.dataset.tab));
   });
+
+  // Allow any element with data-switch-tab inside the results card to switch tabs
+  const card = document.getElementById("results-card");
+  if (card) {
+    card.addEventListener("click", (e) => {
+      const link = e.target.closest("[data-switch-tab]");
+      if (!link) return;
+      e.preventDefault();
+      activateTab(link.dataset.switchTab);
+      const targetTab = document.querySelector(`[data-tab="${link.dataset.switchTab}"]`);
+      if (targetTab) targetTab.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
 }
 
 // ─────────────────────────────────────────────
@@ -1008,16 +1086,32 @@ function setupAutocomplete() {
   if (!input || !list) return;
   let activeIdx = -1;
   let allSuggestions = [];
-  let nominatimTimer = null;
   let lastQuery = "";
 
   function render() {
-    list.innerHTML = allSuggestions.map((s, i) => {
-      if (s.type === "city") {
-        return `<li data-idx="${i}">${s.city}<span class="ac-prov">${s.province}</span></li>`;
-      }
+    const cityItems = allSuggestions.filter(s => s.type === "city");
+    const addressItems = allSuggestions.filter(s => s.type === "address");
+    const showBothGroups = cityItems.length > 0 && addressItems.length > 0;
+
+    const cityHtml = cityItems.map(s => {
+      const i = allSuggestions.indexOf(s);
+      return `<li data-idx="${i}">${s.city}<span class="ac-prov">${s.province}</span></li>`;
+    }).join("");
+
+    const addressHtml = addressItems.map(s => {
+      const i = allSuggestions.indexOf(s);
       return `<li data-idx="${i}" class="ac-address">${s.label}<span class="ac-prov">${s.province}</span></li>`;
     }).join("");
+
+    let html = "";
+    if (showBothGroups) {
+      html += `<li class="ac-group-header">Cities</li>${cityHtml}`;
+      html += `<li class="ac-group-header">Addresses</li>${addressHtml}`;
+    } else {
+      html = cityHtml + addressHtml;
+    }
+
+    list.innerHTML = html;
     list.classList.toggle("visible", allSuggestions.length > 0);
     activeIdx = -1;
   }
@@ -1030,40 +1124,41 @@ function setupAutocomplete() {
     handleSubmit();
   }
 
-  function looksLikeAddress(q) {
-    return /\d/.test(q) || q.split(/\s+/).length >= 3;
-  }
-
   input.addEventListener("input", () => {
     const q = input.value.trim();
     lastQuery = q;
-    if (nominatimTimer) clearTimeout(nominatimTimer);
 
     const citySuggestions = getAutocompleteSuggestions(q).map(s => ({ ...s, type: "city" }));
     allSuggestions = citySuggestions;
     render();
 
-    if (q.length >= 4 && looksLikeAddress(q)) {
-      nominatimTimer = setTimeout(async () => {
-        if (input.value.trim() !== q) return;
+    if (q.length >= 4) {
+      (async () => {
         const nomResults = await fetchNominatimSuggestions(q);
         if (input.value.trim() !== q) return;
         const addressItems = nomResults.map(r => ({ ...r, type: "address" }));
         const cityPart = getAutocompleteSuggestions(q).map(s => ({ ...s, type: "city" }));
         allSuggestions = [...cityPart, ...addressItems];
         render();
-      }, 400);
+      })();
     }
   });
 
   input.addEventListener("keydown", (e) => {
-    const items = list.querySelectorAll("li");
+    const items = list.querySelectorAll("li[data-idx]");
     if (!items.length) return;
-    if (e.key === "ArrowDown") { e.preventDefault(); activeIdx = Math.min(activeIdx + 1, items.length - 1); items.forEach((li, i) => li.classList.toggle("active", i === activeIdx)); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); activeIdx = Math.max(activeIdx - 1, 0); items.forEach((li, i) => li.classList.toggle("active", i === activeIdx)); }
-    else if (e.key === "Enter" && activeIdx >= 0) {
+    if (e.key === "ArrowDown") {
       e.preventDefault();
-      if (allSuggestions[activeIdx]) select(allSuggestions[activeIdx]);
+      activeIdx = Math.min(activeIdx + 1, items.length - 1);
+      items.forEach((li, i) => li.classList.toggle("active", i === activeIdx));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      activeIdx = Math.max(activeIdx - 1, 0);
+      items.forEach((li, i) => li.classList.toggle("active", i === activeIdx));
+    } else if (e.key === "Enter" && activeIdx >= 0) {
+      e.preventDefault();
+      const idx = parseInt(items[activeIdx]?.dataset.idx);
+      if (!isNaN(idx) && allSuggestions[idx]) select(allSuggestions[idx]);
     } else if (e.key === "Escape") { hide(); }
   });
 

@@ -220,6 +220,20 @@
       color: var(--ink-mid);
     }
 
+    .autocomplete-list li.ac-group-header {
+      padding: 5px 16px 3px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--cream);
+      cursor: default;
+      border-bottom: 1px solid var(--line);
+      pointer-events: none;
+    }
+    .autocomplete-list li.ac-group-header:hover { background: var(--cream); }
+
     .clear-btn {
       display: none;
       align-items: center;
@@ -349,6 +363,12 @@
       background: #5C3D10;
       color: white;
     }
+
+    .rc-banner.clinic-only {
+      background: var(--maroon-dark);
+      color: white;
+    }
+    .rc-banner.clinic-only .rc-banner-badge { background: var(--maroon); }
 
     .rc-banner-badge {
       width: 38px; height: 38px;
